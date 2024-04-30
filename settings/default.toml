@@ -1,0 +1,485 @@
+[path]
+master_log_file = "logs/master.log"
+prog_log_file = "logs/prog.log"
+data_header = "data/MPW_Test/"
+path_data = "D:\\nirram\\data\\MPW_Test\\"
+
+[NIDigital]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot9"]
+pinmap = ["settings/pinmap/MPW_Direct_Write_BLSL.pinmap", "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
+specs = [
+  "settings/DEC3.specs",
+  "settings/MPW_ProbeCard.digilevels",
+  "settings/MPW_ProbeCard.digitiming"
+]
+patterns = [
+  "settings/patterns/PULSE_MPW_ProbeCard.digipat",
+  "settings/patterns/CSA_Read_Si.digipat"
+]
+
+[NISwitch]
+deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
+
+
+[device]
+# define all body voltage names and map them to their neutral value
+# for PMOS this is typically VDD while for NMOS this is typically GND or VSS
+body = { Body = 0.0 }
+
+# define all WLs, BLs, SLs names
+all_WL_Signals = [
+    "WL_IN_0",
+    "WL_IN_1",
+    "WL_IN_2",
+    "WL_IN_3",
+    "WL_IN_4",
+    "WL_IN_5",
+    "WL_IN_6",
+    "WL_IN_7",
+    "WL_IN_8",
+    "WL_IN_9",
+    "WL_IN_10",
+    "WL_IN_11",
+    "WL_IN_12",
+    "WL_IN_13",
+    "WL_IN_14",
+    "WL_IN_15",
+    "WL_IN_16",
+    "WL_IN_17",
+    "WL_IN_18",
+    "WL_IN_19",
+    "WL_IN_20",
+    "WL_IN_21",
+    "WL_IN_22",
+    "WL_IN_23",
+    "WL_UNSEL",
+]
+
+all_BLS = [
+    "BL_0",
+    "BL_1",
+    "BL_2",
+    "BL_3",
+    "BL_4",
+    "BL_5",
+    "BL_6",
+    "BL_7",
+    "BL_8",
+    "BL_9",
+    "BL_10",
+    "BL_11",
+    "BL_12",
+    "BL_13",
+    "BL_14",
+    "BL_15",
+    "BL_16",
+    "BL_17",
+    "BL_18",
+    "BL_19",
+    "BL_20",
+    "BL_21",
+    "BL_22",
+    "BL_23",
+    "BL_24",
+    "BL_25",
+    "BL_26",
+    "BL_27",
+    "BL_28",
+    "BL_29",
+    "BL_30",
+    "BL_31",
+]
+
+all_SLS = [
+    "SL_0",
+    "SL_1",
+    "SL_2",
+    "SL_3",
+    "SL_4",
+    "SL_5",
+    "SL_6",
+    "SL_7",
+    "SL_8",
+    "SL_9",
+    "SL_10",
+    "SL_11",
+    "SL_12",
+    "SL_13",
+    "SL_14",
+    "SL_15",
+    "SL_16",
+    "SL_17",
+    "SL_18",
+    "SL_19",
+    "SL_20",
+    "SL_21",
+    "SL_22",
+    "SL_23",
+    "SL_24",
+    "SL_25",
+    "SL_26",
+    "SL_27",
+    "SL_28",
+    "SL_29",
+    "SL_30",
+    "SL_31",
+]
+
+all_WLS = [
+    "WL_0",
+    "WL_1",
+    "WL_2",
+    "WL_3",
+    "WL_4",
+    "WL_5",
+    "WL_6",
+    "WL_7",
+    "WL_8",
+    "WL_9",
+    "WL_10",
+    "WL_11",
+    "WL_12",
+    "WL_13",
+    "WL_14",
+    "WL_15",
+    "WL_16",
+    "WL_17",
+    "WL_18",
+    "WL_19",
+    "WL_20",
+    "WL_21",
+    "WL_22",
+    "WL_23",
+    "WL_24",
+    "WL_25",
+    "WL_26",
+    "WL_27",
+    "WL_28",
+    "WL_29",
+    "WL_30",
+    "WL_31",
+    "WL_32",
+    "WL_33",
+    "WL_34",
+    "WL_35",
+    "WL_36",
+    "WL_37",
+    "WL_38",
+    "WL_39",
+    "WL_40",
+    "WL_41",
+    "WL_42",
+    "WL_43",
+    "WL_44",
+    "WL_45",
+    "WL_46",
+    "WL_47",
+    "WL_48",
+    "WL_49",
+    "WL_50",
+    "WL_51",
+    "WL_52",
+    "WL_53",
+    "WL_54",
+    "WL_55",
+    "WL_56",
+    "WL_57",
+    "WL_58",
+    "WL_59",
+    "WL_60",
+    "WL_61",
+    "WL_62",
+    "WL_63",
+    "WL_64",
+    "WL_65",
+    "WL_66",
+    "WL_67",
+    "WL_68",
+    "WL_69",
+    "WL_70",
+    "WL_71",
+    "WL_72",
+    "WL_73",
+    "WL_74",
+    "WL_75",
+    "WL_76",
+    "WL_77",
+    "WL_78",
+    "WL_79",
+    "WL_80",
+    "WL_81",
+    "WL_82",
+    "WL_83",
+    "WL_84",
+    "WL_85",
+    "WL_86",
+    "WL_87",
+    "WL_88",
+    "WL_89",
+    "WL_90",
+    "WL_91",
+    "WL_92",
+    "WL_93",
+    "WL_94",
+    "WL_95",
+    "WL_96",
+    "WL_97",
+    "WL_98",
+    "WL_99",
+    "WL_100",
+    "WL_101",
+    "WL_102",
+    "WL_103",
+    "WL_104",
+    "WL_105",
+    "WL_106",
+    "WL_107",
+    "WL_108",
+    "WL_109",
+    "WL_110",
+    "WL_111",
+    "WL_112",
+    "WL_113",
+    "WL_114",
+    "WL_115",
+    "WL_116",
+    "WL_117",
+    "WL_118",
+    "WL_119",
+    "WL_120",
+    "WL_121",
+    "WL_122",
+    "WL_123",
+    "WL_124",
+    "WL_125",
+    "WL_126",
+    "WL_127",
+]
+
+# subset of WL, BL, SL that will be pulsed for measurement
+WLS = [
+    "WL_IN_0",
+    "WL_IN_1",
+    "WL_IN_2",
+    "WL_IN_3",
+    "WL_IN_4",
+    "WL_IN_5",
+    "WL_IN_6",
+    "WL_IN_7",
+    "WL_IN_8",
+    "WL_IN_9",
+    "WL_IN_10",
+    "WL_IN_11",
+    "WL_IN_12",
+    "WL_IN_13",
+    "WL_IN_14",
+    "WL_IN_15",
+    "WL_IN_16",
+    "WL_IN_17",
+    "WL_IN_18",
+    "WL_IN_19",
+    "WL_IN_20",
+    "WL_IN_21",
+    "WL_IN_22",
+    "WL_IN_23",
+]
+
+zero_rows = []
+nc_rows = []
+
+BLS = ["BL_15", "BL_14", "BL_13","BL_12","BL_11","BL_10","BL_9","BL_8"]
+SLS = ["SL_15", "SL_14", "SL_13","SL_12","SL_11","SL_10","SL_9","SL_8"]
+WL_UNSEL = [ "WL_UNSEL" ]
+
+
+# RRAM resistance target level corresponding to each operation defined below
+[target_res]
+FORM = 20_000
+SET = 5_000
+RESET = 50_000
+
+# =============================================================================
+# MEASUREMENT OPERATION (OP) CONFIGS
+# format of op configs:
+#   [op.NAME]
+#   ### common properties here
+#   [op.NAME.NMOS]
+#   ### NMOS specific voltage/pulse values
+#   [op.NAME.PMOS]
+#   ### PMOS specific voltage/pulse values
+
+# =============================================================================
+# TIMING
+# =============================================================================
+[TIMING]
+direct = 2e-7
+CSA_out = 1e-5
+CSA_in = 1e-5
+
+
+# =============================================================================
+# READ PULSE
+# =============================================================================
+[op.READ]
+mode = "digital"
+aperture_time = 0.0005
+
+#2 uA, 32uA, 128uA, 2mA, 32mA
+current_limit_range = 0.032
+relaxation_cycles = 1_000
+settling_time = 0.0001
+shunt_res_value = 0
+
+# =============== #
+#    NMOS READ    #
+# =============== #
+[op.READ.NMOS]
+VWL = 2.2
+VBL = 0.3
+VSL = 0
+VWL_UNSEL_OFFSET = 0
+VB = 0
+
+# =============== #
+#    PMOS READ    #
+# =============== #
+[op.READ.PMOS]
+VWL = -1.2
+VBL = 0.3
+VSL = 0
+VWL_UNSEL_OFFSET = 3
+VB = 0
+
+# =============================================================================
+# FORM PULSE
+# =============================================================================
+
+# =============== #
+#    NMOS FORM    #
+# =============== #
+[op.FORM.NMOS]
+VWL = 1.8
+VBL = 3
+VSL = 0
+VWL_UNSEL_OFFSET = 0.0
+PW = 1200
+
+VWL_SET_start = 1.5
+VWL_SET_step = 0.2
+VWL_SET_stop = 2.21
+
+VBL_start = 2
+VBL_step = 0.5
+VBL_stop = 3.1
+
+PW_start = 100
+PW_stop = 101
+PW_steps = 10
+
+# =============== #
+#    PMOS FORM    #
+# =============== #
+[op.FORM.PMOS]
+VWL = 1.5
+VBL = 0.5
+VSL = 0.5
+PW = 1200
+
+#VWL_UNSEL_OFFSET from PMOS SET
+
+VWL_SET_start = -1.5
+VWL_SET_step = -0.1
+VWL_SET_stop = -1.51
+
+VBL_start = -0.5
+VBL_step = -0.1
+VBL_stop = -1
+
+PW_start = 100
+PW_stop = 101
+PW_steps = 1
+
+
+# =============================================================================
+# SET PULSE
+# =============================================================================
+[op.SET.NMOS]
+VWL = 1.8
+VBL = 3
+VSL = 0
+VWL_UNSEL_OFFSET = 0
+PW = 1200
+VWL_SET_start = 2.0
+VWL_SET_step = 0.2
+VWL_SET_stop = 2.2
+VBL_start = 1.0
+VBL_step = 0.05
+VBL_stop = 3
+PW_start = 1
+PW_stop = 100
+PW_steps = 10
+
+
+[op.SET.PMOS]
+VWL = 1.5
+VBL = 0.5
+VSL = 0.5
+PW = 1200
+
+VWL_UNSEL_OFFSET = 2
+
+VWL_SET_start = -1.5
+VWL_SET_step = -0.1
+VWL_SET_stop = -2
+
+VBL_start = -2
+VBL_step = -0.1
+VBL_stop = -2.01
+
+PW_start = 1000
+PW_stop = 1001
+PW_steps = 100
+
+# =============================================================================
+# RESET PULSE
+# =============================================================================
+
+[op.RESET.NMOS]
+VWL = 4
+VSL = 2
+VBL = 0
+VWL_UNSEL_OFFSET = 0
+PW = 100
+VWL_RESET_start = 1.5
+VWL_RESET_step = 0.25
+VWL_RESET_stop = 3.0
+VSL_start = 1.5
+VSL_step = 0.05
+VSL_stop = 3
+PW_start = 1
+PW_stop = 1000
+PW_steps = 20
+
+
+[op.RESET.PMOS]
+VWL = 0.8
+VSL = 1.5
+VBL = 0.5
+PW = 100
+
+VWL_UNSEL_OFFSET = 2
+
+# Word Line Voltage Sweep
+VWL_RESET_start = -1.8
+VWL_RESET_step = -0.1
+VWL_RESET_stop = -1.91
+
+# Source Line Voltage Sweep
+VSL_start = -0.8
+VSL_step = -0.1
+VSL_stop = -2
+
+# Pulse Width Sweep
+PW_start = 1000
+PW_stop = 1001
+PW_steps = 33

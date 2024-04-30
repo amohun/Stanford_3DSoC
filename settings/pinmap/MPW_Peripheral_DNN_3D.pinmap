@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
+	<Instruments>
+		<NIDigitalPatternInstrument name="PXI6571Slot4,PXI6571Slot5" numberOfChannels="64" group="Digital" />
+	</Instruments>
+	<Pins>
+		<DUTPin name="BL_0" />
+		<DUTPin name="BL_1" />
+		<DUTPin name="BL_2" />
+		<DUTPin name="BL_3" />
+		<DUTPin name="OFMAP_0" />
+		<DUTPin name="OFMAP_1" />
+		<DUTPin name="OFMAP_2" />
+		<DUTPin name="OFMAP_3" />
+		<DUTPin name="OFMAP_4" />
+		<DUTPin name="OFMAP_5" />
+		<DUTPin name="OFMAP_6" />
+		<DUTPin name="OFMAP_7" />
+		<DUTPin name="OFMAP_8" />
+		<DUTPin name="OFMAP_9" />
+		<DUTPin name="OFMAP_10" />
+		<DUTPin name="OFMAP_11" />
+		<DUTPin name="OFMAP_12" />
+		<DUTPin name="OFMAP_13" />
+		<DUTPin name="OFMAP_14" />
+		<DUTPin name="OFMAP_15" />
+		<DUTPin name="OFMAP_16" />
+		<DUTPin name="OFMAP_17" />
+		<DUTPin name="OFMAP_18" />
+		<DUTPin name="OFMAP_19" />
+		<DUTPin name="OFMAP_20" />
+		<DUTPin name="OFMAP_21" />
+		<DUTPin name="OFMAP_22" />
+		<DUTPin name="OFMAP_23" />
+		<DUTPin name="PE_EN" />
+		<DUTPin name="ACCUM_EN" />
+		<DUTPin name="WEIGHT_SHIFT" />
+		<DUTPin name="WEIGHT_EN" />
+		<DUTPin name="SL_0" />
+		<DUTPin name="SL_1" />
+		<DUTPin name="SL_2" />
+		<DUTPin name="SL_3" />
+		<DUTPin name="IFMAP_0" />
+		<DUTPin name="IFMAP_1" />
+		<DUTPin name="IFMAP_2" />
+		<DUTPin name="IFMAP_3" />
+		<DUTPin name="IFMAP_4" />
+		<DUTPin name="IFMAP_5" />
+		<DUTPin name="IFMAP_6" />
+		<DUTPin name="IFMAP_7" />
+		<DUTPin name="EXT_WT_0" />
+		<DUTPin name="EXT_WT_1" />
+		<DUTPin name="EXT_WT_2" />
+		<DUTPin name="EXT_WT_3" />
+		<DUTPin name="EXT_WT_4" />
+		<DUTPin name="EXT_WT_5" />
+		<DUTPin name="EXT_WT_6" />
+		<DUTPin name="EXT_WT_7" />
+		<DUTPin name="WT_SEL_EXT" />
+		<DUTPin name="IFMAP_EN" />
+		<DUTPin name="NC_0" />
+		<DUTPin name="NC_1" />
+		<DUTPin name="MUX_SEL_CONV_CLK" />
+		<DUTPin name="MUX_SEL_WT" />
+		<DUTPin name="PSUM_SLC" />
+		<DUTPin name="CNT_Si_Sel" />
+		<DUTPin name="SA_CLK" />
+		<DUTPin name="RST_N" />
+		<DUTPin name="NC_2" />
+		<DUTPin name="NC_3" />
+	</Pins>
+	<PinGroups>
+		<PinGroup name="BLSL">
+			<DUTPIN name="BL_0" />
+			<DUTPin name="BL_1" />
+			<DUTPin name="BL_2" />
+			<DUTPin name="BL_3" />
+			<DUTPin name="SL_0" />
+			<DUTPin name="SL_1" />
+			<DUTPin name="SL_2" />
+			<DUTPin name="SL_3" />
+		</PinGroup>
+		<PinGroup name="OFMAP">
+			<DUTPin name="OFMAP_0" />
+			<DUTPin name="OFMAP_1" />
+			<DUTPin name="OFMAP_2" />
+			<DUTPin name="OFMAP_3" />
+			<DUTPin name="OFMAP_4" />
+			<DUTPin name="OFMAP_5" />
+			<DUTPin name="OFMAP_6" />
+			<DUTPin name="OFMAP_7" />
+			<DUTPin name="OFMAP_8" />
+			<DUTPin name="OFMAP_9" />
+			<DUTPin name="OFMAP_10" />
+			<DUTPin name="OFMAP_11" />
+			<DUTPin name="OFMAP_12" />
+			<DUTPin name="OFMAP_13" />
+			<DUTPin name="OFMAP_14" />
+			<DUTPin name="OFMAP_15" />
+			<DUTPin name="OFMAP_16" />
+			<DUTPin name="OFMAP_17" />
+			<DUTPin name="OFMAP_18" />
+			<DUTPin name="OFMAP_19" />
+			<DUTPin name="OFMAP_20" />
+			<DUTPin name="OFMAP_21" />
+			<DUTPin name="OFMAP_22" />
+			<DUTPin name="OFMAP_23" />		
+		</PinGroup>
+		<PinGroup name="IFMAP">
+			<DUTPin name="IFMAP_0" />
+			<DUTPin name="IFMAP_1" />
+			<DUTPin name="IFMAP_2" />
+			<DUTPin name="IFMAP_3" />
+			<DUTPin name="IFMAP_4" />
+			<DUTPin name="IFMAP_5" />
+			<DUTPin name="IFMAP_6" />
+			<DUTPin name="IFMAP_7" />
+		</PinGroup>
+		<PinGroup name="NC">
+			<DUTPin name="NC_0" />
+			<DUTPin name="NC_1" />
+			<DUTPin name="NC_2" />
+			<DUTPin name="NC_3" />
+		</PinGroup>
+		<PinGroup name="EXT_WT">
+			<DUTPin name="EXT_WT_0" />
+			<DUTPin name="EXT_WT_1" />
+			<DUTPin name="EXT_WT_2" />
+			<DUTPin name="EXT_WT_3" />
+			<DUTPin name="EXT_WT_4" />
+			<DUTPin name="EXT_WT_5" />
+			<DUTPin name="EXT_WT_6" />
+			<DUTPin name="EXT_WT_7" />
+		</PinGroup>
+	</PinGroups>
+	<Sites>
+		<Site siteNumber="0" />
+	</Sites>
+	<Connections>
+		<Connection pin="BL_0" siteNumber="0" instrument="PXI6571Slot4" channel="0" />
+		<Connection pin="BL_1" siteNumber="0" instrument="PXI6571Slot4" channel="1" />
+		<Connection pin="BL_2" siteNumber="0" instrument="PXI6571Slot4" channel="2" />
+		<Connection pin="BL_3" siteNumber="0" instrument="PXI6571Slot4" channel="3" />
+		<Connection pin="OFMAP_0" siteNumber="0" instrument="PXI6571Slot4" channel="4" />
+		<Connection pin="OFMAP_1" siteNumber="0" instrument="PXI6571Slot4" channel="5" />
+		<Connection pin="OFMAP_2" siteNumber="0" instrument="PXI6571Slot4" channel="6" />
+		<Connection pin="OFMAP_3" siteNumber="0" instrument="PXI6571Slot4" channel="7" />
+		<Connection pin="OFMAP_4" siteNumber="0" instrument="PXI6571Slot4" channel="8" />
+		<Connection pin="OFMAP_5" siteNumber="0" instrument="PXI6571Slot4" channel="9" />
+		<Connection pin="OFMAP_6" siteNumber="0" instrument="PXI6571Slot4" channel="10" />
+		<Connection pin="OFMAP_7" siteNumber="0" instrument="PXI6571Slot4" channel="11" />
+		<Connection pin="OFMAP_8" siteNumber="0" instrument="PXI6571Slot4" channel="12" />
+		<Connection pin="OFMAP_9" siteNumber="0" instrument="PXI6571Slot4" channel="13" />
+		<Connection pin="OFMAP_10" siteNumber="0" instrument="PXI6571Slot4" channel="14" />
+		<Connection pin="OFMAP_11" siteNumber="0" instrument="PXI6571Slot4" channel="15" />
+		<Connection pin="OFMAP_12" siteNumber="0" instrument="PXI6571Slot4" channel="16" />
+		<Connection pin="OFMAP_13" siteNumber="0" instrument="PXI6571Slot4" channel="17" />
+		<Connection pin="OFMAP_14" siteNumber="0" instrument="PXI6571Slot4" channel="18" />
+		<Connection pin="OFMAP_15" siteNumber="0" instrument="PXI6571Slot4" channel="19" />
+		<Connection pin="OFMAP_16" siteNumber="0" instrument="PXI6571Slot4" channel="20" />
+		<Connection pin="OFMAP_17" siteNumber="0" instrument="PXI6571Slot4" channel="21" />
+		<Connection pin="OFMAP_18" siteNumber="0" instrument="PXI6571Slot4" channel="22" />
+		<Connection pin="OFMAP_19" siteNumber="0" instrument="PXI6571Slot4" channel="23" />
+		<Connection pin="OFMAP_20" siteNumber="0" instrument="PXI6571Slot4" channel="24" />
+		<Connection pin="OFMAP_21" siteNumber="0" instrument="PXI6571Slot4" channel="25" />
+		<Connection pin="OFMAP_22" siteNumber="0" instrument="PXI6571Slot4" channel="26" />
+		<Connection pin="OFMAP_23" siteNumber="0" instrument="PXI6571Slot4" channel="27" />
+		<Connection pin="PE_EN" siteNumber="0" instrument="PXI6571Slot4" channel="28" />
+		<Connection pin="ACCUM_EN" siteNumber="0" instrument="PXI6571Slot4" channel="29" />
+		<Connection pin="WEIGHT_SHIFT" siteNumber="0" instrument="PXI6571Slot4" channel="30" />
+		<Connection pin="WEIGHT_EN" siteNumber="0" instrument="PXI6571Slot4" channel="31" />
+		<Connection pin="SL_0" siteNumber="0" instrument="PXI6571Slot5" channel="0" />
+		<Connection pin="SL_1" siteNumber="0" instrument="PXI6571Slot5" channel="1" />
+		<Connection pin="SL_2" siteNumber="0" instrument="PXI6571Slot5" channel="2" />
+		<Connection pin="SL_3" siteNumber="0" instrument="PXI6571Slot5" channel="3" />
+		<Connection pin="IFMAP_0" siteNumber="0" instrument="PXI6571Slot5" channel="4" />
+		<Connection pin="IFMAP_1" siteNumber="0" instrument="PXI6571Slot5" channel="5" />
+		<Connection pin="IFMAP_2" siteNumber="0" instrument="PXI6571Slot5" channel="6" />
+		<Connection pin="IFMAP_3" siteNumber="0" instrument="PXI6571Slot5" channel="7" />
+		<Connection pin="IFMAP_4" siteNumber="0" instrument="PXI6571Slot5" channel="8" />
+		<Connection pin="IFMAP_5" siteNumber="0" instrument="PXI6571Slot5" channel="9" />
+		<Connection pin="IFMAP_6" siteNumber="0" instrument="PXI6571Slot5" channel="10" />
+		<Connection pin="IFMAP_7" siteNumber="0" instrument="PXI6571Slot5" channel="11" />
+		<Connection pin="EXT_WT_0" siteNumber="0" instrument="PXI6571Slot5" channel="12" />
+		<Connection pin="EXT_WT_1" siteNumber="0" instrument="PXI6571Slot5" channel="13" />
+		<Connection pin="EXT_WT_2" siteNumber="0" instrument="PXI6571Slot5" channel="14" />
+		<Connection pin="EXT_WT_3" siteNumber="0" instrument="PXI6571Slot5" channel="15" />
+		<Connection pin="EXT_WT_4" siteNumber="0" instrument="PXI6571Slot5" channel="16" />
+		<Connection pin="EXT_WT_5" siteNumber="0" instrument="PXI6571Slot5" channel="17" />
+		<Connection pin="EXT_WT_6" siteNumber="0" instrument="PXI6571Slot5" channel="18" />
+		<Connection pin="EXT_WT_7" siteNumber="0" instrument="PXI6571Slot5" channel="19" />
+		<Connection pin="WT_SEL_EXT" siteNumber="0" instrument="PXI6571Slot5" channel="20" />
+		<Connection pin="IFMAP_EN" siteNumber="0" instrument="PXI6571Slot5" channel="21" />
+		<Connection pin="NC_0" siteNumber="0" instrument="PXI6571Slot5" channel="22" />
+		<Connection pin="NC_1" siteNumber="0" instrument="PXI6571Slot5" channel="23" />
+		<Connection pin="MUX_SEL_CONV_CLK" siteNumber="0" instrument="PXI6571Slot5" channel="24" />
+		<Connection pin="MUX_SEL_WT" siteNumber="0" instrument="PXI6571Slot5" channel="25" />
+		<Connection pin="PSUM_SLC" siteNumber="0" instrument="PXI6571Slot5" channel="26" />
+		<Connection pin="CNT_Si_Sel" siteNumber="1" instrument="PXI6571Slot5" channel="27" />
+		<Connection pin="SA_CLK" siteNumber="0" instrument="PXI6571Slot5" channel="28" />
+		<Connection pin="RST_N" siteNumber="0" instrument="PXI6571Slot5" channel="29" />
+		<Connection pin="NC_2" siteNumber="0" instrument="PXI6571Slot5" channel="30" />
+		<Connection pin="NC_3" siteNumber="0" instrument="PXI6571Slot5" channel="31" />
+	</Connections>
+</PinMap>

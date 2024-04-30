@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
+	<Instruments>
+		<NIDigitalPatternInstrument name="PXI6570Slot9" numberOfChannels="64" group="Digital" />
+	</Instruments>
+	<Pins>
+        <DUTPin name="WL_IN_0" />
+        <DUTPin name="DO_0" />
+        <DUTPin name="DO_1" />
+        <DUTPin name="SA_RDY_0" />
+        <DUTPin name="SA_RDY_1" />
+        <DUTPin name="COL_SEL_15" />
+        <DUTPin name="COL_SEL_14" />
+        <DUTPin name="COL_SEL_13" />
+        <DUTPin name="COL_SEL_12" />
+        <DUTPin name="COL_SEL_11" />
+        <DUTPin name="COL_SEL_10" />
+        <DUTPin name="SA_CLK_EXT" />
+        <DUTPin name="COL_SEL_9" />
+        <DUTPin name="COL_SEL_8" />
+        <DUTPin name="COL_SEL_7" />
+        <DUTPin name="COL_SEL_6" />
+        <DUTPin name="COL_SEL_5" />
+        <DUTPin name="COL_SEL_4" />
+        <DUTPin name="COL_SEL_3" />
+        <DUTPin name="COL_SEL_2" />
+        <DUTPin name="COL_SEL_1" />
+        <DUTPin name="COL_SEL_0" />
+        <DUTPin name="RMUX_EN" />
+        <DUTPin name="SA_CLK" />
+        <DUTPin name="WL_UNSEL" />
+        <DUTPin name="VDD" />
+        <DUTPin name="VSA" />
+        <DUTPin name="VDD_BRD+" />
+        <DUTPin name="VDD_BRD-" />
+        <DUTPin name="DIR_PERIPH_SEL" />
+        <DUTPin name="SA_EN" />
+        <DUTPin name="VREAD" />
+	</Pins>
+	<PinGroups>
+		<PinGroup name="WL">
+			<DUTPin name="WL_IN_0" />
+            <DUTPin name="WL_UNSEL" />
+		</PinGroup>
+        <PinGroup name="DOSA">
+            <DUTPin name="DO_0" />
+            <DUTPin name="DO_1" />
+            <DUTPin name="SA_RDY_0" />
+            <DUTPin name="SA_RDY_1" />
+		</PinGroup>
+        <PinGroup name="COLSEL">
+            <DUTPin name="COL_SEL_15" />
+            <DUTPin name="COL_SEL_14" />
+            <DUTPin name="COL_SEL_13" />
+            <DUTPin name="COL_SEL_12" />
+            <DUTPin name="COL_SEL_11" />
+            <DUTPin name="COL_SEL_10" />
+            <DUTPin name="COL_SEL_9" />
+            <DUTPin name="COL_SEL_8" />
+            <DUTPin name="COL_SEL_7" />
+            <DUTPin name="COL_SEL_6" />
+            <DUTPin name="COL_SEL_5" />
+            <DUTPin name="COL_SEL_4" />
+            <DUTPin name="COL_SEL_3" />
+            <DUTPin name="COL_SEL_2" />
+            <DUTPin name="COL_SEL_1" />
+            <DUTPin name="COL_SEL_0" />
+        </PinGroup>
+        <PinGroup name="PWR">
+            <DUTPin name="VDD" />
+            <DUTPin name="VSA" />
+            <DUTPin name="VDD_BRD+" />
+            <DUTPin name="VDD_BRD-" />
+        </PinGroup>
+	</PinGroups>
+	<Sites>
+		<Site siteNumber="0" />
+        <Site siteNumber="1" />
+	</Sites>
+	<Connections>
+        <Connection pin="WL_IN_0" siteNumber="0" instrument="PXI6570Slot9" channel="0" />
+        <Connection pin="DO_0" siteNumber="0" instrument="PXI6570Slot9" channel="1" />
+        <Connection pin="DO_1" siteNumber="0" instrument="PXI6570Slot9" channel="2" />
+        <Connection pin="SA_RDY_0" siteNumber="0" instrument="PXI6570Slot9" channel="3" />
+        <Connection pin="SA_RDY_1" siteNumber="0" instrument="PXI6570Slot9" channel="4" />
+        <Connection pin="COL_SEL_15" siteNumber="0" instrument="PXI6570Slot9" channel="5" />
+        <Connection pin="COL_SEL_14" siteNumber="0" instrument="PXI6570Slot9" channel="6" />
+        <Connection pin="COL_SEL_13" siteNumber="0" instrument="PXI6570Slot9" channel="7" />
+        <Connection pin="COL_SEL_12" siteNumber="0" instrument="PXI6570Slot9" channel="8" />
+        <Connection pin="COL_SEL_11" siteNumber="0" instrument="PXI6570Slot9" channel="9" />
+        <Connection pin="COL_SEL_10" siteNumber="0" instrument="PXI6570Slot9" channel="10" />
+        <Connection pin="SA_CLK_EXT" siteNumber="0" instrument="PXI6570Slot9" channel="11" />
+        <Connection pin="COL_SEL_9" siteNumber="0" instrument="PXI6570Slot9" channel="12" />
+        <Connection pin="COL_SEL_8" siteNumber="0" instrument="PXI6570Slot9" channel="13" />
+        <Connection pin="COL_SEL_7" siteNumber="0" instrument="PXI6570Slot9" channel="14" />
+        <Connection pin="COL_SEL_6" siteNumber="0" instrument="PXI6570Slot9" channel="15" />
+        <Connection pin="COL_SEL_5" siteNumber="0" instrument="PXI6570Slot9" channel="16" />
+        <Connection pin="COL_SEL_4" siteNumber="0" instrument="PXI6570Slot9" channel="17" />
+        <Connection pin="COL_SEL_3" siteNumber="0" instrument="PXI6570Slot9" channel="18" />
+        <Connection pin="COL_SEL_2" siteNumber="0" instrument="PXI6570Slot9" channel="19" />
+        <Connection pin="COL_SEL_1" siteNumber="0" instrument="PXI6570Slot9" channel="20" />
+        <Connection pin="COL_SEL_0" siteNumber="0" instrument="PXI6570Slot9" channel="21" />
+        <Connection pin="RMUX_EN" siteNumber="0" instrument="PXI6570Slot9" channel="22" />
+        <Connection pin="SA_CLK" siteNumber="0" instrument="PXI6570Slot9" channel="23" />
+        <Connection pin="WL_UNSEL" siteNumber="0" instrument="PXI6570Slot9" channel="24" />
+        <Connection pin="VDD" siteNumber="0" instrument="PXI6570Slot9" channel="25" />
+        <Connection pin="VSA" siteNumber="0" instrument="PXI6570Slot9" channel="26" />
+        <Connection pin="VDD_BRD+" siteNumber="1" instrument="PXI6570Slot9" channel="27" />
+        <Connection pin="VDD_BRD-" siteNumber="1" instrument="PXI6570Slot9" channel="28" />
+        <Connection pin="DIR_PERIPH_SEL" siteNumber="1" instrument="PXI6570Slot9" channel="29" />
+        <Connection pin="SA_EN" siteNumber="0" instrument="PXI6570Slot9" channel="30" />
+        <Connection pin="VREAD" siteNumber="0" instrument="PXI6570Slot9" channel="31" />
+</Connections>
+</PinMap>
