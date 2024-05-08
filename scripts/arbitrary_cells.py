@@ -309,13 +309,14 @@ if __name__ == "__main__":
     
     # Initialize NI system
     # For CNFET: make sure polarity is 
-    nisys = NIRRAM(args.chip, args.device, settings="settings/MPW_Direct_Write.toml", polarity=polarity,slow=False, additional_info="Debugging NIRRAM for Multiple Sessions")
-    nisys.digital.channels["WL_UNSEL"].ppmu_current_limit_range = 2e-6
+    nisys = NIRRAM(args.chip, args.device, settings="settings/MPW_Direct_Write.toml", polarity=polarity,test_type="Debug", additional_info="Debugging NIRRAM for Multiple Sessions")
+    nisys.set_current_limit_range("WL_UNSEL",2e-6)
+    
 
     bl_sl_idxs = range(8,16)
     nisys.bls = [f"BL_{i}" for i in bl_sl_idxs]
     nisys.sls = [f"SL_{i}" for i in bl_sl_idxs]
-    wl = "WL_0"
+    wl = "WL_126"
     nisys.wls = wl
     nisys.multi_set(vbl=2, vsl=-0.5, vwl=-1.5, pw=1000)
 

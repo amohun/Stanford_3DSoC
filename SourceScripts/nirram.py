@@ -19,6 +19,7 @@ import csv
 from datetime import date, datetime, time
 from .mask import RRAMArrayMask
 import niswitch
+from BitVector import BitVector
 
 # Warnings become errors
 warnings.filterwarnings("error")
@@ -101,7 +102,7 @@ class NIRRAM:
         current_time = datetime.now().strftime("%H:%M:%S")
 
         hash = self.update_data_log(current_date, current_time, f"chip_{chip}_device_{device}", test_type, additional_info)
-        self.datafile_path = settings["path"]["data_header"] + f"/{test_type}/{current_date}_{chip}_{device}_{additional_info}_{hash}.csv"
+        self.datafile_path = settings["path"]["data_header"] + f"/{test_type}/{current_date}_{chip}_{device}_{hash}.csv"
         
         self.file_object = open(self.datafile_path, "a", newline='')
         self.datafile = csv.writer(self.file_object)
@@ -122,7 +123,9 @@ class NIRRAM:
         self.NC_rows = None
     
     
-    def load_settings(self,settings):
+    def load_settings(self,settings, debug_printout = None):
+        if debug_printout is None: debug_printout = self.debug_printout
+
         if isinstance(settings, str):
             with open(settings, "rb") as settings_file:
                 settings = tomli.load(settings_file)
@@ -131,24 +134,26 @@ class NIRRAM:
             raise ValueError(f"Settings should be a dict, got {repr(settings)}.")
 
         settings["NIDigital"]["specs"] = [abspath(path) for path in settings["NIDigital"]["specs"]]
+        
         # Store/initialize parameters
         self.target_res = settings["target_res"]
         self.op = settings["op"] # operations
 
         # body voltages, str name => body voltage
-        self.body = settings["device"]["body"]
+        if "body" in settings["device"]:
+            self.body = settings["device"]["body"]
+        else: self.body = None
         
+        # Define all_bl, all_sl, all_wl from toml file
         self.all_wls = settings["device"]["all_WLS"]
         self.all_bls = settings["device"]["all_BLS"]
         self.all_sls = settings["device"]["all_SLS"]
-        self.all_channels = self.all_wls + self.all_bls + self.all_sls
 
+        # Define bl, sl, and wl from toml file
         self.wls = settings["device"]["WLS"]
         self.bls = settings["device"]["BLS"]
         self.sls = settings["device"]["SLS"]
         self.wl_unsel = settings["device"]["WL_UNSEL"]
-
-        self.all_off_mask = RRAMArrayMask(self.all_wls, [], [], self.all_wls, self.all_bls, self.all_sls, self.polarity)
 
         if "all_WL_Signals" in settings["device"]:
             self.all_wl_signals = settings["device"]["all_WL_Signals"]
@@ -163,8 +168,13 @@ class NIRRAM:
         if "NC_rows" in settings["device"]:
             self.NC_rows = settings["device"]["NC_rows"] if len(settings["device"]["NC_rows"]) > 0 else None
         
-    def load_session(self,settings):  
-        
+        if self.relays is None:
+            self.all_channels = self.all_bls + self.all_sls + self.all_wls
+        else:
+            self.all_channels = self.all_bls + self.all_sls + self.all_wl_signals
+    
+    def load_session(self,settings,debug_printout = None):  
+        if debug_printout is None: debug_printout = self.debug_printout
         # Only works for 1T1R arrays, sets addr idx and prof
         self.addr_idxs = {}
         self.addr_prof = {}
@@ -190,6 +200,8 @@ class NIRRAM:
         sessions  = []
         session_names = []
         session_numbers = []
+        self.patterns = settings["NIDigital"]["patterns"]
+        self.pulse_pingroups = settings["NIDigital"]["pulse_pingroups"]
         #For each deviceID in settings["NIDigital"]["deviceID"], create a session
         #Group sessions with the same PXI number with the format 'session1,session2'
         #Innitialize sessions using nidigital and append to self.digital
@@ -217,32 +229,53 @@ class NIRRAM:
         for digital in self.digital:
             digital.load_pin_map(settings["NIDigital"]["pinmap"][self.digital.index(digital)])
 
-                # Set sessions based on pins into different sub_categories
+        # Correct for relays so instead of all_wls it is all
+        # WL Signals
+        all_wls = self.all_wls
+        all_blsl = self.all_bls + self.all_sls
+            
+        if self.relays is not None:
+            all_wls = self.all_wl_signals
+
+        # Set sessions based on pins into different sub_categories
         for digital in self.digital:
             self.bl_dev = [digital for digital in self.digital if any("BL" in channel.pin_name for channel in digital.get_pin_results_pin_information())]
             self.sl_dev = [digital for digital in self.digital if any("SL" in channel.pin_name for channel in digital.get_pin_results_pin_information())]
             self.wl_dev = [digital for digital in self.digital if any("WL" in channel.pin_name for channel in digital.get_pin_results_pin_information())]
 
+        # This is a hacky way to get the correct all_channels for the sessions
+        # IT IS HARDCODED FOR BLSL and WL, and will need to be changed if things
+        # are going to be changed. This is because the all_channels is used to
+        # set all the channel pins, which needs to be separated by session.
+
+        if len(session_names) > 1:
+            self.all_channels = [all_blsl, all_wls]
+
         # Load Timing Sets
         for time_set in settings["TIMING"]:
+            print(time_set)
             for digital in self.digital:
                 digital.create_time_set(time_set)
                 digital.configure_time_set_period(time_set,settings["TIMING"][time_set])
-
         for digital in self.digital:
-            all_wl = self.all_wls
-            if self.relays is not None:
-                all_blsl = self.all_bls + self.all_sls
-                all_wl = self.all_wl_signals
+
             
             if digital in self.bl_dev or digital in self.sl_dev:
                 digital.channels[all_blsl].write_static(nidigital.WriteStaticPinState.ZERO)
             elif digital in self.wl_dev:
-                digital.channels[all_wl].write_static(nidigital.WriteStaticPinState.ZERO)
+                digital.channels[all_wls].write_static(nidigital.WriteStaticPinState.ZERO)
             digital.unload_all_patterns()
             
-            for pattern in settings["NIDigital"]["patterns"]:
-                digital.load_pattern(abspath(pattern))
+            
+        # Load patterns from the toml file, this will load each pattern
+        # session by session so:
+        # For Pattern 1: Load for Session 1, then Session 2, etc.
+        # THEN For Pattern 2: Load for Session 1, then Session 2, etc.
+        for pattern in self.patterns:
+            for digital in self.digital:
+                if debug_printout:
+                    print(pattern[self.digital.index(digital)])
+                digital.load_pattern(abspath(pattern[self.digital.index(digital)]))
         self.closed = False
 
         # Configure READ measurements
@@ -268,12 +301,13 @@ class NIRRAM:
             raise NIRRAMException("Invalid READ mode specified in settings")
 
         # set body voltages
-        for body_i, vbody_i in self.body.items(): self.ppmu_set_vbody(body_i, vbody_i)
+        if self.body is not None:
+            for body_i, vbody_i in self.body.items(): self.ppmu_set_vbody(body_i, vbody_i)
 
         # Set address and all voltages to 0
         for bl in self.all_bls: self.set_vbl(bl, 0.0, 0.0)
         for sl in self.all_sls: self.set_vsl(sl, 0.0, 0.0)
-        for wl in self.all_wls: self.set_vwl(wl, 0.0, 0.0)
+        for wl in all_wls: self.set_vwl(wl, 0.0, 0.0)
         
         for digital in self.digital:
             digital.commit()
@@ -306,11 +340,16 @@ class NIRRAM:
         record=False,
         check=True,
         dynam_read=False,
-        wl_name = None
+        wl_name = None,
+        debug_printout = None
     ):
+        
         """Perform a READ operation. This operation works for single 1T1R devices and 
         arrays of devices, where each device has its own WL/BL.
         Returns list (per-bitline) of tuple with (res, cond, meas_i, meas_v)"""
+        
+        if debug_printout is None: debug_printout = self.debug_printout
+
         # Increment the number of READs        
         # Set the read voltage levels
         vbl = self.op["READ"][self.polarity]["VBL"] if vbl is None else vbl
@@ -319,7 +358,8 @@ class NIRRAM:
         vb = self.op["READ"][self.polarity]["VB"] if vb is None else vb
 
         '''Debug, print read values'''
-        # print(f"READ @ vbl: {vbl}, vwl: {vwl}, vsl: {vsl}, vb: {vb}")
+        if debug_printout:
+            print(f"READ @ vbl: {vbl}, vwl: {vwl}, vsl: {vsl}, vb: {vb}")
         
         # unselected WL bias parameter
         if vwl_unsel_offset is None:
@@ -390,15 +430,15 @@ class NIRRAM:
                 
                 for bl in self.bls:
                     # DEBUGGING: test each bitline 
-                    # for bl in self.bls:
-                    # meas_v = self.digital.channels[bl].ppmu_measure(nidigital.PPMUMeasurementType.VOLTAGE)[0]
-                    # meas_i = self.digital.channels[bl].ppmu_measure(nidigital.PPMUMeasurementType.CURRENT)[0]
-                    # meas_i_gate = self.digital.channels[wl].ppmu_measure(nidigital.PPMUMeasurementType.CURRENT)[0]
-                    # print(f"{bl} v: {meas_v} i: {meas_i} ig: {meas_i_gate}")
-                    #print(f"BL: {bl}") 
-                    #print(f"SL: {sl}")
-                    #print(f"VBL: {vbl}")
-                    #print(f"VSL: {vsl}")
+                    if debug_printout:
+                        meas_v = self.digital.channels[bl].ppmu_measure(nidigital.PPMUMeasurementType.VOLTAGE)[0]
+                        meas_i = self.digital.channels[bl].ppmu_measure(nidigital.PPMUMeasurementType.CURRENT)[0]
+                        meas_i_gate = self.digital.channels[wl].ppmu_measure(nidigital.PPMUMeasurementType.CURRENT)[0]
+                        print(f"{bl} v: {meas_v} i: {meas_i} ig: {meas_i_gate}")
+                        print(f"BL: {bl}") 
+                        print(f"SL: {sl}")
+                        print(f"VBL: {vbl}")
+                        print(f"VSL: {vsl}")
                     
                     for digital in self.digital:
                         #meas_vsl = self.digital.channels[sl].ppmu_measure(nidigital.PPMUMeasurementType.VOLTAGE)
@@ -561,7 +601,7 @@ class NIRRAM:
             raise NIRRAMException(f"Invalid mode: {mode}")
         
         for digital in self.digital:
-            digital.channels[self.all_channels].write_static(nidigital.WriteStaticPinState.X)
+            digital.channels[self.all_channels[self.digital.index(digital)]].write_static(nidigital.WriteStaticPinState.X)
 
         # --------------------------------- #
         # Set the Unselected Word Line bias #
@@ -592,13 +632,14 @@ class NIRRAM:
         # Word Line Voltages 
         if self.relays is not None:
             wls, zero_in, NC_in = self.relay_switch(self.wls, zero_rows=self.zero_rows,NC_rows=self.NC_rows)
-            all_wls = self.settings["device"]["WL_INS"]
+            wls = ["WL_IN_" + str(value) for value in wls]
+            all_wls = self.all_wl_signals
         else:
             wls = self.wls
             all_wls = self.all_wls
             zero_in = self.zero_rows
             NC_in = self.NC_rows
-    
+        print(wls)
         for wl_i in all_wls: 
             if wl_i in wls:
                 self.set_vwl(wl_i, vwl_hi = vwl, vwl_lo = v_base)
@@ -691,7 +732,7 @@ class NIRRAM:
             2.0     1.0      0.25          1.75
         """
         
-        self.write_pulse(self, mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
+        self.write_pulse(mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
 
     def reset_pulse(
         self,
@@ -723,7 +764,7 @@ class NIRRAM:
             1.2     2.0      0.5           1.40
             1.0     2.0      0.5           1.25
         """
-        self.write_pulse(self, mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
+        self.write_pulse(mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
 
 
     def dynamic_pulse(
@@ -927,16 +968,25 @@ class NIRRAM:
     ):
         return self.dynamic_pulse(mode="RESET", target_res=target_res,is_1tnr=is_1tnr, bl_selected=bl_selected, relayed=relayed, debug=debug)
     
+    def multi_set(self, vbl, vsl, vwl, pw):
+        mask = RRAMArrayMask(self.wls, self.bls, self.sls, self.all_wls, self.all_bls, self.all_sls, self.polarity)
+        self.set_pulse(
+            mask,
+            vbl=vbl,
+            vsl=vsl,
+            vwl=vwl,
+            pulse_len=int(pw)
+    )
+
 
     def digital_all_pins_to_zero(self):
         """
         High z down to zero
         """
         for digital in self.digital:
-            digital.channels[self.all_channels].write_static(nidigital.WriteStaticPinState.X)
-        
-        for chan in self.all_channels:
-            for digital in self.digital:
+            digital.channels[self.all_channels[self.digital.index(digital)]].write_static(nidigital.WriteStaticPinState.X)
+        for digital in self.digital:
+            for chan in self.all_channels[self.digital.index(digital)]:
                 digital.channels[chan].configure_voltage_levles(0, 0, 0, 0, 0)
         for digital in self.digital:
             digital.commit()
@@ -946,11 +996,11 @@ class NIRRAM:
         """ 
         Cleans up after PPMU operation (otherwise levels default when going back digital)
         """
-        for chan in self.all_channels:
-            for digital in self.digital:
+        for digital in self.digital:
+            for chan in self.all_channels[self.digital.index(digital)]:
                 digital.channels[chan].ppmu_voltage_level = 0
-            for digital in self.digital:
-                digital.ppmu_source()
+        for digital in self.digital:
+            digital.ppmu_source()
         return
   
     
@@ -981,7 +1031,12 @@ class NIRRAM:
 
     def set_vwl(self, vwl_chan, vwl_hi, vwl_lo):
         """Set (active) VWL using NI-Digital driver (inactive disabled)"""
-        assert(vwl_chan in self.all_wls or vwl_chan == "WL_UNSEL")
+        
+        if self.relays is None:
+            assert(vwl_chan in self.all_wls or vwl_chan == "WL_UNSEL")
+        else: 
+            assert(vwl_chan in self.all_wl_signals)
+
         for digital in self.wl_dev:
             digital.channels[vwl_chan].configure_voltage_levels(vwl_lo, vwl_hi, vwl_lo, vwl_hi, 0)
 
@@ -1042,24 +1097,171 @@ class NIRRAM:
             digital.channels[vbody_chan].ppmu_source()
         #print("Setting VSL: " + str(vsl) + " on chan: " + str(vsl_chan))
 
-
+    def set_current_limit_range(self, channel=None, current_limit=1e-6):
+        """ Set current limit for a given channel """
+        for digital in self.digital:
+            if channel is not None:
+                if any(channel in pin.pin_name for pin in digital.get_pin_results_pin_information()):
+                    digital.channels[channel].ppmu_current_limit_range = current_limit
+        return
 
     def pulse(self, mask, pulse_len=10, prepulse_len=50, postpulse_len=50, max_pulse_len=10000, wl_first=True):
         """Create waveform for directly contacting the array BLs, SLs, and WLs, then output that waveform"""
-        waveform, pulse_width = self.build_BLSLWLS_waveform(mask, pulse_len, prepulse_len, postpulse_len, max_pulse_len, wl_first)
+        waveforms, pulse_width = self.build_waveforms(mask, pulse_len, prepulse_len, postpulse_len, max_pulse_len, wl_first)
         #WL_PULSE_DEC3.digipat or PULSE_MPW_ProbeCard.digipat as template file
-        self.arbitrary_pulse(waveform, pin_group_name="BLSLWLS", data_variable_in_digipat="wl_data", pulse_width=pulse_width)
+        
+        if self.pulse_pingroups is None:
+            raise NIRRAMException("No pulse pin groups specified")
+        for pingroup in self.pulse_pingroups:
+            self.arbitrary_pulse(waveforms[self.pulse_pingroups.index(pingroup)], pin_group_name=pingroup, data_variable_in_digipat=f"{pingroup}_data", pulse_width=pulse_width)
+        quit()
         self.digital.burst_pattern("PULSE_MPW_ProbeCard")
         return
     
     def arbitrary_pulse(self, waveform, pin_group_name, data_variable_in_digipat,pulse_width=None):
         broadcast = nidigital.SourceDataMapping.BROADCAST
-        self.digital.pins[pin_group_name].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
-        self.digital.write_source_waveform_broadcast(data_variable_in_digipat, waveform)
+        self.digital[self.pulse_pingroups.index(pin_group_name)].pins[pin_group_name].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
+        self.digital[self.pulse_pingroups.index(pin_group_name)].write_source_waveform_broadcast(data_variable_in_digipat, waveform)
         if pulse_width:
             self.set_pw(pulse_width)
         return
     
+    def build_waveforms(self, mask, pulse_len, prepulse_len, postpulse_len, max_pulse_len, wl_first, debug_printout = None):
+        
+        """Create pulse train. Format of bits is [BL SL] and . For an array
+        with 2 BLs, 2 SLs, and 2 WLs, the bits are ordered:
+            [ BL0 BL1 SL0 SL1 ], [ WL0 WL1 ]
+        """
+        
+        if debug_printout is None:
+            debug_printout = self.debug_printout
+
+        #print(f"pulse_len = {pulse_len}, pulse_len < {prepulse_len}, max_pulse_len = {max_pulse_len}")
+        if len(self.digital) > 1:
+            bl_bits_offset = len(self.all_sls)
+            sl_bits_offset = 0
+        else:
+            bl_bits_offset = len(self.all_wls) + len(self.all_sls)
+            sl_bits_offset = len(self.all_wls)
+        
+        waveform = []
+        if len(self.digital) == 1:
+            for (wl_mask, bl_mask, sl_mask) in mask.get_pulse_masks():
+                
+                if debug_printout:
+                    print(f"wl_mask = {wl_mask}")
+                    print(f"bl_mask = {bl_mask}")
+                    print(f"sl_mask = {sl_mask}")
+
+                
+                if not wl_first:
+                    wl_pre_post_bits = BitVector(bitlist=(wl_mask & False)).int_val()
+
+                    wl_mask_bits = BitVector(bitlist=wl_mask).int_val()
+                    bl_mask_bits = BitVector(bitlist=bl_mask).int_val()
+                    sl_mask_bits = BitVector(bitlist=sl_mask).int_val()
+
+                    data_prepulse = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset) + wl_pre_post_bits
+                    data = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset) + wl_mask_bits
+                    data_postpulse = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset)  + wl_pre_post_bits
+                else: 
+                    bl_pre_post_bits = BitVector(bitlist=(bl_mask & False)).int_val()
+                    sl_pre_post_bits = BitVector(bitlist=(sl_mask & False)).int_val()
+
+                    wl_mask_bits = BitVector(bitlist=wl_mask).int_val()
+                    bl_mask_bits = BitVector(bitlist=bl_mask).int_val()
+                    sl_mask_bits = BitVector(bitlist=sl_mask).int_val()
+
+                    data_prepulse = (bl_pre_post_bits << bl_bits_offset) + (sl_pre_post_bits << sl_bits_offset) + wl_mask_bits
+                    data = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset) + wl_mask_bits
+                    data_postpulse = (bl_pre_post_bits << bl_bits_offset) + (sl_pre_post_bits << sl_bits_offset)  + wl_mask_bits
+            
+                if debug_printout:
+                    print(f"data_prepulse = {data_prepulse:b}")
+                    print(f"data = {data:b}")
+                    print(f"data_postpulse = {data_postpulse:b}")
+
+                waveform += [data_prepulse for i in range(prepulse_len)] + [data for i in range(pulse_len)] + [data_postpulse for i in range(postpulse_len)]
+            
+            
+
+            #print waveform for debugging
+            if debug_printout:
+                for timestep in waveform:
+                    print(bin(timestep))
+
+            # zero-pad rest of waveform
+            waveform += [0 for i in range(max_pulse_len*len(self.all_wls) - len(waveform))]
+            pulse_width = prepulse_len + pulse_len + postpulse_len
+            return waveform, pulse_width
+
+        else:
+            blsl_waveform = []
+            wl_waveform = []
+            waveforms = []
+            for (wl_mask, bl_mask, sl_mask) in mask.get_pulse_masks():
+                
+                if debug_printout:
+                    print(f"wl_mask = {wl_mask}")
+                    print(f"bl_mask = {bl_mask}")
+                    print(f"sl_mask = {sl_mask}")
+
+                
+                if not wl_first:
+                    wl_pre_post_bits = BitVector(bitlist=(wl_mask & False)).int_val()
+
+                    wl_mask_bits = BitVector(bitlist=wl_mask).int_val()
+                    bl_mask_bits = BitVector(bitlist=bl_mask).int_val()
+                    sl_mask_bits = BitVector(bitlist=sl_mask).int_val()
+
+                    blsl_data_prepulse = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset)
+                    wl_data_prepulse = wl_pre_post_bits
+                    blsl_data = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset)
+                    wl_data = wl_mask_bits
+                    blsl_data_postpulse = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset)
+                    wl_data_postpulse = wl_pre_post_bits
+
+                else: 
+                    bl_pre_post_bits = BitVector(bitlist=(bl_mask & False)).int_val()
+                    sl_pre_post_bits = BitVector(bitlist=(sl_mask & False)).int_val()
+
+                    wl_mask_bits = BitVector(bitlist=wl_mask).int_val()
+                    bl_mask_bits = BitVector(bitlist=bl_mask).int_val()
+                    sl_mask_bits = BitVector(bitlist=sl_mask).int_val()
+
+                    blsl_data_prepulse = (bl_pre_post_bits << bl_bits_offset) + (sl_pre_post_bits << sl_bits_offset)
+                    wl_data_prepulse = wl_mask_bits
+                    
+                    blsl_data = (bl_mask_bits << bl_bits_offset) + (sl_mask_bits << sl_bits_offset)  
+                    wl_data = wl_mask_bits
+                    
+                    blsl_data_postpulse = (bl_pre_post_bits << bl_bits_offset) + (sl_pre_post_bits << sl_bits_offset)
+                    wl_data_postpulse = wl_mask_bits
+            
+                if debug_printout:
+                    print(f"blsl_data_prepulse = {blsl_data_prepulse:b}")
+                    print(f"blsl_data_prepulse = {wl_data_prepulse:b}")
+                    print(f"wl_data = {blsl_data:b}")
+                    print(f"wl_data = {wl_data:b}")
+                    print(f"blsl_data_postpulse = {blsl_data_postpulse:b}")
+                    print(f"wl_data_postpulse = {wl_data_postpulse:b}")
+
+                blsl_waveform += [blsl_data_prepulse for i in range(prepulse_len)] + [blsl_data for i in range(pulse_len)] + [blsl_data_postpulse for i in range(postpulse_len)]
+                wl_waveform += [wl_data_prepulse for i in range(prepulse_len)] + [wl_data for i in range(pulse_len)] + [wl_data_postpulse for i in range(postpulse_len)]
+                waveforms.append(blsl_waveform)
+                waveforms.append(wl_waveform)
+
+            #print waveform for debugging
+            if debug_printout:
+                for timestep in waveform:
+                    print(bin(timestep))
+
+            # zero-pad rest of waveform
+            for waveform in waveforms:
+                waveform += [0 for i in range(max_pulse_len*len(self.all_wls) - len(waveform))]
+            pulse_width = prepulse_len + pulse_len + postpulse_len
+            return waveforms, pulse_width
+
     def set_pw(self, pulse_width):
         """Set pulse width"""
         pw_register = nidigital.SequencerRegister.REGISTER0
@@ -1075,13 +1277,13 @@ class NIRRAM:
         wl_in = []
         NC_in = []
 
-        if len(self.relays == 2):
+        if len(self.relays) == 2:
             with niswitch.Session(self.relays[0]) as relay0, niswitch.Session(self.relays[1]) as relay1:
                 relay0.disconnect_all()
                 relay1.disconnect_all()
                 if type(sel_wls) == int:
-                    sel_wls = [sel_wls]
-                
+                    sel_wls = "WL_" + str(sel_wls)
+                sel_wls = [sel_wls]
                 # Use the WL values to select the input (WL%24) and the relay (WL//66)
                 wl_vals = np.array([np.uint8(wl[3:]) for wl in sel_wls])
                 wl_vals_hi = wl_vals[wl_vals >= 66] - 66

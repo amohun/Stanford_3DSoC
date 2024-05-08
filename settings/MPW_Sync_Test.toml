@@ -19,11 +19,11 @@ specs = [
 # So a pattern for direct write is defined by the array of 
 # the BLSL session pattern and the WL session pattern for direct write
 patterns = [
-  ["settings/patterns/MPW_DirectWrite_BLSL.digipat",
-  "settings/patterns/MPW_DirectWrite_WL.digipat"]
+  ["settings/patterns/MPW_SyncTest_BLSL.digipat",
+  "settings/patterns/MPW_SyncTest_WL.digipat"]
 ]
 
-pulse_pingroups = ["BLSL", "WL"]
+pulse_pingroups = []
 
 
 [NISwitch]
