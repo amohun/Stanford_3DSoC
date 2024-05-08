@@ -5,7 +5,7 @@ data_header = "data/MPW_Test/"
 path_data = "D:\\nirram\\data\\MPW_Test\\"
 
 [NIDigital]
-deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot9"]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
 pinmap = ["settings/pinmap/MPW_Direct_Write_BLSL.pinmap", "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
 specs = [
   "settings/DEC3.specs",

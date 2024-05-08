@@ -1,11 +1,10 @@
+import os
 import argparse
-from source.nirram import NIRRAM
 from time import sleep
 import numpy as np
 from checkerboard import checkerboard
 import tomli
 from pandas import read_excel
-import os
 
 reset = "RESET"
 set = "SET"
@@ -295,7 +294,11 @@ def print_cells(read_dict):
 
 
 if __name__ == "__main__":
-    
+    import sys
+    sys.path.append(os.getcwd())
+    from SourceScripts.nirram import NIRRAM
+
+
     cells = None
     # Get arguments
     parser = argparse.ArgumentParser(description="RESET a chip.")
@@ -306,7 +309,7 @@ if __name__ == "__main__":
     
     # Initialize NI system
     # For CNFET: make sure polarity is 
-    nisys = NIRRAM(args.chip, args.device, settings="settings/MPW_ProbeCard.toml", polarity=polarity,slow=False)
+    nisys = NIRRAM(args.chip, args.device, settings="settings/MPW_Direct_Write.toml", polarity=polarity,slow=False, additional_info="Debugging NIRRAM for Multiple Sessions")
     nisys.digital.channels["WL_UNSEL"].ppmu_current_limit_range = 2e-6
 
     bl_sl_idxs = range(8,16)

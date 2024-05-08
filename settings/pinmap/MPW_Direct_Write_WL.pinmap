@@ -1,113 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
 	<Instruments>
-		<NIDigitalPatternInstrument name="PXI6570Slot9" numberOfChannels="64" group="Digital" />
+		<NIDigitalPatternInstrument name="PXI6570Slot8" numberOfChannels="64" group="Digital" />
 	</Instruments>
 	<Pins>
 		<DUTPin name="WL_IN_0" />
-        <DUTPin name="WL_IN_1" />
-        <DUTPin name="WL_IN_2" />
-        <DUTPin name="WL_IN_3" />
-        <DUTPin name="WL_IN_4" />
-        <DUTPin name="WL_IN_5" />
-        <DUTPin name="WL_IN_6" />
-        <DUTPin name="WL_IN_7" />
-        <DUTPin name="WL_IN_8" />
-        <DUTPin name="WL_IN_9" />
-        <DUTPin name="WL_IN_10" />
-        <DUTPin name="WL_IN_11" />
-        <DUTPin name="WL_IN_12" />
-        <DUTPin name="WL_IN_13" />
-        <DUTPin name="W_INL_14" />
-        <DUTPin name="WL_IN_15" />
-        <DUTPin name="WL_IN_16" />
-        <DUTPin name="WL_IN_17" />
-        <DUTPin name="WL_IN_18" />
-        <DUTPin name="WL_IN_19" />
-        <DUTPin name="WL_IN_20" />
-        <DUTPin name="WL_IN_21" />
-        <DUTPin name="WL_IN_22" />
-        <DUTPin name="WL_IN_23" />
-        <DUTPin name="WL_UNSEL" />
-        <DUTPin name="VDD" />
-        <DUTPin name="VSA" />
-        <DUTPin name="VDD_BRD+" />
-        <DUTPin name="VDD_BRD-" />
-        <DUTPin name="DIR_PERIPH_SEL" />
-        <DUTPin name="SA_EN" />
-        <DUTPin name="VREAD" />
+		<DUTPin name="WL_IN_1" />
+		<DUTPin name="WL_IN_2" />
+		<DUTPin name="WL_IN_3" />
+		<DUTPin name="WL_IN_4" />
+		<DUTPin name="WL_IN_5" />
+		<DUTPin name="WL_IN_6" />
+		<DUTPin name="WL_IN_7" />
+		<DUTPin name="WL_IN_8" />
+		<DUTPin name="WL_IN_9" />
+		<DUTPin name="WL_IN_10" />
+		<DUTPin name="WL_IN_11" />
+		<DUTPin name="WL_IN_12" />
+		<DUTPin name="WL_IN_13" />
+		<DUTPin name="WL_IN_14" />
+		<DUTPin name="WL_IN_15" />
+		<DUTPin name="WL_IN_16" />
+		<DUTPin name="WL_IN_17" />
+		<DUTPin name="WL_IN_18" />
+		<DUTPin name="WL_IN_19" />
+		<DUTPin name="WL_IN_20" />
+		<DUTPin name="WL_IN_21" />
+		<DUTPin name="WL_IN_22" />
+		<DUTPin name="WL_IN_23" />
+		<DUTPin name="WL_UNSEL" />
+		<DUTPin name="VDD" />
+		<DUTPin name="VSA" />
+		<DUTPin name="VDD_BRD_P" />
+		<DUTPin name="VDD_BRD_N" />
+		<DUTPin name="DIR_PERIPH_SEL" />
+		<DUTPin name="SA_EN" />
+		<DUTPin name="VREAD" />
 	</Pins>
 	<PinGroups>
-		<PinGroup name="WL">
-			<DUTPin name="WL_IN_0" />
-            <DUTPin name="WL_IN_1" />
-            <DUTPin name="WL_IN_2" />
-            <DUTPin name="WL_IN_3" />
-            <DUTPin name="WL_IN_4" />
-            <DUTPin name="WL_IN_5" />
-            <DUTPin name="WL_IN_6" />
-            <DUTPin name="WL_IN_7" />
-            <DUTPin name="WL_IN_8" />
-            <DUTPin name="WL_IN_9" />
-            <DUTPin name="WL_IN_10" />
-            <DUTPin name="WL_IN_11" />
-            <DUTPin name="WL_IN_12" />
-            <DUTPin name="WL_IN_13" />
-            <DUTPin name="WL_IN_14" />
-            <DUTPin name="WL_IN_15" />
-            <DUTPin name="WL_IN_16" />
-            <DUTPin name="WL_IN_17" />
-            <DUTPin name="WL_IN_18" />
-            <DUTPin name="WL_IN_19" />
-            <DUTPin name="WL_IN_20" />
-            <DUTPin name="WL_IN_21" />
-            <DUTPin name="WL_IN_22" />
-            <DUTPin name="WL_IN_23" />
-            <DUTPin name="WL_UNSEL" />
+		<PinGroup name="WL_IN">
+			<PinReference pin="WL_IN_0" />
+			<PinReference pin="WL_IN_1" />
+			<PinReference pin="WL_IN_2" />
+			<PinReference pin="WL_IN_3" />
+			<PinReference pin="WL_IN_4" />
+			<PinReference pin="WL_IN_5" />
+			<PinReference pin="WL_IN_6" />
+			<PinReference pin="WL_IN_7" />
+			<PinReference pin="WL_IN_8" />
+			<PinReference pin="WL_IN_9" />
+			<PinReference pin="WL_IN_10" />
+			<PinReference pin="WL_IN_11" />
+			<PinReference pin="WL_IN_12" />
+			<PinReference pin="WL_IN_13" />
+			<PinReference pin="WL_IN_14" />
+			<PinReference pin="WL_IN_15" />
+			<PinReference pin="WL_IN_16" />
+			<PinReference pin="WL_IN_17" />
+			<PinReference pin="WL_IN_18" />
+			<PinReference pin="WL_IN_19" />
+			<PinReference pin="WL_IN_20" />
+			<PinReference pin="WL_IN_21" />
+			<PinReference pin="WL_IN_22" />
+			<PinReference pin="WL_IN_23" />
 		</PinGroup>
-        <PinGroup name="PWR">
-            <DUTPin name="VDD" />
-            <DUTPin name="VSA" />
-            <DUTPin name="VDD_BRD+" />
-            <DUTPin name="VDD_BRD-" />
-        </PinGroup>
+		<PinGroup name="CHIP_PWR">
+			<PinReference pin="VDD" />
+			<PinReference pin="VSA" />
+		</PinGroup>
+		<PinGroup name="BOARD_PWR">
+			<PinReference pin="VDD_BRD_P" />
+			<PinReference pin="VDD_BRD_N" />
+		</PinGroup>
+		<PinGroup name="PWR">
+			<PinReference pin="CHIP_PWR" />
+			<PinReference pin="BOARD_PWR" />
+		</PinGroup>
+		<PinGroup name="WL">
+			<PinReference pin="WL_IN" />
+			<PinReference pin="WL_UNSEL" />
+		</PinGroup>
 	</PinGroups>
 	<Sites>
 		<Site siteNumber="0" />
-        <Site siteNumber="1" />
 	</Sites>
 	<Connections>
-        <Connection pin="WL_IN_0" siteNumber="0" instrument="PXI6570Slot9" channel="0" />
-        <Connection pin="WL_IN_1" siteNumber="0" instrument="PXI6570Slot9" channel="1" />
-        <Connection pin="WL_IN_2" siteNumber="0" instrument="PXI6570Slot9" channel="2" />
-        <Connection pin="WL_IN_3" siteNumber="0" instrument="PXI6570Slot9" channel="3" />
-        <Connection pin="WL_IN_4" siteNumber="0" instrument="PXI6570Slot9" channel="4" />
-        <Connection pin="WL_IN_5" siteNumber="0" instrument="PXI6570Slot9" channel="5" />
-        <Connection pin="WL_IN_6" siteNumber="0" instrument="PXI6570Slot9" channel="6" />
-        <Connection pin="WL_IN_7" siteNumber="0" instrument="PXI6570Slot9" channel="7" />
-        <Connection pin="WL_IN_8" siteNumber="0" instrument="PXI6570Slot9" channel="8" />
-        <Connection pin="WL_IN_9" siteNumber="0" instrument="PXI6570Slot9" channel="9" />
-        <Connection pin="WL_IN_10" siteNumber="0" instrument="PXI6570Slot9" channel="10" />
-        <Connection pin="WL_IN_11" siteNumber="0" instrument="PXI6570Slot9" channel="11" />
-        <Connection pin="WL_IN_12" siteNumber="0" instrument="PXI6570Slot9" channel="12" />
-        <Connection pin="WL_IN_13" siteNumber="0" instrument="PXI6570Slot9" channel="13" />
-        <Connection pin="W_INL_14" siteNumber="0" instrument="PXI6570Slot9" channel="14" />
-        <Connection pin="WL_IN_15" siteNumber="0" instrument="PXI6570Slot9" channel="15" />
-        <Connection pin="WL_IN_16" siteNumber="0" instrument="PXI6570Slot9" channel="16" />
-        <Connection pin="WL_IN_17" siteNumber="0" instrument="PXI6570Slot9" channel="17" />
-        <Connection pin="WL_IN_18" siteNumber="0" instrument="PXI6570Slot9" channel="18" />
-        <Connection pin="WL_IN_19" siteNumber="0" instrument="PXI6570Slot9" channel="19" />
-        <Connection pin="WL_IN_20" siteNumber="0" instrument="PXI6570Slot9" channel="20" />
-        <Connection pin="WL_IN_21" siteNumber="0" instrument="PXI6570Slot9" channel="21" />
-        <Connection pin="WL_IN_22" siteNumber="0" instrument="PXI6570Slot9" channel="22" />
-        <Connection pin="WL_IN_23" siteNumber="0" instrument="PXI6570Slot9" channel="23" />
-        <Connection pin="WL_UNSEL" siteNumber="0" instrument="PXI6570Slot9" channel="24" />
-        <Connection pin="VDD" siteNumber="0" instrument="PXI6570Slot9" channel="25" />
-        <Connection pin="VSA" siteNumber="0" instrument="PXI6570Slot9" channel="26" />
-        <Connection pin="VDD_BRD+" siteNumber="1" instrument="PXI6570Slot9" channel="27" />
-        <Connection pin="VDD_BRD-" siteNumber="1" instrument="PXI6570Slot9" channel="28" />
-        <Connection pin="DIR_PERIPH_SEL" siteNumber="1" instrument="PXI6570Slot9" channel="29" />
-        <Connection pin="SA_EN" siteNumber="0" instrument="PXI6570Slot9" channel="30" />
-        <Connection pin="VREAD" siteNumber="0" instrument="PXI6570Slot9" channel="31" />
+		<Connection pin="WL_IN_0" siteNumber="0" instrument="PXI6570Slot8" channel="0" />
+		<Connection pin="WL_IN_1" siteNumber="0" instrument="PXI6570Slot8" channel="1" />
+		<Connection pin="WL_IN_2" siteNumber="0" instrument="PXI6570Slot8" channel="2" />
+		<Connection pin="WL_IN_3" siteNumber="0" instrument="PXI6570Slot8" channel="3" />
+		<Connection pin="WL_IN_4" siteNumber="0" instrument="PXI6570Slot8" channel="4" />
+		<Connection pin="WL_IN_5" siteNumber="0" instrument="PXI6570Slot8" channel="5" />
+		<Connection pin="WL_IN_6" siteNumber="0" instrument="PXI6570Slot8" channel="6" />
+		<Connection pin="WL_IN_7" siteNumber="0" instrument="PXI6570Slot8" channel="7" />
+		<Connection pin="WL_IN_8" siteNumber="0" instrument="PXI6570Slot8" channel="8" />
+		<Connection pin="WL_IN_9" siteNumber="0" instrument="PXI6570Slot8" channel="9" />
+		<Connection pin="WL_IN_10" siteNumber="0" instrument="PXI6570Slot8" channel="10" />
+		<Connection pin="WL_IN_11" siteNumber="0" instrument="PXI6570Slot8" channel="11" />
+		<Connection pin="WL_IN_12" siteNumber="0" instrument="PXI6570Slot8" channel="12" />
+		<Connection pin="WL_IN_13" siteNumber="0" instrument="PXI6570Slot8" channel="13" />
+		<Connection pin="WL_IN_14" siteNumber="0" instrument="PXI6570Slot8" channel="14" />
+		<Connection pin="WL_IN_15" siteNumber="0" instrument="PXI6570Slot8" channel="15" />
+		<Connection pin="WL_IN_16" siteNumber="0" instrument="PXI6570Slot8" channel="16" />
+		<Connection pin="WL_IN_17" siteNumber="0" instrument="PXI6570Slot8" channel="17" />
+		<Connection pin="WL_IN_18" siteNumber="0" instrument="PXI6570Slot8" channel="18" />
+		<Connection pin="WL_IN_19" siteNumber="0" instrument="PXI6570Slot8" channel="19" />
+		<Connection pin="WL_IN_20" siteNumber="0" instrument="PXI6570Slot8" channel="20" />
+		<Connection pin="WL_IN_21" siteNumber="0" instrument="PXI6570Slot8" channel="21" />
+		<Connection pin="WL_IN_22" siteNumber="0" instrument="PXI6570Slot8" channel="22" />
+		<Connection pin="WL_IN_23" siteNumber="0" instrument="PXI6570Slot8" channel="23" />
+		<Connection pin="WL_UNSEL" siteNumber="0" instrument="PXI6570Slot8" channel="24" />
+		<Connection pin="DIR_PERIPH_SEL" siteNumber="0" instrument="PXI6570Slot8" channel="29" />
+		<Connection pin="SA_EN" siteNumber="0" instrument="PXI6570Slot8" channel="30" />
+		<Connection pin="VDD" siteNumber="0" instrument="PXI6570Slot8" channel="25" />
+		<Connection pin="VDD_BRD_P" siteNumber="0" instrument="PXI6570Slot8" channel="27" />
+		<Connection pin="VDD_BRD_N" siteNumber="0" instrument="PXI6570Slot8" channel="28" />
+		<Connection pin="VREAD" siteNumber="0" instrument="PXI6570Slot8" channel="31" />
+		<Connection pin="VSA" siteNumber="0" instrument="PXI6570Slot8" channel="26" />
 	</Connections>
 </PinMap>

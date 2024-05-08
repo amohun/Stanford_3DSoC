@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PinLevelsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/PinLevels">
+  <PinLevelsSheet>
+    <DigitalPinLevelSets>
+      <DigitalPinLevelSet pin="WL_IN_0">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_1">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_2">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_3">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_4">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_5">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_6">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_7">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_8">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_9">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_10">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_11">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_12">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_13">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_14">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_15">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_16">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_17">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_18">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_19">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_20">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_21">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_22">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_23">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_IN_24">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_UNSEL">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+
+      <DigitalPinLevelSet pin="VDD">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="VSA">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="VDD_BRD_P">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="VDD_BRD_N">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="DIR_PERIPH_SEL">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="SA_EN">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="VREAD">
+        <Vil>0</Vil>
+        <Vih>1.8</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+    </DigitalPinLevelSets>
+
+    <PpmuPinLevelSets>
+      <PpmuPinLevelSet pin="WL_IN_0">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_1">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_2">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_3">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_4">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_5">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_6">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_7">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_8">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_9">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_10">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_11">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_12">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_13">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_14">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_15">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_16">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_17">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_18">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_19">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_20">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_21">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_22">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_23">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_IN_24">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_UNSEL">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VDD">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VSA">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VDD_BRD_P">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VDD_BRD_N">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="DIR_PERIPH_SEL">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="SA_EN">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VREAD">
+        <Vf>0</Vf>
+        <If>128 µA</If>
+      </PpmuPinLevelSet>
+    </PpmuPinLevelSets>
+  </PinLevelsSheet>
+</PinLevelsFile>

@@ -1,17 +1,18 @@
 [path]
-master_log_file = "logs/master.log"
-prog_log_file = "logs/prog.log"
+master_log_file = "data/debug/logs/master.log"
+prog_log_file = "data/debug/logs/prog.log"
 data_header = "data/"
 test_log_file = "data/test_log.csv"
 path_data = "D:\\nirram\\data\\MPW_Test\\"
 
 [NIDigital]
-deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot9"]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
 pinmap = ["settings/pinmap/MPW_Direct_Write_BLSL.pinmap", "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
 specs = [
-  "settings/DEC3.specs",
-  "settings/MPW_ProbeCard.digilevels",
-  "settings/MPW_ProbeCard.digitiming"
+  "settings/Stanford_3DSoC/MPW_3DSoC.specs",
+  "settings/Stanford_3DSoC/MPW_Direct_Write_BLSL.digilevels",
+  "settings/Stanford_3DSoC/MPW_Direct_Write_WL.digilevels",
+  "settings/Stanford_3DSoC/MPW_Direct_Write.digitiming"
 ]
 patterns = [
   "settings/patterns/PULSE_MPW_ProbeCard.digipat",

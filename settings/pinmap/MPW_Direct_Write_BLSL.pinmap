@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
 	<Instruments>
-		<NIDigitalPatternInstrument name="PXI6571Slot4,PXI6571Slot5" numberOfChannels="64" group="Digital" />
+		<NIDigitalPatternInstrument name="PXI6571Slot4" numberOfChannels="32" group="Digital" />
+		<NIDigitalPatternInstrument name="PXI6571Slot5" numberOfChannels="32" group="Digital" />
 	</Instruments>
 	<Pins>
 		<DUTPin name="BL_0" />
@@ -71,70 +72,138 @@
 	</Pins>
 	<PinGroups>
 		<PinGroup name="BLSL">
-			<DUTPIN name="BL_0" />
-			<DUTPin name="BL_1" />
-			<DUTPin name="BL_2" />
-			<DUTPin name="BL_3" />
-			<DUTPin name="BL_4" />
-			<DUTPin name="BL_5" />
-			<DUTPin name="BL_6" />
-			<DUTPin name="BL_7" />
-			<DUTPin name="BL_8" />
-			<DUTPin name="BL_9" />
-			<DUTPin name="BL_10" />
-			<DUTPin name="BL_11" />
-			<DUTPin name="BL_12" />
-			<DUTPin name="BL_13" />
-			<DUTPin name="BL_14" />
-			<DUTPin name="BL_15" />
-			<DUTPin name="BL_16" />
-			<DUTPin name="BL_17" />
-			<DUTPin name="BL_18" />
-			<DUTPin name="BL_19" />
-			<DUTPin name="BL_20" />
-			<DUTPin name="BL_21" />
-			<DUTPin name="BL_22" />
-			<DUTPin name="BL_23" />
-			<DUTPin name="BL_24" />
-			<DUTPin name="BL_25" />
-			<DUTPin name="BL_26" />
-			<DUTPin name="BL_27" />
-			<DUTPin name="BL_28" />
-			<DUTPin name="BL_29" />
-			<DUTPin name="BL_30" />
-			<DUTPin name="BL_31" />
-			<DUTPin name="SL_0" />
-			<DUTPin name="SL_1" />
-			<DUTPin name="SL_2" />
-			<DUTPin name="SL_3" />
-			<DUTPin name="SL_4" />
-			<DUTPin name="SL_5" />
-			<DUTPin name="SL_6" />
-			<DUTPin name="SL_7" />
-			<DUTPin name="SL_8" />
-			<DUTPin name="SL_9" />
-			<DUTPin name="SL_10" />
-			<DUTPin name="SL_11" />
-			<DUTPin name="SL_12" />
-			<DUTPin name="SL_13" />
-			<DUTPin name="SL_14" />
-			<DUTPin name="SL_15" />
-			<DUTPin name="SL_16" />
-			<DUTPin name="SL_17" />
-			<DUTPin name="SL_18" />
-			<DUTPin name="SL_19" />
-			<DUTPin name="SL_20" />
-			<DUTPin name="SL_21" />
-			<DUTPin name="SL_22" />
-			<DUTPin name="SL_23" />
-			<DUTPin name="SL_24" />
-			<DUTPin name="SL_25" />
-			<DUTPin name="SL_26" />
-			<DUTPin name="SL_27" />
-			<DUTPin name="SL_28" />
-			<DUTPin name="SL_29" />
-			<DUTPin name="SL_30" />
-			<DUTPin name="SL_31" />
+			<PinReference pin="BL_0" />
+			<PinReference pin="BL_1" />
+			<PinReference pin="BL_2" />
+			<PinReference pin="BL_3" />
+			<PinReference pin="BL_4" />
+			<PinReference pin="BL_5" />
+			<PinReference pin="BL_6" />
+			<PinReference pin="BL_7" />
+			<PinReference pin="BL_8" />
+			<PinReference pin="BL_9" />
+			<PinReference pin="BL_10" />
+			<PinReference pin="BL_11" />
+			<PinReference pin="BL_12" />
+			<PinReference pin="BL_13" />
+			<PinReference pin="BL_14" />
+			<PinReference pin="BL_15" />
+			<PinReference pin="BL_16" />
+			<PinReference pin="BL_17" />
+			<PinReference pin="BL_18" />
+			<PinReference pin="BL_19" />
+			<PinReference pin="BL_20" />
+			<PinReference pin="BL_21" />
+			<PinReference pin="BL_22" />
+			<PinReference pin="BL_23" />
+			<PinReference pin="BL_24" />
+			<PinReference pin="BL_25" />
+			<PinReference pin="BL_26" />
+			<PinReference pin="BL_27" />
+			<PinReference pin="BL_28" />
+			<PinReference pin="BL_29" />
+			<PinReference pin="BL_30" />
+			<PinReference pin="BL_31" />
+			<PinReference pin="SL_0" />
+			<PinReference pin="SL_1" />
+			<PinReference pin="SL_2" />
+			<PinReference pin="SL_3" />
+			<PinReference pin="SL_4" />
+			<PinReference pin="SL_5" />
+			<PinReference pin="SL_6" />
+			<PinReference pin="SL_7" />
+			<PinReference pin="SL_8" />
+			<PinReference pin="SL_9" />
+			<PinReference pin="SL_10" />
+			<PinReference pin="SL_11" />
+			<PinReference pin="SL_12" />
+			<PinReference pin="SL_13" />
+			<PinReference pin="SL_14" />
+			<PinReference pin="SL_15" />
+			<PinReference pin="SL_16" />
+			<PinReference pin="SL_17" />
+			<PinReference pin="SL_18" />
+			<PinReference pin="SL_19" />
+			<PinReference pin="SL_20" />
+			<PinReference pin="SL_21" />
+			<PinReference pin="SL_22" />
+			<PinReference pin="SL_23" />
+			<PinReference pin="SL_24" />
+			<PinReference pin="SL_25" />
+			<PinReference pin="SL_26" />
+			<PinReference pin="SL_27" />
+			<PinReference pin="SL_28" />
+			<PinReference pin="SL_29" />
+			<PinReference pin="SL_30" />
+			<PinReference pin="SL_31" />
+		</PinGroup>
+		<PinGroup name="BL">
+			<PinReference pin="BL_0" />
+			<PinReference pin="BL_1" />
+			<PinReference pin="BL_2" />
+			<PinReference pin="BL_3" />
+			<PinReference pin="BL_4" />
+			<PinReference pin="BL_5" />
+			<PinReference pin="BL_6" />
+			<PinReference pin="BL_7" />
+			<PinReference pin="BL_8" />
+			<PinReference pin="BL_9" />
+			<PinReference pin="BL_10" />
+			<PinReference pin="BL_11" />
+			<PinReference pin="BL_12" />
+			<PinReference pin="BL_13" />
+			<PinReference pin="BL_14" />
+			<PinReference pin="BL_15" />
+			<PinReference pin="BL_16" />
+			<PinReference pin="BL_17" />
+			<PinReference pin="BL_18" />
+			<PinReference pin="BL_19" />
+			<PinReference pin="BL_20" />
+			<PinReference pin="BL_21" />
+			<PinReference pin="BL_22" />
+			<PinReference pin="BL_23" />
+			<PinReference pin="BL_24" />
+			<PinReference pin="BL_25" />
+			<PinReference pin="BL_26" />
+			<PinReference pin="BL_27" />
+			<PinReference pin="BL_28" />
+			<PinReference pin="BL_29" />
+			<PinReference pin="BL_30" />
+			<PinReference pin="BL_31" />
+		</PinGroup>
+		<PinGroup name="SL">
+			<PinReference pin="SL_0" />
+			<PinReference pin="SL_1" />
+			<PinReference pin="SL_2" />
+			<PinReference pin="SL_3" />
+			<PinReference pin="SL_4" />
+			<PinReference pin="SL_5" />
+			<PinReference pin="SL_6" />
+			<PinReference pin="SL_7" />
+			<PinReference pin="SL_8" />
+			<PinReference pin="SL_9" />
+			<PinReference pin="SL_10" />
+			<PinReference pin="SL_11" />
+			<PinReference pin="SL_12" />
+			<PinReference pin="SL_13" />
+			<PinReference pin="SL_14" />
+			<PinReference pin="SL_15" />
+			<PinReference pin="SL_16" />
+			<PinReference pin="SL_17" />
+			<PinReference pin="SL_18" />
+			<PinReference pin="SL_19" />
+			<PinReference pin="SL_20" />
+			<PinReference pin="SL_21" />
+			<PinReference pin="SL_22" />
+			<PinReference pin="SL_23" />
+			<PinReference pin="SL_24" />
+			<PinReference pin="SL_25" />
+			<PinReference pin="SL_26" />
+			<PinReference pin="SL_27" />
+			<PinReference pin="SL_28" />
+			<PinReference pin="SL_29" />
+			<PinReference pin="SL_30" />
+			<PinReference pin="SL_31" />
 		</PinGroup>
 	</PinGroups>
 	<Sites>
@@ -143,9 +212,6 @@
 	<Connections>
 		<Connection pin="BL_0" siteNumber="0" instrument="PXI6571Slot4" channel="0" />
 		<Connection pin="BL_1" siteNumber="0" instrument="PXI6571Slot4" channel="1" />
-		<Connection pin="BL_2" siteNumber="0" instrument="PXI6571Slot4" channel="2" />
-		<Connection pin="BL_3" siteNumber="0" instrument="PXI6571Slot4" channel="3" />
-		<Connection pin="BL_4" siteNumber="0" instrument="PXI6571Slot4" channel="4" />
 		<Connection pin="BL_5" siteNumber="0" instrument="PXI6571Slot4" channel="5" />
 		<Connection pin="BL_6" siteNumber="0" instrument="PXI6571Slot4" channel="6" />
 		<Connection pin="BL_7" siteNumber="0" instrument="PXI6571Slot4" channel="7" />
@@ -161,6 +227,7 @@
 		<Connection pin="BL_17" siteNumber="0" instrument="PXI6571Slot4" channel="17" />
 		<Connection pin="BL_18" siteNumber="0" instrument="PXI6571Slot4" channel="18" />
 		<Connection pin="BL_19" siteNumber="0" instrument="PXI6571Slot4" channel="19" />
+		<Connection pin="BL_2" siteNumber="0" instrument="PXI6571Slot4" channel="2" />
 		<Connection pin="BL_20" siteNumber="0" instrument="PXI6571Slot4" channel="20" />
 		<Connection pin="BL_21" siteNumber="0" instrument="PXI6571Slot4" channel="21" />
 		<Connection pin="BL_22" siteNumber="0" instrument="PXI6571Slot4" channel="22" />
@@ -171,8 +238,10 @@
 		<Connection pin="BL_27" siteNumber="0" instrument="PXI6571Slot4" channel="27" />
 		<Connection pin="BL_28" siteNumber="0" instrument="PXI6571Slot4" channel="28" />
 		<Connection pin="BL_29" siteNumber="0" instrument="PXI6571Slot4" channel="29" />
+		<Connection pin="BL_3" siteNumber="0" instrument="PXI6571Slot4" channel="3" />
 		<Connection pin="BL_30" siteNumber="0" instrument="PXI6571Slot4" channel="30" />
 		<Connection pin="BL_31" siteNumber="0" instrument="PXI6571Slot4" channel="31" />
+		<Connection pin="BL_4" siteNumber="0" instrument="PXI6571Slot4" channel="4" />
 		<Connection pin="SL_0" siteNumber="0" instrument="PXI6571Slot5" channel="0" />
 		<Connection pin="SL_1" siteNumber="0" instrument="PXI6571Slot5" channel="1" />
 		<Connection pin="SL_2" siteNumber="0" instrument="PXI6571Slot5" channel="2" />

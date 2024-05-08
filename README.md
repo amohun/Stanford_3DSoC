@@ -1,11 +1,8 @@
 # Stanford_3DSoC
 A selection of python scripts to use the NI PXIe 6570/6571 to program ReRAM, modified from a directory by Akash Levy and Robert Radway
 
-## Conda environment
-Install: jupyter and pylint
-
 ## Pip environment
-Install: nidaqmx, nidigital, numpy, (matplotlib, pandas, stats for analysis notebook)
+Install: nidigital, numpy, (matplotlib, pandas, stats for analysis notebook)
 
 ## Project environment config
 In settings there is a sample `settings/_env.toml` file. This contains
