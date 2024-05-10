@@ -6,15 +6,16 @@ path_data = "D:\\nirram\\data\\MPW_Test\\"
 
 [NIDigital]
 deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
-pinmap = ["settings/pinmap/MPW_Direct_Write_BLSL.pinmap", "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
+pinmap = ["settings/pinmap/MPW_Direct_Write_BL.pinmap", "settings/pinmap/MPW_Direct_Write_SL.pinmap", "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
 specs = [
   "settings/DEC3.specs",
   "settings/MPW_ProbeCard.digilevels",
   "settings/MPW_ProbeCard.digitiming"
 ]
 patterns = [
-  "settings/patterns/PULSE_MPW_ProbeCard.digipat",
-  "settings/patterns/CSA_Read_Si.digipat"
+  "settings/patterns/MPW_Direct_Write_BL.digipat",
+  "settings/patterns/MPW_Direct_Write_SL.digipat",
+  "settings/patterns/MPW_Direct_Write_WL.digipat"
 ]
 
 [NISwitch]
