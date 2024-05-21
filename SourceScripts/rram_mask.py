@@ -24,7 +24,7 @@ class RRAMArrayMask:
         wls,
         bls,
         sls,
-        all_wls,
+        all_wls, 
         all_bls,
         all_sls,
         polarity,

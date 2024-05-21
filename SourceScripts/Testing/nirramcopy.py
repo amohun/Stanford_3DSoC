@@ -1010,13 +1010,13 @@ class NIRRAM:
     def pulse(self, mask, pulse_len=10, prepulse_len=50, postpulse_len=50, max_pulse_len=10000, wl_first=True):
         """Create waveform for directly contacting the array BLs, SLs, and WLs, then output that waveform"""
         waveforms, pulse_width = self.build_waveforms(mask, pulse_len, prepulse_len, postpulse_len, max_pulse_len, wl_first)
+        
         #WL_PULSE_DEC3.digipat or PULSE_MPW_ProbeCard.digipat as template file
         
         if self.pulse_pingroups is None:
             raise NIRRAMException("No pulse pin groups specified")
         for pingroup in self.pulse_pingroups:
             self.arbitrary_pulse(waveforms[self.pulse_pingroups.index(pingroup)], pin_group_name=pingroup, data_variable_in_digipat=f"{pingroup}_data", pulse_width=pulse_width)
-        quit()
         self.digital.burst_pattern("PULSE_MPW_ProbeCard")
         return
 

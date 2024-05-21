@@ -121,3 +121,255 @@ Date,Time,Name,Category,Hash,Comments
 2024-05-06,18:14:16,chip_test_device_chip,Debug,0000,Debugging NIRRAM for Multiple Sessions
 2024-05-06,18:36:20,chip_test_device_chip,Debug,0001,Debugging NIRRAM for Multiple Sessions
 2024-05-06,18:40:03,chip_test_device_chip,Debug,0002,Debugging NIRRAM for Multiple Sessions
+2024-05-14,18:56:24,chip_chip_device_device,Default,0000,
+2024-05-14,18:57:03,chip_chip_device_device,Default,0001,
+2024-05-14,18:58:18,chip_chip_device_device,Default,0002,
+2024-05-14,18:58:27,chip_chip_device_device,Default,0003,
+2024-05-14,18:59:34,chip_chip_device_device,Default,0004,
+2024-05-14,18:59:56,chip_chip_device_device,Default,0005,
+2024-05-14,19:00:07,chip_chip_device_device,Default,0006,
+2024-05-14,16:01:02,chip_chip_device_device,Default,0007,
+2024-05-14,16:01:04,chip_chip_device_device,Default,0008,
+2024-05-14,16:01:34,chip_chip_device_device,Default,0009,
+2024-05-14,16:02:24,chip_chip_device_device,Default,0010,Debugging DigitalPattern Class
+2024-05-14,16:03:01,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-14,16:11:42,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-14,16:13:25,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-14,16:54:35,chip_chip_device_device,debug,0014,Debugging DigitalPattern Class
+2024-05-14,16:55:15,chip_chip_device_device,debug,0015,Debugging DigitalPattern Class
+2024-05-14,16:55:28,chip_chip_device_device,debug,0016,Debugging DigitalPattern Class
+2024-05-14,16:56:44,chip_chip_device_device,debug,0017,Debugging DigitalPattern Class
+2024-05-14,16:56:57,chip_chip_device_device,debug,0018,Debugging DigitalPattern Class
+2024-05-14,17:06:42,chip_chip_device_device,debug,0019,Debugging DigitalPattern Class
+2024-05-14,17:06:49,chip_chip_device_device,debug,0020,Debugging DigitalPattern Class
+2024-05-14,17:45:27,chip_chip_device_device,debug,0021,Debugging DigitalPattern Class
+2024-05-14,17:46:42,chip_chip_device_device,debug,0022,Debugging DigitalPattern Class
+2024-05-14,17:46:59,chip_chip_device_device,debug,0023,Debugging DigitalPattern Class
+2024-05-14,17:47:47,chip_chip_device_device,debug,0024,Debugging DigitalPattern Class
+2024-05-14,17:47:54,chip_chip_device_device,debug,0025,Debugging DigitalPattern Class
+2024-05-14,17:48:39,chip_chip_device_device,debug,0026,Debugging DigitalPattern Class
+2024-05-14,17:49:28,chip_chip_device_device,debug,0027,Debugging DigitalPattern Class
+2024-05-16,14:11:22,chip_chip_device_device,debug,0000,Debugging DigitalPattern Class
+2024-05-16,14:12:24,chip_chip_device_device,debug,0001,Debugging DigitalPattern Class
+2024-05-16,14:13:41,chip_chip_device_device,debug,0002,Debugging DigitalPattern Class
+2024-05-16,14:13:57,chip_chip_device_device,debug,0003,Debugging DigitalPattern Class
+2024-05-16,14:14:12,chip_chip_device_device,debug,0004,Debugging DigitalPattern Class
+2024-05-16,14:14:52,chip_chip_device_device,debug,0005,Debugging DigitalPattern Class
+2024-05-16,14:15:55,chip_chip_device_device,debug,0006,Debugging DigitalPattern Class
+2024-05-16,14:16:24,chip_chip_device_device,debug,0007,Debugging DigitalPattern Class
+2024-05-16,14:17:54,chip_chip_device_device,debug,0008,Debugging DigitalPattern Class
+2024-05-16,14:19:00,chip_chip_device_device,debug,0009,Debugging DigitalPattern Class
+2024-05-16,14:21:52,chip_chip_device_device,debug,0010,Debugging DigitalPattern Class
+2024-05-16,14:22:21,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-16,14:23:05,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-16,14:23:14,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-20,15:56:25,chip_chip_device_device,debug,0000,Debugging DigitalPattern Class
+2024-05-20,15:57:42,chip_chip_device_device,debug,0001,Debugging DigitalPattern Class
+2024-05-20,15:58:58,chip_chip_device_device,debug,0002,Debugging DigitalPattern Class
+2024-05-20,15:59:49,chip_chip_device_device,debug,0003,Debugging DigitalPattern Class
+2024-05-20,16:01:10,chip_chip_device_device,debug,0004,Debugging DigitalPattern Class
+2024-05-20,16:03:48,chip_chip_device_device,debug,0005,Debugging DigitalPattern Class
+2024-05-20,16:04:16,chip_chip_device_device,debug,0006,Debugging DigitalPattern Class
+2024-05-20,16:06:19,chip_chip_device_device,debug,0007,Debugging DigitalPattern Class
+2024-05-20,16:06:48,chip_chip_device_device,debug,0008,Debugging DigitalPattern Class
+2024-05-20,16:07:56,chip_chip_device_device,debug,0009,Debugging DigitalPattern Class
+2024-05-20,16:22:26,chip_chip_device_device,debug,0010,Debugging DigitalPattern Class
+2024-05-20,16:23:42,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-20,16:23:55,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-20,16:25:26,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-20,16:27:00,chip_chip_device_device,debug,0014,Debugging DigitalPattern Class
+2024-05-20,16:27:16,chip_chip_device_device,debug,0015,Debugging DigitalPattern Class
+2024-05-20,16:28:23,chip_chip_device_device,debug,0016,Debugging DigitalPattern Class
+2024-05-20,16:29:16,chip_chip_device_device,debug,0017,Debugging DigitalPattern Class
+2024-05-20,16:32:01,chip_chip_device_device,debug,0018,Debugging DigitalPattern Class
+2024-05-20,16:33:33,chip_chip_device_device,debug,0019,Debugging DigitalPattern Class
+2024-05-20,16:34:51,chip_chip_device_device,debug,0020,Debugging DigitalPattern Class
+2024-05-20,16:36:22,chip_chip_device_device,debug,0021,Debugging DigitalPattern Class
+2024-05-20,16:38:35,chip_chip_device_device,debug,0022,Debugging DigitalPattern Class
+2024-05-20,16:41:25,chip_chip_device_device,debug,0023,Debugging DigitalPattern Class
+2024-05-20,16:42:07,chip_chip_device_device,debug,0024,Debugging DigitalPattern Class
+2024-05-20,16:45:57,chip_chip_device_device,debug,0025,Debugging DigitalPattern Class
+2024-05-20,16:46:16,chip_chip_device_device,debug,0026,Debugging DigitalPattern Class
+2024-05-20,16:48:24,chip_chip_device_device,debug,0027,Debugging DigitalPattern Class
+2024-05-20,16:48:44,chip_chip_device_device,debug,0028,Debugging DigitalPattern Class
+2024-05-20,16:49:14,chip_chip_device_device,debug,0029,Debugging DigitalPattern Class
+2024-05-20,16:50:03,chip_chip_device_device,debug,0030,Debugging DigitalPattern Class
+2024-05-20,16:52:59,chip_chip_device_device,debug,0031,Debugging DigitalPattern Class
+2024-05-20,16:53:19,chip_chip_device_device,debug,0032,Debugging DigitalPattern Class
+2024-05-20,16:56:04,chip_chip_device_device,debug,0033,Debugging DigitalPattern Class
+2024-05-20,16:56:41,chip_chip_device_device,debug,0034,Debugging DigitalPattern Class
+2024-05-20,16:57:36,chip_chip_device_device,debug,0035,Debugging DigitalPattern Class
+2024-05-20,16:58:43,chip_chip_device_device,debug,0036,Debugging DigitalPattern Class
+2024-05-20,16:59:45,chip_chip_device_device,debug,0037,Debugging DigitalPattern Class
+2024-05-20,17:00:26,chip_chip_device_device,debug,0038,Debugging DigitalPattern Class
+2024-05-20,17:00:55,chip_chip_device_device,debug,0039,Debugging DigitalPattern Class
+2024-05-20,17:02:36,chip_chip_device_device,debug,0040,Debugging DigitalPattern Class
+2024-05-20,17:03:06,chip_chip_device_device,debug,0041,Debugging DigitalPattern Class
+2024-05-20,17:20:07,chip_chip_device_device,debug,0042,Debugging DigitalPattern Class
+2024-05-20,17:27:08,chip_chip_device_device,debug,0043,Debugging DigitalPattern Class
+2024-05-20,17:30:05,chip_chip_device_device,debug,0044,Debugging DigitalPattern Class
+2024-05-20,17:30:37,chip_chip_device_device,debug,0045,Debugging DigitalPattern Class
+2024-05-20,17:31:41,chip_chip_device_device,debug,0046,Debugging DigitalPattern Class
+2024-05-20,17:32:32,chip_chip_device_device,debug,0047,Debugging DigitalPattern Class
+2024-05-20,17:34:35,chip_chip_device_device,debug,0048,Debugging DigitalPattern Class
+2024-05-20,17:35:40,chip_chip_device_device,debug,0049,Debugging DigitalPattern Class
+2024-05-20,17:38:00,chip_chip_device_device,debug,0050,Debugging DigitalPattern Class
+2024-05-20,17:39:41,chip_chip_device_device,debug,0051,Debugging DigitalPattern Class
+2024-05-20,17:42:10,chip_chip_device_device,debug,0052,Debugging DigitalPattern Class
+2024-05-20,17:42:45,chip_chip_device_device,debug,0053,Debugging DigitalPattern Class
+2024-05-20,17:43:08,chip_chip_device_device,debug,0054,Debugging DigitalPattern Class
+2024-05-20,17:43:29,chip_chip_device_device,debug,0055,Debugging DigitalPattern Class
+2024-05-20,17:43:38,chip_chip_device_device,debug,0056,Debugging DigitalPattern Class
+2024-05-20,17:44:22,chip_chip_device_device,debug,0057,Debugging DigitalPattern Class
+2024-05-20,17:45:07,chip_chip_device_device,debug,0058,Debugging DigitalPattern Class
+2024-05-20,17:46:09,chip_chip_device_device,debug,0059,Debugging DigitalPattern Class
+2024-05-20,17:47:10,chip_chip_device_device,debug,0060,Debugging DigitalPattern Class
+2024-05-20,17:54:27,chip_chip_device_device,debug,0061,Debugging DigitalPattern Class
+2024-05-20,17:55:33,chip_chip_device_device,debug,0062,Debugging DigitalPattern Class
+2024-05-20,17:57:41,chip_chip_device_device,debug,0063,Debugging DigitalPattern Class
+2024-05-20,17:59:27,chip_chip_device_device,debug,0064,Debugging DigitalPattern Class
+2024-05-20,18:02:31,chip_chip_device_device,debug,0065,Debugging DigitalPattern Class
+2024-05-20,18:03:15,chip_chip_device_device,debug,0066,Debugging DigitalPattern Class
+2024-05-20,18:05:45,chip_chip_device_device,debug,0067,Debugging DigitalPattern Class
+2024-05-20,18:06:25,chip_chip_device_device,debug,0068,Debugging DigitalPattern Class
+2024-05-20,18:07:02,chip_chip_device_device,debug,0069,Debugging DigitalPattern Class
+2024-05-20,18:12:49,chip_chip_device_device,debug,0070,Debugging DigitalPattern Class
+2024-05-20,18:13:55,chip_chip_device_device,debug,0071,Debugging DigitalPattern Class
+2024-05-20,18:14:39,chip_chip_device_device,debug,0072,Debugging DigitalPattern Class
+2024-05-20,18:15:56,chip_chip_device_device,debug,0073,Debugging DigitalPattern Class
+2024-05-20,18:18:23,chip_chip_device_device,debug,0074,Debugging DigitalPattern Class
+2024-05-20,18:22:49,chip_chip_device_device,debug,0075,Debugging DigitalPattern Class
+2024-05-20,18:23:16,chip_chip_device_device,debug,0076,Debugging DigitalPattern Class
+2024-05-20,18:26:15,chip_chip_device_device,debug,0077,Debugging DigitalPattern Class
+2024-05-20,18:29:36,chip_chip_device_device,debug,0078,Debugging DigitalPattern Class
+2024-05-20,18:32:27,chip_chip_device_device,debug,0079,Debugging DigitalPattern Class
+2024-05-20,18:33:00,chip_chip_device_device,debug,0080,Debugging DigitalPattern Class
+2024-05-20,18:35:34,chip_chip_device_device,debug,0081,Debugging DigitalPattern Class
+2024-05-20,18:42:26,chip_chip_device_device,debug,0082,Debugging DigitalPattern Class
+2024-05-20,18:43:57,chip_chip_device_device,debug,0083,Debugging DigitalPattern Class
+2024-05-20,18:46:18,chip_chip_device_device,debug,0084,Debugging DigitalPattern Class
+2024-05-20,18:49:02,chip_chip_device_device,debug,0085,Debugging DigitalPattern Class
+2024-05-20,18:49:57,chip_chip_device_device,debug,0086,Debugging DigitalPattern Class
+2024-05-20,18:51:18,chip_chip_device_device,debug,0087,Debugging DigitalPattern Class
+2024-05-20,19:12:32,chip_chip_device_device,debug,0088,Debugging DigitalPattern Class
+2024-05-20,19:21:30,chip_chip_device_device,debug,0089,Debugging DigitalPattern Class
+2024-05-20,19:21:42,chip_chip_device_device,debug,0090,Debugging DigitalPattern Class
+2024-05-20,19:22:24,chip_chip_device_device,debug,0091,Debugging DigitalPattern Class
+2024-05-20,19:22:44,chip_chip_device_device,debug,0092,Debugging DigitalPattern Class
+2024-05-20,19:23:19,chip_chip_device_device,debug,0093,Debugging DigitalPattern Class
+2024-05-20,19:24:06,chip_chip_device_device,debug,0094,Debugging DigitalPattern Class
+2024-05-20,19:24:15,chip_chip_device_device,debug,0095,Debugging DigitalPattern Class
+2024-05-20,19:24:41,chip_chip_device_device,debug,0096,Debugging DigitalPattern Class
+2024-05-20,19:24:56,chip_chip_device_device,debug,0097,Debugging DigitalPattern Class
+2024-05-20,19:25:07,chip_chip_device_device,debug,0098,Debugging DigitalPattern Class
+2024-05-20,19:26:01,chip_chip_device_device,debug,0099,Debugging NIRRAM Read Operation.
+2024-05-20,19:32:38,chip_chip_device_device,debug,0100,Debugging NIRRAM Read Operation.
+2024-05-20,19:33:17,chip_chip_device_device,debug,0101,Debugging NIRRAM Read Operation.
+2024-05-20,19:35:20,chip_chip_device_device,debug,0102,Debugging NIRRAM Read Operation.
+2024-05-20,19:37:49,chip_chip_device_device,debug,0103,Debugging NIRRAM Read Operation.
+2024-05-20,19:39:15,chip_chip_device_device,debug,0104,Debugging NIRRAM Read Operation.
+2024-05-20,19:43:23,chip_chip_device_device,debug,0105,Debugging NIRRAM Read Operation.
+2024-05-20,19:43:55,chip_chip_device_device,debug,0106,Debugging NIRRAM Read Operation.
+2024-05-20,19:44:30,chip_chip_device_device,debug,0107,Debugging NIRRAM Read Operation.
+2024-05-20,19:45:23,chip_chip_device_device,debug,0108,Debugging NIRRAM Read Operation.
+2024-05-20,19:45:51,chip_chip_device_device,debug,0109,Debugging NIRRAM Read Operation.
+2024-05-20,19:48:33,chip_chip_device_device,debug,0110,Debugging NIRRAM Read Operation.
+2024-05-20,19:52:49,chip_chip_device_device,debug,0111,Debugging NIRRAM Read Operation.
+2024-05-20,19:54:30,chip_chip_device_device,debug,0112,Debugging NIRRAM Read Operation.
+2024-05-20,19:56:15,chip_chip_device_device,debug,0113,Debugging NIRRAM Read Operation.
+2024-05-20,19:59:26,chip_chip_device_device,debug,0114,Debugging NIRRAM Read Operation.
+2024-05-20,20:00:58,chip_chip_device_device,debug,0115,Debugging NIRRAM Read Operation.
+2024-05-20,20:01:15,chip_chip_device_device,debug,0116,Debugging NIRRAM Read Operation.
+2024-05-20,20:01:32,chip_chip_device_device,debug,0117,Debugging NIRRAM Read Operation.
+2024-05-20,20:02:23,chip_chip_device_device,debug,0118,Debugging NIRRAM Read Operation.
+2024-05-20,20:03:28,chip_chip_device_device,debug,0119,Debugging NIRRAM Read Operation.
+2024-05-20,20:04:00,chip_chip_device_device,debug,0120,Debugging NIRRAM Read Operation.
+2024-05-20,20:04:19,chip_chip_device_device,debug,0121,Debugging NIRRAM Read Operation.
+2024-05-20,20:08:55,chip_chip_device_device,debug,0122,Debugging NIRRAM Read Operation.
+2024-05-20,20:09:47,chip_chip_device_device,debug,0123,Debugging NIRRAM Read Operation.
+2024-05-20,20:10:12,chip_chip_device_device,debug,0124,Debugging NIRRAM Read Operation.
+2024-05-20,20:10:28,chip_chip_device_device,debug,0125,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:07,chip_chip_device_device,debug,0126,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:12,chip_chip_device_device,debug,0127,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:16,chip_chip_device_device,debug,0128,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:20,chip_chip_device_device,debug,0129,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:27,chip_chip_device_device,debug,0130,Debugging NIRRAM Read Operation.
+2024-05-20,20:13:45,chip_chip_device_device,debug,0131,Debugging NIRRAM Read Operation.
+2024-05-20,20:14:20,chip_chip_device_device,debug,0132,Debugging NIRRAM Read Operation.
+2024-05-20,20:15:50,chip_chip_device_device,debug,0133,Debugging NIRRAM Read Operation.
+2024-05-20,20:17:19,chip_chip_device_device,debug,0134,Debugging NIRRAM Read Operation.
+2024-05-20,20:18:41,chip_chip_device_device,debug,0135,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:06,chip_chip_device_device,debug,0136,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:24,chip_chip_device_device,debug,0137,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:45,chip_chip_device_device,debug,0138,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:54,chip_chip_device_device,debug,0139,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:59,chip_chip_device_device,debug,0140,Debugging NIRRAM Read Operation.
+2024-05-20,20:20:12,chip_chip_device_device,debug,0141,Debugging NIRRAM Read Operation.
+2024-05-20,20:20:44,chip_chip_device_device,debug,0142,Debugging NIRRAM Read Operation.
+2024-05-20,20:21:04,chip_chip_device_device,debug,0143,Debugging NIRRAM Read Operation.
+2024-05-20,20:22:10,chip_chip_device_device,debug,0144,Debugging NIRRAM Read Operation.
+2024-05-20,20:22:46,chip_chip_device_device,debug,0145,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:15,chip_chip_device_device,debug,0146,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:19,chip_chip_device_device,debug,0147,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:31,chip_chip_device_device,debug,0148,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:54,chip_chip_device_device,debug,0149,Debugging NIRRAM Read Operation.
+2024-05-21,10:55:35,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-05-21,10:56:21,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-05-21,10:58:37,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-05-21,10:58:59,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-05-21,10:59:11,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-05-21,11:00:18,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-05-21,11:00:38,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-05-21,11:02:01,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-05-21,11:06:38,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-05-21,11:08:44,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-05-21,11:09:05,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-05-21,11:09:50,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-05-21,11:12:31,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-05-21,11:13:23,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:01,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:17,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:29,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:43,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-05-21,11:15:08,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-05-21,11:15:23,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-05-21,11:21:08,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-05-21,11:21:51,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-05-21,11:22:08,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-05-21,11:22:31,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-05-21,11:23:11,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-05-21,11:35:48,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:23,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:35,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:55,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-05-21,12:07:34,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-05-21,12:08:12,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-05-21,12:09:18,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-05-21,12:09:36,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-05-21,12:10:48,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-05-21,12:50:56,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-05-21,12:55:45,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-05-21,13:16:51,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-05-21,13:35:41,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-05-21,16:34:30,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-05-21,16:34:51,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-05-21,16:38:22,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-05-21,16:38:41,chip_chip_device_device,debug,0041,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:14,chip_chip_device_device,debug,0042,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:25,chip_chip_device_device,debug,0043,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:43,chip_chip_device_device,debug,0044,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:00,chip_chip_device_device,debug,0045,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:41,chip_chip_device_device,debug,0046,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:56,chip_chip_device_device,debug,0047,Debugging NIRRAM Read Operation.
+2024-05-21,16:44:02,chip_chip_device_device,debug,0048,Debugging NIRRAM Read Operation.
+2024-05-21,16:44:12,chip_chip_device_device,debug,0049,Debugging NIRRAM Read Operation.
+2024-05-21,16:45:21,chip_chip_device_device,debug,0050,Debugging NIRRAM Read Operation.
+2024-05-21,16:45:39,chip_chip_device_device,debug,0051,Debugging NIRRAM Read Operation.
+2024-05-21,16:46:17,chip_chip_device_device,debug,0052,Debugging NIRRAM Read Operation.
+2024-05-21,16:47:17,chip_chip_device_device,debug,0053,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:14,chip_chip_device_device,debug,0054,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:27,chip_chip_device_device,debug,0055,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:47,chip_chip_device_device,debug,0056,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:01,chip_chip_device_device,debug,0057,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:21,chip_chip_device_device,debug,0058,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:35,chip_chip_device_device,debug,0059,Debugging NIRRAM Read Operation.
