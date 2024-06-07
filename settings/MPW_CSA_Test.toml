@@ -1,0 +1,25 @@
+[path]
+master_log_file = "data/debug/logs/master.log"
+prog_log_file = "data/debug/logs/prog.log"
+data_header = "data/"
+test_log_file = "data/test_log.csv"
+path_data = "D:\\nirram\\data\\MPW_Test\\"
+
+[NIDigital]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
+
+pinmap = [
+    "settings/pinmap/CSA_Slot4.pinmap",
+    "settings/pinmap/CSA_Slot5.pinmap",  
+    "settings/pinmap/MPW_CSA_2D.pinmap"
+    ]
+
+specs = ["settings/Stanford_3DSoC/MPW_3DSoC.specs"]
+
+patterns = [
+    "settings/patterns/CSA_Slot4.digipat",
+    "settings/patterns/CSA_Slot5.digipat",
+    "settings/patterns/MPW_CSA_2D.digipat"
+]
+
+pulse_pingroups = ["BL","SL", "WL","PWR"]

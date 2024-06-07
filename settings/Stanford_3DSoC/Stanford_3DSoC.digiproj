@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SourceFile Checksum="7EBB41B442B0D89ACEBB665B91CB114F" xmlns="http://www.ni.com/PlatformFramework">
+<SourceFile Checksum="E8328D109D4AE7F7F1EE609E872B37D0" xmlns="http://www.ni.com/PlatformFramework">
 	<SourceModelFeatureSet>
 		<ParsableNamespace AssemblyFileVersion="5.3.2.62005" FeatureSetName="Digital Pattern Editor" Name="http://www.ni.com/PatternBasedDigital" OldestCompatibleVersion="4.5.0.0" Version="5.3.1.49152" />
 		<ParsableNamespace AssemblyFileVersion="5.3.2.62005" FeatureSetName="Editor" Name="http://www.ni.com/PlatformFramework" OldestCompatibleVersion="5.2.0.49153" Version="5.2.0.49153" />
@@ -26,7 +26,7 @@
 			<FileReference Id="12" ModelDefinitionType="PinMap" Name="MPW_Peripheral_DNN_3D\.pinmap" StoragePath="..\pinmap\MPW_Peripheral_DNN_3D.pinmap" />
 			<FileReference Id="13" ModelDefinitionType="PinMap" Name="MPW_Peripheral_CSA_3D\.pinmap" StoragePath="..\pinmap\MPW_Peripheral_CSA_3D.pinmap" />
 			<FileReference Id="14" ModelDefinitionType="PinMap" Name="MPW_Peripheral_CSA_2D\.pinmap" StoragePath="..\pinmap\MPW_Peripheral_CSA_2D.pinmap" />
-			<FileReference Id="15" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_WL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_WL.pinmap" />
+			<FileReference Id="15" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_WL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_WL.pinmap" p4:IsActive="True" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
 			<FileReference Id="18" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Direct_Write_BLSL\.digilevels" StoragePath="MPW_Direct_Write_BLSL.digilevels" />
 			<FileReference Id="28" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Direct_Write_WL\.digilevels" StoragePath="MPW_Direct_Write_WL.digilevels" p4:IsActive="True" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
 			<FileReference Id="31" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_SyncTest_BL\.digipat" StoragePath="..\patterns\MPW_SyncTest_BL.digipat" />
@@ -43,12 +43,12 @@
 			<FileReference Id="57" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Direct_Write_SL\.digilevels" StoragePath="MPW_Direct_Write_SL.digilevels" />
 			<FileReference Id="58" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_SyncTest_SL\.digipat" StoragePath="..\patterns\MPW_SyncTest_SL.digipat" />
 			<FileReference Id="59" ModelDefinitionType="PinMap" Name="MPW_SyncTest_WL\.pinmap" StoragePath="..\pinmap\MPW_SyncTest_WL.pinmap" />
-			<FileReference Id="62" ModelDefinitionType="PinMap" Name="MPW_SyncTest_SL\.pinmap" StoragePath="..\pinmap\MPW_SyncTest_SL.pinmap" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
-			<FileReference Id="65" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_BL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_BL.pinmap" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
+			<FileReference Id="62" ModelDefinitionType="PinMap" Name="MPW_SyncTest_SL\.pinmap" StoragePath="..\pinmap\MPW_SyncTest_SL.pinmap" />
+			<FileReference Id="65" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_BL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_BL.pinmap" />
 			<FileReference Id="69" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_BL\.digipat" StoragePath="..\patterns\MPW_Direct_Write_BL.digipat" />
 			<FileReference Id="70" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_SL\.digipat" StoragePath="..\patterns\MPW_Direct_Write_SL.digipat" />
 			<FileReference Id="71" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_WL\.digipat" StoragePath="..\patterns\MPW_Direct_Write_WL.digipat" />
-			<FileReference Id="72" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_SL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_SL.pinmap" p4:IsActive="True" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
+			<FileReference Id="72" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_SL\.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_SL.pinmap" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
 		</NameScopingEnvoy>
 		<EmbeddedDefinitionReference Id="6" ModelDefinitionType="DigitalPatternEditor.ProjectPropertiesDefinition" Name="ProjectProperties">
 			<ProjectPropertiesDefinition xmlns="http://www.ni.com/PatternBasedDigital" />

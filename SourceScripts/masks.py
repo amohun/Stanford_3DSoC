@@ -1,11 +1,7 @@
-"""
-Module for RRAM memory array masking.
-Keep this separate from nirram so we can unit test this without requiring
-importing all the ni digital system packages.
-"""
 import numpy as np
 import pandas as pd
 from itertools import chain
+import pdb
 
 class MasksException(Exception):
     """Exception produced by the ArrayMask class"""
@@ -20,81 +16,145 @@ class Masks:
     hit their target resistance, we can mask them off to skip them and
     only continue to program cells that have not hit target yet.
     """
+
     def __init__(
-        self,
-        polarity,
-        all_pins=None,
-        sel_pins=None,
-        sort=True,
-        init_state=None,
+            self,
+            polarity="NMOS", # Define Transistor Polarity
+            sel_pins=None,   # List of selected pins by the user, if None, all pins are selected, either sorted by session or not
+            pingroups=None,  # List of pins, separated by pin groups to be selected sorted by session
+            all_pins=None,   # List of all pins, used for verifying pins and pingroups are correct
+            pingroup_names=None, # List of names for the pin groups
+            init_state=None, # Initial state of the mask, if None, all bits are unmasked
+            sort=True, # If true, sort the pins by session
+            debug_printout=False # If true, print debug information
     ):
-        if sel_pins is None:
-            raise MasksException("Masks Error: No pins selected")
-        if all_pins is None:
-            raise MasksException("Masks Error: No pins available")
-        if type(all_pins) is not list:
-            raise MasksException("Masks Error: all_pins must be a list")
-        if type(all_pins[0]) is not list:
-            all_pins = [all_pins]
-        # To get this to work with multiple pingroups in multiple sessions, we need to pass sorted pins for all_pins
-        # or we need to make sure the pins are sorted in the session to the correct session
-        self.all_pins = all_pins
-
-        for pin in sel_pins:
-            if pin not in list(chain.from_iterable(all_pins)):
-                raise MasksException(f"Masks Error: Selected pin {pin} not in all pins")
-        if sort:
-            # Convert all_pins to sets for faster membership checks
-            sel_pins = [[pin for pin in sel_pins if pin in group] for group in all_pins]
-
-        if init_state is None:
-            self.masks = []
-            for group,sel_group in zip(all_pins,sel_pins):
-                group_mask = pd.DataFrame({"mask": np.array([pin in sel_group for pin in group]).astype(bool), "pins": group})
-                self.masks.append(group_mask)
-                # Goal: Create a mask which has the n dimensions for n groups of pins with overlap for all the available pins...
-        else:
-            self.masks = init_state
-        
+    
         self.polarity = polarity
-        
+        self.sel_pins = sel_pins
+        self.pingroups = pingroups
+        self.all_pins = all_pins
+        self.pingroup_names = pingroup_names
+        self.init_state = init_state
+        self.sort = sort
+        self.debug_printout = debug_printout
+        self.pingroup_names = pingroup_names
 
+        self.ensure_all_required_arguments()
+        self.sort_pins()
+        self.verify_pins_in_pingroups()
+        self.sort_pins_by_pingroup()
+        self.masks = init_state
+        if init_state is None:
+            self.masks_and_flattened_masks = self.define_masks()
+        self.masks, self.masks_df_list, self.flattened_masks_df = self.masks_and_flattened_masks
     
+    
+    def ensure_all_required_arguments(self):
+        if self.polarity.upper() not in {"NMOS", "PMOS", "N", "P"}:
+            raise MasksException("Invalid polarity, must be either 'NMOS' or 'PMOS'")
+
+        if self.sel_pins is None:
+            raise MasksException("Must provide a list of pins to be selected")
+
+        if self.all_pins is None:
+            raise MasksException("Must provide a list of all pins")
+
+        if not isinstance(self.all_pins[0], list):
+            self.all_pins = [self.all_pins]
+
+        if self.pingroups is None:
+            raise MasksException("Must provide a list of pin groups used for the Digital Pattern Editor")
+
+        if isinstance(self.all_pins[0], list) and len(self.all_pins) > 1:
+            if not self.sort and not isinstance(self.sel_pins[0], list):
+                raise MasksException("If not sorting pins by session, must provide a list of pins for each included session")
+            if self.sort and isinstance(self.sel_pins[0], list):
+                raise MasksException("If sorting pins by session, please provide pins as a single list of strings")
+
+        self.pingroups_missing_sessions = len(self.pingroups) != len(self.all_pins)
+
+        
+    
+    def sort_pins(self):
+        """
+        Sorts the pins and pingroups by sessions
+        """
+
+        if self.debug_printout:
+            print("Sorting pins and pin groups by session")
+        
+        if self.sort:
+            self.sel_pins = [[pin for pin in session if pin in self.sel_pins] for session in self.all_pins]
+
+
+    def verify_pins_in_pingroups(self):
+        """
+        Verifies that all pins in the pin groups are in the list of all pins
+        """
+
+        self.pingroups_flattened_by_session = list(chain.from_iterable(self.pingroups))
+        
+        for pin_session,group_session in zip(self.sel_pins,self.pingroups):
+            
+            for pin in pin_session:
+                if pin not in list(chain.from_iterable(group_session)):
+                    raise MasksException(f"Pin {pin} is not found in session pingroups despite being in session")
+
+
+    def sort_pins_by_pingroup(self):
+        """
+        Sorts the pins by pin group
+        """
+        pins_sorted_by_pingroup = []
+        
+        for pin_session,group_session in zip(self.sel_pins,self.pingroups):
+            
+            if self.debug_printout:
+                print(f"Sorting pins by pin group for session {group_session}")
+            
+            group_pins = [[pin for pin in pin_session if pin in group]for group in group_session]
+            
+            pins_sorted_by_pingroup.append(group_pins)
+
+            self.sel_pins = pins_sorted_by_pingroup
+
+    def define_masks(self):
+        """
+        Defines the initial mask state based on the available pingroups
+        and the selected pins. Selected pins will be True (1) while remaining
+        pins will be False (0). The masks will be sorted by group, by session.
+        """   
+
+        self.masks = []
+        for session_groups, session_pins in zip(self.pingroups,self.sel_pins):
+            session_masks = [np.array([pin in sel_pins for pin in group]) for group,sel_pins in zip(session_groups,session_pins)]
+            self.masks.append(session_masks)
+            
+        masks_flattened = list(chain.from_iterable(list(chain.from_iterable(self.masks))))
+        bits_flattened = list(chain.from_iterable(list(chain.from_iterable(self.pingroups))))
+
+        self.masks_df_list = [pd.DataFrame({"Pin": [pin for pin in group], "Mask": [pin in group_sel_pins for pin in group]}) for group_sel_pins, group in zip(session_pins, session_groups)]        
+        self.flattened_masks_df = pd.DataFrame({
+            "Pin": bits_flattened,
+            "Mask": masks_flattened
+        })
+
+        return self.masks, self.masks_df_list, self.flattened_masks_df
+
     def get_pulse_masks(self):
-        
-        # masks = [mask for mask in self.masks]
-        masks = []
-        for mask in self.masks:
-            masks.append(pd.Series.to_numpy(mask["mask"]))
-        return masks
+        """
+        Returns the masks as a list of lists of numpy arrays
+        """
+        if self.debug_printout:
+            print(f"Returning masks {self.pingroup_names or ''}\n{self.masks}")
+        return self.masks
     
-
-
-    def alter_mask(self, add_pins, remove_pins,sort=True):
-        if sort:
-            add_pins = [[pin for pin in add_pins if pin in group] for group in self.all_pins]
-            remove_pins = [[pin for pin in remove_pins if pin in group] for group in self.all_pins]
-
-        for mask,add,remove in zip(self.masks,add_pins,remove_pins):
-            mask["mask"] = mask["mask"] | np.array([pin in add for pin in mask["pins"]])
-            mask["mask"] = mask["mask"] & np.array([not (pin in remove) for pin in mask["pins"]])
-
-
-
-
-    def update_mask(self, failing):
-        self.mask = failing
-
-
-if __name__ == "__main__":
-    all_pins = [['A','B','C','D','E','F'],['G','H','I','J','K','L','M','N'],['O','P','Q','R','S','T','U','V','W','X','Y','Z']]
-    sel_pins = ['A','B','C','D','E','F','P','Q','V','X']
-    masks = Masks(1,all_pins,sel_pins)
-    print(all_pins)
-    print([[str(int(x)) for x in mask] for mask in masks.get_pulse_masks()])
-    masks.alter_mask(['R','N'],[])
-    print([[str(int(x)) for x in mask] for mask in masks.get_pulse_masks()])
-    masks.alter_mask([],['A','B'])
-    print([[str(int(x)) for x in mask] for mask in masks.get_pulse_masks()])
-
-    title = str(all_pins)
+    
+    def alter_masks(self, add_pins, remove_pins):
+        """
+        Alters the masks based on the mask_changes dictionary
+        """
+        for session in self.pingroups:
+            for group in session:
+                self.masks[session][group].update({pin: True for pin in add_pins if pin in group})
+                self.masks[session][group].update({pin: False for pin in remove_pins if pin in group})

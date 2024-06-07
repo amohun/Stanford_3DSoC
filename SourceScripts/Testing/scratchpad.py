@@ -1,0 +1,21 @@
+def direct_read(
+        self,
+        vbl=None,
+        vsl=None,
+        vwl=None,
+        vwl_unsel_offset=None,
+        vb=None,
+        wls=None,
+        bls=None,
+        remove_bias=None,
+        meas_vbls=True,
+        meas_vsls=False,
+        meas_vwls=False,
+        meas_isls=True,
+        meas_ibls=False,
+        meas_i_gate=True,
+        record=False,
+        check=True,
+        print_info = True,
+        debug_printout = None
+    ):
