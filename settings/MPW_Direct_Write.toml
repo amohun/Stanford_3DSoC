@@ -11,7 +11,16 @@ pinmap = ["settings/pinmap/MPW_Direct_Write_BL.pinmap","settings/pinmap/MPW_Dire
 specs = [
   "settings/Stanford_3DSoC/MPW_3DSoC.specs",
 ]
-
+timing = [
+  "settings/Stanford_3DSoC/MPW_Direct_Write_BL.digitiming",
+  "settings/Stanford_3DSoC/MPW_Direct_Write_SL.digitiming",
+  "settings/Stanford_3DSoC/MPW_Direct_Write_WL.digitiming"
+]
+levels = [
+    "settings/Stanford_3DSoC/MPW_Direct_Write_BL.digilevels",
+    "settings/Stanford_3DSoC/MPW_Direct_Write_SL.digilevels",
+    "settings/Stanford_3DSoC/MPW_Direct_Write_WL.digilevels"
+]
 # Each pattern is defined by an array of each session pattern
 # So a pattern for direct write is defined by the array of 
 # the BLSL session pattern and the WL session pattern for direct write
@@ -19,6 +28,12 @@ patterns = [
     "settings/patterns/MPW_Direct_Write_BL.digipat",
     "settings/patterns/MPW_Direct_Write_SL.digipat",
     "settings/patterns/MPW_Direct_Write_WL.digipat"
+]
+
+pattern_names = [
+    "MPW_Direct_Write_BL",
+    "MPW_Direct_Write_SL",
+    "MPW_Direct_Write_WL"
 ]
 
 # TODO Make it so Each session has a list of included pingroups

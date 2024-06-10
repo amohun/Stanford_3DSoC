@@ -5,8 +5,7 @@ import os
 import sys
 import pdb
 sys.path.append(os.getcwd())
-from SourceScripts.nirram import NIRRAM
-from digital_pattern import DigitalPattern
+
 
 # Initialize the NI-Digital pattern instrument
 
@@ -70,7 +69,3 @@ nitclk.configure_for_homogeneous_triggers(session_list)
 nitclk.synchronize(session_list,200e-8)
 nitclk.initiate(session_list)
 nitclk.wait_until_done(session_list,10)
-
-
-for session,session_pins in zip(sessions,pins):
-    session.channels[session_pins].ppmu_source() 

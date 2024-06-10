@@ -24,6 +24,7 @@ import pdb
 sys.path.append(getcwd())
 import SourceScripts.load_settings as load_settings
 import SourceScripts.masks as masks
+from string_util import *
 class DigitalPatternException(Exception):
     """Exception produced by the DigitalPattern class"""
     def __init__(self, msg):
@@ -50,6 +51,7 @@ class DigitalPattern:
         self.load_pin_maps()
         self.load_patterns()
         self.configure_timing()
+        self.load_level_and_timing()
         self.ppmu_set_pins_to_zero()
         self.clear_patterns()
         self.set_current_limit_range(self.all_pins, 2e-6, pin_sort=False)
@@ -246,15 +248,21 @@ class DigitalPattern:
                     session.load_pattern(session_pattern)
         else:
             raise DigitalPatternException("No sessions provided")
+        
+        if "pattern_names" in digital:
+            self.pattern_names = digital["pattern_names"]
+        else:
+            self.pattern_names = [text_between(pattern,"patterns/",".digipat") for pattern in self.patterns]
 
-    def load_level_and_timing(self):
+    def load_level_and_timing(self,sessions=None):
 
         digital = self.settings["NIDigital"]
 
-        if self.sessions is not None: 
-            for session in self.sessions:
-                session_levels = digital["levels"][self.sessions.index(session)]
-                session_timing = digital["timing"][self.sessions.index(session)]
+        sessions = sessions or self.sessions
+        if sessions is not None: 
+            for session_index, session in enumerate(self.sessions):
+                session_levels = digital["levels"][session_index]
+                session_timing = digital["timing"][session_index]
                 session_specs = digital["specs"]
                 
                 session.load_specifications_levels_and_timing(session_specs, session_levels, session_timing)
@@ -305,8 +313,7 @@ class DigitalPattern:
         if sessions is None: sessions = self.sessions
         
         # Debug Printout
-        if debug:
-            print(f"Timing Sets: {time_sets}")
+        if debug: print(f"Timing Sets: {time_sets}")
         
         # Configure Timing for Each Session
         if sessions is not None:
@@ -363,8 +370,7 @@ class DigitalPattern:
             if self.all_pins is None:
                 raise ValueError("No pins provided")
             pins = self.all_pins
-            if debug_printout:
-                print("Using all pins: sort turned off")
+            if debug_printout: print("Using all pins: sort turned off")
             sort = False
 
         if sort:
@@ -392,8 +398,7 @@ class DigitalPattern:
         else:
             raise ValueError("Invalid mode specified, please use 'digital', 'ppmu', 'off', or 'disconnect'")
 
-        if debug_printout:
-            print(f"Setting mode to nidigital.SelectedFunction.{mode.upper()} for pins {pins}")
+        if debug_printout: print(f"Setting mode to nidigital.SelectedFunction.{mode.upper()} for pins {pins}")
 
     def set_channel_termination_mode(self, mode="Hi-Z", pins=None,sessions=None,sort=True,debug_printout=None):
         if debug_printout is None: debug_printout = self.debug
@@ -515,16 +520,13 @@ class DigitalPattern:
             sorted_pins.append(session_pins)
         
         # Debug Printout
-        if debug_printout: 
-            print(f"For sessions {sessions} \nSorted Pins: {sorted_pins}")
-            print("-------- Pins Sorted By Session --------")
+        if debug_printout: print(f"For sessions {sessions} \nSorted Pins: {sorted_pins}\n-------- Pins Sorted By Session --------")
 
-        return sorted_pins
-                
+        return sorted_pins         
 
     """ Need to figure out how to get the pattern pulse to work with NI-Tclk Sync"""
 
-    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, sort=True, digipat_prefix="", digipat_suffix="_data", patterns=None,debug_printout = None ):
+    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, sort=True, digipat_prefix="", digipat_suffix="", patterns=None,debug_printout = None ):
         """Create waveform for directly contacting the array BLs, SLs, and WLs, then output that waveform"""
         
         # ============= Load Sessions ================ #
@@ -601,7 +603,8 @@ class DigitalPattern:
         
         # ============= Pulse Waveforms ================ #
         for waveform_session_index,waveform_session_value in enumerate(waveforms):
-            print(sessions)
+            if debug_printout: print(f"Sessions:{sessions}")
+
             self.arbitrary_pulse(sessions[waveform_session_index],waveform_session_value, session_pingroups=self.pingroup_names[waveform_session_index], data_variable_prefix=digipat_prefix,data_variable_suffix=digipat_suffix, pulse_width=pulse_width)
 
         if len(sessions) == 1:
@@ -609,9 +612,9 @@ class DigitalPattern:
         
         # Synchronize Pulses using NITClk
         else:
-            for session in sessions:
-                session.load_pattern(patterns[sessions.index(session)])
-            sessions[0].start_label = "test"
+            for session_num, session in enumerate(sessions):
+                session.load_pattern(patterns[session_num])
+                session.start_label = self.pattern_names[session_num]
             nitclk.configure_for_homogeneous_triggers(sessions)
             nitclk.synchronize(sessions,200e-8)
             nitclk.initiate(sessions)
@@ -623,7 +626,6 @@ class DigitalPattern:
 
         for group in session_pingroups:
             data_variable_in_digipat = f"{data_variable_prefix}{group}{data_variable_suffix}"
-        
             session.pins[group].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
             session.write_source_waveform_broadcast(data_variable_in_digipat, waveform)
         
@@ -827,7 +829,7 @@ class DigitalPattern:
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
 
         measured_currents = []
-        # print(pins)
+
         for session, session_pins in zip(sessions, pins):
             # Measure the current for each pin in the session
             session_currents = [] 
@@ -879,8 +881,7 @@ class DigitalPattern:
             with niswitch.Session(relay) as relay_session:
                 relay_session.disconnect_all()
                 for ch in channel:
-                    if debug:
-                        print(f"Connecting com{ch} to no{ch} on {relay}")
+                    if debug: print(f"Connecting com{ch} to no{ch} on {relay}")
                     relay_session.connect(f"com{ch}",f"no{ch}")
 
 
@@ -899,8 +900,7 @@ class DigitalPattern:
             if self.all_pins is None:
                 raise DigitalPatternException("No pins provided")
             pins = self.all_pins
-            if debug:
-                print("Using all pins: sort turned off")
+            if debug: print("Using all pins: sort turned off")
             sort = False
         
         if sort:

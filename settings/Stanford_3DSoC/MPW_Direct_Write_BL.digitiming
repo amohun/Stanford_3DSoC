@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TimingFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/Timing">
+  <TimingSheet>
+    <TimeSets>
+      <TimeSet name="MPW_Direct_Write_BL">
+        <Period>2E-06</Period>
+        <PinEdges>
+          <PinEdge pin="BL">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>0</Data>
+              <Off>2E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>1E-05</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+        </PinEdges>
+      </TimeSet>
+    </TimeSets>
+  </TimingSheet>
+</TimingFile>

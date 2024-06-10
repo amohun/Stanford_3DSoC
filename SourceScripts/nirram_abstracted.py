@@ -74,13 +74,11 @@ class NIRRAM:
             polarity = "NMOS",
             settings = "settings/default.toml",
             debug_printout = False,
-            slow = False,
             test_type = "Default",
             additional_info = ""
             ):
         # flag for indicating if connection to ni session is open
         self.closed = True
-        self.slow=slow
         
         
         # If settings is a string, load as TOML file
@@ -853,8 +851,7 @@ class NIRRAM:
         # ---------------------------------------- #
 
         # Set channels to 0V
-        self.digital_patterns.digital_all_pins_to_zero(sessions=None,pins=self.all_channels,sort=True)
-
+        self.digital_patterns.digital_all_pins_to_zero(keep_power=False)
         # Reset Channels in high_z to Hi-Z
         if high_z is not None:
             self.digital_patterns.set_channel_termination_mode("high-z",pins=high_z,sessions=None,sort=True)
@@ -1052,7 +1049,8 @@ class NIRRAM:
         if mode.upper() == "SET" or mode.upper() == "FORM":
             for wl,wl_bls in zip(wls,bls):
                 for bl in wl_bls:
-                    print(res_array)
+                    if print_info:
+                        print(res_array)
                     if res_array.loc[wl,bl] <= target_res:
                         bls.remove(bl)
                         sls.remove("SL_" + str(bl[3:]))
@@ -1337,16 +1335,16 @@ class NIRRAM:
     
     #endregion other bookkeeping functions
 if __name__ == "__main__":
-    rram = NIRRAM("chip", "device",settings="settings/MPW_Direct_Write.toml", test_type="debug", additional_info="Debugging NIRRAM Read Operation.")
+    rram = NIRRAM("chip", "device",settings="settings/MPW_Direct_Write.toml", test_type="debug", additional_info="Debugging NIRRAM Pulse Operation.")
 
     # rram.relay_switch(["WL_0","WL_127"])
     print("NIRRAM Abstracted Class Loaded Successfully.")
 
-    rram.direct_read(wls=["WL_3"],bls=["BL_0","BL_7","BL_15"],record=True,check=True,print_info="all",debug_printout=False,relayed=True)
+    rram.direct_read(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],record=True,check=True,print_info="all",debug_printout=False,relayed=True)
     
     print("NIRRAM Read Operation Completed Successfully.")
     
-    rram.dynamic_pulse(wls=["WL_3"],bls=["BL_0","BL_7","BL_15"],mode="SET",record=True,print_data=True,target_res=None,average_resistance=True,debug_printout=False)
+    rram.dynamic_pulse(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],mode="SET",record=True,print_data=True,target_res=None,average_resistance=True,debug_printout=False)
     
     print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
     
