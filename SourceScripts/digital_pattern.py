@@ -10,6 +10,7 @@
 """    - pin_maps are specified in the same order for the sessions   """
 """ ---------------------------------------------------------------- """
 
+# region Import Libraries
 import numpy as np
 import sys
 from os import getcwd
@@ -25,6 +26,9 @@ sys.path.append(getcwd())
 import SourceScripts.load_settings as load_settings
 import SourceScripts.masks as masks
 from string_util import *
+from debug_util import DebugUtil
+# endregion
+
 class DigitalPatternException(Exception):
     """Exception produced by the DigitalPattern class"""
     def __init__(self, msg):
@@ -45,7 +49,8 @@ class DigitalPattern:
         settings = self.settings
         if "op" in settings:
             self.op = settings["op"]
-        self.debug = debug
+        
+        self.dbg = DebugUtil(debug)
 
         self.load_instruments()
         self.load_pin_maps()
@@ -53,12 +58,14 @@ class DigitalPattern:
         self.configure_timing()
         self.load_level_and_timing()
         self.ppmu_set_pins_to_zero()
-        self.clear_patterns()
         self.set_current_limit_range(self.all_pins, 2e-6, pin_sort=False)
         self.set_power(ignore_empty=True)
-        
-    # region Loading and Initialzation Functions    
-    def load_instruments(self,instruments=None):
+
+    """ ================================================= """
+    """      Loading and Initialization of Functions      """
+    """ ================================================= """
+    # region    
+    def load_instruments(self, instruments=None, debug=None):
         """
         Load instrument sessions based on provided settings.
         Initializes sessions for NiDigital and NiSwitch devices specified in settings.
@@ -73,32 +80,31 @@ class DigitalPattern:
         """
         self.relays = None
         self.sessions = None
-        self.sync = False 
+        self.sync = False
         
+        self.dbg.start_function_debug(debug)
+
         if instruments is None:
             try:
                 # Load NiDigital sessions
                 if "NIDigital" in self.settings:
-                    if "deviceID" in self.settings["NIDigital"]:
-                        import nidigital
-                        # Import nidigital library if not already imported
-                        if not self.check_library_import("nidigital"): import nidigital
+                    import nidigital
+                    device_ids = self.settings["NIDigital"].get("deviceID")
+                    if device_ids:
 
-                        # Create Session for each device    
-                        self.sessions = []
-                        for device_id in self.settings["NIDigital"]["deviceID"]:
-                            self.sessions.append(nidigital.Session(device_id))
-
-                        # self.sessions = [nidigital.Session(device_id) for device_id in self.settings["NIDigital"]["deviceID"]]
+                        # Ensure nidigital library if not already loaded
+                        if not self.check_library_import("nidigital"):
+                            import nidigital
                         
-                        # Set sync flag if multiple devices are provided
+                        # Load NI Digital sessions
+                        self.sessions = [nidigital.Session(device_id) for device_id in device_ids]
                         self.sync = len(self.sessions) > 1
                         
-                        # Import nitclk library if not already imported
-                        if self.sync and not self.check_library_import("nitclk"): import nitclk
-                    
+                        # Ensure nitclk library if sync is True
+                        if self.sync and not self.check_library_import("nitclk"):
+                            import nitclk
                     else:
-                        raise ValueError("NiDigital deviceID not found in settings")
+                        raise ValueError("NIDigital specified but no deviceID found in settings.")
                 
                 # Load NiSwitch session
                 if "NiSwitch" in self.settings:
@@ -112,30 +118,36 @@ class DigitalPattern:
                         self.relays = self.settings["NiSwitch"]["deviceID"]
                     
                     else:
-                        raise ValueError("NiSwitch deviceID not found in settings")
+                        raise ValueError("NiSwitch specified deviceID not found in settings.NiSwitch, \nPlease include a device ID for deviceID in NiSwitch")
             
             except Exception as e:
-                # Handle any potential errors
-                # Raise ValueError with error message if there is an exception
                 raise ValueError(f"Error loading instruments: {str(e)}")
-
+        
         else:
-            # Use session list to load nidigital or niswitch instruments based on device ID string
             if not isinstance(instruments, list):
-                raise ValueError("Instruments must be a list or provided as None to load from settings")
-            sessions = []
+                if isinstance(instruments, str):
+                    instruments = instruments.split(", ")
+                else:
+                    raise ValueError("Instruments must be a list or a string. \nAlternatively, provide as None to load from settings toml file")
+            
+            self.sessions = []
             for instrument in instruments:
                 if '6570' in instrument or '6571' in instrument:
-                    if not self.check_library_import("nidigital"): import nidigital
+                    if not self.check_library_import("nidigital"):
+                        import nidigital
                     self.sessions.append(nidigital.Session(instrument))
                 elif '2571' in instrument:
-                    if not self.check_library_import("niswitch"): import niswitch
+                    if not self.check_library_import("niswitch"):
+                        import niswitch
                     self.relays = niswitch.Session(instrument)
-            if len(sessions) > 1:
-                if not self.check_library_import("nitclk"): import nitclk
+            if len(self.sessions) > 1:
+                if not self.check_library_import("nitclk"):
+                    import nitclk
                 self.sync = True
-            elif len(sessions) < 1:
-                raise ValueError("No valid instruments provided,\n please use device names with '6570', '6571', or '2571' \nand ensure they match in NiMAX")
+            elif not self.sessions:
+                raise ValueError("No valid instruments provided. Please use device names with '6570', '6571', or '2571'. \nEnsure device names match those in NI MAX")
+
+        self.dbg.end_function_debug()
 
     def load_pin_maps(self,sessions=None,pinmaps=None, pingroups=None, debug=None):
         """
@@ -149,8 +161,9 @@ class DigitalPattern:
         """
 
         # Debug Printout
-        if debug is None: debug = self.debug
-        if debug: print("-------- Loading Pin Maps For Each Session --------")
+        self.dbg.start_function_debug(debug)
+        
+        self.dbg.debug_message("-------- Loading Pin Maps For Each Session --------")
 
         # If sessions and pinmaps are not provided, load from settings
         if sessions is None or pinmaps is None:
@@ -184,9 +197,9 @@ class DigitalPattern:
             session.load_pin_map(pinmap)
 
         # Debug Printout
-        if debug: 
-            print(f"Load Pinmaps {pinmaps} for Sessions {sessions}")
-            print("-------- Pin Maps Loaded For Each Session --------")
+        self.dbg.debug_message([f"Loading Pinmaps {pinmaps} for Sessions {sessions}","-------- Pin Maps Loaded For Each Session --------"])
+        
+        self.dbg.debug_message("-------- Loading Pin Groups For Each Session --------")
         
         # Define Pingroups for patterns and multi-pin operations
         self.pingroups = []
@@ -199,21 +212,28 @@ class DigitalPattern:
             if "pingroup_data" in digital: 
                 self.pingroup_data = [[self.settings["device"][group] for group in session] for session in digital["pingroup_data"]]
 
-
-
         else: self.pingroups = pingroups
 
         if len(self.pingroups) == 1 and type(self.pingroups[0]) is list:
             self.pingroups = self.pingroups[0]
 
         # Define the pins given for each session
-        self.all_pins_dict = {digital["deviceID"][self.sessions.index(session)]:[channel.pin_name for channel in session.get_pin_results_pin_information()] for session in self.sessions}
-        self.all_pins = [[channel.pin_name for channel in session.get_pin_results_pin_information()] for session in self.sessions]
+        self.all_pins_dict = {
+            digital["deviceID"][self.sessions.index(session)]: [channel.pin_name for channel in session.get_pin_results_pin_information()]
+            for session in self.sessions
+        }
+        
+        self.all_pins = [
+            [channel.pin_name for channel in session.get_pin_results_pin_information()]
+            for session in self.sessions
+        ]
+        
         self.all_pins_flat = list(chain.from_iterable(self.all_pins))
 
-        # Define system pingruops and pingroup names
+        self.dbg.debug_message([f"Loading Pin Groups {self.pingroups} for Sessions {sessions}","-------- Pin Groups Loaded For Each Session --------"])
+        self.dbg.end_function_debug()
 
-    def load_patterns(self,patterns=None,sessions=None):
+    def load_patterns(self,patterns=None,sessions=None, debug=None):
         """
         Load Patterns: Load patterns for each session based on settings.
         Raises DigitalPatternException if patterns are not found in settings.
@@ -223,6 +243,8 @@ class DigitalPattern:
             patterns are loaded from settings.
             
         """
+        self.dbg.start_function_debug(debug)
+
         # Define the digital specifications
         digital = self.settings["NIDigital"]
         
@@ -235,6 +257,7 @@ class DigitalPattern:
             if patterns is None:
                 if "patterns" in digital:
                     self.patterns = digital["patterns"]
+                    patterns = self.patterns
                 else:
                     # Raise error if no pattern is provided
                     raise DigitalPatternException("No patterns provided")
@@ -243,9 +266,12 @@ class DigitalPattern:
                 if type(patterns) is str: patterns = [patterns]
                 if type(patterns) is not list: raise DigitalPatternException("Patterns must be a list or a string")
                 if len(patterns) != len(sessions): raise DigitalPatternException("Number of patterns must match number of sessions")
-
-                for session, session_pattern in zip(sessions, patterns):
-                    session.load_pattern(session_pattern)
+            
+            for session, session_pattern in zip(sessions, patterns):
+                print(f"Loading pattern {session_pattern} for session {session}")
+                session.unload_all_patterns()
+                session.load_pattern(session_pattern)
+                session.commit()
         else:
             raise DigitalPatternException("No sessions provided")
         
@@ -254,7 +280,21 @@ class DigitalPattern:
         else:
             self.pattern_names = [text_between(pattern,"patterns/",".digipat") for pattern in self.patterns]
 
-    def load_level_and_timing(self,sessions=None):
+        self.dbg.end_function_debug()
+
+    def load_level_and_timing(self,sessions=None,debug = None):
+        """
+        Load Level and Timing:
+        Load levels and timing for each session based on settings.
+
+        Args:
+            sessions (list): List of sessions to load levels and timing for.
+            debug (bool): Print debug information if True
+        Returns:
+            None
+        """
+
+        self.dbg.start_function_debug(debug)
 
         digital = self.settings["NIDigital"]
 
@@ -267,8 +307,24 @@ class DigitalPattern:
                 
                 session.load_specifications_levels_and_timing(session_specs, session_levels, session_timing)
                 session.apply_levels_and_timing(session_levels, session_timing)
+                session.load_pattern
 
-    def set_power(self,pins=None,power_levels=None,sort=True,ignore_empty=False):
+        self.dbg.end_function_debug()
+
+    def set_power(self,pins=None,power_levels=None,sort=True,ignore_empty=False, debug=None):
+        """
+        Set Power: Set power levels for each session based on settings.
+        Raises ValueError if power pins are not found in settings.
+
+        Args:
+            pins (list): List of pins to set power levels for.
+            power_levels (list): List of power levels to set for each pin.
+            sort (bool): Sort pins based on the order of the sessions.
+            ignore_empty (bool): Ignore empty power pins if True.
+        """
+
+        self.dbg.start_function_debug(debug)
+
         if self.sessions is not None:
             if pins is None:
                 device = self.settings["device"]
@@ -291,9 +347,15 @@ class DigitalPattern:
                 self.ppmu_set_voltage(self,pins,power_levels,sort=False,source=True)
                 self.power_pins = pins
 
+        self.dbg.end_function_debug()
+
     # endregion
 
-    # region Utility Functions for Specific Program
+
+    """ ================================================= """
+    """      Utility Functions for Digital Patterns       """
+    """ ================================================= """
+    # region
     def configure_timing(self,sessions=None, timing=None, debug=None):
         """
         Configure Timing: Load timing sets for each session based on settings.
@@ -304,16 +366,13 @@ class DigitalPattern:
             timing (list): List of timing sets to load for each session.
             debug (bool): Print debug information if True.
         """
-        if debug is None: debug = self.debug
-        if debug: print("-------- Configuring Timing For Each Session --------")
+        self.dbg.start_function_debug(debug)
+        self.dbg.debug_message("-------- Configuring Timing For Each Session --------")
 
         # Load Timing Sets
         time_sets = self.settings["TIMING"] if timing is None else timing
         
         if sessions is None: sessions = self.sessions
-        
-        # Debug Printout
-        if debug: print(f"Timing Sets: {time_sets}")
         
         # Configure Timing for Each Session
         if sessions is not None:
@@ -323,11 +382,14 @@ class DigitalPattern:
                     session.configure_time_set_period(condition,time_sets[condition])
         else: 
             print("No sessions provided, timing not applied.")
+        
+        # Debug Printout
+        self.dbg.debug_message([f"Timing Sets: {time_sets}","-------- Timing Configured For Each Session --------"])
 
         # Debug Printout        
-        if debug: print("-------- Timing Configured For Each Session --------")
+        self.dbg.end_function_debug()
 
-    def configure_read(self, sessions=None, pins=None, sort=True):
+    def configure_read(self, sessions=None, pins=None, sort=True, debug=None):
         """
         Configure Read: Set the voltage and current levels for reading on the given sesions and pins.
             sessions: List of sessions to configure.
@@ -335,46 +397,48 @@ class DigitalPattern:
             sort: Sort the pins based on the order of the sessions.
         """
 
+        self.dbg.start_function_debug(debug)
+
         # Configure sessions and pins
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
 
         if self.op["READ"]["mode"] == "digital":
             for session, session_pins in zip(sessions,pins):
                 for pin in session_pins:
-                
                 # Configure NI-Digital current read measurements
                     session.channels[pin].ppmu_aperture_time = self.op["READ"]["aperture_time"]
                     session.channels[pin].ppmu_aperture_time_units = nidigital.PPMUApertureTimeUnits.SECONDS
                     session.channels[pin].ppmu_output_function = nidigital.PPMUOutputFunction.VOLTAGE
                     session.channels[pin].ppmu_current_limit_range = self.op["READ"]["current_limit_range"]
-
         else:
             raise DigitalPatternException("Invalid READ mode specified in settings")
 
-    def clear_patterns(self):
+        self.dbg.end_function_debug()
+
+
+    def clear_patterns(self, debug=None):
+        """
+        Clear Patterns: Unload all patterns from each session.
+        """
+
+        self.dbg.start_function_debug(debug)
+
         if self.sessions is not None:
             for session in self.sessions:
                 session.unload_all_patterns()
 
+        self.dbg.end_function_debug()
+
     # endregion
 
-    # region NiDigital Utility Functions for Setting Channel Modes
-    def set_channel_mode(self, mode, pins=None,sessions=None,sort=True,debug_printout=None):
-        if debug_printout is None: debug_printout = self.debug
+    """ ================================================= """
+    """      Utility Functions for Digital Channels       """
+    """ ================================================= """
+    # region
+    def set_channel_mode(self, mode, pins=None,sessions=None,sort=True,debug=None):
+        self.dbg.start_function_debug(debug)
 
-        if sessions is None:
-            if self.sessions is None:
-                raise ValueError("No sessions provided")
-            sessions = self.sessions
-        if pins is None:
-            if self.all_pins is None:
-                raise ValueError("No pins provided")
-            pins = self.all_pins
-            if debug_printout: print("Using all pins: sort turned off")
-            sort = False
-
-        if sort:
-            pins = self.sort_pins(pins)
+        sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
         
         if mode.lower() == "digital":
             for session,session_pins in zip(self.sessions,pins):
@@ -398,10 +462,12 @@ class DigitalPattern:
         else:
             raise ValueError("Invalid mode specified, please use 'digital', 'ppmu', 'off', or 'disconnect'")
 
-        if debug_printout: print(f"Setting mode to nidigital.SelectedFunction.{mode.upper()} for pins {pins}")
+        self.dbg.debug_message(f"Setting mode to nidigital.SelectedFunction.{mode.upper()} for pins {pins}")
 
-    def set_channel_termination_mode(self, mode="Hi-Z", pins=None,sessions=None,sort=True,debug_printout=None):
-        if debug_printout is None: debug_printout = self.debug
+        self.dbg.end_function_debug()
+
+    def set_channel_termination_mode(self, mode="Hi-Z", pins=None,sessions=None,sort=True,debug=None):
+        self.dbg.start_function_debug(debug)
 
         sessions,pins = self.format_sessions_and_pins(sessions,pins,sort)
 
@@ -412,14 +478,105 @@ class DigitalPattern:
             for session,session_pins in zip(sessions,pins):
                 session.channels[session_pins].termination_mode = nidigital.TerminationMode.HIGH_Z
 
+        self.dbg.end_function_debug()
     # endregion
 
-    # region NiDigital Sweeping Voltage Sets 0 and Static
-    def ppmu_set_pins_to_zero(self,sessions=None,pins=None,sort=True,relayed=True, delay=False):
+    """ ================================================= """
+    """   NiDigital Sweeping and Static Voltages/Current  """
+    """ ================================================= """
+    # region
+
+    # PPMU Voltage and Current Functions
+    def ppmu_set(self, pins, levels, mode="voltage", sessions=None, sort=True, source=False, debug=None):
+        """
+        This function will set the voltage or current levels for the specified pins.  
+        """
+
+        self.dbg.start_function_debug(debug)
+
+        sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
+
+        if sessions is not None:
+            for session_num, session in enumerate(sessions):
+                for pin, level in zip(pins[session_num], levels):
+                    if mode == "voltage":
+                        session.channels[pin].ppmu_voltage_level = level
+                    elif mode == "current":
+                        session.channels[pin].ppmu_current_level = level
+        if source:
+            self.ppmu_source(pins, sessions, sort=False, debug=debug)
+
+        self.dbg.end_function_debug()
+   
+    def ppmu_set_voltage(self, pins,voltage_levels,sessions = None, sort=True,source=False, debug=None):
+        """
+        PPMU Set Voltage: Set the voltage levels for each session and pin.
+        Assures that the voltage levels are within the range of -2V to 6V.
+
+        Args:
+            pins (list): List of pins to set voltage levels for.
+            voltage_levels (list): List of voltage levels to set for each pin.
+            sessions (list): List of sessions to set voltage levels for.
+            sort (bool): Sort the pins based on the order of the sessions.
+            source (bool): Source the voltage levels if True.
+            debug (bool): Print debug information if True.
+        """
+        
+        self.dbg.start_function_debug(debug)
+
+        # Verify voltage levels are within -2V to 6V
+        for v in voltage_levels:
+            assert v >= -2 and v <= 6, "Voltage levels must be between -2V and 6V"
+ 
+        # Set voltage levels for each session and pin
+        self.ppmu_set(pins,voltage_levels,mode="voltage",sessions=sessions,sort=sort,source=source)
+
+        self.dbg.end_function_debug()
+        return 0
+
+    def ppmu_set_current(self,pins,current_levels,sessions=None, sort=True, debug=None, source=False):
+            """
+            PPUM Set Current: Set the current levels for each session and pin.
+            
+            Args:
+                pins (list): List of pins to set current levels for.
+                current_levels (list): List of current levels to set for each pin.
+                sort (bool): Sort the pins based on the order of the sessions.
+                debug (bool): Print debug information if
+            """
+            self.dbg.start_function_debug(debug)
+            
+            self.ppmu_set(pins,current_levels,mode="voltage",sessions=sessions,sort=sort,source=source)
+
+            self.dbg.end_function_debug()
+            return 0
+
+    def ppmu_source(self,pins, sessions=None, sort=True, debug=None):
+        """
+        PPMU Source: Source the voltage levels for each session and pin.
+
+        Args:
+            pins (list): List of pins to source voltage levels for.
+            sort (bool): Sort the pins based on the order of the sessions.
+            debug (bool): Print debug information if True.
+        """
+        self.dbg.start_function_debug(debug)
+        
+        if sort:
+            pins = self.sort_pins(pins)
+        for session,session_pins in zip(self.sessions,pins):
+            session.channels[session_pins].ppmu_source()
+        
+        self.dbg.end_function_debug()
+        return 0
+
+    def ppmu_set_pins_to_zero(self,sessions=None,pins=None,sort=True,delay=False, debug=None):
         """ 
         Cleans up after PPMU operation 
         (otherwise levels default when going back digital)
         """
+        self.dbg.start_function_debug(debug)
+
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
         for session, session_pins in zip(sessions,pins):
             for pin in session_pins:
@@ -427,12 +584,71 @@ class DigitalPattern:
                 if delay:
                     time.sleep(2)
             session.ppmu_source()
-        return
+        
+        self.dbg.end_function_debug()
 
-    def digital_pins_to_zero(self,sessions=None,pins=None,sort=True,keep_power=True):
+        return 0
+
+
+    # Digital Voltage Functions
+    def digital_set_voltages(self, pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=True, debug=None):
+        """
+        Digital Set Voltages:
+        Set the voltage levels for the specified pins on each session.
+
+        Args:
+            pins (list): List of pins to set voltage levels for.
+            vi_lo (float): Low input voltage level.
+            vi_hi (float): High input voltage level.
+            vo_lo (float): Low output voltage level.
+            vo_hi (float): High output voltage level.
+            sort (bool): Sort the pins based on the order of the sessions.
+        """
+        self.dbg.start_function_debug(debug)
+
+        # Organize voltages into list for easy iteration
+
+        voltages = [vi_lo, vi_hi, vo_lo, vo_hi]
+
+        # Verify voltages are lists
+        for m, voltage in enumerate(voltages): 
+            if type(voltage) is not list:
+                voltage = [voltage]
+            if len(voltage) == 1:
+                voltage = voltage * len(pins)
+            voltages[m] = voltage  
+        
+        # Verify all voltage lists are the same length
+        print(voltages)
+        print(type(voltages))
+        print("\n\n\n\n")
+        exp_len = len(voltages[0])
+        for voltage in voltages:
+            if len(voltage) != exp_len:
+                raise ValueError("Voltage levels must be the same length")
+        # Verify all voltage lists are the same length as pins
+        if len(voltages[0]) != len(pins):
+            raise ValueError("Voltage levels must be the same length as pins")
+        
+        # Sort pins if needed
+        sessions,pins = self.format_sessions_and_pins(sessions,pins,sort)
+
+        vi_lo, vi_hi, vo_lo, vo_hi = voltages               
+    
+        for session,session_pins,vo_high,vo_low, vi_high, vi_low in zip(sessions,pins,vo_hi,vo_lo,vi_hi,vi_lo): 
+            for pin in session_pins:
+                print(f"Pin: {pin} Input Voltage: {vi_low} to {vi_high} Output Voltage: {vo_low} to {vo_high}")
+                session.channels[pin].configure_voltage_levels(vi_low, vi_high, vo_low, vo_high, 0.0)
+        
+        self.dbg.end_function_debug()
+        
+        return 0
+
+    def digital_pins_to_zero(self,sessions=None,pins=None,sort=True,keep_power=True, debug=None):
         """
         High z down to zero
         """
+        self.dbg.start_function_debug(debug)
 
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
         if pins == self.all_pins:
@@ -442,12 +658,15 @@ class DigitalPattern:
             self.write_static_to_pins(sessions=sessions,pins=pins)
             self.digital_set_voltages(pins, 0, 0, sort=False)
         
+        self.dbg.end_function_debug()
         return
 
-    def digital_all_pins_to_zero(self,keep_power=False):
+    def digital_all_pins_to_zero(self,keep_power=False, debug=None):
         """
         High z down to zero
         """
+        self.dbg.start_function_debug(debug)
+        
         all_pins = self.all_pins
         if keep_power:
             for session in all_pins:
@@ -458,11 +677,17 @@ class DigitalPattern:
         for digital in self.sessions:
             digital.channels[self.all_pins[self.sessions.index(digital)]].write_static(nidigital.WriteStaticPinState.X)
        
-        self.digital_set_voltages(all_pins, 0, 0, sort=False)
+
+        self.digital_set_voltages(all_pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=False)
         
+        self.dbg.end_function_debug()
         return
 
-    def write_static_to_pins(self, sessions=None, pins=None, value=0, sort=True,state='X'):
+
+    # Write Static to Pins
+    def write_static_to_pins(self, sessions=None, pins=None, sort=True,state='X', debug=None):
+        
+        self.dbg.start_function_debug(debug)
         
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
 
@@ -473,68 +698,57 @@ class DigitalPattern:
             for session, session_pins in zip(sessions,pins):
                 session.channels[session_pins].write_static(nidigital.WriteStaticPinState.ZERO)
         
-        return
+        self.dbg.end_function_debug()
 
+        return 0
+
+    # Commit to all Pins
+    def commit_all(self, debug=None):
+        """
+        NIDigital commit for all sessions
+        """
+        self.dbg.start_function_debug(debug)
+        for session in self.sessions:
+            session.commit()
+        self.dbg.end_function_debug()
+   
     # endregion
 
+    """ ================================================= """
+    """         NiDigital Voltage Pulse Functions         """
+    """ ================================================= """
+    # region
 
-    def sort_pins(self,pins,sessions=None, all_pins=None, debug_printout=None):
+    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, sort=True, digipat_prefix="", digipat_suffix="", patterns=None,debug=None):
         """
-        Sort Pins: Sort pins into a list of lists based on the order of the sessions.
-        Raises ValueError if no sessions are provided or if no pins are provided
+        A function for creating an arbitrary pulse based on given pulse groups and pulse lengths.
+        The pulse is created by combining the pulse groups and pulse lengths to create a waveform.
+        The waveform is then broadcasted to the given sessions and pin groups.
 
         Args:
-            pins (list): List of pins to sort.
-            sessions (list): List of sessions to sort pins for.
-            all_pins (list): List of all pins to sort.
-            debug_printout (bool): Print debug information if True.
-        
+            masks (list): List of masks to create waveforms for.
+            pulse_lens (list): List of pulse lengths for each pulse group.
+            max_pulse_len (list): List of maximum pulse lengths for each pulse group.
+            pulse_groups (list): List of pulse groups to create waveforms for.
+            sessions (list): List of sessions to broadcast waveforms to.
+            pingroups (list): List of pin groups to broadcast waveforms to.
+            sort (bool): Sort the pin groups based on the order of the sessions.
+            digipat_prefix (str): Prefix for the digital pattern variable.
+            digipat_suffix (str): Suffix for the digital pattern variable.
+            patterns (list): List of patterns to load for each session.
+            debug (bool): Print debug information if True.
+
         Returns:
-            sorted_pins (list): List of lists of pins sorted by session.
+            None
         """
-
-        # Set Debug Printout
-        if debug_printout is None: debug_printout = self.debug
-        if debug_printout: print("-------- Sorting Pins By Session --------")
-
-        # Set sessions based on argument or settings
-        sessions = sessions or self.sessions
-        if sessions is None:
-            raise ValueError("No sessions provided")
-
-        # Verify pins exist, 
-        if all_pins is None:
-            if self.all_pins is None:
-                raise ValueError("No pins provided")
-            elif sessions == self.sessions:
-                all_pins = self.all_pins
-            else:
-                all_pins = [[channel.pin_name for channel in session.get_pin_results_pin_information()] for session in sessions]
-
-        sorted_pins = []
-        for session in all_pins:
-            session_pins=[]
-            for pin in pins:
-                if pin in session:
-                    session_pins.append(pin)
-            sorted_pins.append(session_pins)
         
-        # Debug Printout
-        if debug_printout: print(f"For sessions {sessions} \nSorted Pins: {sorted_pins}\n-------- Pins Sorted By Session --------")
-
-        return sorted_pins         
-
-    """ Need to figure out how to get the pattern pulse to work with NI-Tclk Sync"""
-
-    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, sort=True, digipat_prefix="", digipat_suffix="", patterns=None,debug_printout = None ):
-        """Create waveform for directly contacting the array BLs, SLs, and WLs, then output that waveform"""
+        self.dbg.start_function_debug(debug)
         
         # ============= Load Sessions ================ #
         # - Get sessions from list or class attribute  #
         # - Verify sessions are provided as a list     #
         # ============================================ #
         sessions = sessions or self.sessions
-        debug_printout = debug_printout or self.debug
         
         if sessions is None:
             raise DigitalPatternException("No sessions provided")
@@ -566,7 +780,6 @@ class DigitalPattern:
         if not isinstance(patterns, list):
             patterns = [patterns]
 
-
         # ======================= Verify Setup ========================= #
         # - Verify the number of patterns matches the number of sessions #
         # - Verify pin groups are sorted properly                        #
@@ -592,54 +805,92 @@ class DigitalPattern:
         
         
         # ============= Build Waveforms ================ #
-        
-        waveforms, pulse_width = self.build_waveforms(masks, pulse_lens=pulse_lens, max_pulse_len=max_pulse_len, pulse_groups=pulse_groups, debug_printout=debug_printout)
+        print(masks)
+        waveforms, pulse_width = self.build_waveforms(masks, pulse_lens=pulse_lens, max_pulse_len=max_pulse_len, pulse_groups=pulse_groups, debug=debug)
         #WL_PULSE_DEC3.digipat or PULSE_MPW_ProbeCard.digipat as template file
-        
-        
         # Verify that the number of pin groups matches the number of waveforms
         if not len(pingroups) == len(waveforms):
             raise DigitalPatternException("Number of pin groups must match number of waveforms")
         
         # ============= Pulse Waveforms ================ #
+        self.dbg.debug_message(f"Sessions:{sessions}")
         for waveform_session_index,waveform_session_value in enumerate(waveforms):
-            if debug_printout: print(f"Sessions:{sessions}")
+            self.dbg.debug_message([f"Waveform Session Index: {waveform_session_index}", f"Waveform Session Value: {waveform_session_value}"])
 
             self.arbitrary_pulse(sessions[waveform_session_index],waveform_session_value, session_pingroups=self.pingroup_names[waveform_session_index], data_variable_prefix=digipat_prefix,data_variable_suffix=digipat_suffix, pulse_width=pulse_width)
-
+            
         if len(sessions) == 1:
-            sessions[0].burst_pattern(patterns[0])
-        
+            sessions[0].burst_pattern(self.pattern_names[0])
+
         # Synchronize Pulses using NITClk
         else:
+            print("pulse")
             for session_num, session in enumerate(sessions):
-                session.load_pattern(patterns[session_num])
                 session.start_label = self.pattern_names[session_num]
-            nitclk.configure_for_homogeneous_triggers(sessions)
+                session.configure_pattern_burst_sites()
+            _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
             nitclk.synchronize(sessions,200e-8)
-            nitclk.initiate(sessions)
+            # nitclk_session_list = nitclk.convert_sessions_to_session_number_list(sessions)
+            pdb.set_trace()
+            sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])
+           
+            # nitclk.initiate(sessions)
             nitclk.wait_until_done(sessions,10)
-        return
+            time.sleep(3)
+            print("stop")
+        quit()
+        self.dbg.end_function_debug()
+        return 
 
-    def arbitrary_pulse(self, session, waveform, session_pingroups, data_variable_prefix, data_variable_suffix, pulse_width=None):
+    def arbitrary_pulse(self, session, waveform, session_pingroups, data_variable_prefix, data_variable_suffix, pulse_width=None,debug=None):
+        self.dbg.start_function_debug(debug)
         broadcast = nidigital.SourceDataMapping.BROADCAST
-
-        for group in session_pingroups:
+        for group,wave in zip(session_pingroups,waveform):
             data_variable_in_digipat = f"{data_variable_prefix}{group}{data_variable_suffix}"
             session.pins[group].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
-            session.write_source_waveform_broadcast(data_variable_in_digipat, waveform)
+        for group,wave in zip(session_pingroups,waveform):
+            print(f"Waveform Size: {len(wave)} for group {group}")
+            print(type(wave))
+            session.write_source_waveform_broadcast(data_variable_in_digipat, wave)
         
         if pulse_width:
-            self.set_pw(pulse_width)
+            self.set_pw(pulse_width,session)
+        
+        self.dbg.end_function_debug()
         return
 
-    def build_temporal_mask(self, pulse_groups):
+    # endregion
+    
+    """ ================================================= """ 
+    """     NiDigital Voltage Pulse Utility Functions     """
+    """ ================================================= """
+    # region
+
+    def build_temporal_mask(self, pulse_groups, debug=None):
+        
+        """ 
+        Create a temporal mask for each session based on the pulse groups provided.
+        The temporal mask is created by checking if the pulse group is in the session group.
+        The mask is then formatted to be used in the build_waveforms function.
+
+        Args:
+            pulse_groups (list): List of pulse groups to create temporal masks for.
+            debug (bool): Print debug information if True.
+
+        Returns:
+            list: Temporal mask for each session.
+        """
+
+        self.dbg.start_function_debug(debug)
+        
         temporal_mask = []
         for pulse in pulse_groups:
             temporal_mask.append([[int(group in pulse) for group in session_groups]for session_groups in self.pingroup_names])
+        
+        self.dbg.end_function_debug()
         return(temporal_mask)
 
-    def build_waveforms(self, masks, pulse_lens, pulse_groups, max_pulse_len, debug_printout = None):
+    def build_waveforms(self, masks, pulse_lens, pulse_groups, max_pulse_len, debug=None):
     
         """ Create a pulse train. Formatted for each of the
         masks already defined, so that each mask can be driven
@@ -657,7 +908,7 @@ class DigitalPattern:
             k | 1 | 1 1 1 | 0 0 0 0 0 |
                 --------- Time -------->
         
-            Running Serially 10111011101110110000000000000000
+            Running Serially 1011,1011,1011,1011,0000,0000,0000,0000
         Pad with 0s to max_pulse_len
 
         Returns:
@@ -665,13 +916,13 @@ class DigitalPattern:
             int:  pulse_width   
         """
 
+        self.dbg.start_function_debug(debug)
+
         pingroup_names = self.pingroup_names
         if pingroup_names is not None:
             pingroup_names_flattened = list(chain.from_iterable(pingroup_names))
         else:
-            pingroup_names_flattened = []  
-
-        if debug_printout is None: debug_printout = self.debug
+            pingroup_names_flattened = []     
         
         create_temporal_mask = False
         for session in pulse_groups:
@@ -680,97 +931,74 @@ class DigitalPattern:
         if create_temporal_mask:
             pulse_groups = self.build_temporal_mask(pulse_groups)  
         
+        print(f"\n\n\nNew Masks: \n max_pulse_len: {max_pulse_len} \n pulse_lens: {pulse_lens} \n pulse_groups: {pulse_groups} \n\n\n")
         waveforms = []
         for session_num, session_masks in enumerate(masks):
             session_waveforms = []
             for group_num, group_masks in enumerate(session_masks):
-                group_waveform = np.array([],dtype=bool)
+                group_waveform = []
                 for pulse_len,step_included in zip(pulse_lens,pulse_groups):
-                    group_waveform = np.append(group_waveform, np.tile([group_masks & step_included[session_num][group_num]],pulse_len)) 
+                    group_waveform = group_waveform + [BitVector(bitlist = group_masks & step_included[session_num][group_num]).int_val()]*pulse_len
+                
+                self.dbg.debug_message(f"Group Waveform: {group_waveform}")
+                
                 waveform_len = len(group_waveform)
-                group_waveform = BitVector(bitlist=group_waveform).int_val()
-                group_waveform << (max_pulse_len*len(group_masks)-waveform_len)
+                group_waveform = group_waveform + [0]*(max_pulse_len-waveform_len)
+
                 session_waveforms.append(group_waveform)
             waveforms.append(session_waveforms)
-        return waveforms, sum(pulse_lens)
-
-    
-    def set_pw(self, pulse_width):
-        """Set pulse width"""
-        pw_register = nidigital.SequencerRegister.REGISTER0
-        for session in self.sessions:
-            session.write_sequencer_register(pw_register, pulse_width)
-
-
-
-    def ppmu_set_voltage(self, pins,voltage_levels,sessions = None, sort=True,source=False):
-        if sessions is None:
-            sessions = self.sessions
         
-        if sessions is not None:
-            for v in voltage_levels:
-                assert v >= -2 and v <= 6, "Voltage levels must be between -2V and 6V"
-            if sort:
-                pins = self.sort_pins(pins)
-            for session in sessions:
-                for pin, level in zip(pins[sessions.index(session)],voltage_levels):
-                    session.channels[pin].ppmu_voltage_level = level
-            if source:
-                for session,session_pins in zip(sessions,pins):
-                    session.channels[session_pins].ppmu_source() 
+        self.dbg.end_function_debug()
 
-    def ppmu_set_current(self,pins,current_levels,sort=True):
-            if sort:
-                pins = self.sort_pins(pins)            
+        return waveforms, sum(pulse_lens)
+    
+    def set_pw(self, pulse_width, session=None, debug=None):
+        """
+        Set pulse width: Set the pulse width for the given session to REGISTER0.
+        Args:
+            pulse_width (int): Pulse width to set.
+            session (nidigital.Session): Session to set the pulse width for.
+            debug (bool): Print debug information if True.
+        
+        returns: None
+        """
+        self.dbg.start_function_debug(debug)
+        pw_register = nidigital.SequencerRegister.REGISTER0
+        if session is None:
             for session in self.sessions:
-                for pin, level in zip(pins[self.sessions.index(session)],current_levels  ):
-                    session.channels[pin].ppmu_current_level = level
-            for session in self.sessions:
-               session.channels[pins].ppmu_source() 
+                print(f"Setting pulse width to {pulse_width} for session {session}")
+                session.write_sequencer_register(pw_register, pulse_width)
+        else:
+            print(f"Setting pulse width to {pulse_width} for session {session}")
+            session.write_sequencer_register(pw_register, pulse_width)
+        
+        self.dbg.end_function_debug()
+        
+        return 0
 
-    def ppmu_source(self,pins,sort=True):
-        if sort:
-            pins = self.sort_pins(pins)
-        for session,session_pins in zip(self.sessions,pins):
-            session.channels[session_pins].ppmu_source()
+    # endregion
 
-    def set_current_limit_range(self, channel=None, current_limit=1e-6, pin_sort=True):
+
+    """ ================================================= """
+    """              NiDigital Read Functions             """
+    """ ================================================= """
+    # region
+    def set_current_limit_range(self, channel=None, current_limit=1e-6, pin_sort=True, debug=None):
         """ Set current limit for a given channel """
+        
+        self.dbg.start_function_debug(debug)
         if pin_sort:
             channel  = self.sort_pins(channel)
         
         for digital,dev_pins in zip(self.sessions, channel):
             if dev_pins is not None:
                 digital.channels[dev_pins].ppmu_current_limit_range = current_limit
+        
+        self.dbg.end_function_debug()
+        
         return
 
-    def digital_set_voltages(self, pins, v_hi, v_lo, sort=True):
-        
-        if type(v_hi) is not list:
-            v_hi = [v_hi]
-        if type(v_lo) is not list:
-            v_lo = [v_lo]
-        
-        if len(v_hi) != len(v_lo):
-            raise ValueError("Voltage levels must be the same length")
-        
-        if len(v_hi) == 1:
-            v_hi = v_hi * len(pins)
-            v_lo = v_lo * len(pins)
-        
-        elif len(v_hi) != len(pins):
-            raise ValueError("Voltage levels must be the same length as pins")
-        
-        if self.sessions is not None:
-            if sort:
-                pins = self.sort_pins(pins)
-            
-            for session,session_pins,vi_hi,vi_lo in zip(self.sessions,pins,v_hi,v_lo):
-                for pin in session_pins:
-                    session.channels[pin].configure_voltage_levels(vi_lo, vi_hi, vi_lo, vi_hi, 0)
-        return
-
-    def measure_voltage(self, pins=None, sessions=None, sort=True):
+    def measure_voltage(self, pins=None, sessions=None, sort=True,debug=None):
         """
         Measure Voltage: Performs a voltage measurement on the specified
         pins, returning the measured voltages, a dictionary of the pins and
@@ -787,6 +1015,8 @@ class DigitalPattern:
             list: List of all measured voltages.
         
         """
+        self.dbg.start_function_debug(debug)
+
         # Check if sessions and pins are None, if so, use the class attributes
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
 
@@ -806,10 +1036,11 @@ class DigitalPattern:
         flattened_pins = list(chain.from_iterable(pins))
         flattened_voltages = list(chain.from_iterable(measured_voltages))
         
+        self.dbg.end_function_debug()
         # Return the measured voltages, a dictionary of pins and their measured voltages, and a list of all measured voltages
         return measured_voltages, dict(zip(flattened_pins,flattened_voltages)), list(chain.from_iterable(measured_voltages))
 
-    def measure_current(self, pins=None, sessions=None, sort=True):
+    def measure_current(self, pins=None, sessions=None, sort=True, debug=None):
         """
         Measure Current: Performs a current measurement on the specified
         pins, returning the measured currents, a dictionary of the pins and
@@ -825,7 +1056,7 @@ class DigitalPattern:
             dict: Dictionary of pins and their measured currents.
             list: List of all measured currents.
         """
-    
+        self.dbg.start_function_debug(debug)
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
 
         measured_currents = []
@@ -842,11 +1073,17 @@ class DigitalPattern:
         # Flatten the list of measured currents to remove session sorting
         flattened_currents = list(chain.from_iterable(measured_currents))
         
+        self.dbg.end_function_debug()
         return measured_currents, dict(zip(flattened_pins,flattened_currents)), list(chain.from_iterable(measured_currents))
+    
+    # endregion
 
 
-
-
+    """ ================================================= """
+    """              NiSwitch Relay Functions             """
+    """ ================================================= """
+    #region
+    
     def connect_relays(self, relays=None, channels=None,debug=None):
         """
         Connect to specified channels on a relay module.
@@ -859,9 +1096,8 @@ class DigitalPattern:
 
         Raises:
             ValueError: If channels is not a list or if self.relays is not initialized.
-
         """
-        if debug is None: debug = self.debug
+        self.dbg.start_function_debug(debug)
         if relays is None: relays = self.relays
         if channels is None: raise DigitalPatternException("No channels/pins provided")
 
@@ -881,13 +1117,17 @@ class DigitalPattern:
             with niswitch.Session(relay) as relay_session:
                 relay_session.disconnect_all()
                 for ch in channel:
-                    if debug: print(f"Connecting com{ch} to no{ch} on {relay}")
+                    self.dbg.debug_message(f"Connecting com{ch} to no{ch} on {relay}")
                     relay_session.connect(f"com{ch}",f"no{ch}")
+        
+        self.dbg.end_function_debug()
+        return 0
+
+    #endregion
 
 
     def format_sessions_and_pins(self, sessions=None, pins=None, sort = True, debug=None):
-        if debug is None: debug = self.debug
-        if debug: print("-------- Formatting Sessions and Pins --------")
+        self.dbg.start_function_debug(debug)
 
         if sessions is None:
             if self.sessions is None:
@@ -900,7 +1140,7 @@ class DigitalPattern:
             if self.all_pins is None:
                 raise DigitalPatternException("No pins provided")
             pins = self.all_pins
-            if debug: print("Using all pins: sort turned off")
+            self.dbg.debug_message("Using all pins: sort turned off")
             sort = False
         
         if sort:
@@ -921,16 +1161,69 @@ class DigitalPattern:
                 if pin not in self.all_pins_flat:
                     raise DigitalPatternException(f"Invalid pin provided: {pin} not found in all pins\n{self.all_pins_flat}")
 
-        if debug: print("--------Sessions and Pins Formatted--------")
+        self.dbg.end_function_debug()
         
         return sessions, pins
 
+
+    """ ================================================= """
+    """              Utility Functions                    """
+    """ ================================================= """
     def check_library_import(self, lib_name):
         """
         Checks if library is imported in the current environment.
         Returns True if so, False otherwise.
         """
         return lib_name in sys.modules
+
+    def sort_pins(self,pins,sessions=None, all_pins=None, debug=None):
+        """
+        Sort Pins: Sort pins into a list of lists based on the order of the sessions.
+        Raises ValueError if no sessions are provided or if no pins are provided
+
+        Args:
+            pins (list): List of pins to sort.
+            sessions (list): List of sessions to sort pins for.
+            all_pins (list): List of all pins to sort.
+            debug (bool): Print debug information if True.
+        
+        Returns:
+            sorted_pins (list): List of lists of pins sorted by session.
+        """
+
+        # Set Debug Printout
+        self.dbg.start_function_debug(debug)
+
+        # Set sessions based on argument or settings
+        sessions = sessions or self.sessions
+        if sessions is None:
+            raise ValueError("No sessions provided")
+
+        # Verify pins exist, 
+        if all_pins is None:
+            if self.all_pins is None:
+                raise ValueError("No pins provided")
+            elif sessions == self.sessions:
+                all_pins = self.all_pins
+            else:
+                all_pins = [[channel.pin_name for channel in session.get_pin_results_pin_information()] for session in sessions]
+
+        sorted_pins = []
+        for session in all_pins:
+            session_pins=[]
+            for pin in pins:
+                if pin in session:
+                    session_pins.append(pin)
+            sorted_pins.append(session_pins)
+        
+        # Debug Printout
+        self.dbg.debug_message(f"For sessions {sessions} \nSorted Pins: {sorted_pins}")
+        self.dbg.end_function_debug()
+
+        return sorted_pins         
+
+    """ Need to figure out how to get the pattern pulse to work with NI-Tclk Sync"""
+
 
     def match_dimensions(self,list_of_lists, list_of_strings, debug=None):
         """
@@ -944,9 +1237,7 @@ class DigitalPattern:
         Returns:
             list: List of lists with strings appended to each sublist.
         """
-
-        if debug is None: debug = self.debug
-        if debug: print("-------- Matching Dimensions --------")
+        self.dbg.start_function_debug(debug)
         
         # Make a copy of the list of lists to preserve the original
         result = [sublist[:] for sublist in list_of_lists]
@@ -956,7 +1247,7 @@ class DigitalPattern:
             # Append the string to the sublist
             sublist.append(string)
         
-        if debug: print("-------- Dimensions Matched --------")
+        self.dbg.end_function_debug()
         
         return result
 

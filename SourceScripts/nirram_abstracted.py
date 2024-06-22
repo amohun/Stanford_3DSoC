@@ -186,8 +186,6 @@ class NIRRAM:
         if "PULSE" in settings:
             if "prepulse_len" in settings["PULSE"]:
                 self.prepulse_len = settings["PULSE"]["prepulse_len"]
-            if "pulse_len" in settings["PULSE"]:
-                self.pulse_len = settings["PULSE"]["pulse_len"]
             if "postpulse_len" in settings["PULSE"]:
                 self.postpulse_len = settings["PULSE"]["postpulse_len"]
         if "max_pulse_len" in settings["PULSE"]:
@@ -223,6 +221,9 @@ class NIRRAM:
         self.digital = self.digital_patterns.sessions
 
         self.digital_patterns.configure_read(sessions=None,pins=[self.bls,self.sls],sort=False)
+
+        self.digital_patterns.digital_all_pins_to_zero()
+        self.digital_patterns.commit_all()
 
     def read_1tnr(        
             self,
@@ -272,7 +273,6 @@ class NIRRAM:
         wls = self.wls if wls is None else wls
         bls = self.bls if bls is None else bls
 
-        print(bls)
         if type(bls[0]) is not list:
             bls = [bls]*len(wls)
 
@@ -342,7 +342,6 @@ class NIRRAM:
 
             for wl_i in all_wls:
                 if wl_i in wl:
-                    # print(f"Setting {wl_i} to {vwl} V")
                     self.ppmu_set_vwl(wl_i, vwl)
                 elif wl_i in remove_bias:
                     self.ppmu_set_vwl(wl_i, vsl)
@@ -361,39 +360,37 @@ class NIRRAM:
 
             # Measure selected voltage. Default is to measure VBL
             if meas_vbls:
-                # print(wl_bls)
-                # print("\n\n\n\n\n\n\n")
                 meas_bls_v_by_session,dict_meas_bls_v,meas_bls_v = self.digital_patterns.measure_voltage([wl_bls,[],[]],sort=False)
             
-                if debug_printout:
-                    print([f"{bl} = {meas_bl_v}" for bl, meas_bl_v in zip(wl_bls, meas_bls_v)])
+                # if debug_printout:
+                #     if meas_vbls:
+                #         print([f"{bl} = {meas_bl_v}" for bl, meas_bl_v in zip(wl_bls, meas_bls_v)])
         
 
             if meas_vsls:
                 meas_sls_v_by_session,dict_measure_sls_v,meas_sls_v = self.digital_patterns.measure_voltage([[],wl_sls,[]],sort=False)
 
-                if debug_printout:
-                    print([f"{sl} = {meas_sl_v}" for sl, meas_sl_v in zip(sls, meas_sls_v)])
+                # if debug_printout:
+                #     print([f"{sl} = {meas_sl_v}" for sl, meas_sl_v in zip(sls, meas_sls_v)])
 
             if meas_vwls:
                 meas_wls_v_by_session,dict_meas_sls_v,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wls],sort=False)
 
-                if debug_printout:
-                    print([f"{wl} = {meas_wl_v}" for wl, meas_wl_v in zip(wls, meas_wls_v)])
+                # if debug_printout:
+                #     print([f"{wl} = {meas_wl_v}" for wl, meas_wl_v in zip(wls, meas_wls_v)])
 
             # Measure selected current, default is to measure ISL and I gate
             if meas_isls: 
                 _,_,meas_sls_i = self.digital_patterns.measure_current([[],wl_sls,[]],sort=False)
-                # print(f"meas_sls_i: {meas_sls_i}")
 
-                if debug_printout:
-                    print([f"{sl} = {meas_sl_i}" for sl, meas_sl_i in zip(wl_sls, meas_sls_i)])
+                # if debug_printout:
+                #     print([f"{sl} = {meas_sl_i}" for sl, meas_sl_i in zip(wl_sls, meas_sls_i)])
 
             if meas_ibls:
                 _,_,meas_bls_i = self.digital_patterns.measure_current([[],[],wl_bls],sort=False)
 
-                if debug_printout:
-                    print([f"{bl} = {meas_bl_i}" for bl, meas_bl_i in zip(wl_bls, meas_bls_i)])
+                # if debug_printout:
+                #     print([f"{bl} = {meas_bl_i}" for bl, meas_bl_i in zip(wl_bls, meas_bls_i)])
 
             if meas_i_gate:
                 if type(wl) is str:
@@ -406,9 +403,16 @@ class NIRRAM:
                     else:
                         _,_,meas_wls_i = self.digital_patterns.measure_current([[],[],[f"WL_{wl}"]],sort=False)
 
-                if debug_printout:
-                    print([f"{wl} = {meas_wl_i}" for wl, meas_wl_i in zip(wls, meas_wls_i)])
+                # if debug_printout:
+                #     print([f"{wl} = {meas_wl_i}" for wl, meas_wl_i in zip(wls, meas_wls_i)])
         
+            
+            if self.relays is not None:
+                self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wl_signals],sort=False)
+            else:
+                self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wls],sort=False)
+
+
             if meas_isls:
                 if debug_printout:
                     print(f"measure ISL")
@@ -453,13 +457,6 @@ class NIRRAM:
             formatted_v.append([f"{value:.2e}V" for value in meas_v_array.loc[wl]])
 
             self.all_wls = self.settings["device"]["all_WLS"]
-
-
-        if self.relays is not None:
-            self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wl_signals],sort=False)
-        else:
-            self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wls],sort=False)
-
 
         if print_info == True or type(print_info) is str:
         
@@ -628,63 +625,112 @@ class NIRRAM:
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
-        self.digital_patterns.set_channel_mode("ppmu", pins=channels,sessions=None,sort=sort,debug_printout=debug_printout)
+        self.digital_patterns.set_channel_mode("ppmu", pins=channels,sessions=None,sort=sort,debug=debug_printout)
 
 
-    def digital_set_voltage(self, channels, vi_lo, vi_hi, vo_lo, vo_hi, name, sort=True):
+    def digital_set_voltage(self, channels, sessions=None, vi_lo=0, vi_hi=1, vo_lo=0, vo_hi=1, name=None, sort=True, debug_printout=None):
+
+        # Set the value for debug_printout if not provided
+        debug_printout = self.start_function_debug_printout(debug_printout, "digital_set_voltage")
+        # Verfiy that any individually given channels are turned into a list to match the expected format
         if type(channels) is not list:
             channels = [channels]
-        
+        if type(sessions) is not list:
+            sessions = [sessions]
+        # Channels may be given as integers, if so, convert to strings for nidigital
+        #   Ex: channels = [0, 1, 2], name = DIO -> channels = ["DIO_0", "DIO_1", "DIO_2"]
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
+        # region verify channels exist
         for chan in channels:
             if chan not in self.settings["device"][f"all_{name}S"]:
                 raise NIRRAMException(f"Invalid V{name} channel {chan}. \nChannel not in all_{name}S.")
-        
-        if type(vi_lo) is not list: vi_lo = [vi_lo]
-        if type(vi_hi) is not list: vi_hi = [vi_hi]
-        if type(vo_lo) is not list: vo_lo = [vo_lo]
-        if type(vo_hi) is not list: vo_hi = [vo_hi]
+        #endregion
+        instruments =  self.digital_patterns.settings["NIDigital"]
 
-        if len(vi_lo) == 1: vi_lo = vi_lo * len(channels)
-        if len(vi_hi) == 1: vi_hi = vi_hi * len(channels)
-        if len(vo_lo) == 1: vo_lo = vo_lo * len(channels)
-        if len(vo_hi) == 1: vo_hi = vo_hi * len(channels)
+        for num, session in enumerate(sessions):
+            if type(session) is int:
+                if session not in range(len(self.digital)):
+                    raise NIRRAMException(f"Invalid session {session}. \nSession not in range(len(self.digital)).")
+            elif type(session) is str:
+                if session in instruments["pingroups"]:
+                    sessions[num] = self.digital[instruments["pingroups"].index(session)]
+                elif session in self.all_channels:
+                    sessions[num] = self.digital[self.all_channels.index(session)//32]
+            elif type(session) != type(self.digital[0]):
+                raise NIRRAMException(f"Invalid session {session}. \nSession not in range(len(self.digital)).")
+            
+        # Convert voltages into a list of voltages for easier debugging
+        voltages = [vi_lo, vi_hi, vo_lo, vo_hi]
 
-        if len(vi_lo) != len(channels) or len(vi_hi) != len(channels) or len(vo_lo) != len(channels) or len(vo_hi) != len(channels):
-            raise NIRRAMException(f"Number of V{name} channels ({len(channels)}) does not match number of V{name} voltages ({len(vi_lo)}, {len(vi_hi)}, {len(vo_lo)}, {len(vo_hi)}).")
+        # region Verify that the voltages are lists to allow for multiple voltages
+        # If the voltage is a single value, repeat it for all channels
+        for n, voltage in enumerate(voltages):
+            if type(voltage) is not list:
+                voltage = [voltage]
+            if len(voltage) == 1:
+                voltage = voltage * len(channels)
+            voltages[n] = voltage
+        if any(len(voltage) != len(channels) for voltage in voltages):
+            raise NIRRAMException(f"Specified voltage levels must match number of channels. \nNum channels: {len(channels)} \nNum voltages: vi_lo: {len(vi_lo)}, vi_hi: {len(vi_hi)}, vo_lo: {len(vo_lo)}, vo_hi: {len(vo_hi)}")
+        # endregion
 
-        self.digital_patterns.digital_set_voltages(pins=channels,v_hi=vi_hi,v_lo=vi_lo,sort=sort)    
+        self.internal_function_debug_printout(debug_printout, "Setting", ["vi_lo", "vi_hi", "vo_lo", "vo_hi"], voltages)
+ 
+        vi_lo, vi_hi, vo_lo, vo_hi = voltages
+        
+        # Set the voltages using the digital_set_voltages function
+        self.digital_patterns.digital_set_voltages(pins=channels, sessions=sessions, vi_lo=vi_lo, vi_hi=vi_hi, vo_lo=vo_lo, vo_hi=vo_hi,sort=sort)
 
-    def set_vsl(self, vsl_chan, vsl, vsl_lo, debug_printout = None):
-        if debug_printout is None: debug_printout = self.debug_printout
-        
-        """Set VSL using NI-Digital driver"""
-        self.digital_set_voltage(vsl_chan, vsl_lo, vsl_lo, vsl, vsl, "SL", sort=True)
-        
-        if debug_printout: print("Setting VSL: " + str(vsl) + " on chan: " + str(vsl_chan))
+        self.end_function_debug_printout(debug_printout, "digital_set_voltage")
 
-    def set_vbl(self, vbl_chan, vbl, vbl_lo, debug_printout = None):
-        if debug_printout is None: debug_printout = self.debug_printout
+
+    def set_vsl(self, vsl_chan, vsl_hi, vsl_lo, debug_printout = None):
+        # Debug Printout: Start and Internal
+        debug_printout = self.start_function_debug_printout(debug_printout, "set_vsl")
+        self.internal_function_debug_printout(debug_printout, f"Setting VSL for {vsl_chan}", ["vsl_hi", "vsl_lo"], [vsl_hi, vsl_lo])
         
-        """Set VBL using NI-Digital driver"""
-        self.digital_set_voltage(vbl_chan, vbl_lo, vbl_lo, vbl, vbl, "BL", sort=True)
+        # Set VSL using NI-Digital Drivers
+        self.digital_set_voltage(vsl_chan, "SL", vi_lo=vsl_lo, vi_hi=vsl_hi, vo_lo=vsl_lo, vo_hi=vsl_hi, name="SL", sort=True,debug_printout=debug_printout)
         
-        if debug_printout: print("Setting VBL: " + str(vbl) + " on chan: " + str(vbl_chan))
-    
-    def set_vwl(self, vwl_chan, vwl, vwl_lo, debug_printout = None):
-        if debug_printout is None: debug_printout = self.debug_printout
+        # Debug Printout: End
+        self.end_function_debug_printout(debug_printout, "set_vsl")
+
+
+    def set_vbl(self, vbl_chan, vbl_hi, vbl_lo, debug_printout = None):
+        # Debug Printout: Start and Internal
+        print("Setting VBL")
+        # pdb.set_trace()
+        debug_printout = self.start_function_debug_printout(debug_printout, "set_vbl")
+        self.internal_function_debug_printout(debug_printout, f"Setting VBL for {vbl_chan}", ["vbl_hi", "vsl_lo"], [vbl_hi, vbl_lo])
         
-        """Set VWL using NI-Digital driver"""
+        # Set VSL using NI-Digital Drivers
+        self.digital_set_voltage(vbl_chan, "BL", vi_lo=vbl_lo, vi_hi=vbl_hi, vo_lo=vbl_lo, vo_hi=vbl_hi, name="BL", sort=True,debug_printout=debug_printout)
+        
+        # Debug Printout: End
+        self.end_function_debug_printout(debug_printout, "set_vsl")   
+
+
+    def set_vwl(self, vwl_chan, vwl_hi, vwl_lo, debug_printout = None):
+        print("Setting VWL")
+        # pdb.set_trace()
+        # Debug Printout: Start and Internal
+        debug_printout = self.start_function_debug_printout(debug_printout, "set_vwl")
+        self.internal_function_debug_printout(debug_printout, f"Setting VWL for {vwl_chan}", ["vwl_hi", "vsl_lo"], [vwl_hi, vwl_lo])
+        
+        # Set WL name based on if they are relayed
         if all(len(chan) > 6 for chan in vwl_chan):
-            self.digital_set_voltage(vwl_chan, vwl_lo, vwl_lo, vwl, vwl, "WL_SIGNAL", sort=True)
+            wl_name = "WL_SIGNAL"
         elif all(len(chan) < 7 for chan in vwl_chan):
-            self.digital_set_voltage(vwl_chan, vwl_lo, vwl_lo, vwl, vwl, "WL", sort=True)
+            wl_name = "WL"
         else:
             raise NIRRAMException(f"Invalid VWL channel {vwl_chan}. \nChannel not in all_WL_SIGNALS or all_WLS.")
+        # Set VWL using NI-Digital Drivers
+        self.digital_set_voltage(vwl_chan, "WL", vi_lo=vwl_lo, vi_hi=vwl_hi, vo_lo=vwl_lo, vo_hi=vwl_hi, name=wl_name, sort=True,debug_printout=debug_printout)
         
-        if debug_printout: print("Setting VWL: " + str(vwl) + " on chan: " + str(vwl_chan))
+        # Debug Printout: End
+        self.end_function_debug_printout(debug_printout, "set_vwl")
 
     def set_to_digital(self,channels,name, sort=True,debug_printout=None):
         
@@ -751,14 +797,16 @@ class NIRRAM:
         pulse_lens = None,
         max_pulse_len = None
         ):
-        debug_printout = debug_printout or self.debug_printout
+        debug_printout = True #debug_printout or self.debug_printout
+
+        pulse_lens = pulse_lens or [self.prepulse_len, pulse_len, self.postpulse_len]
+        max_pulse_len  = max_pulse_len or self.max_pulse_len
 
         # If masks is none or empty, and pingroups are not none, set masks to pingroups
         if masks is None:
             raise NIRRAMException("Masks cannot be None. Please provide a mask to write_pulse.")
         
         masks = masks
-
         # Get the Pulse Parameters
         vwl = vwl or self.op[mode][self.polarity]["VWL"]
         vbl = vbl or self.op[mode][self.polarity]["VBL"]
@@ -804,6 +852,7 @@ class NIRRAM:
             all_wls = self.all_wl_signals + self.all_wls
         else:
             all_wls = self.all_wls
+        
         if debug_printout:
             print(wls)
             
@@ -815,18 +864,21 @@ class NIRRAM:
 
         # Set UNSEL Wordlines to the desired voltage
         self.set_vwl(["WL_UNSEL"], vwl_unsel, vwl_lo=v_base, debug_printout = debug_printout)
-        if self.debug_printout: print(f"Setting UNSEL WLS {unsel_wls} to {vwl_unsel} V") 
+        if self.debug_printout: print(f"Setting UNSEL WLS to {vwl_unsel} V") 
         
         # Set SEL Wordlines to the desired voltage
         self.set_vwl(wls, vwl, vwl_lo=v_base, debug_printout = debug_printout)
-        if self.debug_printout: print(f"Setting SEL WLS {wls} to {vwl} V")    
-           
+        if self.debug_printout: print(f"Setting SEL WLS {wls} to {vwl} V")
 
         # Set Bitlines to the desired voltage
         if bl_selected is not None:
             bls_unselected = [bl for bl in self.bls if bl not in bl_selected]
+            print(self.bls)
+            print(bls_unselected)
             self.set_vbl(self.bls, vbl, vbl_lo=v_base, debug_printout = debug_printout)
-            self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug_printout = debug_printout)
+            if len(bls_unselected) > 0:
+                self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug_printout = debug_printout)
+            if debug_printout: print(f"Setting BLs {bls_unselected} to {vbl_unsel} V")
         else:
             self.set_vbl(self.bls, vbl_hi = vbl, vbl_lo=v_base, debug_printout = debug_printout)
         if debug_printout: print(f"Setting BLs {self.bls} to {vbl} V")
@@ -842,8 +894,6 @@ class NIRRAM:
         for session in self.digital_patterns.sessions:
             session.commit()
         
-        pulse_lens = pulse_lens or [self.prepulse_len, self.pulse_len, self.postpulse_len]
-        max_pulse_len  = max_pulse_len or self.max_pulse_len
         self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[["WL_IN"],["BL","SL","WL_IN"],["WL_IN"]] )
 
         # ---------------------------------------- #
@@ -1030,7 +1080,7 @@ class NIRRAM:
 
         return res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array
 
-    def check_cell_resistance(self,res_array, wls, bls, sls, target_res,voltages, mode,writer=None):
+    def check_cell_resistance(self,res_array, wls, bls, sls, target_res,voltages, mode,writer=None,print_info=False,debug_printout=None):
 
         # Remove every cell that is in target resistance
         if mode.upper() == "RESET":
@@ -1095,6 +1145,7 @@ class NIRRAM:
 
         # Set WLS and BLS based on self or input
         wls = wls or self.wls
+
         bls = bls or self.bls
         
 
@@ -1194,9 +1245,13 @@ class NIRRAM:
             self.sls = wl_sls
 
             for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
+                print("new VSL: ", vsl)
                 for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
+                    print("new VBL: ", vbl)
                     for pw in np.arange(pw_start,pw_stop,pw_step):
+                        print("new PW: ", pw)
                         for vwl in np.arange(vwl_start,vwl_stop,vwl_step):
+                            print(f"new_vwl: ", vwl)
                              # Set the masks for the cells that are not in target resistance
                             if self.relays is not None:
                                 all_channels = [self.all_bls,self.all_sls,self.all_wl_signals]
@@ -1215,22 +1270,34 @@ class NIRRAM:
                             
                             masks = mask_list.get_pulse_masks()
                             # Write the pulse
-                            print(masks)
+
+                            print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pw)
+                            # for i in range(5):
+                            #     print("Pulsing in ", 5-i)
+                            #     time.sleep(1)
 
                             self.write_pulse(
                                 masks, 
                                 sessions=sessions, 
                                 mode=mode, 
-                                bl_selected=bls, 
+                                bl_selected=wl_bls, 
                                 vwl=vwl, 
                                 vbl=vbl, 
                                 vsl=vsl, 
                                 pulse_len=pw, 
                                 high_z=["wl"], 
-                                debug_printout=debug_printout)     
-                            quit()              
-
-        print(cells_to_write)
+                                debug_printout=debug_printout)
+                            print("Pulsed ")
+                            
+                            measurements = self.read_written_cells(average_resistance=average_resistance,wls=wls,bls=bls,record=record,print_info=print_data)
+                            res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
+                            cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, voltages, mode)
+                            
+                            if cells_to_write == "DONE":
+                                self.record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
+                                return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
+                            
+                            wls,bls,sls = cells_to_write     
         quit()
 
     def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug_printout=None):
@@ -1304,10 +1371,11 @@ class NIRRAM:
         elif mode.lower() == "reset":
             self.reset_target_res = target_res
         elif mode.lower() == "set":
+            print("Mode: ", mode.lower())
             self.set_target_res = target_res
         else:
             raise NIRRAMException("Invalid mode. Please select 'form', 'reset', or 'set'.")
-        
+  
     def relay_switch(self, wls, relayed=True, debug_printout = None):
         if debug_printout is None: debug_printout = self.debug_printout
 
@@ -1334,16 +1402,50 @@ class NIRRAM:
         return wl_input_signals, all_wls
     
     #endregion other bookkeeping functions
+
+
+    # region Debugging Functions  
+    def start_function_debug_printout(self, debug_printout, current_function):
+        if debug_printout is None:
+            debug_printout = self.debug_printout 
+        if debug_printout:
+            dash = "-"*len(current_function)
+            print("\n\n--------",dash)
+            print(f"Running {current_function}...")
+            print(dash,"------\n")
+            del(dash)
+        return debug_printout
+
+    def internal_function_debug_printout(self, debug_printout, internal, variables, values):
+        if debug_printout:
+            print(f"{internal} variables: {variables}:\n")
+            for variable, value in zip(variables, values):
+                print(f"{variable}: {value}")
+            return 0
+
+
+    def end_function_debug_printout(self, debug_printout, current_function):
+        if debug_printout:
+            print("\n\n ---------------------------------")
+            print(f"Finished {current_function}...")
+            print(" ---------------------------------\n")
+            return 0
+    # endregion
+
+    
 if __name__ == "__main__":
     rram = NIRRAM("chip", "device",settings="settings/MPW_Direct_Write.toml", test_type="debug", additional_info="Debugging NIRRAM Pulse Operation.")
 
     # rram.relay_switch(["WL_0","WL_127"])
     print("NIRRAM Abstracted Class Loaded Successfully.")
 
-    rram.direct_read(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],record=True,check=True,print_info="all",debug_printout=False,relayed=True)
+    # rram.direct_read(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],record=True,check=True,print_info="all",debug_printout=False,relayed=True)
     
     print("NIRRAM Read Operation Completed Successfully.")
     
+    # rram.ppmu_set_vbl(["BL_0","BL_7","BL_15"],vbl=0.5)
+    # rram.digital_patterns.commit_all()
+    # time.sleep(10)
     rram.dynamic_pulse(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],mode="SET",record=True,print_data=True,target_res=None,average_resistance=True,debug_printout=False)
     
     print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
