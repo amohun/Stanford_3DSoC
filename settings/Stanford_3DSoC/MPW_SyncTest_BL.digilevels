@@ -3,22 +3,22 @@
   <PinLevelsSheet>
     <DigitalPinLevelSets>
       <DigitalPinLevelSet pin="BL_0">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>-1.2</Vil>
+        <Vih>5.8</Vih>
+        <Vol>-1.2</Vol>
+        <Voh>5.8</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_1">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>-2</Vil>
+        <Vih>-2</Vih>
+        <Vol>-2</Vol>
+        <Voh>-2</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_2">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>6</Vil>
+        <Vih>6</Vih>
+        <Vol>6</Vol>
+        <Voh>6</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_3">
         <Vil>0</Vil>
@@ -198,19 +198,19 @@
     <PpmuPinLevelSets>
       <PpmuPinLevelSet pin="BL_0">
         <Vf>0</Vf>
-        <IRange>2 µA</IRange>
+        <IRange>32 µA</IRange>
       </PpmuPinLevelSet>
       <PpmuPinLevelSet pin="BL_1">
         <Vf>0</Vf>
-        <IRange>2 µA</IRange>
+        <IRange>32 µA</IRange>
       </PpmuPinLevelSet>
       <PpmuPinLevelSet pin="BL_2">
         <Vf>0</Vf>
-        <IRange>2 µA</IRange>
+        <IRange>32 µA</IRange>
       </PpmuPinLevelSet>
       <PpmuPinLevelSet pin="BL_3">
         <Vf>0</Vf>
-        <IRange>2 µA</IRange>
+        <IRange>32 µA</IRange>
       </PpmuPinLevelSet>
       <PpmuPinLevelSet pin="BL_4">
         <Vf>0</Vf>

@@ -29,9 +29,9 @@ class DebugUtil:
         if self.debug:
             current_function = inspect.currentframe().f_back.f_code.co_name
             dash = "-" * len(current_function)
-            print("\n\n--------", dash)
-            print(f"Running {current_function}...")
-            print(dash, "------\n")
+            print(f"\n\n-----------{dash}")
+            print(f" Running {current_function}")
+            print(f"-----{dash}------\n")
     
     def operation_debug(self, internal, variables, values):
         if self.debug:
@@ -42,9 +42,10 @@ class DebugUtil:
     def end_function_debug(self):
         if self.debug:
             current_function = inspect.currentframe().f_back.f_code.co_name
-            print("\n\n ---------------------------------")
-            print(f"Finished {current_function}...")
-            print(" ---------------------------------\n")
+            dash = "-" * len(current_function)
+            print(f"\n\n-----------{dash}")
+            print(f" Finished {current_function}")
+            print(f"-------{dash}----\n")
         self.reset_debug()
 
 # Example usage

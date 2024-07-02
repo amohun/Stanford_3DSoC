@@ -24,21 +24,25 @@ patterns = [
 
 pulse_pingroups = ["BL","SL", "WL","PWR"]
 
-[pins]
+power_pins = ["VDD", "VSA","V_BRD+","V_BRD-"]
+clock_pins = ["SA_CLK"]
+
+[sources]
 
 # Defining power pins
-[pins.power_pins]
+[sources.power_pins]
 VDD = 1.8
 VSS = 0
 VSA = 1.8
 
 # Defining the setup for the test
-[pins.setup_pins]
-MUX_SEL_CONV_CLK= 0
+[sources.setup_pins]
+MUX_SEL_CONV_CLK = 0
 MUX_SEL_WT  = 0
 SA_CLK_EXT = 0
 WT_SEL_EXT = 0
 
+[pins]
 # Defining clock pins
 [pins.clk_pins]
 SA_CLK = 0
@@ -59,32 +63,32 @@ DO = [0,0]
 # Defining WL Pins
 [pins.WL]
 WL_IN = [
-        "WL_IN_0",
-        "WL_IN_1",
-        "WL_IN_2",
-        "WL_IN_3",
-        "WL_IN_4",
-        "WL_IN_5",
-        "WL_IN_6",
-        "WL_IN_7",
-        "WL_IN_8",
-        "WL_IN_9",
-        "WL_IN_10",
-        "WL_IN_11",
-        "WL_IN_12",
-        "WL_IN_13",
-        "WL_IN_14",
-        "WL_IN_15",
-        "WL_IN_16",
-        "WL_IN_17",
-        "WL_IN_18",
-        "WL_IN_19",
-        "WL_IN_20",
-        "WL_IN_21",
-        "WL_IN_22",
-        "WL_IN_23",
-        "WL_IN_24",
-        ]
+    "WL_IN_0",
+    "WL_IN_1",
+    "WL_IN_2",
+    "WL_IN_3",
+    "WL_IN_4",
+    "WL_IN_5",
+    "WL_IN_6",
+    "WL_IN_7",
+    "WL_IN_8",
+    "WL_IN_9",
+    "WL_IN_10",
+    "WL_IN_11",
+    "WL_IN_12",
+    "WL_IN_13",
+    "WL_IN_14",
+    "WL_IN_15",
+    "WL_IN_16",
+    "WL_IN_17",
+    "WL_IN_18",
+    "WL_IN_19",
+    "WL_IN_20",
+    "WL_IN_21",
+    "WL_IN_22",
+    "WL_IN_23",
+    "WL_IN_24",
+    ]
 WL = [
         "WL_0",
         "WL_1",
@@ -212,7 +216,7 @@ WL = [
         "WL_124",
         "WL_125",
         "WL_126",
-        "WL_127"```
+        "WL_127",
 ]
 
 # Defining BL Pins
@@ -251,3 +255,24 @@ BL = [
     "BL_30",
     "BL_31",
 ]
+
+[op]
+
+[op.READ]
+mode = "digital"
+aperture_time = 0.00005
+
+#2 uA, 32uA, 128uA, 2mA, 32mA
+current_limit_range = 128e-6
+relaxation_cycles = 100
+settling_time = 0.0001
+shunt_res_value = 0
+
+[op.READ.NMOS]
+VWL = 2
+VBL = 0.3
+VSL = 0
+VWL_UNSEL_OFFSET = 0
+VB = 0
+
+[op.READ.PMOS]

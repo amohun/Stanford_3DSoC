@@ -3,16 +3,16 @@
   <TimingSheet>
     <TimeSets>
       <TimeSet name="sync">
-        <Period>1E-06</Period>
+        <Period>4E-07</Period>
         <PinEdges>
           <PinEdge pin="BL_0">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>2E-07</Data>
+              <Off>4E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>

@@ -25,8 +25,8 @@ import pdb
 sys.path.append(getcwd())
 import SourceScripts.load_settings as load_settings
 import SourceScripts.masks as masks
-from string_util import *
-from debug_util import DebugUtil
+from SourceScripts.string_util import *
+from SourceScripts.debug_util import DebugUtil
 # endregion
 
 class DigitalPatternException(Exception):
@@ -268,7 +268,7 @@ class DigitalPattern:
                 if len(patterns) != len(sessions): raise DigitalPatternException("Number of patterns must match number of sessions")
             
             for session, session_pattern in zip(sessions, patterns):
-                print(f"Loading pattern {session_pattern} for session {session}")
+                self.dbg.debug_message(f"Loading pattern {session_pattern} for session {session}")
                 session.unload_all_patterns()
                 session.load_pattern(session_pattern)
                 session.commit()
@@ -570,7 +570,7 @@ class DigitalPattern:
         self.dbg.end_function_debug()
         return 0
 
-    def ppmu_set_pins_to_zero(self,sessions=None,pins=None,sort=True,delay=False, debug=None):
+    def ppmu_set_pins_to_zero(self,sessions=None,pins=None,sort=True,delay=False, ignore_power=False, ignore_clock=False, exclude_pins = [], debug=None):
         """ 
         Cleans up after PPMU operation 
         (otherwise levels default when going back digital)
@@ -578,9 +578,18 @@ class DigitalPattern:
         self.dbg.start_function_debug(debug)
 
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
+
+        if ignore_power:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["power_pins"]
+        
+        if ignore_clock:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["clock_pins"]
+
         for session, session_pins in zip(sessions,pins):
             for pin in session_pins:
-                session.channels[pin].ppmu_voltage_level = 0
+                if pin not in exclude_pins:
+                    session.channels[pin].ppmu_voltage_level = 0
+                
                 if delay:
                     time.sleep(2)
             session.ppmu_source()
@@ -591,7 +600,7 @@ class DigitalPattern:
 
 
     # Digital Voltage Functions
-    def digital_set_voltages(self, pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=True, debug=None):
+    def digital_set_voltages(self, pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=True, exclude_pins=None, debug=None):
         """
         Digital Set Voltages:
         Set the voltage levels for the specified pins on each session.
@@ -619,9 +628,6 @@ class DigitalPattern:
             voltages[m] = voltage  
         
         # Verify all voltage lists are the same length
-        print(voltages)
-        print(type(voltages))
-        print("\n\n\n\n")
         exp_len = len(voltages[0])
         for voltage in voltages:
             if len(voltage) != exp_len:
@@ -637,59 +643,76 @@ class DigitalPattern:
     
         for session,session_pins,vo_high,vo_low, vi_high, vi_low in zip(sessions,pins,vo_hi,vo_lo,vi_hi,vi_lo): 
             for pin in session_pins:
-                print(f"Pin: {pin} Input Voltage: {vi_low} to {vi_high} Output Voltage: {vo_low} to {vo_high}")
-                session.channels[pin].configure_voltage_levels(vi_low, vi_high, vo_low, vo_high, 0.0)
+                if pin not in exclude_pins:
+                    self.dbg.debug_message(f"Pin: {pin} Input Voltage: {vi_low} to {vi_high} Output Voltage: {vo_low} to {vo_high}")
+                    session.channels[pin].configure_voltage_levels(vi_low, vi_high, vo_low, vo_high, 0.0)
         
         self.dbg.end_function_debug()
         
         return 0
 
-    def digital_pins_to_zero(self,sessions=None,pins=None,sort=True,keep_power=True, debug=None):
+    def digital_pins_to_zero(self,sessions=None,pins=None,  ignore_power=False, ignore_clock=False, exclude_pins = [], sort=True,keep_power=True, debug=None):
         """
         High z down to zero
         """
         self.dbg.start_function_debug(debug)
 
+        if ignore_power:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["power_pins"]
+        
+        if ignore_clock:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["clock_pins"]
+
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
-        if pins == self.all_pins:
+        if pins == self.all_pins and len(exclude_pins)== 0:
             self.digital_all_pins_to_zero(keep_power=keep_power)
             return
         else:
             self.write_static_to_pins(sessions=sessions,pins=pins)
-            self.digital_set_voltages(pins, 0, 0, sort=False)
+            self.digital_set_voltages(pins, 0, 0, sort=False, exclude_pins=exclude_pins)
         
         self.dbg.end_function_debug()
         return
 
-    def digital_all_pins_to_zero(self,keep_power=False, debug=None):
+    def digital_all_pins_to_zero(self, debug=None, ignore_power=False, ignore_clock=False, exclude_pins = [],):
         """
         High z down to zero
         """
         self.dbg.start_function_debug(debug)
         
         all_pins = self.all_pins
-        if keep_power:
-            for session in all_pins:
-                for pin in self.power_pins:
-                    if pin in session:
-                        session.remove(pin)
+        
+        if ignore_power:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["power_pins"]
+        
+        if ignore_clock:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["clock_pins"]
 
         for digital in self.sessions:
             digital.channels[self.all_pins[self.sessions.index(digital)]].write_static(nidigital.WriteStaticPinState.X)
        
 
-        self.digital_set_voltages(all_pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=False)
+        self.digital_set_voltages(all_pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=False, exclude_pins=exclude_pins)
         
         self.dbg.end_function_debug()
         return
 
 
     # Write Static to Pins
-    def write_static_to_pins(self, sessions=None, pins=None, sort=True,state='X', debug=None):
+    def write_static_to_pins(self, sessions=None, pins=None, sort=True,state='X', ignore_power=False, ignore_clock=False, exclude_pins = [], debug=None):
         
         self.dbg.start_function_debug(debug)
         
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
+
+        if ignore_power:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["power_pins"]
+        
+        if ignore_clock:
+            exclude_pins = exclude_pins + self.settings["NIDigital"]["clock_pins"]
+
+        for num, session_pins in enumerate(pins):
+            pins[num] = [pin for pin in session_pins if pin not in exclude_pins]
 
         if state == 'X':
             for session, session_pins in zip(sessions,pins):
@@ -805,7 +828,7 @@ class DigitalPattern:
         
         
         # ============= Build Waveforms ================ #
-        print(masks)
+        self.dbg.debug_message(f"Masks: {masks}")
         waveforms, pulse_width = self.build_waveforms(masks, pulse_lens=pulse_lens, max_pulse_len=max_pulse_len, pulse_groups=pulse_groups, debug=debug)
         #WL_PULSE_DEC3.digipat or PULSE_MPW_ProbeCard.digipat as template file
         # Verify that the number of pin groups matches the number of waveforms
@@ -824,21 +847,13 @@ class DigitalPattern:
 
         # Synchronize Pulses using NITClk
         else:
-            print("pulse")
             for session_num, session in enumerate(sessions):
                 session.start_label = self.pattern_names[session_num]
                 session.configure_pattern_burst_sites()
             _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
             nitclk.synchronize(sessions,200e-8)
-            # nitclk_session_list = nitclk.convert_sessions_to_session_number_list(sessions)
-            pdb.set_trace()
             sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])
-           
-            # nitclk.initiate(sessions)
             nitclk.wait_until_done(sessions,10)
-            time.sleep(3)
-            print("stop")
-        quit()
         self.dbg.end_function_debug()
         return 
 
@@ -849,8 +864,7 @@ class DigitalPattern:
             data_variable_in_digipat = f"{data_variable_prefix}{group}{data_variable_suffix}"
             session.pins[group].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
         for group,wave in zip(session_pingroups,waveform):
-            print(f"Waveform Size: {len(wave)} for group {group}")
-            print(type(wave))
+            self.dbg.debug_message(f"Waveform Size: {len(wave)} for group {group}")
             session.write_source_waveform_broadcast(data_variable_in_digipat, wave)
         
         if pulse_width:
@@ -859,6 +873,31 @@ class DigitalPattern:
         self.dbg.end_function_debug()
         return
 
+    def set_clock(self, sessions=None, pins=None, sort=True, v_hi=1.8, v_lo=0, frequency=None, period=None, debug=None):
+        self.dbg.start_function_debug(debug)
+        if frequency == None:
+            if period == None or period == 0:
+                raise DigitalPatternException("Frequency or period must be provided and > 0")
+            else:
+                frequency = 1/period
+        self.clock_frequency = frequency
+
+        sessions, pins = self.format_sessions_and_pins(sessions,pins,sort=sort,debug=debug)
+
+        for session,session_pins in zip(session,pins):
+            session.channels[session_pins].clock_generator_generate_clock(frequency=frequency,select_digital_function=True)
+
+        self.dbg.end_function_debug()
+        return frequency
+
+    def end_clock(self, sessions=None, pins=None, sort=True, debug=None):
+        self.dbg.start_function_debug(debug)
+        sessions, pins = self.format_sessions_and_pins(sessions,pins,sort=sort,debug=debug)
+
+        for session, session_pins in zip(sessions, pins):
+            session.channels[session_pins].clock_generator_abort()
+
+        self.dbg.end_function_debug()
     # endregion
     
     """ ================================================= """ 
@@ -931,7 +970,6 @@ class DigitalPattern:
         if create_temporal_mask:
             pulse_groups = self.build_temporal_mask(pulse_groups)  
         
-        print(f"\n\n\nNew Masks: \n max_pulse_len: {max_pulse_len} \n pulse_lens: {pulse_lens} \n pulse_groups: {pulse_groups} \n\n\n")
         waveforms = []
         for session_num, session_masks in enumerate(masks):
             session_waveforms = []
@@ -966,10 +1004,10 @@ class DigitalPattern:
         pw_register = nidigital.SequencerRegister.REGISTER0
         if session is None:
             for session in self.sessions:
-                print(f"Setting pulse width to {pulse_width} for session {session}")
+                self.dbg.debug_message(f"Setting pulse width to {pulse_width} for session {session}")
                 session.write_sequencer_register(pw_register, pulse_width)
         else:
-            print(f"Setting pulse width to {pulse_width} for session {session}")
+            self.dbg.debug_message(f"Setting pulse width to {pulse_width} for session {session}")
             session.write_sequencer_register(pw_register, pulse_width)
         
         self.dbg.end_function_debug()

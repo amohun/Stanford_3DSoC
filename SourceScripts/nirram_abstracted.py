@@ -14,7 +14,7 @@ import csv
 from datetime import date, datetime
 from BitVector import BitVector
 
-sys.path.append(getcwd())
+sys.path.append(getcwd() + '\\SourceScripts')
 from masks import Masks
 from digital_pattern import DigitalPattern
 import load_settings
@@ -72,7 +72,7 @@ class NIRRAM:
             chip,
             device,
             polarity = "NMOS",
-            settings = "settings/default.toml",
+            settings = "settings/MPW_Direct_Write.toml",
             debug_printout = False,
             test_type = "Default",
             additional_info = ""
@@ -97,8 +97,6 @@ class NIRRAM:
         self.debug_printout = debug_printout
         
         # Initialize RRAM logging
-        self.mlogfile = open(settings["path"]["master_log_file"], "a")
-        self.plogfile = open(settings["path"]["prog_log_file"], "a")
         current_date = date.today().strftime("%Y-%m-%d")
         current_time = datetime.now().strftime("%H:%M:%S")
 
@@ -699,9 +697,6 @@ class NIRRAM:
 
 
     def set_vbl(self, vbl_chan, vbl_hi, vbl_lo, debug_printout = None):
-        # Debug Printout: Start and Internal
-        print("Setting VBL")
-        # pdb.set_trace()
         debug_printout = self.start_function_debug_printout(debug_printout, "set_vbl")
         self.internal_function_debug_printout(debug_printout, f"Setting VBL for {vbl_chan}", ["vbl_hi", "vsl_lo"], [vbl_hi, vbl_lo])
         
@@ -713,8 +708,6 @@ class NIRRAM:
 
 
     def set_vwl(self, vwl_chan, vwl_hi, vwl_lo, debug_printout = None):
-        print("Setting VWL")
-        # pdb.set_trace()
         # Debug Printout: Start and Internal
         debug_printout = self.start_function_debug_printout(debug_printout, "set_vwl")
         self.internal_function_debug_printout(debug_printout, f"Setting VWL for {vwl_chan}", ["vwl_hi", "vsl_lo"], [vwl_hi, vwl_lo])
@@ -797,7 +790,6 @@ class NIRRAM:
         pulse_lens = None,
         max_pulse_len = None
         ):
-        debug_printout = True #debug_printout or self.debug_printout
 
         pulse_lens = pulse_lens or [self.prepulse_len, pulse_len, self.postpulse_len]
         max_pulse_len  = max_pulse_len or self.max_pulse_len
@@ -873,8 +865,6 @@ class NIRRAM:
         # Set Bitlines to the desired voltage
         if bl_selected is not None:
             bls_unselected = [bl for bl in self.bls if bl not in bl_selected]
-            print(self.bls)
-            print(bls_unselected)
             self.set_vbl(self.bls, vbl, vbl_lo=v_base, debug_printout = debug_printout)
             if len(bls_unselected) > 0:
                 self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug_printout = debug_printout)
@@ -901,7 +891,7 @@ class NIRRAM:
         # ---------------------------------------- #
 
         # Set channels to 0V
-        self.digital_patterns.digital_all_pins_to_zero(keep_power=False)
+        self.digital_patterns.digital_all_pins_to_zero(ignore_power=False)
         # Reset Channels in high_z to Hi-Z
         if high_z is not None:
             self.digital_patterns.set_channel_termination_mode("high-z",pins=high_z,sessions=None,sort=True)
@@ -1245,13 +1235,9 @@ class NIRRAM:
             self.sls = wl_sls
 
             for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
-                print("new VSL: ", vsl)
                 for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
-                    print("new VBL: ", vbl)
                     for pw in np.arange(pw_start,pw_stop,pw_step):
-                        print("new PW: ", pw)
                         for vwl in np.arange(vwl_start,vwl_stop,vwl_step):
-                            print(f"new_vwl: ", vwl)
                              # Set the masks for the cells that are not in target resistance
                             if self.relays is not None:
                                 all_channels = [self.all_bls,self.all_sls,self.all_wl_signals]
@@ -1298,7 +1284,7 @@ class NIRRAM:
                                 return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
                             
                             wls,bls,sls = cells_to_write     
-        quit()
+        
 
     def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug_printout=None):
         return self.dynamic_pulse(sessions, cells, bls, wls, mode="SET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug_printout=debug_printout)
@@ -1371,7 +1357,6 @@ class NIRRAM:
         elif mode.lower() == "reset":
             self.reset_target_res = target_res
         elif mode.lower() == "set":
-            print("Mode: ", mode.lower())
             self.set_target_res = target_res
         else:
             raise NIRRAMException("Invalid mode. Please select 'form', 'reset', or 'set'.")
