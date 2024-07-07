@@ -9,85 +9,55 @@ path_data = "D:\\nirram\\data\\MPW_Test\\"
 deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
 
 pinmap = [
-    "settings/pinmap/CSA_Slot4.pinmap",
-    "settings/pinmap/CSA_Slot5.pinmap",  
-    "settings/pinmap/MPW_CSA_2D.pinmap"
+    "settings/pinmap/MPW_Peripheral_CSA_2D_BL.pinmap",
+    "settings/pinmap/MPW_Peripheral_CSA_2D_SL.pinmap",  
+    "settings/pinmap/MPW_Peripheral_CSA_2D_WL.pinmap"
+    ]
+
+levels = [
+    "settings/levels/MPW_Peripheral_CSA_2D_BL.digilevels",
+    "settings/levels/MPW_Peripheral_CSA_2D_SL.digilevels",  
+    "settings/levels/MPW_Peripheral_CSA_2D_WL.digilevels"
+    ]
+
+timing = [
+    "settings/timing/MPW_Peripheral_CSA_2D_BL.digitiming",
+    "settings/timing/MPW_Peripheral_CSA_2D_SL.digitiming",  
+    "settings/timing/MPW_Peripheral_CSA_2D_WL.digitiming"
     ]
 
 specs = ["settings/Stanford_3DSoC/MPW_3DSoC.specs"]
 
 patterns = [
-    "settings/patterns/CSA_Slot4.digipat",
-    "settings/patterns/CSA_Slot5.digipat",
-    "settings/patterns/MPW_CSA_2D.digipat"
+    "settings/patterns/MPW_Peripheral_CSA_2D_BL.digipat",
+    "settings/patterns/MPW_Peripheral_CSA_2D_SL.digipat",
+    "settings/patterns/MPW_Peripheral_CSA_2D_WL.digipat"
 ]
 
 pulse_pingroups = ["BL","SL", "WL","PWR"]
-
-power_pins = ["VDD", "VSA","V_BRD+","V_BRD-"]
 clock_pins = ["SA_CLK"]
 
+[NISwitch]
+deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
+
+
 [sources]
-
-# Defining power pins
-[sources.power_pins]
-VDD = 1.8
-VSS = 0
-VSA = 1.8
-
-# Defining the setup for the test
-[sources.setup_pins]
 MUX_SEL_CONV_CLK = 0
 MUX_SEL_WT  = 0
 SA_CLK_EXT = 0
 WT_SEL_EXT = 0
+RMUX_EN = 0
+
+
+[measurement_settings]
+measure_iv = true
+sweep = true
 
 [pins]
-# Defining clock pins
-[pins.clk_pins]
-SA_CLK = 0
-
-# Defining input pins for the test
-[pins.input_pins]
-VREAD = 0.3
-SA_EN = 5
-WL_UNSEL = 0
-WL = 0.3
-COL_SEL = 5
-
-# Defining output pins for the test
-[pins.output_pins]
-SA_RDY = [0,0]
-DO = [0,0]
 
 # Defining WL Pins
-[pins.WL]
 WL_IN = [
     "WL_IN_0",
-    "WL_IN_1",
-    "WL_IN_2",
-    "WL_IN_3",
-    "WL_IN_4",
-    "WL_IN_5",
-    "WL_IN_6",
-    "WL_IN_7",
-    "WL_IN_8",
-    "WL_IN_9",
-    "WL_IN_10",
-    "WL_IN_11",
-    "WL_IN_12",
-    "WL_IN_13",
-    "WL_IN_14",
-    "WL_IN_15",
-    "WL_IN_16",
-    "WL_IN_17",
-    "WL_IN_18",
-    "WL_IN_19",
-    "WL_IN_20",
-    "WL_IN_21",
-    "WL_IN_22",
-    "WL_IN_23",
-    "WL_IN_24",
     ]
 WL = [
         "WL_0",
@@ -220,41 +190,83 @@ WL = [
 ]
 
 # Defining BL Pins
-[pins.BL]
 BL = [
     "BL_0",
     "BL_1",
     "BL_2",
     "BL_3",
-    "BL_4",
-    "BL_5",
-    "BL_6",
-    "BL_7",
-    "BL_8",
-    "BL_9",
-    "BL_10",
-    "BL_11",
-    "BL_12",
-    "BL_13",
-    "BL_14",
-    "BL_15",
-    "BL_16",
-    "BL_17",
-    "BL_18",
-    "BL_19",
-    "BL_20",
-    "BL_21",
-    "BL_22",
-    "BL_23",
-    "BL_24",
-    "BL_25",
-    "BL_26",
-    "BL_27",
-    "BL_28",
-    "BL_29",
-    "BL_30",
-    "BL_31",
 ]
+
+# Defining SL Pins
+SL = [
+    "SL_0",
+    "SL_1",
+    "SL_2",
+    "SL_3",
+]
+
+# Defining COL_SEL Pins
+COL_SEL = [
+    "COL_SEL_0",
+    "COL_SEL_1",
+    "COL_SEL_2",
+    "COL_SEL_3",
+    "COL_SEL_4",
+    "COL_SEL_5",
+    "COL_SEL_6",
+    "COL_SEL_7",
+    "COL_SEL_8",
+    "COL_SEL_9",
+    "COL_SEL_10",
+    "COL_SEL_11",
+    "COL_SEL_12",
+    "COL_SEL_13",
+    "COL_SEL_14",
+    "COL_SEL_15",
+]
+
+# Defining clock pins
+CLK = "SA_CLK"
+CLK_EN = "SA_CLK_EXT"
+
+[pins.device]
+# device specifications for the csa test
+# Only one col-sel should be set at a time
+WL_0 = 0.3
+COL_SEL_0 = 5.0
+
+# Defining input pins for the test
+# THESE DO NOT INCLUDE THE CLOCK PINS or DEVICE SELECTION
+[pins.input]
+VREAD = 0.3
+SA_EN = 5.0
+WL_UNSEL = 0.0
+
+[pins.sweep]
+RMUX_EN = [0.0, 5.01, 0.2]
+
+
+# Defining output pins for the test
+[pins.output]
+SA_RDY_0 = 0    # Output is Ready for PINS 0-15
+SA_RDY_1 = 0    # Output is Ready for PINS 16-31
+
+DO_0 = 0     # Output Data for PINS 0-15
+DO_1 = 0    # Output Data for PINS 16-31
+
+[pins.disable]
+PE_EN = 0.0        # Disables the Processing Element
+WEIGHT_EN = 0.0    # Disables the Weight Shift Register Input
+WEIGHT_SHIFT = 0.0 # Disables the Weight Shift Register
+ACCUM_EN = 0.0     # Disables the accumulator
+
+[pins.enable]
+SA_CLK_EXT = 1.8
+
+[TIMING]
+direct = 2e-5
+CSA_out = 1e-5
+CSA_in = 1e-5
 
 [op]
 

@@ -59,7 +59,7 @@ class DigitalPattern:
         self.load_level_and_timing()
         self.ppmu_set_pins_to_zero()
         self.set_current_limit_range(self.all_pins, 2e-6, pin_sort=False)
-        self.set_power(ignore_empty=True)
+        # self.set_power(ignore_empty=True)
 
     """ ================================================= """
     """      Loading and Initialization of Functions      """
@@ -107,18 +107,16 @@ class DigitalPattern:
                         raise ValueError("NIDigital specified but no deviceID found in settings.")
                 
                 # Load NiSwitch session
-                if "NiSwitch" in self.settings:
+                if "NISwitch" in self.settings:
                     import niswitch
-                    if "deviceID" in self.settings["NiSwitch"]:
-
+                    if "deviceID" in self.settings["NISwitch"]:
                         # Import niswitch library if not already imported
                         if not self.check_library_import("niswitch"): import niswitch
 
                         # Initialize session for specified device ID
-                        self.relays = self.settings["NiSwitch"]["deviceID"]
-                    
+                        self.relays = self.settings["NISwitch"]["deviceID"]
                     else:
-                        raise ValueError("NiSwitch specified deviceID not found in settings.NiSwitch, \nPlease include a device ID for deviceID in NiSwitch")
+                        raise ValueError("NISwitch specified deviceID not found in settings.NiSwitch, \nPlease include a device ID for deviceID in NiSwitch")
             
             except Exception as e:
                 raise ValueError(f"Error loading instruments: {str(e)}")
@@ -344,7 +342,7 @@ class DigitalPattern:
                 else:
                     raise ValueError("Power levels not set under power-pins in settings nor were they provided")
             
-                self.ppmu_set_voltage(self,pins,power_levels,sort=False,source=True)
+                self.ppmu_set_voltage(pins,power_levels,sort=False,source=True)
                 self.power_pins = pins
 
         self.dbg.end_function_debug()
@@ -478,6 +476,13 @@ class DigitalPattern:
             for session,session_pins in zip(sessions,pins):
                 session.channels[session_pins].termination_mode = nidigital.TerminationMode.HIGH_Z
 
+        if mode.lower() == "vterm" or mode.lower == "v-term":
+            for session,session_pins in zip(sessions,pins):
+                session.channels[session_pins].termination_mode = nidigital.TerminationMode.VTERM
+        
+        for session in sessions:
+            session.commit()
+        
         self.dbg.end_function_debug()
     # endregion
 
@@ -525,6 +530,9 @@ class DigitalPattern:
         self.dbg.start_function_debug(debug)
 
         # Verify voltage levels are within -2V to 6V
+        if type(voltage_levels) is not list:
+            voltage_levels = [voltage_levels]
+
         for v in voltage_levels:
             assert v >= -2 and v <= 6, "Voltage levels must be between -2V and 6V"
  
@@ -600,7 +608,7 @@ class DigitalPattern:
 
 
     # Digital Voltage Functions
-    def digital_set_voltages(self, pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=True, exclude_pins=None, debug=None):
+    def digital_set_voltages(self, pins, sessions=None, vi_lo=0, vi_hi=0, vo_lo=0, vo_hi=0, sort=True, exclude_pins=[], debug=None):
         """
         Digital Set Voltages:
         Set the voltage levels for the specified pins on each session.
@@ -884,7 +892,7 @@ class DigitalPattern:
 
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort=sort,debug=debug)
 
-        for session,session_pins in zip(session,pins):
+        for session,session_pins in zip(sessions,pins):
             session.channels[session_pins].clock_generator_generate_clock(frequency=frequency,select_digital_function=True)
 
         self.dbg.end_function_debug()
@@ -1060,7 +1068,6 @@ class DigitalPattern:
 
         # Initialize a list to store the measured voltages for each session
         measured_voltages = []
-        
         # Iterate over each session and read the voltage of the pins in that session
         for session, session_pins in zip(sessions, pins):
             # Measure the voltage for each pin in the session
@@ -1079,7 +1086,7 @@ class DigitalPattern:
         return measured_voltages, dict(zip(flattened_pins,flattened_voltages)), list(chain.from_iterable(measured_voltages))
 
     def measure_current(self, pins=None, sessions=None, sort=True, debug=None):
-        """
+        """ 
         Measure Current: Performs a current measurement on the specified
         pins, returning the measured currents, a dictionary of the pins and
         their measured currents, and a list of all measured currents.
@@ -1096,7 +1103,6 @@ class DigitalPattern:
         """
         self.dbg.start_function_debug(debug)
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
-
         measured_currents = []
 
         for session, session_pins in zip(sessions, pins):
@@ -1151,6 +1157,7 @@ class DigitalPattern:
                 channels = [channels]
             else:
                 raise ValueError("Channels must be provided")
+
         for relay, channel in zip(relays, channels):
             with niswitch.Session(relay) as relay_session:
                 relay_session.disconnect_all()
@@ -1247,6 +1254,12 @@ class DigitalPattern:
                 all_pins = [[channel.pin_name for channel in session.get_pin_results_pin_information()] for session in sessions]
 
         sorted_pins = []
+
+        # check that each pin is in all_pins
+        for pin in pins:
+            if pin not in self.all_pins_flat:
+                raise ValueError(f"Pin {pin} not found in all pins")
+
         for session in all_pins:
             session_pins=[]
             for pin in pins:

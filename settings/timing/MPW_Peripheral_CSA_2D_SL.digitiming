@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TimingFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/Timing">
+  <TimingSheet>
+    <TimeSets>
+      <TimeSet name="CSA">
+        <Period>1E-06</Period>
+        <PinEdges>
+          <PinEdge pin="SL">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="MUX_SEL_CONV_CLK">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="IFMAP_EN">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="WT_SEL_EXT">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="PSUM_SLC">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="WEIGHT_EN">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="WEIGHT_SHIFT">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="MUX_SEL_WT">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="RST_N">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-07</Data>
+              <Off>1E-06</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+        </PinEdges>
+      </TimeSet>
+    </TimeSets>
+  </TimingSheet>
+</TimingFile>
