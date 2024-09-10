@@ -16,6 +16,28 @@
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
+          <PinEdge pin="ACCUM_EN">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>2E-07</Data>
+              <Off>4E-07</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-07</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="OFMAP">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>2E-07</Data>
+              <Off>4E-07</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>5E-07</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
         </PinEdges>
       </TimeSet>
     </TimeSets>

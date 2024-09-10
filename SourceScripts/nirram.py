@@ -639,7 +639,7 @@ class NIRRAM:
             all_wls = self.all_wls
             zero_in = self.zero_rows
             NC_in = self.NC_rows
-        print(wls)
+
         for wl_i in all_wls: 
             if wl_i in wls:
                 self.set_vwl(wl_i, vwl_hi = vwl, vwl_lo = v_base)

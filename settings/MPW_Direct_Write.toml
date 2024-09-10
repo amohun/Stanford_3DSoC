@@ -8,9 +8,8 @@ path_data = "D:\\nirram\\data\\MPW_Test\\"
 [NIDigital]
 deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
 pinmap = ["settings/pinmap/MPW_Direct_Write_BL.pinmap","settings/pinmap/MPW_Direct_Write_SL.pinmap",  "settings/pinmap/MPW_Direct_Write_WL.pinmap"]
-specs = [
-  "settings/Stanford_3DSoC/MPW_3DSoC.specs",
-]
+specs = [ "settings/Stanford_3DSoC/MPW_3DSoC.specs"]
+
 timing = [
   "settings/Stanford_3DSoC/MPW_Direct_Write_BL.digitiming",
   "settings/Stanford_3DSoC/MPW_Direct_Write_SL.digitiming",
@@ -30,39 +29,27 @@ patterns = [
     "settings/patterns/MPW_Direct_Write_WL.digipat"
 ]
 
-pattern_names = [
-    "MPW_Direct_Write_BL",
-    "MPW_Direct_Write_SL",
-    "MPW_Direct_Write_WL"
-]
 
 # TODO Make it so Each session has a list of included pingroups
 # Currently can only do one pin group per session
 
 pingroups = ["BL","SL","WL"]
 pingroup_names = [["BL"],["SL"], ["WL_IN"]]
-pingroup_data = [["all_BLS"], ["all_SLS"], ["WL_SIGNALS"]] 
+pingroup_data = [["all_BLS"], ["all_SLS"], ["WL_IN"]] 
 
 [NISwitch]
 deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
 
-
-[power_pins]
-VDD = 1.8
-VSS = 0
-VSA = 1.8
-VDD_BRD_P = 6
-VDD_BRD_N = -2
-
+# ====================== #
+#      DEVICE CONFIG     #
+# ====================== #
 [device]
 # define all body voltage names and map them to their neutral value
 # for PMOS this is typically VDD while for NMOS this is typically GND or VSS
 
 # NO BODY DEFINED FOR THIS DESIGN
 
-
 # define all WLs, BLs, SLs names
-
 all_BLS = [
     "BL_0",
     "BL_1",
@@ -264,7 +251,7 @@ all_WLS = [
     "WL_127",
 ]
 
-WL_SIGNALS = [
+WL_IN = [
     "WL_IN_0",
     "WL_IN_1",
     "WL_IN_2",
@@ -291,7 +278,7 @@ WL_SIGNALS = [
     "WL_IN_23",
 ]
 
-all_WL_SIGNALS = [
+all_WL_IN = [
     "WL_IN_0",
     "WL_IN_1",
     "WL_IN_2",
@@ -316,8 +303,38 @@ all_WL_SIGNALS = [
     "WL_IN_21",
     "WL_IN_22",
     "WL_IN_23",
-    "WL_UNSEL"
+    "WL_UNSEL",
 ]
+
+all_WL_INS = [
+    "WL_IN_0",
+    "WL_IN_1",
+    "WL_IN_2",
+    "WL_IN_3",
+    "WL_IN_4",
+    "WL_IN_5",
+    "WL_IN_6",
+    "WL_IN_7",
+    "WL_IN_8",
+    "WL_IN_9",
+    "WL_IN_10",
+    "WL_IN_11",
+    "WL_IN_12",
+    "WL_IN_13",
+    "WL_IN_14",
+    "WL_IN_15",
+    "WL_IN_16",
+    "WL_IN_17",
+    "WL_IN_18",
+    "WL_IN_19",
+    "WL_IN_20",
+    "WL_IN_21",
+    "WL_IN_22",
+    "WL_IN_23",
+    "WL_UNSEL",
+]
+
+# =============================================================================
 
 # subset of WL, BL, SL that will be pulsed for measurement
 WLS =[
@@ -526,12 +543,12 @@ SLS = [
 
 WL_UNSEL = [ "WL_UNSEL" ]
 
-
+DIR_PERIPH_SEL = [ "DIR_PERIPH_SEL" ]
 # RRAM resistance target level corresponding to each operation defined below
 [target_res]
 FORM = 20_000
 SET = 5_000
-RESET = 50_000
+RESET =100_000
 
 # =============================================================================
 # MEASUREMENT OPERATION (OP) CONFIGS
@@ -552,31 +569,33 @@ CSA_out = 1e-5
 CSA_in = 1e-5
 
 [PULSE]
-prepulse_len = 500
+prepulse_len = 100
+wl_buffer = 2
 pulse_len = 1000
-postpulse_len = 500
-max_pulse_len = 20000
+blsl_buffer = 1
+postpulse_len = 100
+max_pulse_len = 2000
 
 # =============================================================================
 # READ PULSE
 # =============================================================================
 [op.READ]
 mode = "digital"
-aperture_time = 0.00005
+aperture_time = 0.0005
 
 #2 uA, 32uA, 128uA, 2mA, 32mA
 current_limit_range = 128e-6
 relaxation_cycles = 100
-settling_time = 0.0001
+settling_time = 0.002
 shunt_res_value = 0
 
 # =============== #
 #    NMOS READ    #
 # =============== #
 [op.READ.NMOS]
-VWL = 2
-VBL = 0.3
-VSL = 0
+VWL = 0
+VBL = 0
+VSL = 1
 VWL_UNSEL_OFFSET = 0
 VB = 0
 
@@ -602,17 +621,17 @@ reset_threshold = 30e3 #kOhm
 [op.FORM.NMOS]
 VWL = 1.8
 VBL = 3
-VSL = 0
+VSL = 1
 VWL_UNSEL_OFFSET = 0.0
 PW = 1200
 
-VWL_start = 1.5
+VWL_start = 2
 VWL_step = 0.2
-VWL_stop = 2.21
+VWL_stop = 2.5
 
-VBL_start = 2
-VBL_step = 0.5
-VBL_stop = 3.1
+VBL_start = 0
+VBL_step = -0.5
+VBL_stop = -2
 
 PW_start = 100
 PW_stop = 101
@@ -646,7 +665,7 @@ PW_steps = 1
 # SET PULSE
 # =============================================================================
 [op.SET.NMOS]
-VWL = 1.8
+VWL = 0
 VBL = 3
 VSL = 0
 VWL_UNSEL_OFFSET = 0
@@ -657,9 +676,9 @@ VWL_stop = 2.2
 VBL_start = 1.0
 VBL_step = 0.05
 VBL_stop = 3
-PW_start = 10
-PW_stop = 100
-PW_steps = 10
+PW_start = 1
+PW_stop = 2
+PW_steps = 3
 
 
 [op.SET.PMOS]
@@ -678,9 +697,9 @@ VBL_start = -2
 VBL_step = -0.1
 VBL_stop = -2.01
 
-PW_start = 1000
-PW_stop = 1001
-PW_steps = 100
+PW_start = 1
+PW_stop = 2
+PW_steps = 2
 
 # =============================================================================
 # RESET PULSE
@@ -692,15 +711,18 @@ VSL = 2
 VBL = 0
 VWL_UNSEL_OFFSET = 0
 PW = 100
+
 VWL_start = 1.5
 VWL_step = 0.25
 VWL_stop = 3.0
+
 VSL_start = 1.5
 VSL_step = 0.05
 VSL_stop = 3
-PW_start = 1
-PW_stop = 1000
-PW_steps = 20
+
+PW_start = 100
+PW_stop = 101
+PW_steps = 3
 
 
 [op.RESET.PMOS]

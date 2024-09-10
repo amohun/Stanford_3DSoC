@@ -1,0 +1,1567 @@
+Date,Time,Name,Category,Hash,Comments
+2024-04-29,17:55:30,test_file.txt,test_location,0000,
+2024-05-05,18:56:09,chip_chip_device_device,Default,0000,
+2024-05-05,18:57:17,chip_chip_device_device,Default,0001,
+2024-05-05,18:58:31,chip_chip_device_device,Default,0002,
+2024-05-05,18:59:32,chip_chip_device_device,Default,0003,
+2024-05-05,18:59:45,chip_chip_device_device,Default,0004,
+2024-05-05,19:00:41,chip_chip_device_device,Default,0005,
+2024-05-05,19:02:01,chip_chip_device_device,Default,0006,
+2024-05-05,19:02:12,chip_chip_device_device,Default,0007,
+2024-05-05,19:03:39,chip_chip_device_device,Default,0008,
+2024-05-05,19:04:19,chip_chip_device_device,Default,0009,
+2024-05-05,19:05:46,chip_chip_device_device,Default,0010,
+2024-05-05,19:06:11,chip_chip_device_device,Default,0011,
+2024-05-05,19:06:33,chip_chip_device_device,Default,0012,
+2024-05-05,19:07:06,chip_chip_device_device,Default,0013,
+2024-05-05,19:09:17,chip_chip_device_device,Default,0014,
+2024-05-05,19:10:43,chip_chip_device_device,Default,0015,
+2024-05-05,19:11:10,chip_chip_device_device,Default,0016,
+2024-05-05,19:11:56,chip_chip_device_device,Default,0017,
+2024-05-05,19:12:35,chip_chip_device_device,Default,0018,
+2024-05-05,19:12:50,chip_chip_device_device,Default,0019,
+2024-05-05,19:13:19,chip_chip_device_device,Default,0020,
+2024-05-05,19:15:01,chip_chip_device_device,Default,0021,
+2024-05-05,19:15:25,chip_chip_device_device,Default,0022,
+2024-05-05,19:15:38,chip_chip_device_device,Default,0023,
+2024-05-05,19:18:07,chip_chip_device_device,Default,0024,
+2024-05-05,19:18:45,chip_chip_device_device,Default,0025,
+2024-05-05,19:18:57,chip_chip_device_device,Default,0026,
+2024-05-05,19:19:23,chip_chip_device_device,Default,0027,
+2024-05-05,19:20:20,chip_chip_device_device,Default,0028,
+2024-05-05,19:20:30,chip_chip_device_device,Default,0029,
+2024-05-05,19:28:02,chip_chip_device_device,Default,0030,
+2024-05-05,19:34:49,chip_chip_device_device,Default,0031,
+2024-05-05,19:35:34,chip_chip_device_device,Default,0032,
+2024-05-05,19:36:20,chip_chip_device_device,Default,0033,
+2024-05-05,19:37:14,chip_chip_device_device,Default,0034,
+2024-05-05,19:39:56,chip_chip_device_device,Default,0035,
+2024-05-05,19:46:18,chip_chip_device_device,Default,0036,
+2024-05-05,19:46:41,chip_chip_device_device,Default,0037,
+2024-05-05,19:46:51,chip_chip_device_device,Default,0038,
+2024-05-05,19:47:14,chip_chip_device_device,Default,0039,
+2024-05-05,19:53:14,chip_chip_device_device,Default,0040,
+2024-05-05,19:57:52,chip_chip_device_device,Default,0041,
+2024-05-06,12:53:50,chip_chip_device_test,Default,0000,Debugging NIRRAM for Multiple Sessions
+2024-05-06,12:55:22,chip_chip_device_test,Default,0001,Debugging NIRRAM for Multiple Sessions
+2024-05-06,12:57:14,chip_test_device_chip,Default,0000,Debugging NIRRAM for Multiple Sessions
+2024-05-06,12:58:53,chip_test_device_chip,Default,0001,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:08:35,chip_test_device_chip,Default,0002,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:09:03,chip_test_device_chip,Default,0003,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:10:13,chip_test_device_chip,Default,0004,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:10:26,chip_test_device_chip,Default,0005,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:12:29,chip_test_device_chip,Default,0006,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:14:15,chip_test_device_chip,Default,0007,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:14:37,chip_test_device_chip,Default,0008,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:17:18,chip_test_device_chip,Default,0009,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:23:14,chip_test_device_chip,Default,0010,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:24:34,chip_test_device_chip,Default,0011,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:30:06,chip_test_device_chip,Default,0012,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:38:34,chip_test_device_chip,Default,0013,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:40:07,chip_test_device_chip,Default,0014,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:47:55,chip_test_device_chip,Default,0015,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:49:11,chip_test_device_chip,Default,0016,Debugging NIRRAM for Multiple Sessions
+2024-05-06,13:54:38,chip_test_device_chip,Default,0017,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:02:49,chip_test_device_chip,Default,0018,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:08:16,chip_test_device_chip,Default,0019,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:08:21,chip_test_device_chip,Default,0020,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:09:08,chip_test_device_chip,Default,0021,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:10:02,chip_test_device_chip,Default,0022,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:11:07,chip_test_device_chip,Default,0023,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:12:40,chip_test_device_chip,Default,0024,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:13:24,chip_test_device_chip,Default,0025,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:13:54,chip_test_device_chip,Default,0026,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:15:20,chip_test_device_chip,Default,0027,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:16:07,chip_test_device_chip,Default,0028,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:16:28,chip_test_device_chip,Default,0029,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:16:41,chip_test_device_chip,Default,0030,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:16:56,chip_test_device_chip,Default,0031,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:18:14,chip_test_device_chip,Default,0032,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:18:40,chip_test_device_chip,Default,0033,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:19:50,chip_test_device_chip,Default,0034,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:20:11,chip_test_device_chip,Default,0035,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:20:31,chip_test_device_chip,Default,0036,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:25:50,chip_test_device_chip,Default,0037,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:27:13,chip_test_device_chip,Default,0038,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:32:59,chip_test_device_chip,Default,0039,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:33:08,chip_test_device_chip,Default,0040,Debugging NIRRAM for Multiple Sessions
+2024-05-06,14:33:20,chip_test_device_chip,Default,0041,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:32:32,chip_test_device_chip,Default,0042,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:32:49,chip_test_device_chip,Default,0043,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:33:51,chip_test_device_chip,Default,0044,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:34:09,chip_test_device_chip,Default,0045,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:36:09,chip_test_device_chip,Default,0046,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:36:57,chip_test_device_chip,Default,0047,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:37:28,chip_test_device_chip,Default,0048,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:38:03,chip_test_device_chip,Default,0049,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:38:39,chip_test_device_chip,Default,0050,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:38:59,chip_test_device_chip,Default,0051,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:40:34,chip_test_device_chip,Debug,0052,Debugging NIRRAM for Multiple Sessions
+2024-05-06,15:42:15,chip_test_device_chip,Debug,0053,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:33:53,chip_test_device_chip,Debug,0054,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:36:38,chip_test_device_chip,Debug,0055,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:42:54,chip_test_device_chip,Debug,0056,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:45:46,chip_test_device_chip,Debug,0057,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:46:41,chip_test_device_chip,Debug,0058,Debugging NIRRAM for Multiple Sessions
+2024-05-06,16:55:55,chip_test_device_chip,Debug,0059,Debugging NIRRAM for Multiple Sessions
+2024-05-06,17:30:49,chip_chip_device_test_sync,Debug,0000,Debugging NIRRAM for Clock Sync
+2024-05-06,17:31:35,chip_chip_device_test_sync,Debug,0001,Debugging NIRRAM for Clock Sync
+2024-05-06,17:44:46,chip_chip_device_test_sync,Debug,0002,Debugging NIRRAM for Clock Sync
+2024-05-06,17:45:57,chip_chip_device_test_sync,Debug,0003,Debugging NIRRAM for Clock Sync
+2024-05-06,17:50:00,chip_chip_device_test_sync,Debug,0004,Debugging NIRRAM for Clock Sync
+2024-05-06,17:50:17,chip_chip_device_test_sync,Debug,0005,Debugging NIRRAM for Clock Sync
+2024-05-06,17:50:31,chip_chip_device_test_sync,Debug,0006,Debugging NIRRAM for Clock Sync
+2024-05-06,17:51:02,chip_chip_device_test_sync,Debug,0007,Debugging NIRRAM for Clock Sync
+2024-05-06,17:54:14,chip_chip_device_test_sync,Debug,0008,Debugging NIRRAM for Clock Sync
+2024-05-06,17:54:30,chip_chip_device_test_sync,Debug,0009,Debugging NIRRAM for Clock Sync
+2024-05-06,17:54:56,chip_chip_device_test_sync,Debug,0010,Debugging NIRRAM for Clock Sync
+2024-05-06,17:55:13,chip_chip_device_test_sync,Debug,0011,Debugging NIRRAM for Clock Sync
+2024-05-06,17:55:30,chip_chip_device_test_sync,Debug,0012,Debugging NIRRAM for Clock Sync
+2024-05-06,17:56:16,chip_chip_device_test_sync,Debug,0013,Debugging NIRRAM for Clock Sync
+2024-05-06,18:14:16,chip_test_device_chip,Debug,0000,Debugging NIRRAM for Multiple Sessions
+2024-05-06,18:36:20,chip_test_device_chip,Debug,0001,Debugging NIRRAM for Multiple Sessions
+2024-05-06,18:40:03,chip_test_device_chip,Debug,0002,Debugging NIRRAM for Multiple Sessions
+2024-05-14,18:56:24,chip_chip_device_device,Default,0000,
+2024-05-14,18:57:03,chip_chip_device_device,Default,0001,
+2024-05-14,18:58:18,chip_chip_device_device,Default,0002,
+2024-05-14,18:58:27,chip_chip_device_device,Default,0003,
+2024-05-14,18:59:34,chip_chip_device_device,Default,0004,
+2024-05-14,18:59:56,chip_chip_device_device,Default,0005,
+2024-05-14,19:00:07,chip_chip_device_device,Default,0006,
+2024-05-14,16:01:02,chip_chip_device_device,Default,0007,
+2024-05-14,16:01:04,chip_chip_device_device,Default,0008,
+2024-05-14,16:01:34,chip_chip_device_device,Default,0009,
+2024-05-14,16:02:24,chip_chip_device_device,Default,0010,Debugging DigitalPattern Class
+2024-05-14,16:03:01,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-14,16:11:42,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-14,16:13:25,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-14,16:54:35,chip_chip_device_device,debug,0014,Debugging DigitalPattern Class
+2024-05-14,16:55:15,chip_chip_device_device,debug,0015,Debugging DigitalPattern Class
+2024-05-14,16:55:28,chip_chip_device_device,debug,0016,Debugging DigitalPattern Class
+2024-05-14,16:56:44,chip_chip_device_device,debug,0017,Debugging DigitalPattern Class
+2024-05-14,16:56:57,chip_chip_device_device,debug,0018,Debugging DigitalPattern Class
+2024-05-14,17:06:42,chip_chip_device_device,debug,0019,Debugging DigitalPattern Class
+2024-05-14,17:06:49,chip_chip_device_device,debug,0020,Debugging DigitalPattern Class
+2024-05-14,17:45:27,chip_chip_device_device,debug,0021,Debugging DigitalPattern Class
+2024-05-14,17:46:42,chip_chip_device_device,debug,0022,Debugging DigitalPattern Class
+2024-05-14,17:46:59,chip_chip_device_device,debug,0023,Debugging DigitalPattern Class
+2024-05-14,17:47:47,chip_chip_device_device,debug,0024,Debugging DigitalPattern Class
+2024-05-14,17:47:54,chip_chip_device_device,debug,0025,Debugging DigitalPattern Class
+2024-05-14,17:48:39,chip_chip_device_device,debug,0026,Debugging DigitalPattern Class
+2024-05-14,17:49:28,chip_chip_device_device,debug,0027,Debugging DigitalPattern Class
+2024-05-16,14:11:22,chip_chip_device_device,debug,0000,Debugging DigitalPattern Class
+2024-05-16,14:12:24,chip_chip_device_device,debug,0001,Debugging DigitalPattern Class
+2024-05-16,14:13:41,chip_chip_device_device,debug,0002,Debugging DigitalPattern Class
+2024-05-16,14:13:57,chip_chip_device_device,debug,0003,Debugging DigitalPattern Class
+2024-05-16,14:14:12,chip_chip_device_device,debug,0004,Debugging DigitalPattern Class
+2024-05-16,14:14:52,chip_chip_device_device,debug,0005,Debugging DigitalPattern Class
+2024-05-16,14:15:55,chip_chip_device_device,debug,0006,Debugging DigitalPattern Class
+2024-05-16,14:16:24,chip_chip_device_device,debug,0007,Debugging DigitalPattern Class
+2024-05-16,14:17:54,chip_chip_device_device,debug,0008,Debugging DigitalPattern Class
+2024-05-16,14:19:00,chip_chip_device_device,debug,0009,Debugging DigitalPattern Class
+2024-05-16,14:21:52,chip_chip_device_device,debug,0010,Debugging DigitalPattern Class
+2024-05-16,14:22:21,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-16,14:23:05,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-16,14:23:14,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-20,15:56:25,chip_chip_device_device,debug,0000,Debugging DigitalPattern Class
+2024-05-20,15:57:42,chip_chip_device_device,debug,0001,Debugging DigitalPattern Class
+2024-05-20,15:58:58,chip_chip_device_device,debug,0002,Debugging DigitalPattern Class
+2024-05-20,15:59:49,chip_chip_device_device,debug,0003,Debugging DigitalPattern Class
+2024-05-20,16:01:10,chip_chip_device_device,debug,0004,Debugging DigitalPattern Class
+2024-05-20,16:03:48,chip_chip_device_device,debug,0005,Debugging DigitalPattern Class
+2024-05-20,16:04:16,chip_chip_device_device,debug,0006,Debugging DigitalPattern Class
+2024-05-20,16:06:19,chip_chip_device_device,debug,0007,Debugging DigitalPattern Class
+2024-05-20,16:06:48,chip_chip_device_device,debug,0008,Debugging DigitalPattern Class
+2024-05-20,16:07:56,chip_chip_device_device,debug,0009,Debugging DigitalPattern Class
+2024-05-20,16:22:26,chip_chip_device_device,debug,0010,Debugging DigitalPattern Class
+2024-05-20,16:23:42,chip_chip_device_device,debug,0011,Debugging DigitalPattern Class
+2024-05-20,16:23:55,chip_chip_device_device,debug,0012,Debugging DigitalPattern Class
+2024-05-20,16:25:26,chip_chip_device_device,debug,0013,Debugging DigitalPattern Class
+2024-05-20,16:27:00,chip_chip_device_device,debug,0014,Debugging DigitalPattern Class
+2024-05-20,16:27:16,chip_chip_device_device,debug,0015,Debugging DigitalPattern Class
+2024-05-20,16:28:23,chip_chip_device_device,debug,0016,Debugging DigitalPattern Class
+2024-05-20,16:29:16,chip_chip_device_device,debug,0017,Debugging DigitalPattern Class
+2024-05-20,16:32:01,chip_chip_device_device,debug,0018,Debugging DigitalPattern Class
+2024-05-20,16:33:33,chip_chip_device_device,debug,0019,Debugging DigitalPattern Class
+2024-05-20,16:34:51,chip_chip_device_device,debug,0020,Debugging DigitalPattern Class
+2024-05-20,16:36:22,chip_chip_device_device,debug,0021,Debugging DigitalPattern Class
+2024-05-20,16:38:35,chip_chip_device_device,debug,0022,Debugging DigitalPattern Class
+2024-05-20,16:41:25,chip_chip_device_device,debug,0023,Debugging DigitalPattern Class
+2024-05-20,16:42:07,chip_chip_device_device,debug,0024,Debugging DigitalPattern Class
+2024-05-20,16:45:57,chip_chip_device_device,debug,0025,Debugging DigitalPattern Class
+2024-05-20,16:46:16,chip_chip_device_device,debug,0026,Debugging DigitalPattern Class
+2024-05-20,16:48:24,chip_chip_device_device,debug,0027,Debugging DigitalPattern Class
+2024-05-20,16:48:44,chip_chip_device_device,debug,0028,Debugging DigitalPattern Class
+2024-05-20,16:49:14,chip_chip_device_device,debug,0029,Debugging DigitalPattern Class
+2024-05-20,16:50:03,chip_chip_device_device,debug,0030,Debugging DigitalPattern Class
+2024-05-20,16:52:59,chip_chip_device_device,debug,0031,Debugging DigitalPattern Class
+2024-05-20,16:53:19,chip_chip_device_device,debug,0032,Debugging DigitalPattern Class
+2024-05-20,16:56:04,chip_chip_device_device,debug,0033,Debugging DigitalPattern Class
+2024-05-20,16:56:41,chip_chip_device_device,debug,0034,Debugging DigitalPattern Class
+2024-05-20,16:57:36,chip_chip_device_device,debug,0035,Debugging DigitalPattern Class
+2024-05-20,16:58:43,chip_chip_device_device,debug,0036,Debugging DigitalPattern Class
+2024-05-20,16:59:45,chip_chip_device_device,debug,0037,Debugging DigitalPattern Class
+2024-05-20,17:00:26,chip_chip_device_device,debug,0038,Debugging DigitalPattern Class
+2024-05-20,17:00:55,chip_chip_device_device,debug,0039,Debugging DigitalPattern Class
+2024-05-20,17:02:36,chip_chip_device_device,debug,0040,Debugging DigitalPattern Class
+2024-05-20,17:03:06,chip_chip_device_device,debug,0041,Debugging DigitalPattern Class
+2024-05-20,17:20:07,chip_chip_device_device,debug,0042,Debugging DigitalPattern Class
+2024-05-20,17:27:08,chip_chip_device_device,debug,0043,Debugging DigitalPattern Class
+2024-05-20,17:30:05,chip_chip_device_device,debug,0044,Debugging DigitalPattern Class
+2024-05-20,17:30:37,chip_chip_device_device,debug,0045,Debugging DigitalPattern Class
+2024-05-20,17:31:41,chip_chip_device_device,debug,0046,Debugging DigitalPattern Class
+2024-05-20,17:32:32,chip_chip_device_device,debug,0047,Debugging DigitalPattern Class
+2024-05-20,17:34:35,chip_chip_device_device,debug,0048,Debugging DigitalPattern Class
+2024-05-20,17:35:40,chip_chip_device_device,debug,0049,Debugging DigitalPattern Class
+2024-05-20,17:38:00,chip_chip_device_device,debug,0050,Debugging DigitalPattern Class
+2024-05-20,17:39:41,chip_chip_device_device,debug,0051,Debugging DigitalPattern Class
+2024-05-20,17:42:10,chip_chip_device_device,debug,0052,Debugging DigitalPattern Class
+2024-05-20,17:42:45,chip_chip_device_device,debug,0053,Debugging DigitalPattern Class
+2024-05-20,17:43:08,chip_chip_device_device,debug,0054,Debugging DigitalPattern Class
+2024-05-20,17:43:29,chip_chip_device_device,debug,0055,Debugging DigitalPattern Class
+2024-05-20,17:43:38,chip_chip_device_device,debug,0056,Debugging DigitalPattern Class
+2024-05-20,17:44:22,chip_chip_device_device,debug,0057,Debugging DigitalPattern Class
+2024-05-20,17:45:07,chip_chip_device_device,debug,0058,Debugging DigitalPattern Class
+2024-05-20,17:46:09,chip_chip_device_device,debug,0059,Debugging DigitalPattern Class
+2024-05-20,17:47:10,chip_chip_device_device,debug,0060,Debugging DigitalPattern Class
+2024-05-20,17:54:27,chip_chip_device_device,debug,0061,Debugging DigitalPattern Class
+2024-05-20,17:55:33,chip_chip_device_device,debug,0062,Debugging DigitalPattern Class
+2024-05-20,17:57:41,chip_chip_device_device,debug,0063,Debugging DigitalPattern Class
+2024-05-20,17:59:27,chip_chip_device_device,debug,0064,Debugging DigitalPattern Class
+2024-05-20,18:02:31,chip_chip_device_device,debug,0065,Debugging DigitalPattern Class
+2024-05-20,18:03:15,chip_chip_device_device,debug,0066,Debugging DigitalPattern Class
+2024-05-20,18:05:45,chip_chip_device_device,debug,0067,Debugging DigitalPattern Class
+2024-05-20,18:06:25,chip_chip_device_device,debug,0068,Debugging DigitalPattern Class
+2024-05-20,18:07:02,chip_chip_device_device,debug,0069,Debugging DigitalPattern Class
+2024-05-20,18:12:49,chip_chip_device_device,debug,0070,Debugging DigitalPattern Class
+2024-05-20,18:13:55,chip_chip_device_device,debug,0071,Debugging DigitalPattern Class
+2024-05-20,18:14:39,chip_chip_device_device,debug,0072,Debugging DigitalPattern Class
+2024-05-20,18:15:56,chip_chip_device_device,debug,0073,Debugging DigitalPattern Class
+2024-05-20,18:18:23,chip_chip_device_device,debug,0074,Debugging DigitalPattern Class
+2024-05-20,18:22:49,chip_chip_device_device,debug,0075,Debugging DigitalPattern Class
+2024-05-20,18:23:16,chip_chip_device_device,debug,0076,Debugging DigitalPattern Class
+2024-05-20,18:26:15,chip_chip_device_device,debug,0077,Debugging DigitalPattern Class
+2024-05-20,18:29:36,chip_chip_device_device,debug,0078,Debugging DigitalPattern Class
+2024-05-20,18:32:27,chip_chip_device_device,debug,0079,Debugging DigitalPattern Class
+2024-05-20,18:33:00,chip_chip_device_device,debug,0080,Debugging DigitalPattern Class
+2024-05-20,18:35:34,chip_chip_device_device,debug,0081,Debugging DigitalPattern Class
+2024-05-20,18:42:26,chip_chip_device_device,debug,0082,Debugging DigitalPattern Class
+2024-05-20,18:43:57,chip_chip_device_device,debug,0083,Debugging DigitalPattern Class
+2024-05-20,18:46:18,chip_chip_device_device,debug,0084,Debugging DigitalPattern Class
+2024-05-20,18:49:02,chip_chip_device_device,debug,0085,Debugging DigitalPattern Class
+2024-05-20,18:49:57,chip_chip_device_device,debug,0086,Debugging DigitalPattern Class
+2024-05-20,18:51:18,chip_chip_device_device,debug,0087,Debugging DigitalPattern Class
+2024-05-20,19:12:32,chip_chip_device_device,debug,0088,Debugging DigitalPattern Class
+2024-05-20,19:21:30,chip_chip_device_device,debug,0089,Debugging DigitalPattern Class
+2024-05-20,19:21:42,chip_chip_device_device,debug,0090,Debugging DigitalPattern Class
+2024-05-20,19:22:24,chip_chip_device_device,debug,0091,Debugging DigitalPattern Class
+2024-05-20,19:22:44,chip_chip_device_device,debug,0092,Debugging DigitalPattern Class
+2024-05-20,19:23:19,chip_chip_device_device,debug,0093,Debugging DigitalPattern Class
+2024-05-20,19:24:06,chip_chip_device_device,debug,0094,Debugging DigitalPattern Class
+2024-05-20,19:24:15,chip_chip_device_device,debug,0095,Debugging DigitalPattern Class
+2024-05-20,19:24:41,chip_chip_device_device,debug,0096,Debugging DigitalPattern Class
+2024-05-20,19:24:56,chip_chip_device_device,debug,0097,Debugging DigitalPattern Class
+2024-05-20,19:25:07,chip_chip_device_device,debug,0098,Debugging DigitalPattern Class
+2024-05-20,19:26:01,chip_chip_device_device,debug,0099,Debugging NIRRAM Read Operation.
+2024-05-20,19:32:38,chip_chip_device_device,debug,0100,Debugging NIRRAM Read Operation.
+2024-05-20,19:33:17,chip_chip_device_device,debug,0101,Debugging NIRRAM Read Operation.
+2024-05-20,19:35:20,chip_chip_device_device,debug,0102,Debugging NIRRAM Read Operation.
+2024-05-20,19:37:49,chip_chip_device_device,debug,0103,Debugging NIRRAM Read Operation.
+2024-05-20,19:39:15,chip_chip_device_device,debug,0104,Debugging NIRRAM Read Operation.
+2024-05-20,19:43:23,chip_chip_device_device,debug,0105,Debugging NIRRAM Read Operation.
+2024-05-20,19:43:55,chip_chip_device_device,debug,0106,Debugging NIRRAM Read Operation.
+2024-05-20,19:44:30,chip_chip_device_device,debug,0107,Debugging NIRRAM Read Operation.
+2024-05-20,19:45:23,chip_chip_device_device,debug,0108,Debugging NIRRAM Read Operation.
+2024-05-20,19:45:51,chip_chip_device_device,debug,0109,Debugging NIRRAM Read Operation.
+2024-05-20,19:48:33,chip_chip_device_device,debug,0110,Debugging NIRRAM Read Operation.
+2024-05-20,19:52:49,chip_chip_device_device,debug,0111,Debugging NIRRAM Read Operation.
+2024-05-20,19:54:30,chip_chip_device_device,debug,0112,Debugging NIRRAM Read Operation.
+2024-05-20,19:56:15,chip_chip_device_device,debug,0113,Debugging NIRRAM Read Operation.
+2024-05-20,19:59:26,chip_chip_device_device,debug,0114,Debugging NIRRAM Read Operation.
+2024-05-20,20:00:58,chip_chip_device_device,debug,0115,Debugging NIRRAM Read Operation.
+2024-05-20,20:01:15,chip_chip_device_device,debug,0116,Debugging NIRRAM Read Operation.
+2024-05-20,20:01:32,chip_chip_device_device,debug,0117,Debugging NIRRAM Read Operation.
+2024-05-20,20:02:23,chip_chip_device_device,debug,0118,Debugging NIRRAM Read Operation.
+2024-05-20,20:03:28,chip_chip_device_device,debug,0119,Debugging NIRRAM Read Operation.
+2024-05-20,20:04:00,chip_chip_device_device,debug,0120,Debugging NIRRAM Read Operation.
+2024-05-20,20:04:19,chip_chip_device_device,debug,0121,Debugging NIRRAM Read Operation.
+2024-05-20,20:08:55,chip_chip_device_device,debug,0122,Debugging NIRRAM Read Operation.
+2024-05-20,20:09:47,chip_chip_device_device,debug,0123,Debugging NIRRAM Read Operation.
+2024-05-20,20:10:12,chip_chip_device_device,debug,0124,Debugging NIRRAM Read Operation.
+2024-05-20,20:10:28,chip_chip_device_device,debug,0125,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:07,chip_chip_device_device,debug,0126,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:12,chip_chip_device_device,debug,0127,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:16,chip_chip_device_device,debug,0128,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:20,chip_chip_device_device,debug,0129,Debugging NIRRAM Read Operation.
+2024-05-20,20:12:27,chip_chip_device_device,debug,0130,Debugging NIRRAM Read Operation.
+2024-05-20,20:13:45,chip_chip_device_device,debug,0131,Debugging NIRRAM Read Operation.
+2024-05-20,20:14:20,chip_chip_device_device,debug,0132,Debugging NIRRAM Read Operation.
+2024-05-20,20:15:50,chip_chip_device_device,debug,0133,Debugging NIRRAM Read Operation.
+2024-05-20,20:17:19,chip_chip_device_device,debug,0134,Debugging NIRRAM Read Operation.
+2024-05-20,20:18:41,chip_chip_device_device,debug,0135,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:06,chip_chip_device_device,debug,0136,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:24,chip_chip_device_device,debug,0137,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:45,chip_chip_device_device,debug,0138,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:54,chip_chip_device_device,debug,0139,Debugging NIRRAM Read Operation.
+2024-05-20,20:19:59,chip_chip_device_device,debug,0140,Debugging NIRRAM Read Operation.
+2024-05-20,20:20:12,chip_chip_device_device,debug,0141,Debugging NIRRAM Read Operation.
+2024-05-20,20:20:44,chip_chip_device_device,debug,0142,Debugging NIRRAM Read Operation.
+2024-05-20,20:21:04,chip_chip_device_device,debug,0143,Debugging NIRRAM Read Operation.
+2024-05-20,20:22:10,chip_chip_device_device,debug,0144,Debugging NIRRAM Read Operation.
+2024-05-20,20:22:46,chip_chip_device_device,debug,0145,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:15,chip_chip_device_device,debug,0146,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:19,chip_chip_device_device,debug,0147,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:31,chip_chip_device_device,debug,0148,Debugging NIRRAM Read Operation.
+2024-05-20,20:23:54,chip_chip_device_device,debug,0149,Debugging NIRRAM Read Operation.
+2024-05-21,10:55:35,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-05-21,10:56:21,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-05-21,10:58:37,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-05-21,10:58:59,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-05-21,10:59:11,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-05-21,11:00:18,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-05-21,11:00:38,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-05-21,11:02:01,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-05-21,11:06:38,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-05-21,11:08:44,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-05-21,11:09:05,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-05-21,11:09:50,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-05-21,11:12:31,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-05-21,11:13:23,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:01,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:17,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:29,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-05-21,11:14:43,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-05-21,11:15:08,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-05-21,11:15:23,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-05-21,11:21:08,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-05-21,11:21:51,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-05-21,11:22:08,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-05-21,11:22:31,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-05-21,11:23:11,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-05-21,11:35:48,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:23,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:35,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-05-21,11:36:55,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-05-21,12:07:34,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-05-21,12:08:12,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-05-21,12:09:18,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-05-21,12:09:36,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-05-21,12:10:48,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-05-21,12:50:56,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-05-21,12:55:45,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-05-21,13:16:51,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-05-21,13:35:41,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-05-21,16:34:30,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-05-21,16:34:51,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-05-21,16:38:22,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-05-21,16:38:41,chip_chip_device_device,debug,0041,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:14,chip_chip_device_device,debug,0042,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:25,chip_chip_device_device,debug,0043,Debugging NIRRAM Read Operation.
+2024-05-21,16:42:43,chip_chip_device_device,debug,0044,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:00,chip_chip_device_device,debug,0045,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:41,chip_chip_device_device,debug,0046,Debugging NIRRAM Read Operation.
+2024-05-21,16:43:56,chip_chip_device_device,debug,0047,Debugging NIRRAM Read Operation.
+2024-05-21,16:44:02,chip_chip_device_device,debug,0048,Debugging NIRRAM Read Operation.
+2024-05-21,16:44:12,chip_chip_device_device,debug,0049,Debugging NIRRAM Read Operation.
+2024-05-21,16:45:21,chip_chip_device_device,debug,0050,Debugging NIRRAM Read Operation.
+2024-05-21,16:45:39,chip_chip_device_device,debug,0051,Debugging NIRRAM Read Operation.
+2024-05-21,16:46:17,chip_chip_device_device,debug,0052,Debugging NIRRAM Read Operation.
+2024-05-21,16:47:17,chip_chip_device_device,debug,0053,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:14,chip_chip_device_device,debug,0054,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:27,chip_chip_device_device,debug,0055,Debugging NIRRAM Read Operation.
+2024-05-21,16:48:47,chip_chip_device_device,debug,0056,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:01,chip_chip_device_device,debug,0057,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:21,chip_chip_device_device,debug,0058,Debugging NIRRAM Read Operation.
+2024-05-21,16:49:35,chip_chip_device_device,debug,0059,Debugging NIRRAM Read Operation.
+2024-05-21,17:01:38,chip_chip_device_device,debug,0060,Debugging NIRRAM Read Operation.
+2024-05-21,17:01:53,chip_chip_device_device,debug,0061,Debugging NIRRAM Read Operation.
+2024-05-21,17:03:34,chip_chip_device_device,debug,0062,Debugging NIRRAM Read Operation.
+2024-05-21,17:03:45,chip_chip_device_device,debug,0063,Debugging NIRRAM Read Operation.
+2024-05-21,17:03:55,chip_chip_device_device,debug,0064,Debugging NIRRAM Read Operation.
+2024-05-21,17:04:29,chip_chip_device_device,debug,0065,Debugging NIRRAM Read Operation.
+2024-05-21,17:05:43,chip_chip_device_device,debug,0066,Debugging NIRRAM Read Operation.
+2024-05-21,17:06:33,chip_chip_device_device,debug,0067,Debugging NIRRAM Read Operation.
+2024-05-21,17:06:58,chip_chip_device_device,debug,0068,Debugging NIRRAM Read Operation.
+2024-05-21,17:07:37,chip_chip_device_device,debug,0069,Debugging NIRRAM Read Operation.
+2024-05-22,18:25:12,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-05-22,18:25:58,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-05-22,18:27:03,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-05-22,18:28:23,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-05-22,18:28:42,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-05-22,18:28:55,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-05-23,19:23:55,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-05-23,19:24:11,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-05-23,19:25:11,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-05-23,19:27:06,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-05-23,19:29:41,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-05-23,19:30:08,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-05-23,19:30:30,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-05-23,19:30:53,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-05-23,19:31:43,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-05-23,19:32:34,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-05-23,19:33:15,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-05-30,11:37:10,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-05-30,11:38:05,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-05-30,11:42:19,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-05-30,11:49:45,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-05-30,11:53:00,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-05-30,11:53:50,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-05-30,11:54:33,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-05-30,11:55:53,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-05-30,11:57:52,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-05-30,12:00:07,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-05-30,12:02:25,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-05-30,12:04:25,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-05-30,12:06:52,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-05-30,12:09:34,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-05-30,12:11:05,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-05-30,12:20:02,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-05-30,12:20:36,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-05-30,12:21:15,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-05-30,12:21:36,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-05-30,12:22:57,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-05-30,12:25:24,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-05-30,12:26:44,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-05-30,12:28:04,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-05-30,12:30:03,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-05-30,12:30:39,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-05-30,12:31:42,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-05-30,12:32:00,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-05-30,12:33:38,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-05-30,12:34:21,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-05-30,12:35:04,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-05-30,12:36:17,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-05-30,12:36:39,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-05-30,12:37:39,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-05-30,12:38:29,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-05-30,12:39:07,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-05-30,12:39:28,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-05-30,12:39:56,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-05-30,12:40:26,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-05-30,12:41:32,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-05-30,12:42:10,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-05-30,12:44:13,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-05-30,12:46:49,chip_chip_device_device,debug,0041,Debugging NIRRAM Read Operation.
+2024-05-30,12:47:36,chip_chip_device_device,debug,0042,Debugging NIRRAM Read Operation.
+2024-05-30,13:03:01,chip_chip_device_device,debug,0043,Debugging NIRRAM Read Operation.
+2024-05-30,13:03:18,chip_chip_device_device,debug,0044,Debugging NIRRAM Read Operation.
+2024-05-30,13:03:53,chip_chip_device_device,debug,0045,Debugging NIRRAM Read Operation.
+2024-05-30,13:04:28,chip_chip_device_device,debug,0046,Debugging NIRRAM Read Operation.
+2024-05-30,13:05:28,chip_chip_device_device,debug,0047,Debugging NIRRAM Read Operation.
+2024-05-30,13:08:26,chip_chip_device_device,debug,0048,Debugging NIRRAM Read Operation.
+2024-05-30,13:08:51,chip_chip_device_device,debug,0049,Debugging NIRRAM Read Operation.
+2024-05-30,13:09:13,chip_chip_device_device,debug,0050,Debugging NIRRAM Read Operation.
+2024-05-30,13:12:35,chip_chip_device_device,debug,0051,Debugging NIRRAM Read Operation.
+2024-05-30,13:12:53,chip_chip_device_device,debug,0052,Debugging NIRRAM Read Operation.
+2024-05-30,13:14:21,chip_chip_device_device,debug,0053,Debugging NIRRAM Read Operation.
+2024-05-30,13:16:15,chip_chip_device_device,debug,0054,Debugging NIRRAM Read Operation.
+2024-05-30,13:16:27,chip_chip_device_device,debug,0055,Debugging NIRRAM Read Operation.
+2024-05-30,13:19:20,chip_chip_device_device,debug,0056,Debugging NIRRAM Read Operation.
+2024-05-30,13:19:40,chip_chip_device_device,debug,0057,Debugging NIRRAM Read Operation.
+2024-05-30,13:20:38,chip_chip_device_device,debug,0058,Debugging NIRRAM Read Operation.
+2024-05-30,13:24:56,chip_chip_device_device,debug,0059,Debugging NIRRAM Read Operation.
+2024-05-30,13:27:54,chip_chip_device_device,debug,0060,Debugging NIRRAM Read Operation.
+2024-05-30,13:28:48,chip_chip_device_device,debug,0061,Debugging NIRRAM Read Operation.
+2024-05-30,13:31:03,chip_chip_device_device,debug,0062,Debugging NIRRAM Read Operation.
+2024-05-30,13:31:24,chip_chip_device_device,debug,0063,Debugging NIRRAM Read Operation.
+2024-05-30,13:32:06,chip_chip_device_device,debug,0064,Debugging NIRRAM Read Operation.
+2024-05-30,13:32:41,chip_chip_device_device,debug,0065,Debugging NIRRAM Read Operation.
+2024-05-30,13:33:07,chip_chip_device_device,debug,0066,Debugging NIRRAM Read Operation.
+2024-05-30,13:34:02,chip_chip_device_device,debug,0067,Debugging NIRRAM Read Operation.
+2024-05-30,13:34:39,chip_chip_device_device,debug,0068,Debugging NIRRAM Read Operation.
+2024-05-30,13:35:58,chip_chip_device_device,debug,0069,Debugging NIRRAM Read Operation.
+2024-05-30,13:36:52,chip_chip_device_device,debug,0070,Debugging NIRRAM Read Operation.
+2024-06-01,16:04:04,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-01,16:13:28,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-01,16:15:02,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-01,16:15:32,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-01,16:16:03,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-01,16:17:57,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-01,16:18:47,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-01,16:19:29,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-01,16:19:52,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-01,16:22:08,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-02,13:08:28,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-02,13:41:37,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-02,13:41:46,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-02,13:42:11,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-02,13:42:36,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-02,13:42:46,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-02,13:44:30,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-02,13:44:37,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-02,13:44:44,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-02,13:44:51,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-02,13:45:04,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-06-02,13:47:45,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-06-02,13:49:16,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-06-02,13:49:47,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-06-02,13:49:55,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-06-02,13:50:40,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-06-02,13:50:47,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-06-02,13:51:01,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-06-02,13:51:13,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-06-02,13:51:26,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-06-02,13:51:50,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-06-02,13:52:54,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-06-02,13:53:06,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-06-02,13:53:53,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-06-02,13:54:04,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-06-02,13:54:10,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-06-02,13:54:54,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-06-02,13:55:20,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-06-02,13:55:24,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-06-02,13:55:28,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-06-02,14:49:09,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-06-02,14:52:59,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-06-02,14:53:15,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-06-02,15:11:39,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-06-02,15:14:52,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-06-02,15:22:34,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-06-02,15:23:01,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-06-02,15:23:07,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-06-02,15:23:11,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-06-02,15:24:26,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-06-02,15:24:47,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-06-02,15:32:04,chip_chip_device_device,debug,0041,Debugging NIRRAM Read Operation.
+2024-06-02,15:41:01,chip_chip_device_device,debug,0042,Debugging NIRRAM Read Operation.
+2024-06-02,15:59:31,chip_chip_device_device,debug,0043,Debugging NIRRAM Read Operation.
+2024-06-02,15:59:38,chip_chip_device_device,debug,0044,Debugging NIRRAM Read Operation.
+2024-06-02,15:59:46,chip_chip_device_device,debug,0045,Debugging NIRRAM Read Operation.
+2024-06-02,16:01:04,chip_chip_device_device,debug,0046,Debugging NIRRAM Read Operation.
+2024-06-02,16:02:59,chip_chip_device_device,debug,0047,Debugging NIRRAM Read Operation.
+2024-06-02,16:03:51,chip_chip_device_device,debug,0048,Debugging NIRRAM Read Operation.
+2024-06-02,16:04:36,chip_chip_device_device,debug,0049,Debugging NIRRAM Read Operation.
+2024-06-02,16:04:59,chip_chip_device_device,debug,0050,Debugging NIRRAM Read Operation.
+2024-06-02,16:05:29,chip_chip_device_device,debug,0051,Debugging NIRRAM Read Operation.
+2024-06-02,16:05:41,chip_chip_device_device,debug,0052,Debugging NIRRAM Read Operation.
+2024-06-02,16:06:21,chip_chip_device_device,debug,0053,Debugging NIRRAM Read Operation.
+2024-06-02,16:14:21,chip_chip_device_device,debug,0054,Debugging NIRRAM Read Operation.
+2024-06-04,10:48:17,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-04,10:49:34,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-04,10:50:04,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-04,10:52:53,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-04,10:54:12,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-04,11:04:29,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-04,11:07:07,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-04,11:09:15,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-04,11:09:56,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-04,11:12:33,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-04,11:14:20,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-06-04,11:35:50,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-06-04,11:37:05,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-06-04,11:37:42,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-06-04,11:38:31,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-06-04,11:39:03,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-06-04,11:40:18,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-06-04,11:41:23,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-06-04,11:43:05,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-06-04,11:45:51,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-06-04,11:47:31,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-06-04,11:50:37,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-06-04,11:51:11,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-06-04,11:58:58,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-06-04,11:59:25,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-06-04,12:01:54,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-06-04,12:02:35,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-06-04,12:02:54,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-06-04,12:03:12,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-06-04,12:03:47,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-06-04,12:03:55,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-06-04,12:04:10,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-06-04,12:04:36,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-06-04,12:04:48,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-06-04,12:05:30,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-06-04,12:05:40,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-06-04,12:05:44,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-06-04,12:09:33,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-06-04,12:10:35,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-06-04,12:10:40,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-06-04,12:11:53,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-06-04,12:12:52,chip_chip_device_device,debug,0041,Debugging NIRRAM Read Operation.
+2024-06-04,12:16:08,chip_chip_device_device,debug,0042,Debugging NIRRAM Read Operation.
+2024-06-04,12:18:44,chip_chip_device_device,debug,0043,Debugging NIRRAM Read Operation.
+2024-06-04,12:20:46,chip_chip_device_device,debug,0044,Debugging NIRRAM Read Operation.
+2024-06-04,12:21:00,chip_chip_device_device,debug,0045,Debugging NIRRAM Read Operation.
+2024-06-04,12:22:57,chip_chip_device_device,debug,0046,Debugging NIRRAM Read Operation.
+2024-06-04,12:25:07,chip_chip_device_device,debug,0047,Debugging NIRRAM Read Operation.
+2024-06-04,12:25:16,chip_chip_device_device,debug,0048,Debugging NIRRAM Read Operation.
+2024-06-04,12:29:18,chip_chip_device_device,debug,0049,Debugging NIRRAM Read Operation.
+2024-06-04,12:30:31,chip_chip_device_device,debug,0050,Debugging NIRRAM Read Operation.
+2024-06-04,12:33:59,chip_chip_device_device,debug,0051,Debugging NIRRAM Read Operation.
+2024-06-04,12:35:02,chip_chip_device_device,debug,0052,Debugging NIRRAM Read Operation.
+2024-06-04,12:35:40,chip_chip_device_device,debug,0053,Debugging NIRRAM Read Operation.
+2024-06-04,12:35:54,chip_chip_device_device,debug,0054,Debugging NIRRAM Read Operation.
+2024-06-04,12:40:06,chip_chip_device_device,debug,0055,Debugging NIRRAM Read Operation.
+2024-06-04,13:02:59,chip_chip_device_device,debug,0056,Debugging NIRRAM Read Operation.
+2024-06-04,13:03:25,chip_chip_device_device,debug,0057,Debugging NIRRAM Read Operation.
+2024-06-04,13:04:51,chip_chip_device_device,debug,0058,Debugging NIRRAM Read Operation.
+2024-06-04,13:06:08,chip_chip_device_device,debug,0059,Debugging NIRRAM Read Operation.
+2024-06-04,13:06:53,chip_chip_device_device,debug,0060,Debugging NIRRAM Read Operation.
+2024-06-04,13:07:10,chip_chip_device_device,debug,0061,Debugging NIRRAM Read Operation.
+2024-06-04,13:08:20,chip_chip_device_device,debug,0062,Debugging NIRRAM Read Operation.
+2024-06-04,13:09:59,chip_chip_device_device,debug,0063,Debugging NIRRAM Read Operation.
+2024-06-04,13:10:31,chip_chip_device_device,debug,0064,Debugging NIRRAM Read Operation.
+2024-06-04,13:12:37,chip_chip_device_device,debug,0065,Debugging NIRRAM Read Operation.
+2024-06-04,13:13:28,chip_chip_device_device,debug,0066,Debugging NIRRAM Read Operation.
+2024-06-04,13:14:40,chip_chip_device_device,debug,0067,Debugging NIRRAM Read Operation.
+2024-06-04,13:45:37,chip_chip_device_device,debug,0068,Debugging NIRRAM Read Operation.
+2024-06-05,13:00:09,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-05,13:08:35,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-05,13:08:59,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-05,13:09:30,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-05,13:10:31,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-05,13:15:06,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-05,13:15:53,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-05,13:16:07,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-05,13:16:31,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-05,13:21:04,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-05,13:21:49,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-06-05,13:22:28,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-06-05,13:27:32,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-06-05,13:28:15,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-06-05,13:29:24,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-06-05,13:29:47,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-06-05,13:30:31,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-06-05,13:32:12,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-06-05,13:34:37,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-06-05,13:34:56,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-06-05,13:36:20,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-06-05,14:38:11,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-06-05,14:44:01,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-06-05,14:45:23,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-06-05,14:52:53,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-06-05,14:53:18,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-06-05,15:02:38,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-06-05,15:04:40,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-06-05,15:05:04,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-06-05,15:05:47,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-06-05,15:06:15,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-06-05,15:06:41,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-06-05,15:07:12,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-06-05,15:07:54,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-06-05,15:09:14,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-06-05,15:09:36,chip_chip_device_device,debug,0035,Debugging NIRRAM Read Operation.
+2024-06-05,15:10:58,chip_chip_device_device,debug,0036,Debugging NIRRAM Read Operation.
+2024-06-05,15:12:21,chip_chip_device_device,debug,0037,Debugging NIRRAM Read Operation.
+2024-06-05,15:13:29,chip_chip_device_device,debug,0038,Debugging NIRRAM Read Operation.
+2024-06-05,15:15:59,chip_chip_device_device,debug,0039,Debugging NIRRAM Read Operation.
+2024-06-05,15:16:39,chip_chip_device_device,debug,0040,Debugging NIRRAM Read Operation.
+2024-06-06,17:11:40,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-06,19:20:53,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-06,19:21:13,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-06,19:27:38,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-06,19:28:22,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-06,19:28:46,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-06,19:29:27,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-06,19:49:42,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-06,19:51:42,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-06,19:52:17,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-06,19:52:41,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-06-06,19:53:34,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-06-06,19:54:17,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-06-06,19:54:58,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-06-06,19:55:39,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-06-06,19:57:07,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-06-06,19:58:04,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-06-06,20:36:32,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-06-06,20:37:06,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-06-06,20:38:37,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-06-06,20:39:04,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-06-06,20:39:57,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-06-06,20:41:02,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-06-06,20:41:17,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-06-06,20:42:27,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-06-06,20:43:04,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-06-06,20:44:06,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-06-06,20:44:41,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-06-06,20:45:42,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-06-06,20:47:10,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-06-07,13:17:18,chip_chip_device_device,debug,0000,Debugging NIRRAM Read Operation.
+2024-06-07,13:19:10,chip_chip_device_device,debug,0001,Debugging NIRRAM Read Operation.
+2024-06-07,13:19:53,chip_chip_device_device,debug,0002,Debugging NIRRAM Read Operation.
+2024-06-07,13:20:33,chip_chip_device_device,debug,0003,Debugging NIRRAM Read Operation.
+2024-06-07,13:21:18,chip_chip_device_device,debug,0004,Debugging NIRRAM Read Operation.
+2024-06-07,13:21:51,chip_chip_device_device,debug,0005,Debugging NIRRAM Read Operation.
+2024-06-07,13:22:20,chip_chip_device_device,debug,0006,Debugging NIRRAM Read Operation.
+2024-06-07,13:24:34,chip_chip_device_device,debug,0007,Debugging NIRRAM Read Operation.
+2024-06-07,13:27:10,chip_chip_device_device,debug,0008,Debugging NIRRAM Read Operation.
+2024-06-07,13:27:58,chip_chip_device_device,debug,0009,Debugging NIRRAM Read Operation.
+2024-06-07,13:29:10,chip_chip_device_device,debug,0010,Debugging NIRRAM Read Operation.
+2024-06-07,13:48:11,chip_chip_device_device,debug,0011,Debugging NIRRAM Read Operation.
+2024-06-07,13:48:38,chip_chip_device_device,debug,0012,Debugging NIRRAM Read Operation.
+2024-06-07,13:51:54,chip_chip_device_device,debug,0013,Debugging NIRRAM Read Operation.
+2024-06-07,13:52:25,chip_chip_device_device,debug,0014,Debugging NIRRAM Read Operation.
+2024-06-07,13:53:11,chip_chip_device_device,debug,0015,Debugging NIRRAM Read Operation.
+2024-06-07,13:53:29,chip_chip_device_device,debug,0016,Debugging NIRRAM Read Operation.
+2024-06-07,14:18:49,chip_chip_device_device,debug,0017,Debugging NIRRAM Read Operation.
+2024-06-07,14:19:15,chip_chip_device_device,debug,0018,Debugging NIRRAM Read Operation.
+2024-06-07,14:20:46,chip_chip_device_device,debug,0019,Debugging NIRRAM Read Operation.
+2024-06-07,14:21:06,chip_chip_device_device,debug,0020,Debugging NIRRAM Read Operation.
+2024-06-07,14:23:35,chip_chip_device_device,debug,0021,Debugging NIRRAM Read Operation.
+2024-06-07,14:26:58,chip_chip_device_device,debug,0022,Debugging NIRRAM Read Operation.
+2024-06-07,14:27:53,chip_chip_device_device,debug,0023,Debugging NIRRAM Read Operation.
+2024-06-07,14:28:52,chip_chip_device_device,debug,0024,Debugging NIRRAM Read Operation.
+2024-06-07,14:29:15,chip_chip_device_device,debug,0025,Debugging NIRRAM Read Operation.
+2024-06-07,15:01:31,chip_chip_device_device,debug,0026,Debugging NIRRAM Read Operation.
+2024-06-07,15:01:45,chip_chip_device_device,debug,0027,Debugging NIRRAM Read Operation.
+2024-06-07,15:04:25,chip_chip_device_device,debug,0028,Debugging NIRRAM Read Operation.
+2024-06-07,15:08:54,chip_chip_device_device,debug,0029,Debugging NIRRAM Read Operation.
+2024-06-07,15:09:09,chip_chip_device_device,debug,0030,Debugging NIRRAM Read Operation.
+2024-06-07,15:14:43,chip_chip_device_device,debug,0031,Debugging NIRRAM Read Operation.
+2024-06-07,15:15:05,chip_chip_device_device,debug,0032,Debugging NIRRAM Read Operation.
+2024-06-07,15:21:38,chip_chip_device_device,debug,0033,Debugging NIRRAM Read Operation.
+2024-06-07,15:22:46,chip_chip_device_device,debug,0034,Debugging NIRRAM Read Operation.
+2024-06-07,15:31:16,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-07,15:31:30,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:02:55,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:09:44,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:10:11,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:16:45,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:19:34,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:19:59,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:20:15,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-07,16:21:40,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:10:07,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:33:32,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:33:55,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:34:17,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:36:44,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:56:53,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:57:14,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:57:23,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:58:04,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-08,15:59:14,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:01:20,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:02:01,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:02:22,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:06:35,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:07:59,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-08,16:08:15,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:24:04,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:24:21,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:24:55,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:26:07,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:26:59,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:27:11,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:27:24,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:27:31,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:28:34,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:28:45,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:28:52,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:29:52,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:31:07,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:31:19,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:32:01,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:32:54,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:35:43,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:35:48,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:40:01,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:40:09,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:41:57,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:42:34,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:44:17,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:44:38,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:45:17,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:45:27,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-10,13:46:27,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-10,15:53:56,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-10,15:57:48,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-10,15:58:16,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-10,15:59:55,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-10,17:30:46,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-10,17:33:27,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-10,17:35:04,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-10,17:35:27,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:18:50,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:19:35,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:20:41,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:20:53,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:21:07,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:21:28,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:21:44,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:22:10,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:22:53,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:24:38,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-10,18:27:03,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-06-11,11:51:34,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-11,11:52:24,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-11,11:56:53,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-11,11:57:48,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-11,11:58:08,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:00:13,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:01:52,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:02:24,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:02:40,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:02:53,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:03:02,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:03:21,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:03:27,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:06:43,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:07:47,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:08:12,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:09:42,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:10:14,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:10:35,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:10:51,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:12:03,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:12:26,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:32:55,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:34:28,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:34:40,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:35:13,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:36:06,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:36:21,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:37:09,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:38:05,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:38:29,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:38:51,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-11,12:40:07,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:54:31,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:54:46,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:55:04,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:57:07,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:58:09,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:58:45,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:58:57,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:59:09,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-11,13:59:25,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-11,14:58:14,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-11,14:58:25,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-11,14:58:54,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-11,14:59:32,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-06-11,14:59:43,chip_chip_device_device,debug,0046,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:01:07,chip_chip_device_device,debug,0047,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:01:40,chip_chip_device_device,debug,0048,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:01:49,chip_chip_device_device,debug,0049,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:02:02,chip_chip_device_device,debug,0050,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:02:30,chip_chip_device_device,debug,0051,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:13:02,chip_chip_device_device,debug,0052,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:13:22,chip_chip_device_device,debug,0053,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:13:34,chip_chip_device_device,debug,0054,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:13:55,chip_chip_device_device,debug,0055,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:14:05,chip_chip_device_device,debug,0056,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:14:40,chip_chip_device_device,debug,0057,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:14:54,chip_chip_device_device,debug,0058,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:15:20,chip_chip_device_device,debug,0059,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:15:49,chip_chip_device_device,debug,0060,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:16:29,chip_chip_device_device,debug,0061,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:17:10,chip_chip_device_device,debug,0062,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:17:50,chip_chip_device_device,debug,0063,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:19:46,chip_chip_device_device,debug,0064,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:20:09,chip_chip_device_device,debug,0065,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:21:59,chip_chip_device_device,debug,0066,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:25:56,chip_chip_device_device,debug,0067,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:26:43,chip_chip_device_device,debug,0068,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:27:22,chip_chip_device_device,debug,0069,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:33:33,chip_chip_device_device,debug,0070,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:33:38,chip_chip_device_device,debug,0071,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:41:50,chip_chip_device_device,debug,0072,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:44:32,chip_chip_device_device,debug,0073,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:49:17,chip_chip_device_device,debug,0074,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:51:28,chip_chip_device_device,debug,0075,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:52:48,chip_chip_device_device,debug,0076,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:54:41,chip_chip_device_device,debug,0077,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:55:18,chip_chip_device_device,debug,0078,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:55:22,chip_chip_device_device,debug,0079,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:55:31,chip_chip_device_device,debug,0080,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:55:40,chip_chip_device_device,debug,0081,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:56:02,chip_chip_device_device,debug,0082,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:57:47,chip_chip_device_device,debug,0083,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:57:58,chip_chip_device_device,debug,0084,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:58:05,chip_chip_device_device,debug,0085,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:58:15,chip_chip_device_device,debug,0086,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:59:41,chip_chip_device_device,debug,0087,Debugging NIRRAM Pulse Operation.
+2024-06-11,15:59:50,chip_chip_device_device,debug,0088,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:00:15,chip_chip_device_device,debug,0089,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:00:39,chip_chip_device_device,debug,0090,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:00:47,chip_chip_device_device,debug,0091,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:01:24,chip_chip_device_device,debug,0092,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:04:51,chip_chip_device_device,debug,0093,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:05:20,chip_chip_device_device,debug,0094,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:05:27,chip_chip_device_device,debug,0095,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:05:41,chip_chip_device_device,debug,0096,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:07:51,chip_chip_device_device,debug,0097,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:08:02,chip_chip_device_device,debug,0098,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:08:08,chip_chip_device_device,debug,0099,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:08:44,chip_chip_device_device,debug,0100,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:08:53,chip_chip_device_device,debug,0101,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:09:09,chip_chip_device_device,debug,0102,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:11:22,chip_chip_device_device,debug,0103,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:12:26,chip_chip_device_device,debug,0104,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:14:16,chip_chip_device_device,debug,0105,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:14:48,chip_chip_device_device,debug,0106,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:16:28,chip_chip_device_device,debug,0107,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:18:24,chip_chip_device_device,debug,0108,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:19:30,chip_chip_device_device,debug,0109,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:20:45,chip_chip_device_device,debug,0110,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:21:59,chip_chip_device_device,debug,0111,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:24:55,chip_chip_device_device,debug,0112,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:26:36,chip_chip_device_device,debug,0113,Debugging NIRRAM Pulse Operation.
+2024-06-11,16:31:48,chip_chip_device_device,debug,0114,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:00:53,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:03:53,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:06:19,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:06:24,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:06:44,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:07:17,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:08:07,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-13,12:08:15,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:21:29,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:26:56,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:28:00,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:31:23,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:31:37,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:35:34,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:36:37,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:36:49,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:36:58,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:38:42,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:40:19,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:53:30,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:56:14,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:56:36,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:56:58,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:57:21,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-13,14:59:34,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:06:32,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:06:40,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:06:49,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:07:20,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:08:42,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:08:55,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:09:05,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:09:13,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:11:01,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:11:24,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:12:23,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:34:38,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:41:14,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-13,15:57:54,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-13,16:02:09,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-13,16:03:34,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-13,16:18:21,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-13,17:09:34,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-13,17:13:58,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-13,17:16:42,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-13,17:25:04,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:22:47,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:23:16,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:26:55,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:32:00,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:32:32,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:33:14,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:37:34,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:37:49,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:38:00,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:40:06,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:41:03,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:41:46,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:43:15,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:44:23,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:46:22,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:47:35,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:49:14,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-14,13:49:58,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:01:56,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:03:17,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:04:36,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:04:55,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:05:18,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:05:58,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:06:14,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:08:10,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:09:17,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:09:50,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:10:11,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:10:25,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:11:01,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:11:58,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:14:06,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:16:20,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:20:19,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:22:07,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:27:54,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:29:03,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:36:10,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:36:51,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:37:25,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:39:06,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:39:42,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:39:58,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:41:10,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:41:34,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:43:18,chip_chip_device_device,debug,0046,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:47:00,chip_chip_device_device,debug,0047,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:47:12,chip_chip_device_device,debug,0048,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:47:35,chip_chip_device_device,debug,0049,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:48:06,chip_chip_device_device,debug,0050,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:48:53,chip_chip_device_device,debug,0051,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:49:50,chip_chip_device_device,debug,0052,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:51:00,chip_chip_device_device,debug,0053,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:52:55,chip_chip_device_device,debug,0054,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:54:21,chip_chip_device_device,debug,0055,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:56:42,chip_chip_device_device,debug,0056,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:57:01,chip_chip_device_device,debug,0057,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:58:22,chip_chip_device_device,debug,0058,Debugging NIRRAM Pulse Operation.
+2024-06-14,14:59:18,chip_chip_device_device,debug,0059,Debugging NIRRAM Pulse Operation.
+2024-06-14,15:00:26,chip_chip_device_device,debug,0060,Debugging NIRRAM Pulse Operation.
+2024-06-14,15:01:02,chip_chip_device_device,debug,0061,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:43:02,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:44:18,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:44:47,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:45:23,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:46:25,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:49:57,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:50:17,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:50:46,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:52:29,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:53:38,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:53:55,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:55:17,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:55:43,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:55:54,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:57:31,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-18,15:58:13,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-18,16:51:20,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-18,16:54:28,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:03:11,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:03:43,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:04:09,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:06:38,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:07:19,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:07:37,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:08:12,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:09:55,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:10:09,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:11:53,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:12:40,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:13:46,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-18,17:14:18,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-20,13:27:16,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-20,13:30:10,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-20,13:54:13,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-20,13:54:46,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-20,13:59:45,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:23:41,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:28:11,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:32:59,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:33:32,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:33:38,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:34:08,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:34:34,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:35:11,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:36:08,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:39:26,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:39:44,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:43:14,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:45:09,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:46:39,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:47:17,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:48:34,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:49:42,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:50:29,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:51:09,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:53:12,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:59:07,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-20,14:59:36,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:00:51,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:03:51,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:09:42,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:14:19,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:14:43,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:14:54,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:15:08,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:16:39,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:17:19,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:17:29,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:28:59,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:29:27,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:29:36,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:30:01,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:30:39,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:30:53,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:31:18,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:31:48,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:32:24,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:34:58,chip_chip_device_device,debug,0046,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:35:42,chip_chip_device_device,debug,0047,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:36:32,chip_chip_device_device,debug,0048,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:39:59,chip_chip_device_device,debug,0049,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:40:53,chip_chip_device_device,debug,0050,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:41:51,chip_chip_device_device,debug,0051,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:44:23,chip_chip_device_device,debug,0052,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:48:58,chip_chip_device_device,debug,0053,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:56:20,chip_chip_device_device,debug,0054,Debugging NIRRAM Pulse Operation.
+2024-06-20,15:56:36,chip_chip_device_device,debug,0055,Debugging NIRRAM Pulse Operation.
+2024-06-20,16:01:20,chip_chip_device_device,debug,0056,Debugging NIRRAM Pulse Operation.
+2024-06-20,16:04:19,chip_chip_device_device,debug,0057,Debugging NIRRAM Pulse Operation.
+2024-06-20,16:10:41,chip_chip_device_device,debug,0058,Debugging NIRRAM Pulse Operation.
+2024-06-20,16:11:10,chip_chip_device_device,debug,0059,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:24:44,chip_chip_device_device,debug,0060,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:25:46,chip_chip_device_device,debug,0061,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:31:07,chip_chip_device_device,debug,0062,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:35:29,chip_chip_device_device,debug,0063,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:36:51,chip_chip_device_device,debug,0064,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:38:35,chip_chip_device_device,debug,0065,Debugging NIRRAM Pulse Operation.
+2024-06-20,17:39:25,chip_chip_device_device,debug,0066,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:26:25,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:27:23,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:31:20,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:31:43,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:32:26,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:33:16,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:34:30,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:46:31,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:47:27,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:48:06,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:52:15,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:53:44,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:54:54,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:55:07,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:55:31,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:56:41,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-06-21,12:59:43,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:00:04,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:37:10,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:38:11,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:38:56,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:42:43,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:43:13,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:43:33,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:44:08,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:45:45,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:46:47,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:47:49,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:48:13,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:49:48,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-06-21,13:50:56,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:16:03,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:16:37,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:17:24,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:17:57,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:18:12,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-06-21,14:54:30,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-06-21,15:03:07,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-06-21,15:03:54,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-06-21,15:05:18,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-06-22,14:30:43,chip_test_device_test,debug,0000,
+2024-06-22,14:32:29,chip_test_device_test,debug,0001,
+2024-06-22,14:32:55,chip_test_device_test,debug,0002,
+2024-06-22,14:36:27,chip_test_device_test,debug,0003,
+2024-06-22,16:19:04,chip_test_device_test,debug,0004,
+2024-06-22,16:19:46,chip_test_device_test,debug,0005,
+2024-06-22,16:20:45,chip_test_device_test,debug,0006,
+2024-06-22,16:21:43,chip_test_device_test,debug,0007,
+2024-06-22,16:22:48,chip_test_device_test,debug,0008,
+2024-06-22,16:25:25,chip_test_device_test,debug,0009,
+2024-06-22,16:25:51,chip_test_device_test,debug,0010,
+2024-06-24,14:19:31,chip_test_chip_device_test_device,CSA,0000,
+2024-06-24,14:20:43,chip_test_chip_device_test_device,CSA,0001,
+2024-06-24,14:20:53,chip_test_chip_device_test_device,CSA,0002,
+2024-06-24,14:21:25,chip_test_chip_device_test_device,CSA,0003,
+2024-06-24,14:22:52,chip_test_chip_device_test_device,CSA,0004,
+2024-06-24,14:22:57,chip_test_chip_device_test_device,CSA,0005,
+2024-06-24,14:23:03,chip_test_chip_device_test_device,CSA,0006,
+2024-06-24,14:23:08,chip_test_chip_device_test_device,CSA,0007,
+2024-06-24,14:23:14,chip_test_chip_device_test_device,CSA,0008,
+2024-06-24,14:23:21,chip_test_chip_device_test_device,CSA,0009,
+2024-06-24,14:23:27,chip_test_chip_device_test_device,CSA,0010,
+2024-06-24,14:23:39,chip_test_chip_device_test_device,CSA,0011,
+2024-06-24,14:23:54,chip_test_chip_device_test_device,CSA,0012,
+2024-06-24,14:24:06,chip_test_chip_device_test_device,CSA,0013,
+2024-06-24,14:24:16,chip_test_chip_device_test_device,CSA,0014,
+2024-06-24,14:24:38,chip_test_chip_device_test_device,CSA,0015,
+2024-06-24,14:24:55,chip_test_chip_device_test_device,CSA,0016,
+2024-06-24,14:37:10,chip_test_chip_device_test_device,CSA,0017,
+2024-06-24,14:38:05,chip_test_chip_device_test_device,CSA,0018,
+2024-06-24,14:39:01,chip_test_chip_device_test_device,CSA,0019,
+2024-06-24,14:39:05,chip_test_chip_device_test_device,CSA,0020,
+2024-06-24,14:40:46,chip_test_chip_device_test_device,CSA,0021,
+2024-06-24,14:40:52,chip_test_chip_device_test_device,CSA,0022,
+2024-06-24,14:48:34,chip_test_chip_device_test_device,CSA,0023,
+2024-06-24,14:49:43,chip_test_chip_device_test_device,CSA,0024,
+2024-07-03,17:57:48,chip_test_chip_device_test_device,CSA,0000,
+2024-07-03,17:58:15,chip_test_chip_device_test_device,CSA,0001,
+2024-07-03,17:59:36,chip_test_chip_device_test_device,CSA,0002,
+2024-07-03,17:59:51,chip_test_chip_device_test_device,CSA,0003,
+2024-07-03,18:01:39,chip_test_chip_device_test_device,CSA,0004,
+2024-07-03,18:02:16,chip_test_chip_device_test_device,CSA,0005,
+2024-07-03,18:02:42,chip_test_chip_device_test_device,CSA,0006,
+2024-07-03,18:04:21,chip_test_chip_device_test_device,CSA,0007,
+2024-07-03,18:06:33,chip_test_chip_device_test_device,CSA,0008,
+2024-07-03,18:06:49,chip_test_chip_device_test_device,CSA,0009,
+2024-07-03,18:07:17,chip_test_chip_device_test_device,CSA,0010,
+2024-07-03,18:21:57,chip_test_chip_device_test_device,CSA,0011,
+2024-07-03,18:22:22,chip_test_chip_device_test_device,CSA,0012,
+2024-07-03,18:23:19,chip_test_chip_device_test_device,CSA,0013,
+2024-07-03,18:23:49,chip_test_chip_device_test_device,CSA,0014,
+2024-07-03,18:25:59,chip_test_chip_device_test_device,CSA,0015,
+2024-07-03,18:27:06,chip_test_chip_device_test_device,CSA,0016,
+2024-07-03,18:27:41,chip_test_chip_device_test_device,CSA,0017,
+2024-07-03,18:30:48,chip_test_chip_device_test_device,CSA,0018,
+2024-07-03,18:31:38,chip_test_chip_device_test_device,CSA,0019,
+2024-07-03,18:31:51,chip_test_chip_device_test_device,CSA,0020,
+2024-07-03,18:32:17,chip_test_chip_device_test_device,CSA,0021,
+2024-07-03,18:33:11,chip_test_chip_device_test_device,CSA,0022,
+2024-07-03,18:36:03,chip_test_chip_device_test_device,CSA,0023,
+2024-07-03,18:36:27,chip_test_chip_device_test_device,CSA,0024,
+2024-07-03,18:37:01,chip_test_chip_device_test_device,CSA,0025,
+2024-07-03,18:37:53,chip_test_chip_device_test_device,CSA,0026,
+2024-07-03,18:38:09,chip_test_chip_device_test_device,CSA,0027,
+2024-07-03,18:38:27,chip_test_chip_device_test_device,CSA,0028,
+2024-07-03,18:38:56,chip_test_chip_device_test_device,CSA,0029,
+2024-07-03,18:39:11,chip_test_chip_device_test_device,CSA,0030,
+2024-07-03,18:39:46,chip_test_chip_device_test_device,CSA,0031,
+2024-07-03,18:40:49,chip_test_chip_device_test_device,CSA,0032,
+2024-07-03,23:42:46,chip_test_chip_device_test_device,CSA,0033,
+2024-07-03,23:44:34,chip_test_chip_device_test_device,CSA,0034,
+2024-07-03,23:45:07,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-07-03,23:45:26,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-07-03,23:46:10,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-07-03,23:49:53,chip_test_chip_device_test_device,CSA,0000,
+2024-07-04,12:42:40,chip_test_chip_device_test_device,CSA,0000,
+2024-07-04,12:43:11,chip_test_chip_device_test_device,CSA,0001,
+2024-07-04,12:46:37,chip_test_chip_device_test_device,CSA,0002,
+2024-07-04,12:53:00,chip_test_chip_device_test_device,CSA,0003,
+2024-07-04,12:53:47,chip_test_chip_device_test_device,CSA,0004,
+2024-07-04,12:56:08,chip_test_chip_device_test_device,CSA,0005,
+2024-07-04,12:58:04,chip_test_chip_device_test_device,CSA,0006,
+2024-07-04,13:00:05,chip_test_chip_device_test_device,CSA,0007,
+2024-07-04,13:00:47,chip_test_chip_device_test_device,CSA,0008,
+2024-07-04,13:01:34,chip_test_chip_device_test_device,CSA,0009,
+2024-07-04,13:03:08,chip_test_chip_device_test_device,CSA,0010,
+2024-07-04,13:03:43,chip_test_chip_device_test_device,CSA,0011,
+2024-07-04,13:04:05,chip_test_chip_device_test_device,CSA,0012,
+2024-07-04,13:10:34,chip_test_chip_device_test_device,CSA,0013,
+2024-07-04,13:10:49,chip_test_chip_device_test_device,CSA,0014,
+2024-07-04,13:14:00,chip_test_chip_device_test_device,CSA,0015,
+2024-07-04,13:20:12,chip_test_chip_device_test_device,CSA,0016,
+2024-07-04,13:20:31,chip_test_chip_device_test_device,CSA,0017,
+2024-07-04,13:22:11,chip_test_chip_device_test_device,CSA,0018,
+2024-07-04,13:22:54,chip_test_chip_device_test_device,CSA,0019,
+2024-07-04,13:23:12,chip_test_chip_device_test_device,CSA,0020,
+2024-07-04,13:24:31,chip_test_chip_device_test_device,CSA,0021,
+2024-07-04,14:34:18,chip_test_chip_device_test_device,CSA,0022,
+2024-07-04,14:43:26,chip_test_chip_device_test_device,CSA,0023,
+2024-07-04,14:55:04,chip_test_chip_device_test_device,CSA,0024,
+2024-07-04,14:55:40,chip_test_chip_device_test_device,CSA,0025,
+2024-07-04,14:56:04,chip_test_chip_device_test_device,CSA,0026,
+2024-07-04,14:57:30,chip_test_chip_device_test_device,CSA,0027,
+2024-07-04,15:04:24,chip_test_chip_device_test_device,CSA,0028,
+2024-07-04,15:06:51,chip_test_chip_device_test_device,CSA,0029,
+2024-07-04,15:07:10,chip_test_chip_device_test_device,CSA,0030,
+2024-07-04,15:07:46,chip_test_chip_device_test_device,CSA,0031,
+2024-07-04,15:08:05,chip_test_chip_device_test_device,CSA,0032,
+2024-07-04,15:10:01,chip_test_chip_device_test_device,CSA,0033,
+2024-07-04,15:10:38,chip_test_chip_device_test_device,CSA,0034,
+2024-07-04,15:11:08,chip_test_chip_device_test_device,CSA,0035,
+2024-07-04,15:12:16,chip_test_chip_device_test_device,CSA,0036,
+2024-07-04,15:12:48,chip_test_chip_device_test_device,CSA,0037,
+2024-07-04,15:14:01,chip_test_chip_device_test_device,CSA,0038,
+2024-07-04,15:14:13,chip_test_chip_device_test_device,CSA,0039,
+2024-07-04,15:20:02,chip_test_chip_device_test_device,CSA,0040,
+2024-07-04,15:22:29,chip_test_chip_device_test_device,CSA,0041,
+2024-07-04,15:23:12,chip_test_chip_device_test_device,CSA,0042,
+2024-07-04,15:25:31,chip_test_chip_device_test_device,CSA,0043,
+2024-07-04,15:27:27,chip_test_chip_device_test_device,CSA,0044,
+2024-07-04,15:27:41,chip_test_chip_device_test_device,CSA,0045,
+2024-07-04,15:28:07,chip_test_chip_device_test_device,CSA,0046,
+2024-07-04,15:29:17,chip_test_chip_device_test_device,CSA,0047,
+2024-07-04,15:47:29,chip_test_chip_device_test_device,CSA,0048,
+2024-07-04,15:47:43,chip_test_chip_device_test_devic,CSA,0000,
+2024-07-04,15:54:46,chip_test_chip_device_test_devic,CSA,0001,
+2024-07-04,15:54:48,chip_test_chip_device_test_devic,CSA,0002,
+2024-07-04,15:55:27,chip_test_chip_device_test_devic,CSA,0003,
+2024-07-04,15:55:43,chip_test_chip_device_test_devic,CSA,0004,
+2024-07-04,15:56:34,chip_test_chip_device_test_devic,CSA,0005,
+2024-07-04,15:57:02,chip_test_chip_device_test_devic,CSA,0006,
+2024-07-04,16:39:05,chip_test_chip_device_test_devic,CSA,0007,
+2024-07-04,16:39:44,chip_test_chip_device_test_devic,CSA,0008,
+2024-07-04,16:40:40,chip_test_chip_device_test_devic,CSA,0009,
+2024-07-04,16:41:12,chip_test_chip_device_test_devic,CSA,0010,
+2024-07-04,16:41:29,chip_test_chip_device_test_devic,CSA,0011,
+2024-07-04,16:41:46,chip_test_chip_device_test_devic,CSA,0012,
+2024-07-04,16:42:11,chip_test_chip_device_test_devic,CSA,0013,
+2024-07-04,16:43:07,chip_test_chip_device_test_devic,CSA,0014,
+2024-07-04,16:44:02,chip_test_chip_device_test_devic,CSA,0015,
+2024-07-04,16:44:52,chip_test_chip_device_test_devic,CSA,0016,
+2024-07-04,16:45:12,chip_test_chip_device_test_devic,CSA,0017,
+2024-07-04,16:46:30,chip_test_chip_device_test_devic,CSA,0018,
+2024-07-04,16:46:42,chip_test_chip_device_test_devic,CSA,0019,
+2024-07-04,16:47:29,chip_test_chip_device_test_devic,CSA,0020,
+2024-07-04,16:47:57,chip_test_chip_device_test_devic,CSA,0021,
+2024-07-04,20:17:34,chip_test_chip_device_test_devic,CSA,0022,
+2024-07-04,20:18:10,chip_test_chip_device_test_devic,CSA,0023,
+2024-07-04,20:18:46,chip_test_chip_device_test_devic,CSA,0024,
+2024-07-04,20:18:55,chip_test_chip_device_test_devic,CSA,0025,
+2024-07-04,20:20:13,chip_test_chip_device_test_devic,CSA,0026,
+2024-07-04,20:25:22,chip_test_chip_device_test_devic,CSA,0027,
+2024-07-04,20:28:41,chip_test_chip_device_test_devic,CSA,0028,
+2024-07-06,14:42:39,chip_test_chip_device_test_devic,CSA,0000,
+2024-07-06,14:59:17,chip_test_chip_device_test_devic,CSA,0001,
+2024-07-06,14:59:49,chip_test_chip_device_test_devic,CSA,0002,
+2024-07-06,15:00:46,chip_test_chip_device_test_devic,CSA,0003,
+2024-07-06,15:05:25,chip_test_chip_device_test_devic,CSA,0004,
+2024-07-06,15:05:44,chip_test_chip_device_test_devic,CSA,0005,
+2024-07-06,15:06:02,chip_test_chip_device_test_devic,CSA,0006,
+2024-07-06,15:06:53,chip_test_chip_device_test_devic,CSA,0007,
+2024-07-06,16:42:06,chip_test_chip_device_test_devic,CSA,0008,
+2024-07-06,16:43:47,chip_test_chip_device_test_devic,CSA,0009,
+2024-07-06,16:44:08,chip_test_chip_device_test_devic,CSA,0010,
+2024-07-06,16:44:35,chip_test_chip_device_test_devic,CSA,0011,
+2024-07-06,16:44:49,chip_test_chip_device_test_devic,CSA,0012,
+2024-07-06,16:45:35,chip_test_chip_device_test_devic,CSA,0013,
+2024-07-06,16:45:47,chip_test_chip_device_test_devic,CSA,0014,
+2024-07-06,16:46:23,chip_test_chip_device_test_devic,CSA,0015,
+2024-07-06,16:46:50,chip_test_chip_device_test_devic,CSA,0016,
+2024-07-06,16:48:20,chip_test_chip_device_test_devic,CSA,0017,
+2024-07-06,16:49:17,chip_test_chip_device_test_devic,CSA,0018,
+2024-07-06,16:50:31,chip_test_chip_device_test_devic,CSA,0019,
+2024-07-06,16:52:56,chip_test_chip_device_test_devic,CSA,0020,
+2024-07-06,16:53:33,chip_test_chip_device_test_devic,CSA,0021,
+2024-07-06,17:00:20,chip_test_chip_device_test_devic,CSA,0022,
+2024-07-06,17:02:07,chip_test_chip_device_test_measure_iv,CSA,0000,
+2024-07-06,17:07:24,chip_test_chip_device_test_measure_iv,CSA,0001,
+2024-07-06,17:08:00,chip_test_chip_device_test_measure_iv,CSA,0002,
+2024-07-06,17:12:52,chip_test_chip_device_test_measure_iv,CSA,0003,
+2024-07-09,16:44:44,chip_test_chip_device_test_measure_iv,CSA,0000,
+2024-07-09,16:45:00,chip_test_chip_device_test_measure_iv,CSA,0001,
+2024-07-09,16:45:34,chip_test_chip_device_test_measure_iv,CSA,0002,
+2024-07-09,16:47:33,chip_test_chip_device_test_measure_iv,CSA,0003,
+2024-07-14,15:14:22,chip_test_chip_device_test_measure_iv,CSA,0000,
+2024-08-12,22:07:44,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:09:04,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:10:24,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:11:48,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:27:56,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:29:22,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:32:22,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:34:52,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:36:10,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-08-12,22:37:01,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:12:03,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:12:45,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:12:58,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:14:30,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:15:44,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:18:42,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:19:01,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:19:58,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:20:13,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:21:25,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:21:41,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-08-13,16:22:35,chip_nochip_device_nodevice,CSA,0000,
+2024-08-13,16:25:52,chip_nochip_device_nodevice,CSA,0001,
+2024-08-13,16:26:31,chip_nochip_device_nodevice,CSA,0002,
+2024-08-13,16:26:45,chip_nochip_device_nodevice,CSA,0003,
+2024-08-13,16:27:02,chip_nochip_device_nodevice,CSA,0004,
+2024-08-13,16:27:31,chip_nochip_device_nodevice,CSA,0005,
+2024-08-13,16:28:08,chip_nochip_device_nodevice,CSA,0006,
+2024-08-13,16:28:25,chip_nochip_device_nodevice,CSA,0007,
+2024-08-13,16:30:44,chip_nochip_device_nodevice,CSA,0008,
+2024-08-13,16:32:38,chip_nochip_device_nodevice,CSA,0009,
+2024-08-13,16:33:45,chip_nochip_device_nodevice,CSA,0010,
+2024-08-13,16:34:45,chip_nochip_device_nodevice,CSA,0011,
+2024-08-13,16:35:03,chip_nochip_device_nodevice,CSA,0012,
+2024-08-13,16:35:46,chip_nochip_device_nodevice,CSA,0013,
+2024-08-13,16:47:02,chip_nochip_device_nodevice,CSA,0014,
+2024-08-13,16:50:32,chip_nochip_device_nodevice,CSA,0015,
+2024-08-13,16:56:06,chip_nochip_device_nodevice,CSA,0016,
+2024-08-13,16:56:57,chip_nochip_device_nodevice,CSA,0017,
+2024-08-13,16:58:11,chip_nochip_device_nodevice,CSA,0018,
+2024-08-13,17:00:25,chip_nochip_device_nodevice,CSA,0019,
+2024-08-13,17:02:29,chip_nochip_device_nodevice,CSA,0020,
+2024-08-13,17:03:08,chip_nochip_device_nodevice,CSA,0021,
+2024-08-13,17:04:06,chip_nochip_device_nodevice,CSA,0022,
+2024-08-13,17:04:59,chip_nochip_device_nodevice,CSA,0023,
+2024-08-13,17:05:28,chip_nochip_device_nodevice,CSA,0024,
+2024-08-13,17:06:21,chip_nochip_device_nodevice,CSA,0025,
+2024-08-13,17:08:10,chip_nochip_device_nodevice,CSA,0026,
+2024-08-13,17:10:10,chip_nochip_device_nodevice,CSA,0027,
+2024-08-13,17:12:23,chip_nochip_device_nodevice,CSA,0028,
+2024-08-13,17:13:52,chip_nochip_device_nodevice,CSA,0029,
+2024-08-13,17:15:36,chip_nochip_device_nodevice,CSA,0030,
+2024-08-13,17:17:09,chip_nochip_device_nodevice,CSA,0031,
+2024-08-13,17:17:15,chip_nochip_device_nodevice,CSA,0032,
+2024-08-13,17:17:32,chip_nochip_device_nodevice,CSA,0033,
+2024-08-13,17:17:39,chip_nochip_device_nodevice,CSA,0034,
+2024-08-13,17:19:58,chip_nochip_device_nodevice,CSA,0035,
+2024-08-13,17:20:42,chip_nochip_device_nodevice,CSA,0036,
+2024-08-13,17:22:30,chip_nochip_device_nodevice,CSA,0037,
+2024-08-13,17:23:00,chip_nochip_device_nodevice,CSA,0038,
+2024-08-13,17:23:04,chip_nochip_device_nodevice,CSA,0039,
+2024-08-13,17:25:42,chip_nochip_device_nodevice,CSA,0040,
+2024-08-13,17:27:04,chip_nochip_device_nodevice,CSA,0041,
+2024-08-13,17:30:06,chip_nochip_device_nodevice,CSA,0042,
+2024-08-13,17:31:00,chip_nochip_device_nodevice,CSA,0043,
+2024-08-13,17:32:21,chip_nochip_device_nodevice,CSA,0044,
+2024-08-13,17:33:15,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:36:18,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:37:22,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:39:01,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:40:42,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:40:59,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:41:11,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:41:43,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:43:51,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-08-13,17:45:25,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:23:55,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:27:44,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:28:40,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:28:57,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:29:50,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-08-13,19:37:12,chip_nochip_device_nodevice,CSA,0000,
+2024-08-13,19:39:00,chip_nochip_device_nodevice,CSA,0001,
+2024-08-13,19:39:20,chip_nochip_device_nodevice,CSA,0002,
+2024-08-13,19:39:30,chip_nochip_device_nodevice,CSA,0003,
+2024-08-13,19:41:27,chip_nochip_device_nodevice,CSA,0004,
+2024-08-13,19:53:51,chip_nochip_device_nodevice,CSA,0005,
+2024-08-13,19:54:17,chip_nochip_device_nodevice,CSA,0006,
+2024-08-13,23:42:32,chip_nochip_device_nulldevice,CSA,0000,
+2024-08-14,13:08:49,chip_nochip_device_nulldevice,CSA,0000,
+2024-08-14,13:10:08,chip_nochip_device_nulldevice,CSA,0001,
+2024-08-14,13:11:59,chip_nochip_device_nulldevice,CSA,0002,
+2024-08-14,13:12:09,chip_nochip_device_nulldevice,CSA,0003,
+2024-08-14,13:15:44,chip_nochip_device_nulldevice,CSA,0004,
+2024-08-14,13:16:00,chip_nochip_device_nulldevice,CSA,0005,
+2024-08-14,13:16:29,chip_nochip_device_nulldevice,CSA,0006,
+2024-08-14,13:54:37,chip_nochip_device_nulldevice,CSA,0007,
+2024-08-14,13:54:45,chip_nochip_device_nulldevice,CSA,0008,
+2024-08-14,16:26:53,chip_chip_device_device,debug,0000,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:28:08,chip_chip_device_device,debug,0001,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:29:31,chip_chip_device_device,debug,0002,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:29:44,chip_chip_device_device,debug,0003,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:32:01,chip_chip_device_device,debug,0004,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:32:13,chip_chip_device_device,debug,0005,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:32:35,chip_chip_device_device,debug,0006,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:32:46,chip_chip_device_device,debug,0007,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:33:00,chip_chip_device_device,debug,0008,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:33:31,chip_chip_device_device,debug,0009,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:33:37,chip_chip_device_device,debug,0010,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:34:26,chip_chip_device_device,debug,0011,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:37:23,chip_chip_device_device,debug,0012,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:40:07,chip_chip_device_device,debug,0013,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:41:27,chip_chip_device_device,debug,0014,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:41:44,chip_chip_device_device,debug,0015,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:45:20,chip_chip_device_device,debug,0016,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:48:03,chip_chip_device_device,debug,0017,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:49:55,chip_chip_device_device,debug,0018,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:50:18,chip_chip_device_device,debug,0019,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:55:43,chip_chip_device_device,debug,0020,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:57:17,chip_chip_device_device,debug,0021,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:57:24,chip_chip_device_device,debug,0022,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:57:34,chip_chip_device_device,debug,0023,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:59:06,chip_chip_device_device,debug,0024,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:59:20,chip_chip_device_device,debug,0025,Debugging NIRRAM Pulse Operation.
+2024-08-14,16:59:28,chip_chip_device_device,debug,0026,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:06:36,chip_chip_device_device,debug,0027,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:06:45,chip_chip_device_device,debug,0028,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:12:51,chip_chip_device_device,debug,0029,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:13:08,chip_chip_device_device,debug,0030,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:17:11,chip_chip_device_device,debug,0031,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:19:13,chip_chip_device_device,debug,0032,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:20:01,chip_chip_device_device,debug,0033,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:34:55,chip_chip_device_device,debug,0034,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:35:58,chip_chip_device_device,debug,0035,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:36:10,chip_chip_device_device,debug,0036,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:36:38,chip_chip_device_device,debug,0037,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:36:47,chip_chip_device_device,debug,0038,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:36:59,chip_chip_device_device,debug,0039,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:37:09,chip_chip_device_device,debug,0040,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:37:16,chip_chip_device_device,debug,0041,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:37:25,chip_chip_device_device,debug,0042,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:37:52,chip_chip_device_device,debug,0043,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:38:04,chip_chip_device_device,debug,0044,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:38:14,chip_chip_device_device,debug,0045,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:38:26,chip_chip_device_device,debug,0046,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:39:23,chip_chip_device_device,debug,0047,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:40:45,chip_chip_device_device,debug,0048,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:41:18,chip_chip_device_device,debug,0049,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:41:48,chip_chip_device_device,debug,0050,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:42:01,chip_chip_device_device,debug,0051,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:42:12,chip_chip_device_device,debug,0052,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:42:53,chip_chip_device_device,debug,0053,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:43:03,chip_chip_device_device,debug,0054,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:43:23,chip_chip_device_device,debug,0055,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:44:41,chip_chip_device_device,debug,0056,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:44:49,chip_chip_device_device,debug,0057,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:44:58,chip_chip_device_device,debug,0058,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:45:05,chip_chip_device_device,debug,0059,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:45:12,chip_chip_device_device,debug,0060,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:45:37,chip_chip_device_device,debug,0061,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:45:47,chip_chip_device_device,debug,0062,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:45:55,chip_chip_device_device,debug,0063,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:46:11,chip_chip_device_device,debug,0064,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:46:40,chip_chip_device_device,debug,0065,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:46:48,chip_chip_device_device,debug,0066,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:46:55,chip_chip_device_device,debug,0067,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:47:10,chip_chip_device_device,debug,0068,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:47:34,chip_chip_device_device,debug,0069,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:47:53,chip_chip_device_device,debug,0070,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:48:23,chip_chip_device_device,debug,0071,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:48:41,chip_chip_device_device,debug,0072,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:51:00,chip_chip_device_device,debug,0073,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:52:59,chip_chip_device_device,debug,0074,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:53:11,chip_chip_device_device,debug,0075,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:53:31,chip_chip_device_device,debug,0076,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:53:59,chip_chip_device_device,debug,0077,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:57:00,chip_chip_device_device,debug,0078,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:57:41,chip_chip_device_device,debug,0079,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:58:18,chip_chip_device_device,debug,0080,Debugging NIRRAM Pulse Operation.
+2024-08-14,17:58:25,chip_chip_device_device,debug,0081,Debugging NIRRAM Pulse Operation.
+2024-08-15,19:40:04,chip_chip_device_device,Dir_Write,0000,NIRRAM Direct Write Test
+2024-08-16,15:55:58,chip_chip_device_device,Dir_Write,0000,NIRRAM Direct Write Test
+2024-08-16,16:49:29,chip_chip_device_device,Dir_Write,0001,NIRRAM Direct Write Test
+2024-08-16,16:51:01,chip_chip_device_device,Dir_Write,0002,NIRRAM Direct Write Test
+2024-08-16,16:51:36,chip_chip_device_device,Dir_Write,0003,NIRRAM Direct Write Test
+2024-08-16,16:53:15,chip_chip_device_device,Dir_Write,0004,NIRRAM Direct Write Test
+2024-08-16,16:53:52,chip_chip_device_device,Dir_Write,0005,NIRRAM Direct Write Test
+2024-08-16,16:55:25,chip_chip_device_device,Dir_Write,0006,NIRRAM Direct Write Test
+2024-08-16,16:55:52,chip_chip_device_device,Dir_Write,0007,NIRRAM Direct Write Test
+2024-08-16,16:57:53,chip_chip_device_device,Dir_Write,0008,NIRRAM Direct Write Test
+2024-08-16,16:58:55,chip_chip_device_device,Dir_Write,0009,NIRRAM Direct Write Test
+2024-08-16,16:59:59,chip_chip_device_device,Dir_Write,0010,NIRRAM Direct Write Test
+2024-08-16,17:11:05,chip_chip_device_device,Dir_Write,0011,NIRRAM Direct Write Test
+2024-08-16,17:11:31,chip_chip_device_device,Dir_Write,0012,NIRRAM Direct Write Test
+2024-08-17,15:36:44,chip_chip_device_device,Dir_Write,0000,NIRRAM Direct Write Test
+2024-08-17,16:10:13,chip_chip_device_device,Dir_Write,0001,NIRRAM Direct Write Test
+2024-08-17,16:10:59,chip_chip_device_device,Dir_Write,0002,NIRRAM Direct Write Test
+2024-08-17,17:38:09,chip_chip_device_device,Dir_Write,0003,NIRRAM Direct Write Test
+2024-08-17,17:38:24,chip_chip_device_device,Dir_Write,0004,NIRRAM Direct Write Test
+2024-08-17,17:39:58,chip_chip_device_device,Dir_Write,0005,NIRRAM Direct Write Test
+2024-08-17,17:56:37,chip_chip_device_device,Dir_Write,0006,NIRRAM Direct Write Test
+2024-08-17,17:57:00,chip_chip_device_device,Dir_Write,0007,NIRRAM Direct Write Test
+2024-08-17,17:57:22,chip_chip_device_device,Dir_Write,0008,NIRRAM Direct Write Test
+2024-08-17,17:57:58,chip_chip_device_device,Dir_Write,0009,NIRRAM Direct Write Test
+2024-08-17,18:00:00,chip_chip_device_device,Dir_Write,0010,NIRRAM Direct Write Test
+2024-08-17,18:00:18,chip_chip_device_device,Dir_Write,0011,NIRRAM Direct Write Test
+2024-08-17,18:00:44,chip_chip_device_device,Dir_Write,0012,NIRRAM Direct Write Test
+2024-08-17,18:01:45,chip_chip_device_device,Dir_Write,0013,NIRRAM Direct Write Test
+2024-08-17,18:02:44,chip_chip_device_device,Dir_Write,0014,NIRRAM Direct Write Test
+2024-08-17,18:05:21,chip_chip_device_device,Dir_Write,0015,NIRRAM Direct Write Test
+2024-08-17,18:06:34,chip_chip_device_device,Dir_Write,0016,NIRRAM Direct Write Test
+2024-08-17,18:07:15,chip_chip_device_device,Dir_Write,0017,NIRRAM Direct Write Test
+2024-08-17,18:07:33,chip_chip_device_device,Dir_Write,0018,NIRRAM Direct Write Test
+2024-08-17,18:07:58,chip_chip_device_device,Dir_Write,0019,NIRRAM Direct Write Test
+2024-08-17,18:08:24,chip_chip_device_device,Dir_Write,0020,NIRRAM Direct Write Test
+2024-08-17,18:08:48,chip_chip_device_device,Dir_Write,0021,NIRRAM Direct Write Test
+2024-08-17,18:11:36,chip_chip_device_device,Dir_Write,0022,NIRRAM Direct Write Test
+2024-08-17,18:13:57,chip_chip_device_device,Dir_Write,0023,NIRRAM Direct Write Test
+2024-08-17,18:16:14,chip_chip_device_device,Dir_Write,0024,NIRRAM Direct Write Test
+2024-08-17,18:17:05,chip_chip_device_device,Dir_Write,0025,NIRRAM Direct Write Test
+2024-08-17,18:17:34,chip_chip_device_device,Dir_Write,0026,NIRRAM Direct Write Test
+2024-08-17,18:22:00,chip_chip_device_device,Dir_Write,0027,NIRRAM Direct Write Test
+2024-08-17,18:22:15,chip_chip_device_device,Dir_Write,0028,NIRRAM Direct Write Test
+2024-08-17,18:22:39,chip_chip_device_device,Dir_Write,0029,NIRRAM Direct Write Test
+2024-08-18,17:22:24,chip_chip_device_device,Dir_Write,0000,NIRRAM Direct Write Test
+2024-08-18,17:23:20,chip_chip_device_device,Dir_Write,0001,NIRRAM Direct Write Test
+2024-08-18,17:29:57,chip_chip_device_device,Dir_Write,0002,NIRRAM Direct Write Test
+2024-08-18,17:30:12,chip_chip_device_device,Dir_Write,0003,NIRRAM Direct Write Test
+2024-08-18,17:30:26,chip_chip_device_device,Dir_Write,0004,NIRRAM Direct Write Test
+2024-08-18,17:33:51,chip_chip_device_device,Dir_Write,0005,NIRRAM Direct Write Test
+2024-08-18,17:34:43,chip_chip_device_device,Dir_Write,0006,NIRRAM Direct Write Test
+2024-08-18,17:35:22,chip_chip_device_device,Dir_Write,0007,NIRRAM Direct Write Test
+2024-08-18,21:18:18,chip_chip_device_device,Dir_Write,0008,NIRRAM Direct Write Test
+2024-08-18,21:22:23,chip_chip_device_device,Dir_Write,0009,NIRRAM Direct Write Test
+2024-08-18,21:23:10,chip_chip_device_device,Dir_Write,0010,NIRRAM Direct Write Test
+2024-08-18,21:26:42,chip_chip_device_device,Dir_Write,0011,NIRRAM Direct Write Test

@@ -1,0 +1,372 @@
+[path]
+master_log_file = "data/debug/logs/master.log"
+prog_log_file = "data/debug/logs/prog.log"
+data_header = "data/"
+test_log_file = "data/test_log.csv"
+path_data = "D:\\nirram\\data\\MPW_Test\\"
+
+[NIDigital]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
+
+pinmap = [
+    "settings/pinmap/MPW_Peripheral_2D_BL.pinmap",
+    "settings/pinmap/MPW_Peripheral_2D_SL.pinmap",  
+    "settings/pinmap/MPW_Peripheral_2D_WL.pinmap"
+    ]
+
+levels = [
+    "settings/levels/MPW_Peripheral_CSA_2D_BL.digilevels",
+    "settings/levels/MPW_Peripheral_CSA_2D_SL.digilevels",  
+    "settings/levels/MPW_Peripheral_CSA_2D_WL.digilevels"
+    ]
+
+timing = [
+    "settings/timing/MPW_Peripheral_CSA_2D_BL.digitiming",
+    "settings/timing/MPW_Peripheral_CSA_2D_SL.digitiming",  
+    "settings/timing/MPW_Peripheral_CSA_2D_WL.digitiming"
+    ]
+
+specs = ["settings/Stanford_3DSoC/MPW_3DSoC.specs"]
+
+patterns = [
+    "settings/patterns/MPW_Peripheral_CSA_2D_BL.digipat",
+    "settings/patterns/MPW_Peripheral_CSA_2D_SL.digipat",
+    "settings/patterns/MPW_Peripheral_CSA_2D_WL.digipat"
+]
+
+pingroups = ["BL","SL","WL"]
+pingroup_names = [["BL","OFMAP"],["SL","IFMAP","EXT_WT"], ["WL_IN","DO","SA_RDY","SA_CLK"]]
+pingroup_data = [["BL", "OFMAP"], ["SL","IFMAP","EXT_WT"], ["WL_SIGNALS","DO","SA_RDY","SA_CLK"]] 
+
+[NISwitch]
+deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
+
+
+[sources]
+MUX_SEL_CONV_CLK = 0
+MUX_SEL_WT  = 0
+SA_CLK_EXT = 0
+WT_SEL_EXT = 0
+RMUX_EN = 0
+
+
+[measurement_settings]
+measure_iv = true
+sweep = true
+
+[pins]
+
+# Defining WL Pins
+WL_IN = [
+    "WL_IN_0",
+]
+
+WL = [
+        "WL_0",
+        "WL_1",
+        "WL_2",
+        "WL_3",
+        "WL_4",
+        "WL_5",
+        "WL_6",
+        "WL_7",
+        "WL_8",
+        "WL_9",
+        "WL_10",
+        "WL_11",
+        "WL_12",
+        "WL_13",
+        "WL_14",
+        "WL_15",
+        "WL_16",
+        "WL_17",
+        "WL_18",
+        "WL_19",
+        "WL_20",
+        "WL_21",
+        "WL_22",
+        "WL_23",
+        "WL_24",
+        "WL_25",
+        "WL_26",
+        "WL_28",
+        "WL_29",
+        "WL_30",
+        "WL_31",
+        "WL_32",
+        "WL_33",
+        "WL_34",
+        "WL_35",
+        "WL_36",
+        "WL_37",
+        "WL_38",
+        "WL_39",
+        "WL_40",
+        "WL_41",
+        "WL_42",
+        "WL_43",
+        "WL_44",
+        "WL_45",
+        "WL_46",
+        "WL_47",
+        "WL_48",
+        "WL_49",
+        "WL_50",
+        "WL_51",
+        "WL_52",
+        "WL_53",
+        "WL_54",
+        "WL_55",
+        "WL_56",
+        "WL_57",
+        "WL_58",
+        "WL_59",
+        "WL_60",
+        "WL_61",
+        "WL_62",
+        "WL_63",
+        "WL_64",
+        "WL_65",
+        "WL_66",
+        "WL_67",
+        "WL_68",
+        "WL_69",
+        "WL_70",
+        "WL_71",
+        "WL_72",
+        "WL_73",
+        "WL_74",
+        "WL_75",
+        "WL_76",
+        "WL_77",
+        "WL_78",
+        "WL_79",
+        "WL_80",
+        "WL_81",
+        "WL_82",
+        "WL_83",
+        "WL_84",
+        "WL_85",
+        "WL_86",
+        "WL_87",
+        "WL_88",
+        "WL_89",
+        "WL_90",
+        "WL_91",
+        "WL_92",
+        "WL_93",
+        "WL_94",
+        "WL_95",
+        "WL_96",
+        "WL_97",
+        "WL_98",
+        "WL_99",
+        "WL_100",
+        "WL_101",
+        "WL_102",
+        "WL_103",
+        "WL_104",
+        "WL_105",
+        "WL_106",
+        "WL_107",
+        "WL_108",
+        "WL_109",
+        "WL_110",
+        "WL_111",
+        "WL_112",
+        "WL_113",
+        "WL_114",
+        "WL_115",
+        "WL_116",
+        "WL_117",
+        "WL_118",
+        "WL_119",
+        "WL_120",
+        "WL_121",
+        "WL_122",
+        "WL_123",
+        "WL_124",
+        "WL_125",
+        "WL_126",
+        "WL_127",
+]
+
+# Defining BL Pins
+BL = [
+    "BL_0",
+    "BL_1",
+    "BL_2",
+    "BL_3",
+]
+
+# Defining SL Pins
+SL = [
+    "SL_0",
+    "SL_1",
+    "SL_2",
+    "SL_3",
+]
+
+# Defining COL_SEL Pins
+COL_SEL = [
+    "COL_SEL_0",
+    "COL_SEL_1",
+    "COL_SEL_2",
+    "COL_SEL_3",
+    "COL_SEL_4",
+    "COL_SEL_5",
+    "COL_SEL_6",
+    "COL_SEL_7",
+    "COL_SEL_8",
+    "COL_SEL_9",
+    "COL_SEL_10",
+    "COL_SEL_11",
+    "COL_SEL_12",
+    "COL_SEL_13",
+    "COL_SEL_14",
+    "COL_SEL_15",
+]
+
+# Defining clock pins
+SA_CLK = "SA_CLK"
+CLK_EN = "SA_CLK_EXT"
+
+[pins.device]
+# device specifications for the csa test
+# Only one col-sel should be set at a time
+WL_0 = 0.3
+COL_SEL_0 = 5.0
+
+# Defining input pins for the test
+# THESE DO NOT INCLUDE THE CLOCK PINS or DEVICE SELECTION
+[pins.input]
+VREAD = 0.3
+SA_EN = 5.0
+WL_UNSEL = 0.0
+
+[pins.sweep]
+RMUX_EN = [0.0, 5.01, 0.2]
+
+
+# Defining output pins for the test
+[pins.output]
+SA_RDY_0 = 0    # Output is Ready for PINS 0-15
+SA_RDY_1 = 0    # Output is Ready for PINS 16-31
+
+DO_0 = 0     # Output Data for PINS 0-15
+DO_1 = 0    # Output Data for PINS 16-31
+
+[pins.disable]
+PE_EN = 0.0        # Disables the Processing Element
+WEIGHT_EN = 0.0    # Disables the Weight Shift Register Input
+WEIGHT_SHIFT = 0.0 # Disables the Weight Shift Register
+ACCUM_EN = 0.0     # Disables the accumulator
+
+[pins.enable]
+SA_CLK_EXT = 1.8
+
+[TIMING]
+direct = 2e-5
+CSA_out = 1e-5
+CSA_in = 1e-5
+
+
+
+[device]
+# Device Pingroups
+BL = [
+    "BL_0",
+    "BL_1",
+    "BL_2",
+    "BL_3",
+]
+
+OFMAP = [
+    "OFMAP_0",
+    "OFMAP_1",
+    "OFMAP_2",
+    "OFMAP_3",
+    "OFMAP_4",
+    "OFMAP_5",
+    "OFMAP_6",
+    "OFMAP_7",
+    "OFMAP_8",
+    "OFMAP_9",
+    "OFMAP_10",
+    "OFMAP_11",
+    "OFMAP_12",
+    "OFMAP_13",
+    "OFMAP_14",
+    "OFMAP_15",
+    "OFMAP_16",
+    "OFMAP_17",
+    "OFMAP_18",
+    "OFMAP_19",
+    "OFMAP_20",
+    "OFMAP_21",
+    "OFMAP_22",
+    "OFMAP_23",
+]
+
+
+# Defining SL Pins
+SL = [
+    "SL_0",
+    "SL_1",
+    "SL_2",
+    "SL_3",
+]
+
+IFMAP = [
+    "IFMAP_0",
+    "IFMAP_1",
+    "IFMAP_2",
+    "IFMAP_3",
+    "IFMAP_4",
+    "IFMAP_5",
+    "IFMAP_6",
+    "IFMAP_7",
+]
+
+EXT_WT = [
+    "EXT_WT_0",
+    "EXT_WT_1",
+]
+
+# Defining WL Pins
+WL_SIGNALS = [
+    "WL_IN_0",
+]
+
+DO = [
+    "DO_0",
+    "DO_1",
+]
+
+SA_RDY = [
+    "SA_RDY_0",
+    "SA_RDY_1",
+]
+
+SA_CLK = ["SA_CLK"]
+
+[op]
+
+[op.READ]
+mode = "digital"
+aperture_time = 0.00005
+
+#2 uA, 32uA, 128uA, 2mA, 32mA
+current_limit_range = 128e-6
+relaxation_cycles = 100
+settling_time = 0.0001
+shunt_res_value = 0
+
+[op.READ.NMOS]
+VWL = 2
+VBL = 0.3
+VSL = 0
+VWL_UNSEL_OFFSET = 0
+VB = 0
+
+[op.READ.PMOS]

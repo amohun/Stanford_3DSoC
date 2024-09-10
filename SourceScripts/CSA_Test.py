@@ -9,7 +9,7 @@ from os import getcwd
 from sys import path
 
 path.append(getcwd())
-import SourceScripts.load_settings as load_settings
+from SourceScripts.settings_util import SettingsUtil
 import SourceScripts.masks as masks
 from digital_pattern import DigitalPattern
 

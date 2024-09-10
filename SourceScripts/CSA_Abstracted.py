@@ -11,7 +11,7 @@ from datetime import date, datetime
 import csv
 
 path.append(getcwd())
-import SourceScripts.load_settings as load_settings
+import SourceScripts.settings_util as settings_util
 from masks import Masks
 from digital_pattern import DigitalPattern
 from BitVector import BitVector
@@ -47,7 +47,7 @@ class CSA:
         
         # region: load settings as a dictionary, either from input or from file
         try:
-            self.settings = load_settings.load_settings(self.settings)
+            self.settings = settings_util.load_settings(self.settings)
         except:
             raise CSAException(f"Could not load settings file {self.settings}")
         # endregion
@@ -91,7 +91,7 @@ class CSA:
         if settings is not None:
             try:
                 if debug_printout: print(f"Loading settings from {settings}")
-                self.settings = load_settings.load_settings(settings)
+                self.settings = settings_util.load_settings(settings)
                 self.init_measurement_log()
             except:
                 raise CSAException(f"Could not load settings file {settings}")

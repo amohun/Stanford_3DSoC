@@ -13,7 +13,7 @@
 # region Import Libraries
 import numpy as np
 import sys
-from os import getcwd
+from os import getcwd,path
 import nidigital
 import niswitch
 import nitclk
@@ -23,7 +23,7 @@ import time
 import pdb
 
 sys.path.append(getcwd())
-import SourceScripts.load_settings as load_settings
+from SourceScripts.settings_util import SettingsUtil
 import SourceScripts.masks as masks
 from SourceScripts.string_util import *
 from SourceScripts.debug_util import DebugUtil
@@ -42,19 +42,17 @@ class DigitalPattern:
             debug=False,
         ):
 
-        if type(settings) is not dict:
-            self.settings = load_settings.load_settings(settings)
-        else:
-            self.settings = settings
-        settings = self.settings
-        if "op" in settings:
-            self.op = settings["op"]
+        self.settings_manager = SettingsUtil(settings)
+        self.settings = self.settings_manager.settings
+        self.settings_path = self.settings_manager.settings_path
+        self.op = self.settings_manager.get_setting("op")
         
         self.dbg = DebugUtil(debug)
 
         self.load_instruments()
         self.load_pin_maps()
         self.load_patterns()
+        self.load_waveforms()
         self.configure_timing()
         self.load_level_and_timing()
         self.ppmu_set_pins_to_zero()
@@ -209,7 +207,6 @@ class DigitalPattern:
                 self.pingroup_names = digital["pingroup_names"]
             if "pingroup_data" in digital: 
                 self.pingroup_data = [[self.settings["device"][group] for group in session] for session in digital["pingroup_data"]]
-
         else: self.pingroups = pingroups
 
         if len(self.pingroups) == 1 and type(self.pingroups[0]) is list:
@@ -221,6 +218,7 @@ class DigitalPattern:
             for session in self.sessions
         }
         
+        # Define all pins given for each session
         self.all_pins = [
             [channel.pin_name for channel in session.get_pin_results_pin_information()]
             for session in self.sessions
@@ -279,6 +277,83 @@ class DigitalPattern:
             self.pattern_names = [text_between(pattern,"patterns/",".digipat") for pattern in self.patterns]
 
         self.dbg.end_function_debug()
+
+    def load_waveforms(self, source_waveforms=None, source_waveform_names=None, capture_waveforms=None, capture_waveform_names=None, capture_pins=None, sessions=None, debug=None):
+        """
+        If file-defined waveforms are given, load them into the sessions. 
+        """
+
+        self.dbg.start_function_debug(debug)
+
+        if sessions is None:
+            sessions = self.sessions
+        # Check if there are source_waveforms, capture_waveforms, and readable_capture_waveformws
+        self.waveform_exists_check = []
+        for session in sessions:
+            self.waveform_exists_check.append([False,False,False])
+        
+        # Define the source waveforms and names from either settings or arguments
+        if source_waveforms is None:
+            source_waveforms = self.settings_manager.get_setting("NIDigital.source_waveforms")
+        if source_waveform_names is None:
+            source_waveform_names = self.settings_manager.get_setting("NIDigital.source_waveform_names")
+
+        if capture_pins is None:
+            capture_pins = self.settings_manager.get_setting("NIDigital.capture_pins")
+        # Define the capture waveforms and names from either settings or arguments
+        if capture_waveforms is None:
+            capture_waveforms = self.settings_manager.get_setting("NIDigital.capture_waveforms")
+        if capture_waveform_names is None:
+            capture_waveform_names = self.settings_manager.get_setting("NIDigital.capture_waveform_names")
+        
+        # Create the source and capture waveforms for each session
+        self.checkable_waveforms = []   
+
+        if source_waveforms is not None:
+            for session, source_waveform, source_waveform_name, index in zip(sessions, source_waveforms, source_waveform_names, range(len(sessions))):
+                if source_waveform is not None and source_waveform.upper() not in ["NONE","","NULL","N/A","NO_WAVEFORM","NO","_","NOPE","SKIP"]:
+                    print(source_waveform_name)
+                    session.create_source_waveform_from_file_tdms(source_waveform_name, source_waveform)
+                    session.write_source_waveform_data_from_file_tdms(source_waveform_name, source_waveform)
+                    self.waveform_exists_check[index][0] = True
+        
+        if capture_waveforms is not None:
+            for session, capture_waveform, capture_waveform_name in zip(sessions, capture_waveforms, capture_waveform_names):
+                if capture_waveform is not None and capture_waveform.upper() not in ["NONE","","NULL","N/A","NO WAVEFORM", "NO_WAVEFORM","NO","_","NOPE","SKIP"]:
+                    if path.exists(capture_waveform):
+                        session.create_capture_waveform_from_file_digicapture(capture_waveform_name, capture_waveform)
+                        self.waveform_exists_check[index][1] = True
+                    elif capture_pins is not None:
+                        session.pins[capture_pins].create_capture_waveform_parallel(capture_waveform_name)  
+                        self.waveform_exists_check[index][2] = True
+                        self.checkable_waveforms.append((session,capture_waveform_name,self.settings_manager.get_setting("NIDigital.sample_length")))
+                    else:    
+                        raise DigitalPatternException(f"Capture waveform file {capture_waveform} not found")
+        
+        if source_waveforms is None and capture_waveforms is None:
+            self.dbg.end_function_debug()
+            return self.waveform_exists_check, self.checkable_waveforms
+            
+    def fetch_waveforms(self,debug=None, waveforms=None):
+        """
+        Retrieve waveforms from the sessions
+        """
+        self.dbg.start_function_debug(debug)
+
+        captured_waveforms_to_return = []
+        if waveforms is None:
+            for waveform in self.checkable_waveforms:
+                session, waveform_name,sample_length = waveform
+                captured_waveforms_to_return.append(session.fetch_capture_waveform(waveform_name,sample_length))
+        else:
+            for waveform in waveforms:
+                session, waveform_name = waveform
+                if waveform_name in waveforms:
+                    captured_waveforms_to_return.append(session.fetch_capture_waveform(waveform_name))
+            
+        self.dbg.end_function_debug()
+        return captured_waveforms_to_return
+
 
     def load_level_and_timing(self,sessions=None,debug = None):
         """
@@ -365,7 +440,6 @@ class DigitalPattern:
             debug (bool): Print debug information if True.
         """
         self.dbg.start_function_debug(debug)
-        self.dbg.debug_message("-------- Configuring Timing For Each Session --------")
 
         # Load Timing Sets
         time_sets = self.settings["TIMING"] if timing is None else timing
@@ -379,7 +453,7 @@ class DigitalPattern:
                     session.create_time_set(condition)
                     session.configure_time_set_period(condition,time_sets[condition])
         else: 
-            print("No sessions provided, timing not applied.")
+            raise DigitalPatternException("No sessions provided, timing not applied.")
         
         # Debug Printout
         self.dbg.debug_message([f"Timing Sets: {time_sets}","-------- Timing Configured For Each Session --------"])
@@ -466,7 +540,6 @@ class DigitalPattern:
 
     def set_channel_termination_mode(self, mode="Hi-Z", pins=None,sessions=None,sort=True,debug=None):
         self.dbg.start_function_debug(debug)
-
         sessions,pins = self.format_sessions_and_pins(sessions,pins,sort)
 
         mode = mode.lower()
@@ -508,6 +581,7 @@ class DigitalPattern:
                         session.channels[pin].ppmu_voltage_level = level
                     elif mode == "current":
                         session.channels[pin].ppmu_current_level = level
+        
         if source:
             self.ppmu_source(pins, sessions, sort=False, debug=debug)
 
@@ -534,7 +608,8 @@ class DigitalPattern:
             voltage_levels = [voltage_levels]
 
         for v in voltage_levels:
-            assert v >= -2 and v <= 6, "Voltage levels must be between -2V and 6V"
+            if v < -2 or v > 6:
+                raise DigitalPatternException(f"Voltage {v} not in range: Voltage levels must be between -2V and 6V")
  
         # Set voltage levels for each session and pin
         self.ppmu_set(pins,voltage_levels,mode="voltage",sessions=sessions,sort=sort,source=source)
@@ -569,12 +644,12 @@ class DigitalPattern:
             debug (bool): Print debug information if True.
         """
         self.dbg.start_function_debug(debug)
-        
         if sort:
             pins = self.sort_pins(pins)
+
         for session,session_pins in zip(self.sessions,pins):
-            session.channels[session_pins].ppmu_source()
-        
+            if len(session_pins) != 0:
+                session.channels[session_pins].ppmu_source()
         self.dbg.end_function_debug()
         return 0
 
@@ -583,10 +658,9 @@ class DigitalPattern:
         Cleans up after PPMU operation 
         (otherwise levels default when going back digital)
         """
-        self.dbg.start_function_debug(debug)
 
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
-
+        self.set_channel_mode("ppmu",pins,sessions,sort=False)
         if ignore_power:
             exclude_pins = exclude_pins + self.settings["NIDigital"]["power_pins"]
         
@@ -602,7 +676,6 @@ class DigitalPattern:
                     time.sleep(2)
             session.ppmu_source()
         
-        self.dbg.end_function_debug()
 
         return 0
 
@@ -750,7 +823,7 @@ class DigitalPattern:
     """ ================================================= """
     # region
 
-    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, sort=True, digipat_prefix="", digipat_suffix="", patterns=None,debug=None):
+    def pulse(self, masks, pulse_lens=[50,10,50], max_pulse_len=[10_000], pulse_groups=None, sessions=None, pingroups=None, capture_pingroups=None, capture_waveforms=None, sort=True, digipat_prefix="", digipat_suffix="", patterns=None,debug=None):
         """
         A function for creating an arbitrary pulse based on given pulse groups and pulse lengths.
         The pulse is created by combining the pulse groups and pulse lengths to create a waveform.
@@ -773,6 +846,7 @@ class DigitalPattern:
             None
         """
         
+        # Begin Function Debugging
         self.dbg.start_function_debug(debug)
         
         # ============= Load Sessions ================ #
@@ -792,22 +866,40 @@ class DigitalPattern:
         # - Verify pin groups are provided as a list    #
         # ============================================== #
         
-        pingroups = pingroups or self.pingroups
+        pingroups = self.pingroups if pingroups is None else pingroups
+
         if pingroups is None:
-            raise DigitalPatternException("No pin groups provided")
-       
+            raise DigitalPatternException("No pingroups provided")
+
         if not isinstance(pingroups, list):
             pingroups = [pingroups]
+
+        # ============= Load Capture Pin Groups ================ #
+        # - Get capture pin groups from list or class attribues #
+        # - Verify capture pin groups are provided as a list    #
+        # ===================================================== #
+        if capture_pingroups is None:
+            if capture_waveforms is not None:
+                raise DigitalPatternException("Desired capture waveforms provided but no pingroups provided")
+        
+        # For capture waveforms (read during burst pattern)
+        if not isinstance(capture_waveforms, list):
+            capture_waveforms = [capture_waveforms]
+        
+        if not isinstance(capture_pingroups, list):
+            capture_pingroups = [capture_pingroups]
         
         # ============= Load Patterns ================ #
         # - Get patterns from list or class attribute  #
         # - Verify patterns are provided as a list     #
         # ============================================ #
 
-        patterns = patterns or self.patterns
+        patterns = self.patterns if patterns is None else patterns
+        
         if patterns is None:
             raise DigitalPatternException("Please specify patterns in settings or in function call")
         
+        # Convert 1 pattern to list of (1) patterns
         if not isinstance(patterns, list):
             patterns = [patterns]
 
@@ -825,6 +917,16 @@ class DigitalPattern:
         if sort:
             if pingroups != self.pingroups:
                 pingroups = self.sort_pins(pingroups)
+            
+            if capture_pingroups != self.pingroups:
+                if capture_pingroups != [None]:
+                    prev_capture_pingroups = capture_pingroups
+                    capture_pingroups = self.sort_pins(capture_pingroups)
+                    mapping = {value: capture_waveforms[idx] for idx, value in enumerate(prev_capture_pingroups)}
+
+                    # Sort ws_list based on the sorted_sublists using the mapping
+                    capture_waveforms = [[mapping[value] for value in sublist] for sublist in capture_pingroups]
+
 
 
         if not (type(pingroups) is list and type(pingroups[0]) is str and sort or type(pingroups[0]) is list and not sort):
@@ -837,43 +939,59 @@ class DigitalPattern:
         
         # ============= Build Waveforms ================ #
         self.dbg.debug_message(f"Masks: {masks}")
-        waveforms, pulse_width = self.build_waveforms(masks, pulse_lens=pulse_lens, max_pulse_len=max_pulse_len, pulse_groups=pulse_groups, debug=debug)
+        
+        waveforms, pulse_width = self.build_pulse_waveforms(masks, pulse_lens=pulse_lens, max_pulse_len=max_pulse_len, pulse_groups=pulse_groups, debug=debug)
         #WL_PULSE_DEC3.digipat or PULSE_MPW_ProbeCard.digipat as template file
         # Verify that the number of pin groups matches the number of waveforms
         if not len(pingroups) == len(waveforms):
+        
             raise DigitalPatternException("Number of pin groups must match number of waveforms")
         
         # ============= Pulse Waveforms ================ #
         self.dbg.debug_message(f"Sessions:{sessions}")
         for waveform_session_index,waveform_session_value in enumerate(waveforms):
             self.dbg.debug_message([f"Waveform Session Index: {waveform_session_index}", f"Waveform Session Value: {waveform_session_value}"])
+            
+            session_capture_pingroups = None if capture_pingroups == [None] else capture_pingroups[waveform_session_index]
+            session_capture_waveforms = None if capture_pingroups == [None] else capture_waveforms[waveform_session_index]
 
-            self.arbitrary_pulse(sessions[waveform_session_index],waveform_session_value, session_pingroups=self.pingroup_names[waveform_session_index], data_variable_prefix=digipat_prefix,data_variable_suffix=digipat_suffix, pulse_width=pulse_width)
+            
+            self.arbitrary_pulse(sessions[waveform_session_index],waveform_session_value, session_pingroups=self.pingroup_names[waveform_session_index], data_variable_prefix=digipat_prefix,data_variable_suffix=digipat_suffix, pulse_width=pulse_width, session_capture_pingroups=session_capture_pingroups, capture_waveforms=session_capture_waveforms,debug=debug)
             
         if len(sessions) == 1:
             sessions[0].burst_pattern(self.pattern_names[0])
-
+           
         # Synchronize Pulses using NITClk
         else:
             for session_num, session in enumerate(sessions):
                 session.start_label = self.pattern_names[session_num]
+                # pdb.set_trace()
                 session.configure_pattern_burst_sites()
             _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
             nitclk.synchronize(sessions,200e-8)
             sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])
             nitclk.wait_until_done(sessions,10)
         self.dbg.end_function_debug()
+
+        self.digital_all_pins_to_zero()
         return 
 
-    def arbitrary_pulse(self, session, waveform, session_pingroups, data_variable_prefix, data_variable_suffix, pulse_width=None,debug=None):
+    def arbitrary_pulse(self, session, waveform, session_pingroups, data_variable_prefix, data_variable_suffix, session_capture_pingroups=None, capture_waveforms=None, pulse_width=None,debug=None):
         self.dbg.start_function_debug(debug)
         broadcast = nidigital.SourceDataMapping.BROADCAST
+        
         for group,wave in zip(session_pingroups,waveform):
             data_variable_in_digipat = f"{data_variable_prefix}{group}{data_variable_suffix}"
             session.pins[group].create_source_waveform_parallel(data_variable_in_digipat, broadcast)
+        
         for group,wave in zip(session_pingroups,waveform):
             self.dbg.debug_message(f"Waveform Size: {len(wave)} for group {group}")
             session.write_source_waveform_broadcast(data_variable_in_digipat, wave)
+        
+        if capture_waveforms is not [None] and capture_waveforms is not None:
+            for group, wave in zip(session_capture_pingroups,capture_waveforms):
+                data_variable_in_digipat = f"{data_variable_prefix}{group}{data_variable_suffix}"
+                session.pins[group].create_capture_waveform_parallel(wave)
         
         if pulse_width:
             self.set_pw(pulse_width,session)
@@ -894,7 +1012,6 @@ class DigitalPattern:
 
         for session,session_pins in zip(sessions,pins):
             session.channels[session_pins].clock_generator_generate_clock(frequency=frequency,select_digital_function=True)
-
         self.dbg.end_function_debug()
         return frequency
 
@@ -918,7 +1035,7 @@ class DigitalPattern:
         """ 
         Create a temporal mask for each session based on the pulse groups provided.
         The temporal mask is created by checking if the pulse group is in the session group.
-        The mask is then formatted to be used in the build_waveforms function.
+        The mask is then formatted to be used in the build_pulse_waveforms function.
 
         Args:
             pulse_groups (list): List of pulse groups to create temporal masks for.
@@ -927,7 +1044,7 @@ class DigitalPattern:
         Returns:
             list: Temporal mask for each session.
         """
-
+        
         self.dbg.start_function_debug(debug)
         
         temporal_mask = []
@@ -937,24 +1054,24 @@ class DigitalPattern:
         self.dbg.end_function_debug()
         return(temporal_mask)
 
-    def build_waveforms(self, masks, pulse_lens, pulse_groups, max_pulse_len, debug=None):
-    
+    def build_pulse_waveforms(self, masks, pulse_lens, pulse_groups, max_pulse_len, debug=None):
+        
         """ Create a pulse train. Formatted for each of the
         masks already defined, so that each mask can be driven
         at the desired pulse step for the desired pulse length
-        
+            
         Ex: Masks = [[[1011]],[[1101]],[1011],[1]]
             pulse_lens = [1,3,5] 
             pulse_groups = [[[1],[0],[0,0]],[[1],[1],[1,1]], [[0],[0],[0,0]]]
                         drives the first group, all groups, then no groups
             Ex for group 1, pulse 1,2,3
-              | 1 |   2   |     3     |
+            | 1 |   2   |     3     |
             M | 1 | 1 1 1 | 0 0 0 0 0 |
             a | 0 | 0 0 0 | 0 0 0 0 0 |
             s | 1 | 1 1 1 | 0 0 0 0 0 |
             k | 1 | 1 1 1 | 0 0 0 0 0 |
                 --------- Time -------->
-        
+            
             Running Serially 1011,1011,1011,1011,0000,0000,0000,0000
         Pad with 0s to max_pulse_len
 
@@ -963,40 +1080,61 @@ class DigitalPattern:
             int:  pulse_width   
         """
 
+        # Start debugging if the debug option is enabled
         self.dbg.start_function_debug(debug)
 
+        # Retrieve and flatten pingroup names if they are defined
         pingroup_names = self.pingroup_names
+        
         if pingroup_names is not None:
             pingroup_names_flattened = list(chain.from_iterable(pingroup_names))
         else:
             pingroup_names_flattened = []     
-        
+
+        # Determine if a temporal mask should be created based on pingroup names and pulse groups
         create_temporal_mask = False
         for session in pulse_groups:
             if any(group in pingroup_names_flattened for group in session):
                 create_temporal_mask = True
+
+        # If required, build the temporal mask for the pulse groups
         if create_temporal_mask:
             pulse_groups = self.build_temporal_mask(pulse_groups)  
         
-        waveforms = []
+        waveforms = []  # Initialize the list to hold all waveforms
+
+        # Loop over each session in the masks
         for session_num, session_masks in enumerate(masks):
-            session_waveforms = []
+            
+            session_waveforms = []  # Initialize the list to hold waveforms for the current session
+
+            # Loop over each group within the current session
             for group_num, group_masks in enumerate(session_masks):
-                group_waveform = []
-                for pulse_len,step_included in zip(pulse_lens,pulse_groups):
+                group_waveform = []  # Initialize the waveform for the current group
+                # Loop over each pulse length and corresponding pulse group
+                for pulse_len, step_included in zip(pulse_lens, pulse_groups):
+                    # Create the waveform for the current group using bitwise AND operation
                     group_waveform = group_waveform + [BitVector(bitlist = group_masks & step_included[session_num][group_num]).int_val()]*pulse_len
                 
+                # Debugging: Print the current group waveform
                 self.dbg.debug_message(f"Group Waveform: {group_waveform}")
                 
+                # Calculate the waveform length and pad with zeros to max_pulse_len
                 waveform_len = len(group_waveform)
-                group_waveform = group_waveform + [0]*(max_pulse_len-waveform_len)
+                group_waveform = group_waveform + [0] * (max_pulse_len - waveform_len)
 
+                # Append the padded waveform to the session waveforms
                 session_waveforms.append(group_waveform)
+            
+            # Append the session waveforms to the overall waveforms list
             waveforms.append(session_waveforms)
         
+        # End debugging for the function
         self.dbg.end_function_debug()
 
+        # Return the complete set of waveforms and the total pulse width
         return waveforms, sum(pulse_lens)
+
     
     def set_pw(self, pulse_width, session=None, debug=None):
         """
@@ -1023,7 +1161,45 @@ class DigitalPattern:
         return 0
 
     # endregion
+    
+    """ ================================================= """
+    """            NiDigital Waveform Functions           """
+    """ ================================================= """
 
+    def broadcast_waveforms(self, sessions=None, debug=None):
+        """
+        Broadcast Waveforms: Broadcast the waveforms to the specified sessions and pins.
+        """
+        self.dbg.start_function_debug(debug)
+
+        if sessions is None:
+            sessions = self.sessions
+        
+        for session_num, session in enumerate(sessions):
+            session.start_label = self.pattern_names[session_num]
+            session.configure_pattern_burst_sites()
+        _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
+        nitclk.synchronize(sessions,1e-7)
+        # pdb.set_trace()
+        sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])
+        nitclk.wait_until_done(sessions,20)
+        
+        self.dbg.end_function_debug()
+        return 0
+
+    def define_caputure_waveforms(self, sessions=None, capture_pins=None, capture_waveforms=None, sort=True, debug=None):
+        """
+        Define Capture Waveforms: Define capture waveforms for the specified sessions and pins.
+        """
+        self.dbg.start_function_debug(debug)
+        sessions, pins = self.format_sessions_and_pins(sessions,pins,sort=sort)
+        
+        for session, session_pins in zip(sessions,pins):
+            for pin in session_pins:
+                session.channels[pin].create_capture_waveform_parallel()
+        
+        self.dbg.end_function_debug()
+        return 0
 
     """ ================================================= """
     """              NiDigital Read Functions             """
@@ -1061,7 +1237,6 @@ class DigitalPattern:
             list: List of all measured voltages.
         
         """
-        self.dbg.start_function_debug(debug)
 
         # Check if sessions and pins are None, if so, use the class attributes
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
@@ -1081,7 +1256,6 @@ class DigitalPattern:
         flattened_pins = list(chain.from_iterable(pins))
         flattened_voltages = list(chain.from_iterable(measured_voltages))
         
-        self.dbg.end_function_debug()
         # Return the measured voltages, a dictionary of pins and their measured voltages, and a list of all measured voltages
         return measured_voltages, dict(zip(flattened_pins,flattened_voltages)), list(chain.from_iterable(measured_voltages))
 
@@ -1101,7 +1275,6 @@ class DigitalPattern:
             dict: Dictionary of pins and their measured currents.
             list: List of all measured currents.
         """
-        self.dbg.start_function_debug(debug)
         sessions, pins = self.format_sessions_and_pins(sessions=sessions,pins=pins,sort=sort)
         measured_currents = []
 
@@ -1117,7 +1290,6 @@ class DigitalPattern:
         # Flatten the list of measured currents to remove session sorting
         flattened_currents = list(chain.from_iterable(measured_currents))
         
-        self.dbg.end_function_debug()
         return measured_currents, dict(zip(flattened_pins,flattened_currents)), list(chain.from_iterable(measured_currents))
     
     # endregion
@@ -1321,7 +1493,7 @@ class DigitalPattern:
                     with niswitch.Session(relay) as relay_session:
                         relay_session.disconnect_all()
                 except Exception as e:
-                    print(f"Error disconnecting relay {relay}: {e}")
+                    raise DigitalPatternException(f"Error disconnecting relay {relay}: {e}")
 
     def __del__(self):
         """Make sure to automatically close connection in destructor."""
@@ -1330,4 +1502,3 @@ class DigitalPattern:
 if __name__ == "__main__":
     digital = DigitalPattern()
     digital.close()
-    print("Done")

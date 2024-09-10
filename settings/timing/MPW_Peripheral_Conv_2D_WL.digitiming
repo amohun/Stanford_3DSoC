@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TimingFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/Timing">
+  <TimingSheet>
+    <TimeSets>
+      <TimeSet name="CSA">
+        <Period>2E-05</Period>
+        <PinEdges>
+          <PinEdge pin="SA_CLK">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>1E-05</Data>
+              <Off>2E-05</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>2E-05</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="SA_CLK_EXT">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>1E-05</Data>
+              <Off>2E-05</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>2E-05</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+        </PinEdges>
+      </TimeSet>
+    </TimeSets>
+  </TimingSheet>
+</TimingFile>

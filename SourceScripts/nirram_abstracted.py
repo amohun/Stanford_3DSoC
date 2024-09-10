@@ -1,8 +1,8 @@
 # region Import necessary libraries
 import pdb
-import tomli
+import argparse
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 import sys
 from os.path import abspath
 from os import getcwd
@@ -13,41 +13,54 @@ import pandas as pd
 import csv
 from datetime import date, datetime
 from BitVector import BitVector
+from itertools import chain
+import threading
+import matplotlib.pyplot as plt
 
-sys.path.append(getcwd() + '\\SourceScripts')
+# sys.path.append(getcwd() + '\\SourceScripts')
 from masks import Masks
 from digital_pattern import DigitalPattern
-import load_settings
+from SourceScripts.settings_util import SettingsUtil
+from debug_util import DebugUtil
 
 # endregion
+
 @dataclass
-class RRAMOperationResult:
-    """Data class to store measured parameters from an RRAM operation
+class RRAMCells:
+    """Data class to store the BL, SL, and WL channels of an RRAM device"""
+    cells: list
+    wls: list
+    bls: list
+    bls_unsel:list
+    bls_sel:list
+    sls: list
+
+@dataclass
+class VoltageSettings:
+    """Data class to store the voltage settings for an RRAM operation"""
+    vbl: float
+    vbl_unsel: float
+    vsl: float
+    vwl: float
+    vwl_unsel: float
+    vb: float
+
+@dataclass
+class RRAMPulseOperation:
+    """Data class to store an RRAM operation
     (e.g. set, reset, form, etc.)
     """
-    chip: str
-    device: str
     mode: str
-    wl: str
-    bl: str
-    res: float
-    cond: float
-    i: float
-    v: float
-    vwl: float
-    vsl: float
-    vbl: float
+    cells: RRAMCells
+    voltages: VoltageSettings
     pw: float
-    success: bool
+    target: float
 
 class NIRRAMException(Exception):
     """Exception produced by the NIRRAM class"""
     def __init__(self, msg):
         super().__init__(f"NIRRAM: {msg}")
 
-def printdb(text):
-    print(f"\n\n\n{text}\n\n\n")
-    return 1
 class NIRRAM:
     """The NI RRAM controller class that controls the instrument drivers."""
     """  This class has fewer functions than the original NIRRAM class   """
@@ -66,180 +79,185 @@ class NIRRAM:
     """   relays should be listed in the configuration toml file,        """
     """ ---------------------------------------------------------------- """
 
+    # ---------------------------------------------------------------- #
+    #                 Setup and Initialization Functions               #
+    # ---------------------------------------------------------------- #
 
     def __init__(
             self,
-            chip,
-            device,
-            polarity = "NMOS",
-            settings = "settings/MPW_Direct_Write.toml",
-            debug_printout = False,
-            test_type = "Default",
-            additional_info = ""
-            ):
-        # flag for indicating if connection to ni session is open
-        self.closed = True
+            chip: str,
+            device: str,
+            polarity: str = "PMOS",
+            settings: str = "settings/MPW_Direct_Write.toml",
+            test_type: str = "Dir_Write",
+            additional_info: str = "",
+            debug: bool = False
+        ):
+        """Initialize the NIRRAM class with the given settings and test type."""
         
-        
-        # If settings is a string, load as TOML file
-        if isinstance(settings, str):
-            with open(settings, "rb") as settings_file:
-                settings = tomli.load(settings_file)
-        
-        # Ensure settings is a dict
-        if not isinstance(settings, dict):
-            raise NIRRAMException(f"Settings should be a dict, got {repr(settings)}.")
-
-        self.settings = settings
-
-        # Convert NIDigital spec paths to absolute paths
-        settings["NIDigital"]["specs"] = [abspath(path) for path in settings["NIDigital"]["specs"]]
-        self.debug_printout = debug_printout
-        
-        # Initialize RRAM logging
-        current_date = date.today().strftime("%Y-%m-%d")
-        current_time = datetime.now().strftime("%H:%M:%S")
-
-        hash = self.update_data_log(current_date, current_time, f"chip_{chip}_device_{device}", test_type, additional_info)
-        self.datafile_path = settings["path"]["data_header"] + f"/{test_type}/{current_date}_{chip}_{device}_{hash}.csv"
-        
-        self.file_object = open(self.datafile_path, "a", newline='')
-        self.datafile = csv.writer(self.file_object)
-
-        self.datafile.writerow(["Chip_ID", "Device_ID", "OP", "Row", "Col", "Res", "Cond", "Meas_I", "Meas_V", "Success/State", "Prog_VBL", "Prog_VSL", "Prog_VWL", "Prog_Pulse"])
-        self.file_object.close()
-
+        self.debug = debug
         self.chip = chip
         self.device = device
         self.polarity = polarity
-        self.load_settings(settings)
-        self.load_session(settings)
+        self.dbg = DebugUtil(debug=self.debug)
         
-        self.bl_dev = []
-        self.sl_dev = []
-        self.wl_dev = []
+        self.dbg.start_function_debug(self.debug)
+
+        # Load and set up settings
+        self._initialize_settings(settings)
+
+        # Initialize RRAM Test logging
+        self._initialize_logging(test_type, additional_info)
+
+        # Load device-specific settings and session information
+        self.load_settings(self.settings_manager)
+        self.load_session()
+
+        # Initialize row selectors for rows not part of the test
         self.zero_rows = None
         self.NC_rows = None
- 
-    def load_settings(self,settings, debug_printout = None):
-        if debug_printout is None: debug_printout = self.debug_printout
 
-        if isinstance(settings, str):
-            with open(settings, "rb") as settings_file:
-                settings = tomli.load(settings_file)
+        self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
 
-        if not isinstance(settings, dict):
-            raise ValueError(f"Settings should be a dict, got {repr(settings)}.")
+        self.dbg.end_function_debug()
 
-        settings["NIDigital"]["specs"] = [abspath(path) for path in settings["NIDigital"]["specs"]]
+    def _initialize_settings(self, settings: str):
+        """Load and set up settings."""
+        self.settings_manager = SettingsUtil(settings)
+        self.settings = self.settings_manager.settings
+        self.settings_path = self.settings_manager.settings_path
         
+        # Convert NIDigital spec paths to absolute paths
+        self.settings["NIDigital"]["specs"] = [
+            abspath(path) for path in self.settings["NIDigital"]["specs"]
+        ]
+
+    def _initialize_logging(self, test_type: str, additional_info: str):
+        """Set up the RRAM logging."""
+        current_date = date.today().strftime("%Y-%m-%d")
+        current_time = datetime.now().strftime("%H:%M:%S")
+
+        self.hash_value = self.update_data_log(
+            current_date,
+            current_time,
+            f"chip_{self.chip}_device_{self.device}",
+            test_type,
+            additional_info
+        )
+
+        self.datafile_path = f"{self.settings_manager.get_setting('path.data_header')}/{test_type}/{current_date}_{self.chip}_{self.device}_{self.hash_value}.csv"
+
+
+    def load_settings(self, settings_manager: SettingsUtil, debug: bool = None):
+        """Load and store settings for the RRAM device."""
+        self.dbg.start_function_debug(debug)
+
         # Store/initialize parameters
-        self.target_res = settings["target_res"]
-        self.op = settings["op"] # operations
+        self.target_res = settings_manager.get_setting("target_res", required=True)
+        self.op = settings_manager.get_setting("op", required=True)
+        self.dev = settings_manager.get_setting("device", required=True)
 
-        # body voltages, str name => body voltage
-        if "body" in settings["device"]:
-            self.body = settings["device"]["body"]
-        else: self.body = None
-        
-        # Define all_bl, all_sl, all_wl from toml file
-        self.all_wls = settings["device"]["all_WLS"]
-        self.all_bls = settings["device"]["all_BLS"]
-        self.all_sls = settings["device"]["all_SLS"]
+        # Load device settings
+        self._load_device_settings(settings_manager)
 
-        # Define bl, sl, and wl from toml file
-        self.wls = settings["device"]["WLS"]
+        # Load relay settings
+        self._load_relay_settings(settings_manager)
 
-        if "WL_SIGNALS" in settings["device"]:
-            self.wl_signals = settings["device"]["WL_SIGNALS"]
+        # Load pulse settings
+        self._load_pulse_settings(settings_manager)
 
-        self.bls = settings["device"]["BLS"]
-        self.sls = settings["device"]["SLS"]
-        self.wl_unsel = settings["device"]["WL_UNSEL"]
+        self.dbg.end_function_debug()
 
-        if "all_WL_SIGNALS" in settings["device"]:
-            self.all_wl_signals = settings["device"]["all_WL_SIGNALS"]
+    def _load_device_settings(self, settings_manager: SettingsUtil):
+        """Load device-specific settings from the provided settings manager."""
+        self.body = settings_manager.get_setting("device.body")
+        self.all_wls = settings_manager.get_setting("device.all_WLS", required=True)
+        self.all_bls = settings_manager.get_setting("device.all_BLS", required=True)
+        self.all_sls = settings_manager.get_setting("device.all_SLS", required=True)
 
+        self.wls = settings_manager.get_setting("device.WLS", required=True)
+        self.bls = settings_manager.get_setting("device.BLS", required=True)
+        self.sls = settings_manager.get_setting("device.SLS", required=True)
+        self.wl_unsel = settings_manager.get_setting("device.WL_UNSEL", required=True)
+
+        self.WL_IN = settings_manager.get_setting("device.WL_IN", default=settings_manager.get_setting("device.WL_IN"))
+        self.all_WL_IN = settings_manager.get_setting("device.all_WL_IN", default=settings_manager.get_setting("device.all_WL_IN"))
+
+        self.zero_rows = settings_manager.get_setting("device.zero_rows", default=None)
+        if self.zero_rows == []:
+            self.zero_rows = None
+
+        self.NC_rows = settings_manager.get_setting("device.NC_rows", default=None)
+        if self.NC_rows == []:
+            self.NC_rows = None
+
+    def _load_relay_settings(self, settings_manager: SettingsUtil):
+        """Load relay-specific settings from the provided settings manager."""
         self.relays = None
-        if "NISwitch" in settings:
-            assert "deviceID" in settings["NISwitch"], "NISwitch deviceID not found in settings"
-            self.relays = settings["NISwitch"]["deviceID"]
-        # Set rows to avoid for WLs
-        if "zero_rows" in settings["device"]:
-            self.zero_rows = settings["device"]["zero_rows"] if len(settings["device"]["zero_rows"]) > 0 else None
-        if "NC_rows" in settings["device"]:
-            self.NC_rows = settings["device"]["NC_rows"] if len(settings["device"]["NC_rows"]) > 0 else None
+        self.relay_information = settings_manager.get_setting("NISwitch", default=None)
         
-        if self.relays is None:
-            self.all_channels = self.all_bls + self.all_sls + self.all_wls
+        if self.relay_information:
+            self.relays = settings_manager.get_setting("NISwitch.deviceID", required=True)
+            self.all_channels = [self.all_bls, self.all_sls, self.all_WL_IN]
         else:
-            self.all_channels = self.all_bls + self.all_sls + self.all_wl_signals
+            self.all_channels = [self.all_bls, self.all_sls, self.all_wls]
 
-        #Set the target resistance for the device
-        self.def_target_res("set", settings["target_res"]["SET"])
-        self.def_target_res("reset", settings["target_res"]["RESET"])
-        self.def_target_res("form", settings["target_res"]["FORM"])
+        self.all_channels_flat = self._flatten(self.all_channels)
 
-        # Set the pulse lengths for the device
-        if "PULSE" in settings:
-            if "prepulse_len" in settings["PULSE"]:
-                self.prepulse_len = settings["PULSE"]["prepulse_len"]
-            if "postpulse_len" in settings["PULSE"]:
-                self.postpulse_len = settings["PULSE"]["postpulse_len"]
-        if "max_pulse_len" in settings["PULSE"]:
-            self.max_pulse_len = settings["PULSE"]["max_pulse_len"]
-        else:
-            self.max_pulse_len = 1e+4
-            
+    def _load_pulse_settings(self, settings_manager: SettingsUtil):
+        """Load pulse-specific settings from the provided settings manager."""
+        target_res_dict = settings_manager.get_setting("target_res", required=True)
+        for mode, value in target_res_dict.items():
+            self.def_target_res(mode.lower(), value)
 
-    def load_session(self,settings,debug_printout = None):  
-        if debug_printout is None: debug_printout = self.debug_printout
-        
-        # Only works for 1T1R arrays, sets addr idx and prof
+        self.prepulse_len = settings_manager.get_setting("PULSE.prepulse_len")
+        self.pulse_len = settings_manager.get_setting("PULSE.pulse_len")
+        self.wl_buffer = settings_manager.get_setting("PULSE.wl_buffer")
+        self.blsl_buffer = settings_manager.get_setting("PULSE.blsl_buffer")
+        self.postpulse_len = settings_manager.get_setting("PULSE.postpulse_len")
+        self.max_pulse_len = settings_manager.get_setting("PULSE.max_pulse_len", default=1e4)
+
+    
+    def load_session(self, debug: bool = None):
+        """Initialize the NIDigital session and configure the device for operation."""
+        self.dbg.start_function_debug(debug)
+
+        # Initialize address indexes and profiles for 1T1R arrays
+        self._initialize_address_indexes()
+
+        # Load and configure the NIDigital session
+        self._configure_digital_session()
+
+        self.dbg.end_function_debug()
+
+    def _initialize_address_indexes(self):
+        """Initialize address indexes and profiles for the 1T1R array."""
         self.addr_idxs = {}
         self.addr_prof = {}
 
         for wl in self.wls:
             self.addr_idxs[wl] = {}
             self.addr_prof[wl] = {}
-            for i in range(len(self.bls)):
-                bl = self.bls[i]
-                
-                # temporary fix for 1TNR: if bls and sls len not equal, just use sl0
-                if len(self.sls) == len(self.bls):
-                    sl = self.sls[i]
-                else:
-                    sl = self.sls[0]
+            for i, bl in enumerate(self.bls):
+                sl = self.sls[i] if len(self.sls) == len(self.bls) else self.sls[0]
                 self.addr_idxs[wl][bl] = (bl, sl, wl)
-                self.addr_prof[wl][bl] = {"FORMs": 0, "READs": 0, "SETs": 0, "RESETs": 0} 
+                self.addr_prof[wl][bl] = {"FORMs": 0, "READs": 0, "SETs": 0, "RESETs": 0}
 
-        # Load NIDigital session
-
-        self.digital_patterns = DigitalPattern(self.settings)
+    def _configure_digital_session(self):
+        """Configure the NIDigital session."""
+        self.digital_patterns = DigitalPattern(self.settings_manager)
         self.digital = self.digital_patterns.sessions
 
-        self.digital_patterns.configure_read(sessions=None,pins=[self.bls,self.sls],sort=False)
-
+        self.digital_patterns.configure_read(sessions=None, pins=[self.bls, self.sls], sort=False)
         self.digital_patterns.digital_all_pins_to_zero()
         self.digital_patterns.commit_all()
 
-    def read_1tnr(        
-            self,
-        vbl=None,
-        vsl=None,
-        vwl=None,
-        vwl_unsel_offset=None,
-        vb=None,
-        record=False,
-        check=True,
-        dynam_read=False,
-        wl_name = None
-        ):
-            print("No 1TNR Read Functionality, will be implemented in the future")
-            # ============================= #
-            # TODO: 1TNR Read Functionality #
-            # ============================= #
-            return None
+
+
+    """ ================================================================= """
+    """                    Directly Reading RRAM Cells                    """
+    """  This function reads the resistance of the RRAM cells directly.   """
+    """ ================================================================= """
 
     def direct_read(
         self,
@@ -260,62 +278,38 @@ class NIRRAM:
         record=False,
         check=True,
         print_info = True,
-        debug_printout = None,
+        debug = None,
         relayed=False
     ):
         """Perform a READ operation. This operation works for single 1T1R devices and 
         arrays of devices, where each device has its own WL/BL.
         Returns list (per-bitline) of tuple with (res, cond, meas_i, meas_v)"""
-        if debug_printout is None: debug_printout = self.debug_printout
+        self.dbg.start_function_debug(debug)
+        # 
+        
+        rram_cells = self.select_memory_cells(bls=bls, wls=wls)
+        wls, bls, sls = [rram_cells.wls, rram_cells.bls, rram_cells.sls]
 
-        wls = self.wls if wls is None else wls
-        bls = self.bls if bls is None else bls
-
-        if type(bls[0]) is not list:
-            bls = [bls]*len(wls)
-
-        if bls is None: sls = self.sls
-        elif type(bls[0]) is int or type(bls[0]) is np.uint8:
-            sls = [[f"SL_{bl}" for bl in wl_bls] for wl_bls in bls]
-        else:
-            sls = [[f"SL{bl[2:]}" for bl in wl_bls] for wl_bls in bls]
-
+        settling_time = self.op["READ"]["settling_time"]
         
         # Set the read voltage parameters based on settings or parameter inputs
         vbl = self.op["READ"][self.polarity]["VBL"] if vbl is None else vbl
         vwl = self.op["READ"][self.polarity]["VWL"] if vwl is None else vwl
         vsl = self.op["READ"][self.polarity]["VSL"] if vsl is None else vsl
-        vb = self.op["READ"][self.polarity]["VB"] if vb is None else vb
+        vb  = self.op["READ"][self.polarity]["VB"]  if vb  is None else vb
 
-        if debug_printout:
-            print(f"Direct Read: VBL={vbl}, VWL={vwl}, VSL={vsl}, VB={vb}, VWL_UNSEL_OFFSET={vwl_unsel_offset}")
-
-        # Dataframes to store measurement results, resistance, conductance, current, voltage
-        # print(f"BLs: {bls}")
-        if type(bls[0])==list:
-            res_array_bls = list(set(np.concatenate(bls).tolist()))
-            res_array_bls = sorted(res_array_bls, key=lambda s: int(s.split('_')[1]))
-        else:
-            res_array_bls = sorted(bls, key=lambda s: int(s.split('_')[1]))
-                               
-
-        res_array = pd.DataFrame(np.zeros((len(wls), len(res_array_bls))), wls, res_array_bls)
-        cond_array = pd.DataFrame(np.zeros((len(wls), len(res_array_bls))), wls, res_array_bls)
-        meas_v_array = pd.DataFrame(np.zeros((len(wls), len(res_array_bls))), wls, res_array_bls)
-        meas_i_array = pd.DataFrame(np.zeros((len(wls), len(res_array_bls))), wls, res_array_bls)
-        meas_i_leak_array = pd.DataFrame(np.zeros((len(wls), len(res_array_bls))), wls, res_array_bls)
+        # Initialize dataframes to store resistance, conductance, current, and voltage measurements
+        self._define_measurement_dataframes(wls, bls)
+        
         # Set the voltage for unselected word lines
-        if vwl_unsel_offset is None:
-            if "VWL_UNSEL_OFFSET" in self.op["READ"][self.polarity]:
-                vwl_unsel_offset = self.op["READ"][self.polarity]["VWL_UNSEL_OFFSET"]
-            else:
-                vwl_unsel_offset = 0.0
+        vwl_unsel_offset = vwl_unsel_offset or self.op["READ"][self.polarity].get("VWL_UNSEL_OFFSET", 0.0)
+        vwl_unsel = vsl + vwl_unsel_offset
 
-        if debug_printout:
-            print(f"Direct Read: VBL={vbl}, VWL={vwl}, VSL={vsl}, VB={vb}, VWL_UNSEL_OFFSET={vwl_unsel_offset}")
+
+        self.dbg.operation_debug("Direct Read", ["VBL, VWL, VSL, VB, VWL_UNSEL"], [vbl, vwl, vsl, vb, vwl_unsel])
         
         # let the supplies settle for accurate measurement
-        time.sleep(self.op["READ"]["settling_time"]) 
+        self._settle(settling_time) 
         
 
         if self.op["READ"]["mode"] != "digital":
@@ -325,70 +319,47 @@ class NIRRAM:
             remove_bias = []
         
         if self.relays is not None:
-            self.wl_signals = self.settings["device"]["all_WL_SIGNALS"]
-
-        formatted_r = []   
-        formatted_c = []
-        formatted_i = []
-        formatted_v = []
-
+            self.WL_IN = self.settings["device"]["all_WL_IN"]
         for wl,wl_bls,wl_sls in zip(wls,bls,sls):
             if self.relays is not None:
                 wl_entry = wl
-                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug_printout=False)
+                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug=False)
                 wl = wl[0]
 
-            for wl_i in all_wls:
-                if wl_i in wl:
-                    self.ppmu_set_vwl(wl_i, vwl)
-                elif wl_i in remove_bias:
-                    self.ppmu_set_vwl(wl_i, vsl)
-                else:
-                    self.ppmu_set_vwl(wl_i, vsl + vwl_unsel_offset)
-                    
+            self.set_to_ppmu([self.bls,self.sls],["BL","SL"])
             
-            self.digital_patterns.ppmu_source([[],[],[all_wls]], sort=False)
+            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True) 
 
+            self.ppmu_set_vwl(wl, vwl)
+            for wl_i in remove_bias:
+                self.ppmu_set_vwl(wl_i, vsl)
+               
             self.ppmu_set_vbl(self.bls,vbl)
             self.ppmu_set_vsl(self.sls,vsl)
-            self.set_to_ppmu([self.bls,self.sls],["BL","SL"])
 
             #Let the supplies settle for accurate measurement
-            time.sleep(self.op["READ"]["settling_time"])
+            self._settle(settling_time)
+
+
 
             # Measure selected voltage. Default is to measure VBL
             if meas_vbls:
-                meas_bls_v_by_session,dict_meas_bls_v,meas_bls_v = self.digital_patterns.measure_voltage([wl_bls,[],[]],sort=False)
-            
-                # if debug_printout:
-                #     if meas_vbls:
-                #         print([f"{bl} = {meas_bl_v}" for bl, meas_bl_v in zip(wl_bls, meas_bls_v)])
-        
+                _,_,meas_bls_v = self.digital_patterns.measure_voltage([wl_bls,[],[]],sort=False)
 
             if meas_vsls:
-                meas_sls_v_by_session,dict_measure_sls_v,meas_sls_v = self.digital_patterns.measure_voltage([[],wl_sls,[]],sort=False)
-
-                # if debug_printout:
-                #     print([f"{sl} = {meas_sl_v}" for sl, meas_sl_v in zip(sls, meas_sls_v)])
+                _,_,meas_sls_v = self.digital_patterns.measure_voltage([[],wl_sls,[]],sort=False)
 
             if meas_vwls:
-                meas_wls_v_by_session,dict_meas_sls_v,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wls],sort=False)
-
-                # if debug_printout:
-                #     print([f"{wl} = {meas_wl_v}" for wl, meas_wl_v in zip(wls, meas_wls_v)])
+                _,_,_ = self.digital_patterns.measure_voltage([[],[],wls],sort=False)
 
             # Measure selected current, default is to measure ISL and I gate
             if meas_isls: 
                 _,_,meas_sls_i = self.digital_patterns.measure_current([[],wl_sls,[]],sort=False)
 
-                # if debug_printout:
-                #     print([f"{sl} = {meas_sl_i}" for sl, meas_sl_i in zip(wl_sls, meas_sls_i)])
 
             if meas_ibls:
                 _,_,meas_bls_i = self.digital_patterns.measure_current([[],[],wl_bls],sort=False)
 
-                # if debug_printout:
-                #     print([f"{bl} = {meas_bl_i}" for bl, meas_bl_i in zip(wl_bls, meas_bls_i)])
 
             if meas_i_gate:
                 if type(wl) is str:
@@ -401,113 +372,141 @@ class NIRRAM:
                     else:
                         _,_,meas_wls_i = self.digital_patterns.measure_current([[],[],[f"WL_{wl}"]],sort=False)
 
-                # if debug_printout:
-                #     print([f"{wl} = {meas_wl_i}" for wl, meas_wl_i in zip(wls, meas_wls_i)])
-        
-            
-            if self.relays is not None:
-                self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wl_signals],sort=False)
-            else:
-                self.digital_patterns.ppmu_set_pins_to_zero(sessions=None,pins=[self.bls,self.sls,self.wls],sort=False)
 
+
+
+
+
+            self.ppmu_set_vwl(wl, 0)
+            for wl_i in remove_bias:
+                self.ppmu_set_vwl(wl, 0)
+               
+            self.ppmu_set_vbl(self.bls,0)
+            self.ppmu_set_vsl(self.sls,0)
+            self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True)
+            
+            r_wl_sl = None
+            r_wl_bl = None
 
             if meas_isls:
-                if debug_printout:
-                    print(f"measure ISL")
-                r_wl = np.abs((self.op["READ"][self.polarity]["VBL"] - self.op["READ"][self.polarity]["VSL"])/np.array(meas_sls_i) - self.op["READ"]["shunt_res_value"])
+                r_wl_sl = np.abs((self.op["READ"][self.polarity]["VBL"] - self.op["READ"][self.polarity]["VSL"])/np.array(meas_sls_i) - self.op["READ"]["shunt_res_value"])
 
             if meas_ibls:
-                if debug_printout:
-                    print("measure IBL")
-                r_wl = np.abs((self.op["READ"][self.polarity]["VBL"] - self.op["READ"][self.polarity]["VSL"])/meas_bls_i - self.op["READ"]["shunt_res_value"])
+                r_wl_bl = np.abs((self.op["READ"][self.polarity]["VBL"] - self.op["READ"][self.polarity]["VSL"])/np.array(meas_bls_i) - self.op["READ"]["shunt_res_value"])
             
-            if not meas_isls and not meas_ibls:
+            if r_wl_sl is not None and r_wl_bl is not None:
+                r_wl = np.where(np.logical_and(r_wl_sl != None, r_wl_bl != None), (r_wl_sl + r_wl_bl) / 2, None)
+            else:
+                r_wl = r_wl_sl if r_wl_sl is not None else r_wl_bl
+            
+
+            if r_wl is None:
                 if meas_i_gate: 
                     print("Measuring I gate for resistance between gate and source")
-                    r_wl = np.abs((self.op["READ"][self.polarity]["VWL"] - self.op["READ"][self.polarity]["VSL"])/meas_wls_i - self.op["READ"]["shunt_res_value"])
+                    r_wl = np.abs((self.op["READ"][self.polarity]["VWL"] - self.op["READ"][self.polarity]["VSL"])/np.array(meas_wls_i) - self.op["READ"]["shunt_res_value"])
                 else:
                     print("No current measurement selected, cannot calculate resistance")
                     r_wl = None
 
             wl = wl_entry if self.relays is not None else wl
 
-            r_wl = np.array([None if res_bit not in wl_bls else r_wl[wl_bls.index(res_bit)] for res_bit in res_array_bls])
+            r_wl = np.array([None if res_bit not in wl_bls else r_wl[wl_bls.index(res_bit)] for res_bit in self.res_array_bls])
 
-            for r in r_wl:
-                if r <= 0:
-                    r = 1e-12
+            r_wl = np.maximum(r_wl, 1e-12)            
             
-            r_for_c = r_wl
+            c_wl = 1/r_wl if r_wl is not None else None
             
-            c_wl = 1/r_for_c if r_for_c is not None else None
+            self.res_array.loc[wl] = r_wl
+            self.cond_array.loc[wl] = c_wl
+            self.meas_v_array.loc[wl] = meas_bls_v if meas_vbls else meas_sls_v
+            self.meas_i_array.loc[wl] = meas_bls_i if meas_ibls else meas_sls_i
+            self.meas_i_leak_array.loc[wl] = meas_i_gate if meas_i_gate else None
 
-            
-
-            res_array.loc[wl] = r_wl
-            cond_array.loc[wl] = c_wl
-            meas_v_array.loc[wl] = meas_bls_v if meas_vbls else meas_sls_v
-            meas_i_array.loc[wl] = meas_bls_i if meas_ibls else meas_sls_i
-            meas_i_leak_array.loc[wl] = meas_i_gate if meas_i_gate else None
-
-            formatted_r.append([f"{value/1000:.2f}kΩ" for value in r_wl])
-            formatted_c.append([f"{value:.2e}S" for value in c_wl])
-            formatted_i.append([f"{value:.2e}A" for value in meas_i_array.loc[wl]])
-            formatted_v.append([f"{value:.2e}V" for value in meas_v_array.loc[wl]])
+            self.formatted_measurement["res"].append([f"{value/1000:.2f}kΩ" for value in r_wl])
+            self.formatted_measurement["cond"].append([f"{value:.2e}S" for value in c_wl])
+            self.formatted_measurement["i"].append([f"{value:.2e}A" for value in self.meas_i_array.loc[wl]])
+            self.formatted_measurement["v"].append([f"{value:.2e}V" for value in self.meas_v_array.loc[wl]])
 
             self.all_wls = self.settings["device"]["all_WLS"]
 
-        if print_info == True or type(print_info) is str:
-        
-            if print_info == True:
-                print(f"Resistance:\n{pd.DataFrame(formatted_r),wls,bls}")
-            
-            if type(print_info) is str:
-                if print_info == "all":
-                    print(f"Resistance:\n{pd.DataFrame(formatted_r,wls,bls)}\n")
-                    print(f"Conductance:\n{pd.DataFrame(formatted_c,wls,bls)}\n")
-                    print(f"Current:\n{pd.DataFrame(formatted_i,wls,bls)}\n")
-                    print(f"Voltage:\n{pd.DataFrame(formatted_v,wls,bls)}\n\n")
-                
-                if print_info == "res":
-                    print(f"Resistance:\n{pd.DataFrame(formatted_r,wls,bls)}\n")
-                if print_info == "cond":
-                    print(f"Conductance:\n{pd.DataFrame(formatted_c,wls,bls)}\n")
-                if print_info == "i":
-                    print(f"Current:\n{pd.DataFrame(formatted_i,wls,bls)}\n")
-                if print_info == "v":
-                    print(f"Voltage:\n{pd.DataFrame(formatted_v,wls,bls)}\n")
-            
-            if type(print_info) is list:
-                if "res" in print_info:
-                    print(f"Resistance:\n{pd.DataFrame(formatted_r,wls,bls)}\n")
-                if "cond" in print_info:
-                    print(f"Conductance:\n{pd.DataFrame(formatted_c,wls,bls)}\n")
-                if "i" in print_info:
-                    print(f"Current:\n{pd.DataFrame(formatted_i,wls,bls)}\n")
-                if "v" in print_info:
-                    print(f"Voltage:\n{pd.DataFrame(formatted_v,wls,bls)}\n")
-        
-        
-        if record:
-            with open(self.datafile_path, "a", newline='') as file_object:
-                datafile = csv.writer(file_object)
-                for wl,wl_bls in zip(wls,bls):
-                    for bl in wl_bls:
-                        if check:
-                            if res_array.loc[wl, bl] < self.set_target_res:
-                                check_on = "set"
-                            elif res_array.loc[wl, bl] > self.reset_target_res:
-                                check_on = "reset"
-                            else:
-                                check_on = "unknown"
-                        print(f"checking ({wl}, {bl}): {res_array.loc[wl, bl]} | {check_on}")
-                        datafile.writerow([self.chip, self.device, "READ", wl, bl, res_array.loc[wl, bl], cond_array.loc[wl, bl], meas_i_array.loc[wl, bl], meas_v_array.loc[wl, bl], check_on])
-        
-   
-        time.sleep(self.op["READ"]["settling_time"])
 
-        return res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array        
-    
+        # Print read information if print_info is True or specific information based on string/list input
+        self._print_measurement_results(wls, bls, print_info)
+
+        # Record Information to datafile if record is True
+        if record: self._record_measurement_results(wls, bls, check)
+        
+        self._settle(self.op["READ"]["settling_time"])
+
+        self.dbg.end_function_debug()
+        return self.res_array, self.cond_array, self.meas_i_array, self.meas_v_array, self.meas_i_leak_array
+
+    def _define_measurement_dataframes(self, wls, bls):
+        
+        """ Fix BLs to be flattened list with all unique BLs"""
+        if type(bls[0])==list:
+            res_array_bls = list(set(np.concatenate(bls).tolist()))
+            self.res_array_bls = sorted(res_array_bls, key=lambda s: int(s.split('_')[1]))
+        else:
+            self.res_array_bls = sorted(bls, key=lambda s: int(s.split('_')[1]))
+        bls = self.res_array_bls
+        """Define the dataframes to store measurement results."""
+        self.res_array = pd.DataFrame(np.zeros((len(wls), len(bls))), wls, bls)
+        self.cond_array = pd.DataFrame(np.zeros((len(wls), len(bls))), wls, bls)
+        self.meas_v_array = pd.DataFrame(np.zeros((len(wls), len(bls))), wls, bls)
+        self.meas_i_array = pd.DataFrame(np.zeros((len(wls), len(bls))), wls, bls)
+        self.meas_i_leak_array = pd.DataFrame(np.zeros((len(wls), len(bls))), wls, bls)
+
+        """Define lists to store formatted measurement results for display."""
+        self.formatted_measurement = {"res": [],"cond": [],"i": [],"v": []}
+        self.measurement_names = {"res": "Resistance","cond": "Conductance","i": "Current","v": "Voltage"}
+
+    def _set_read_voltages(self,wls,bls,sls,vbl,vsl,vwl,vwl_unsel):
+        """Set the read voltages for the selected word lines, bit lines, and source lines."""
+        self.ppmu_set_vbl(bls, vbl)
+        self.ppmu_set_vsl(sls, vsl)
+        self.ppmu_set_vwl(wls, vwl)
+        self.ppmu_set_vwl(self.wl_unsel, vwl_unsel)
+
+    def _print_measurement_results(self, wls, bls, print_info):
+        """                 Print the measurement results defined by the formatted measurements              """
+        """Default True to First dictionary value, all is values, and a list of strings for specific results."""
+        if not print_info:
+            return
+        if isinstance(print_info, bool) and print_info:
+            print_info = [list(self.formatted_measurement.keys())[0]]
+        elif isinstance(print_info, str):
+            print_info = [print_info]
+        
+        if "all" in print_info:
+            index = print_info.index("all")
+            print_info = print_info[:index] + list(self.formatted.keys()) + print_info[index+1:]
+        
+        for prnt in print_info:
+            print(f"{self.measurement_names[prnt]}:\n{pd.DataFrame(self.formatted_measurement[prnt],wls,bls)}\n")
+
+    def _record_measurement_results(self, wls, bls, check):
+        with open(self.datafile_path, "a", newline='') as file_object:
+            datafile = csv.writer(file_object)
+            for wl,wl_bls in zip(wls,bls):
+                for bl in wl_bls:
+                    if check:
+                        if self.res_array.loc[wl, bl] < self.set_target_res:
+                            check_on = "set"
+                        elif self.res_array.loc[wl, bl] > self.reset_target_res:
+                            check_on = "reset"
+                        else:
+                            check_on = "unknown"
+                    print(f"checking ({wl}, {bl}): {self.res_array.loc[wl, bl]} | {check_on}")
+                    datafile.writerow([self.chip, self.device, "READ", wl, bl, self.res_array.loc[wl, bl], self.cond_array.loc[wl, bl], self.meas_i_array.loc[wl, bl], self.meas_v_array.loc[wl, bl], check_on])      
+
+    def _settle(self,duration):
+        """A more accurate sleep function to get sub-ms settling time"""
+        """ Time.sleep had a min of 10 ms, so this is a workaround """
+        end_time = time.perf_counter() + duration
+        while time.perf_counter() < end_time:
+            pass    
+
 
     """ ================================================================= """
     """                   Setting voltages and currents                   """
@@ -515,7 +514,22 @@ class NIRRAM:
     """                PPMU and Digital sources are defined               """
     """ ================================================================= """
 
-    def ppmu_set_voltage(self, v, channels, name, sort=True):
+    def set_to_ppmu(self,channels,name, sort=True,debug=None):
+    
+        if type(channels) is not list:
+            channels = [channels]
+        if type(channels[0]) is list and sort==True:
+            if type(channels[0][0]) is int or type(channels[0][0]) is np.uint8:
+                channels = [[f"{name[channels.index[channel]]}_{chan}" for chan in channel]for channel in channels]
+            
+            channels = self._flatten(channels)
+
+        if type(channels[0]) is int or type(channels[0]) is np.uint8:
+            channels = [f"{name}_{chan}" for chan in channels]
+        
+        self.digital_patterns.set_channel_mode("ppmu", pins=channels,sessions=None,sort=sort,debug=debug)
+
+    def ppmu_set_voltage(self, v, channels, name, sort=True,source=True):
         """
         PPMU Set Voltage: Set voltages v for given channels across
         multiple sessions. 
@@ -543,9 +557,9 @@ class NIRRAM:
             channels = [f"{name}_{chan}" for chan in channels]
 
         # Check if all channels are valid
-        all_channels = self.settings["device"][f"all_{name}S"]
+        all_sel_channels = self.settings["device"][f"all_{name}S"]
         for chan in channels:
-            if chan not in all_channels:
+            if chan not in all_sel_channels:
                 raise NIRRAMException(f"Invalid V{name} channel {chan}. \nChannel not in all_{name}S.")
 
         # Check if v is a list, if not convert it to a list
@@ -564,28 +578,116 @@ class NIRRAM:
             raise NIRRAMException(f"Invalid V{name} voltage(s) in {v}. Voltage must be between -2V and 6V.")
 
         # Set the voltage levels using the digital patterns
-        self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v, sessions=None, sort=sort, source=True)
+        self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v, sessions=None, sort=sort, source=source)
 
 
-    def ppmu_set_vbl(self, vbl_chan, vbl,sort=True):
+
+    def measure_iv(self, wl, bl, vwl, vbl, vwl_unsel = 0, plot=True,relayed=True):
+        """Measure the current between the bitline and the gate."""
+        if not isinstance(vwl, list) and not isinstance(vwl, np.ndarray):
+            vwl = [vwl]
+        if not isinstance(vbl, list) and not isinstance(vbl, np.ndarray):
+            vbl = [vbl]
+        if self.relays is not None:
+            wl, _ = self.relay_switch(wl, relayed=relayed)
+        if isinstance(bl, list):
+            bls = bl
+        else:
+            bls = [bl]
+        sls = [f"SL_{chan[3:]}" for chan in bl]
+
+        if not isinstance(wl, list): 
+            wls = [wl]
+        else:
+            wls = wl
+        for wl in wls:
+            for bl,sl in zip(bls,sls):
+
+                self.ppmu_set_vsl(self.sls, 0)
+                self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True)
+
+                IbVg = {}
+                IwVg = {}
+                for wordline_voltage in vwl:
+                    IbVg[f"{wordline_voltage}"] = {}
+                    IwVg[f"{wordline_voltage}"] = {}
+                    for bitline_voltage in vbl:
+                        self.ppmu_set_vwl(wl, wordline_voltage)
+                        self.ppmu_set_vbl(bl, bitline_voltage)
+                        self._settle(2e-3)
+                        _, _, Isl = self.digital_patterns.measure_current([[], [sl], []], sort=False)
+                        IbVg[f"{wordline_voltage}"][f"{bitline_voltage}"] = [-i for i in Isl]
+                        _, _, Iwl = self.digital_patterns.measure_current([[], [], [wl]], sort=False)
+                        IwVg[f"{wordline_voltage}"][f"{bitline_voltage}"] = Iwl
+                
+                self.ppmu_set_vwl(wl, 0)
+                self.ppmu_set_vbl(bl, 0)
+                self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True)
+                if plot:
+                    # Plot for IblVwl (X-axis: VWL, Y-axis: IBL, Multiple lines for different VBL)
+                    plt.figure(figsize=(14, 10))
+                    plt.subplot(2, 2, 1)
+                    for bitline_voltage in vbl:
+                        ibl_values = [IbVg[str(wordline_voltage)][str(bitline_voltage)] for wordline_voltage in vwl]
+                        plt.plot(vwl, ibl_values, label=f'VBL = {bitline_voltage} V')
+                    plt.title('Ibl vs VWL')
+                    plt.xlabel('VWL (V)')
+                    plt.ylabel('Ibl (A)')
+
+                    # Plot for IblVbl (X-axis: VBL, Y-axis: IBL, Multiple lines for different VWL)
+                    plt.subplot(2, 2, 2)
+                    for wordline_voltage in vwl:
+                        ibl_values = [IbVg[str(wordline_voltage)][str(bitline_voltage)] for bitline_voltage in vbl]
+                        plt.plot(vbl, ibl_values, label=f'VWL = {wordline_voltage} V')
+                    plt.title('Ibl vs VBL')
+                    plt.xlabel('VBL (V)')
+                    plt.ylabel('Ibl (A)')
+
+                    # Plot for IwlVbl (X-axis: VBL, Y-axis: IWL, Multiple lines for different VWL)
+                    plt.subplot(2, 2, 3)
+                    for wordline_voltage in vwl:
+                        iwl_values = [IwVg[str(wordline_voltage)][str(bitline_voltage)] for bitline_voltage in vbl]
+                        plt.plot(vbl, iwl_values, label=f'VWL = {wordline_voltage} V')
+                    plt.title('Iwl vs VBL')
+                    plt.xlabel('VBL (V)')
+                    plt.ylabel('Iwl (A)')
+
+                    # Plot for IwlVwl (X-axis: VWL, Y-axis: IWL, Multiple lines for different VBL)
+                    plt.subplot(2, 2, 4)
+                    for bitline_voltage in vbl:
+                        iwl_values = [IwVg[str(wordline_voltage)][str(bitline_voltage)] for wordline_voltage in vwl]
+                        plt.plot(vwl, iwl_values, label=f'VBL = {bitline_voltage} V')
+                    plt.title('Iwl vs VWL')
+                    plt.xlabel('VWL (V)')
+                    plt.ylabel('Iwl (A)')
+
+                    # Adjust layout and show the plots
+                    plt.tight_layout()
+                    date = datetime.now().strftime("%Y-%m-%d")
+                    time = datetime.now().strftime("%H-%M-%S")
+                    plt.savefig(f"{self.settings_manager.get_setting('path.data_header','data/')}IV/_{self.chip}_{self.device}_{wl}_{bl}_{date}_{time}.png")
+                    plt.show()
+                return wl
+
+    def ppmu_set_vbl(self, vbl_chan, vbl,sort=True,source=True):
         """Set (active) VBL using NI-Digital driver (inactive disabled)"""
-        self.ppmu_set_voltage(vbl,vbl_chan,"BL",sort=sort)
-
-    def ppmu_set_vsl(self, vsl_chan, vsl,sort=True):
-        """Set (active) VBL using NI-Digital driver (inactive disabled)"""
-        self.ppmu_set_voltage(vsl,vsl_chan,"SL",sort=sort) 
+        self.ppmu_set_voltage(vbl,vbl_chan,"BL",sort=sort,source=source)
     
-    def ppmu_set_vwl(self, vwl_chan, vwl,sort=True):
+    def ppmu_set_vsl(self, vsl_chan, vsl,sort=True,source=True):
+        """Set (active) VBL using NI-Digital driver (inactive disabled)"""
+        self.ppmu_set_voltage(vsl,vsl_chan,"SL",sort=sort,source=source) 
+    
+    def ppmu_set_vwl(self, vwl_chan, vwl,sort=True,source=True):
         """Set (active) VWL using NI-Digital driver (inactive disabled)"""
         if self.relays is not None:
-            name = "WL_SIGNAL"
+            name = "WL_IN"
         else:
             name = "WL"
-        self.ppmu_set_voltage(vwl,vwl_chan,name,sort=sort)
+        self.ppmu_set_voltage(vwl,vwl_chan,name,sort=sort,source=source)
 
-    def ppmu_set_vbody(self, vbody_chan, vbody):
+    def ppmu_set_vbody(self, vbody_chan, vbody,sort=True,source=True):
         """Set (active) VBody using NI-Digital driver (inactive disabled)"""
-        self.ppmu_set_voltage(vbody,vbody_chan,"Body",sort=True)
+        self.ppmu_set_voltage(vbody,vbody_chan,"Body",sort=sort,source=source)
 
     def ppmu_set_isl(self, isl_chan, isl):
         """Set ISL using NI-Digital driver"""
@@ -610,52 +712,40 @@ class NIRRAM:
         for digital in self.digital:
             self.digital.channels[isl_chan].ppmu_source()
 
-    def set_to_ppmu(self,channels,name, sort=True,debug_printout=None):
-    
-        if type(channels) is not list:
-            channels = [channels]
-        if type(channels[0]) is list and sort==True:
-            if type(channels[0][0]) is int or type(channels[0][0]) is np.uint8:
-                channels = [[f"{name[channels.index[channel]]}_{chan}" for chan in channel]for channel in channels]
-            
-            channels = [item for sublist in channels for item in sublist]
 
-        if type(channels[0]) is int or type(channels[0]) is np.uint8:
-            channels = [f"{name}_{chan}" for chan in channels]
+
+    def digital_set_voltage(self, channels, sessions=None, vi_lo=0, vi_hi=1, vo_lo=0, vo_hi=1, name=None, sort=True, debug=None):
+
+        # Set the value for debug if not provided
+        self.dbg.start_function_debug(debug)
         
-        self.digital_patterns.set_channel_mode("ppmu", pins=channels,sessions=None,sort=sort,debug=debug_printout)
-
-
-    def digital_set_voltage(self, channels, sessions=None, vi_lo=0, vi_hi=1, vo_lo=0, vo_hi=1, name=None, sort=True, debug_printout=None):
-
-        # Set the value for debug_printout if not provided
-        debug_printout = self.start_function_debug_printout(debug_printout, "digital_set_voltage")
         # Verfiy that any individually given channels are turned into a list to match the expected format
-        if type(channels) is not list:
-            channels = [channels]
-        if type(sessions) is not list:
-            sessions = [sessions]
+        channels = [channels] if not isinstance(channels,list) else channels
+        sessions = [sessions] if not isinstance(sessions,list) else sessions
+        
         # Channels may be given as integers, if so, convert to strings for nidigital
         #   Ex: channels = [0, 1, 2], name = DIO -> channels = ["DIO_0", "DIO_1", "DIO_2"]
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
-        # region verify channels exist
+        # verify channels exist
         for chan in channels:
             if chan not in self.settings["device"][f"all_{name}S"]:
                 raise NIRRAMException(f"Invalid V{name} channel {chan}. \nChannel not in all_{name}S.")
-        #endregion
+            
         instruments =  self.digital_patterns.settings["NIDigital"]
 
         for num, session in enumerate(sessions):
             if type(session) is int:
                 if session not in range(len(self.digital)):
                     raise NIRRAMException(f"Invalid session {session}. \nSession not in range(len(self.digital)).")
+            
             elif type(session) is str:
                 if session in instruments["pingroups"]:
                     sessions[num] = self.digital[instruments["pingroups"].index(session)]
-                elif session in self.all_channels:
-                    sessions[num] = self.digital[self.all_channels.index(session)//32]
+                elif session in self.all_channels_flat:
+                    sessions[num] = self.digital[self.all_channels_flat.index(session)//32]
+            
             elif type(session) != type(self.digital[0]):
                 raise NIRRAMException(f"Invalid session {session}. \nSession not in range(len(self.digital)).")
             
@@ -674,58 +764,52 @@ class NIRRAM:
             raise NIRRAMException(f"Specified voltage levels must match number of channels. \nNum channels: {len(channels)} \nNum voltages: vi_lo: {len(vi_lo)}, vi_hi: {len(vi_hi)}, vo_lo: {len(vo_lo)}, vo_hi: {len(vo_hi)}")
         # endregion
 
-        self.internal_function_debug_printout(debug_printout, "Setting", ["vi_lo", "vi_hi", "vo_lo", "vo_hi"], voltages)
- 
         vi_lo, vi_hi, vo_lo, vo_hi = voltages
         
         # Set the voltages using the digital_set_voltages function
         self.digital_patterns.digital_set_voltages(pins=channels, sessions=sessions, vi_lo=vi_lo, vi_hi=vi_hi, vo_lo=vo_lo, vo_hi=vo_hi,sort=sort)
 
-        self.end_function_debug_printout(debug_printout, "digital_set_voltage")
+        self.dbg.end_function_debug()
 
 
-    def set_vsl(self, vsl_chan, vsl_hi, vsl_lo, debug_printout = None):
+    def set_vsl(self, vsl_chan, vsl_hi, vsl_lo, debug = None):
         # Debug Printout: Start and Internal
-        debug_printout = self.start_function_debug_printout(debug_printout, "set_vsl")
-        self.internal_function_debug_printout(debug_printout, f"Setting VSL for {vsl_chan}", ["vsl_hi", "vsl_lo"], [vsl_hi, vsl_lo])
+        debug = self.dbg.start_function_debug(debug)
         
         # Set VSL using NI-Digital Drivers
-        self.digital_set_voltage(vsl_chan, "SL", vi_lo=vsl_lo, vi_hi=vsl_hi, vo_lo=vsl_lo, vo_hi=vsl_hi, name="SL", sort=True,debug_printout=debug_printout)
+        self.digital_set_voltage(vsl_chan, "SL", vi_lo=vsl_lo, vi_hi=vsl_hi, vo_lo=vsl_lo, vo_hi=vsl_hi, name="SL", sort=True,debug=debug)
         
         # Debug Printout: End
-        self.end_function_debug_printout(debug_printout, "set_vsl")
+        self.dbg.end_function_debug()
 
 
-    def set_vbl(self, vbl_chan, vbl_hi, vbl_lo, debug_printout = None):
-        debug_printout = self.start_function_debug_printout(debug_printout, "set_vbl")
-        self.internal_function_debug_printout(debug_printout, f"Setting VBL for {vbl_chan}", ["vbl_hi", "vsl_lo"], [vbl_hi, vbl_lo])
+    def set_vbl(self, vbl_chan, vbl_hi, vbl_lo, debug = None):
+        debug = self.dbg.start_function_debug(debug)
         
         # Set VSL using NI-Digital Drivers
-        self.digital_set_voltage(vbl_chan, "BL", vi_lo=vbl_lo, vi_hi=vbl_hi, vo_lo=vbl_lo, vo_hi=vbl_hi, name="BL", sort=True,debug_printout=debug_printout)
+        self.digital_set_voltage(vbl_chan, "BL", vi_lo=vbl_lo, vi_hi=vbl_hi, vo_lo=vbl_lo, vo_hi=vbl_hi, name="BL", sort=True,debug=debug)
         
         # Debug Printout: End
-        self.end_function_debug_printout(debug_printout, "set_vsl")   
+        self.dbg.end_function_debug()   
 
-
-    def set_vwl(self, vwl_chan, vwl_hi, vwl_lo, debug_printout = None):
+    def set_vwl(self, vwl_chan, vwl_hi, vwl_lo, debug = None):
         # Debug Printout: Start and Internal
-        debug_printout = self.start_function_debug_printout(debug_printout, "set_vwl")
-        self.internal_function_debug_printout(debug_printout, f"Setting VWL for {vwl_chan}", ["vwl_hi", "vsl_lo"], [vwl_hi, vwl_lo])
+        debug = self.dbg.start_function_debug(debug)
         
         # Set WL name based on if they are relayed
         if all(len(chan) > 6 for chan in vwl_chan):
-            wl_name = "WL_SIGNAL"
+            wl_name = "WL_IN"
         elif all(len(chan) < 7 for chan in vwl_chan):
             wl_name = "WL"
         else:
-            raise NIRRAMException(f"Invalid VWL channel {vwl_chan}. \nChannel not in all_WL_SIGNALS or all_WLS.")
+            raise NIRRAMException(f"Invalid VWL channel {vwl_chan}. \nChannel not in all_WL_IN or all_WLS.")
         # Set VWL using NI-Digital Drivers
-        self.digital_set_voltage(vwl_chan, "WL", vi_lo=vwl_lo, vi_hi=vwl_hi, vo_lo=vwl_lo, vo_hi=vwl_hi, name=wl_name, sort=True,debug_printout=debug_printout)
+        self.digital_set_voltage(vwl_chan, "WL", vi_lo=vwl_lo, vi_hi=vwl_hi, vo_lo=vwl_lo, vo_hi=vwl_hi, name=wl_name, sort=True,debug=debug)
         
         # Debug Printout: End
-        self.end_function_debug_printout(debug_printout, "set_vwl")
+        self.dbg.end_function_debug()
 
-    def set_to_digital(self,channels,name, sort=True,debug_printout=None):
+    def set_to_digital(self,channels,name, sort=True,debug=None):
         
         if type(channels) is not list:
             channels = [channels]
@@ -736,10 +820,10 @@ class NIRRAM:
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
-        self.digital_patterns.set_channel_mode("digital", pins=channels,sessions=None,sort=sort,debug_printout=debug_printout)
+        self.digital_patterns.set_channel_mode("digital", pins=channels,sessions=None,sort=sort,debug=debug)
 
 
-    def set_to_off(self,channels,name, sort=True,debug_printout=None):
+    def set_to_off(self,channels,name, sort=True,debug=None):
         if type(channels) is not list:
             channels = [channels]
         
@@ -749,9 +833,9 @@ class NIRRAM:
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
-        self.digital_patterns.set_channel_mode("off", pins=channels,sessions=None,sort=sort,debug_printout=debug_printout)
+        self.digital_patterns.set_channel_mode("off", pins=channels,sessions=None,sort=sort,debug=debug)
 
-    def set_to_disconnect(self,channels,name, sort=True,debug_printout=None):
+    def set_to_disconnect(self,channels,name, sort=True,debug=None):
         if type(channels) is not list:
             channels = [channels]
         
@@ -761,7 +845,7 @@ class NIRRAM:
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
         
-        self.digital_patterns.set_channel_mode("disconnect", pins=channels,sessions=None,sort=sort,debug_printout=debug_printout)
+        self.digital_patterns.set_channel_mode("disconnect", pins=channels,sessions=None,sort=sort,debug=debug)
 
 
     """ ================================================================= """
@@ -783,15 +867,18 @@ class NIRRAM:
         vsl=None,
         vbl_unsel=None,
         vwl_unsel_offset=None,
+        v_base=None,
         pulse_len=None,
-        high_z = ["wl"],
-        debug_printout = None,
+        high_z = None,
+        debug = None,
         relayed=True,
+        zeroes = None,
         pulse_lens = None,
         max_pulse_len = None
         ):
 
-        pulse_lens = pulse_lens or [self.prepulse_len, pulse_len, self.postpulse_len]
+        # pulse_lens = pulse_lens or [self.prepulse_len, pulse_len, self.postpulse_len]
+        pulse_lens = pulse_lens or [self.prepulse_len, self.wl_buffer, pulse_len, self.blsl_buffer, self.postpulse_len]
         max_pulse_len  = max_pulse_len or self.max_pulse_len
 
         # If masks is none or empty, and pingroups are not none, set masks to pingroups
@@ -807,75 +894,63 @@ class NIRRAM:
         pulse_len = pulse_len or self.op[mode][self.polarity]["PW"] 
 
         # Set the base voltage relative to the selected mode
-        if mode == "SET":
-            v_base = vsl
-            
-        elif mode == "FORM":
-            v_base = vsl
+        if v_base is None:
+            if mode == "SET":
+                v_base = vsl
+                
+            elif mode == "FORM":
+                v_base = vsl
 
-        elif mode == "RESET":
-            v_base = vbl
-        
-        else:
-            raise NIRRAMException(f"Invalid mode: {mode}. Please select 'SET', 'RESET', or 'FORM'.")
+            elif mode == "RESET":
+                v_base = vbl
+            
+            else:
+                raise NIRRAMException(f"Invalid mode: {mode}. Please select 'SET', 'RESET', or 'FORM'.")
 
         # Write Static (X) to all channels
-        self.digital_patterns.write_static_to_pins(pins=self.all_channels,sort=True)
+        self.digital_patterns.write_static_to_pins(pins=self.all_channels,sort=False)
 
         # Set the selected word line to the desired voltage
         vwl_unsel_offset = vwl_unsel_offset or self.op[mode][self.polarity]["VWL_UNSEL_OFFSET"]
         vwl_unsel = v_base + vwl_unsel_offset
 
         # Debug Printout
-        if self.debug_printout:
+        if self.debug:
             print(f"{mode} Pulse: VWL={vwl}, VBL={vbl}, VSL={vsl}, VBL_UNSEL={vbl_unsel}, VWL_UNSEL ={vwl_unsel}")
 
-
         # ------------------------- #
-        #        Define WLS         #
+        #   Define WLS, BLS, SLS    #
         # ------------------------- #
-        wls = wls or self.wls
-        
-        if self.relays is not None:
-            all_wls = self.all_wl_signals
-            if len(wls[0]) < 7:
-                wls = [f"WL_IN_{wl[3:]}" for wl in wls]
-            
-            all_wls = self.all_wl_signals + self.all_wls
-        else:
-            all_wls = self.all_wls
-        
-        if debug_printout:
-            print(wls)
-            
-            
+        wls = self.wls if wls is None else wls     
+        bls = self.bls if bls is None else bls
+        sls = self.sls if bls is None else [f"SL_{bl[3:]}" for bl in bls]
             
         # ------------------------- #
         #       set voltages        #
         # ------------------------- #
-
-        # Set UNSEL Wordlines to the desired voltage
-        self.set_vwl(["WL_UNSEL"], vwl_unsel, vwl_lo=v_base, debug_printout = debug_printout)
-        if self.debug_printout: print(f"Setting UNSEL WLS to {vwl_unsel} V") 
         
-        # Set SEL Wordlines to the desired voltage
-        self.set_vwl(wls, vwl, vwl_lo=v_base, debug_printout = debug_printout)
-        if self.debug_printout: print(f"Setting SEL WLS {wls} to {vwl} V")
+        # Set ZERO Wordlines to the base voltage
+        if zeroes is not None:
+            self.set_vwl(["WL_ZERO"], vwl_hi=v_base, vwl_lo=v_base, debug = debug)
+            
 
+        # Set SEL Wordlines to the desired voltage
+        self.set_vwl(wls, vwl_hi=vwl, vwl_lo=v_base, debug=debug)
+        
         # Set Bitlines to the desired voltage
         if bl_selected is not None:
-            bls_unselected = [bl for bl in self.bls if bl not in bl_selected]
-            self.set_vbl(self.bls, vbl, vbl_lo=v_base, debug_printout = debug_printout)
+            bls_unselected = [bl for bl in bls if bl not in bl_selected]
+            self.set_vbl(bls, vbl, vbl_lo=v_base, debug = debug)
             if len(bls_unselected) > 0:
-                self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug_printout = debug_printout)
-            if debug_printout: print(f"Setting BLs {bls_unselected} to {vbl_unsel} V")
+                self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug = debug)
+
         else:
-            self.set_vbl(self.bls, vbl_hi = vbl, vbl_lo=v_base, debug_printout = debug_printout)
-        if debug_printout: print(f"Setting BLs {self.bls} to {vbl} V")
+            self.set_vbl(bls, vbl_hi = vbl, vbl_lo=v_base, debug = debug)
+
         
         # Set Source Lines to the Desired Voltage
-        self.set_vsl(self.sls, vsl, vsl_lo=v_base, debug_printout = debug_printout)
-        if debug_printout: print(f"Setting SLS {self.sls} to {vsl} V")
+        self.set_vsl(sls, vsl, vsl_lo=v_base, debug = debug)
+
 
         # ----------------------------------- #
         #       Commit and send Pulse         #
@@ -884,8 +959,10 @@ class NIRRAM:
         for session in self.digital_patterns.sessions:
             session.commit()
         
-        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[["WL_IN"],["BL","SL","WL_IN"],["WL_IN"]] )
-
+        self.set_to_ppmu(["WL_UNSEL"], ["WL"], sort=True)
+        self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel)
+        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[[],["WL_IN"],["BL","SL","WL_IN"],["BL","SL"],[]] )
+        self.ppmu_set_vwl(["WL_UNSEL"], v_base)
         # ---------------------------------------- #
         #       Set to Off and Disconnect          #
         # ---------------------------------------- #
@@ -896,18 +973,258 @@ class NIRRAM:
         if high_z is not None:
             self.digital_patterns.set_channel_termination_mode("high-z",pins=high_z,sessions=None,sort=True)
 
+    def select_memory_cells(self, cells=None, bls=None, bls_unselected=[], wls=None, debug=None):
+        """
+        Select Memory Cells: This function is used to select the channels to be pulsed/written to.
+        The function takes in the cells to be pulsed, the BLs, WLs to be used, and the
+        bls_unselected to be used for 1TNR. The function then returns the expected bls, bls_unselected,
+        sls, and wls to be used for the pulse operation.
+        """
+        
+        # Use either given bls, wls, or values from self if None
+        wls = self.wls if wls is None else wls
+        bls = self.bls if bls is None else bls
+        bls_unselected = bls_unselected or []
+        
+        # Ensure wls is a list of strings
+        if isinstance(wls, str):
+            wls = [wls]
+        
+        # Ensure bls is a list of lists of strings or integers, matching the length of wls
+        if not isinstance(bls[0], list):
+            bls = [bls] * len(wls)
+        
+        # Set SLS as a list of lists of strings as SL_{BL#} based on bls
+        if isinstance(bls[0][0], int) or isinstance(bls[0][0], np.uint8):
+            sls = [[f"SL_{bl}" for bl in wl_bls] for wl_bls in bls]
+        else:
+            sls = [[f"SL{bl[2:]}" for bl in wl_bls] for wl_bls in bls]
+
+        # Handle cells, avoiding repetition in wls and bls
+        if cells is not None and len(cells) > 0 and all(len(cell) == 2 for cell in cells):
+            for cell in cells:
+                wl, bl = cell
+                if wl not in wls:
+                    wls.append(wl)
+                    bls.append([bl])
+                    sls.append([f"SL_{str(bl[3:])}" if isinstance(bl, str) else f"SL_{bl}"])
+                elif bl not in bls[wls.index(wl)]:
+                    bls[wls.index(wl)].append(bl)
+                    sls[wls.index(wl)].append(f"SL_{str(bl[3:])}" if isinstance(bl, str) else f"SL_{bl}")
+        
+        # Define the cells as a list of tuples of WL and BL
+        cells = [(wl, bl) for wl, wl_bls in zip(wls, bls) for bl in wl_bls]
+
+        # Filter selected BLs excluding the unselected BLs
+        selected_bls = [bl for bl in bls if bl not in bls_unselected]
+
+        # Create an instance of RRAMCells with the updated parameters
+        selected_memory_cells = RRAMCells(cells, wls, bls, bls_unselected, selected_bls, sls)
+
+        return selected_memory_cells
+
+    def update_memory_cells(self,selected_cells,add_cells=None, remove_cells=None, wls=None, bls=None, bls_unselected=[], replace_all=False):
+        """
+        Update Memory Cells: This function is used to update the selected memory cells
+        with new cells. The function takes in the selected cells, the new cells, and the
+        BLs and WLs to be used. The function then returns the expected bls, bls_unselected,
+        sls, and wls to be used for the pulse operation.
+        """
+        if replace_all:
+            selected_cells = self.select_memory_cells(add_cells,bls,bls_unselected,wls)
+            return selected_cells
+        
+        if add_cells is not None and add_cells != selected_cells.cells:
+            # If cells are given to add, update selected cells to include them in cells, wls, bls, and sls
+            for cell in add_cells:
+                wl, bl = cell
+                if wl not in selected_cells.wls:
+                    selected_cells.wls.append(wl)
+                    selected_cells.bls.append([bl])
+                    selected_cells.sls.append([f"SL_{str(bl[3:])}"])
+                elif bl not in selected_cells.bls[selected_cells.wls.index(wl)]:
+                    selected_cells.bls[selected_cells.wls.index(wl)].append(bl)
+                    selected_cells.sls[selected_cells.wls.index(wl)].append(f"SL_{str(bl[3:])}")
+        
+        if remove_cells is not None and remove_cells != selected_cells.cells:
+            # If cells are given to remove, update selected cells to remove them from cells, wls, bls, and sls
+            for cell in remove_cells:
+                wl, bl = cell
+                if bl in selected_cells.bls[selected_cells.wls.index(wl)]:
+                    selected_cells.bls[selected_cells.wls.index(wl)].remove(bl)
+                    selected_cells.sls[selected_cells.wls.index(wl)].remove(f"SL_{str(bl[3:])}")
+                if len(selected_cells.bls[selected_cells.wls.index(wl)]) == 0:
+                    selected_cells.bls.remove(selected_cells.bls[selected_cells.wls.index(wl)])
+                    selected_cells.sls.remove(selected_cells.sls[selected_cells.wls.index(wl)])
+                    selected_cells.wls.remove(wl)
+            
+        return selected_cells
+    
+
+
+    def remove_cells_at_target_resistance(self,selected_cells, mode, average_resistance=False, target_res=None, record=True, print_data=True):
+        measurements = self.read_written_cells(mode, average_resistance=average_resistance,wls=selected_cells.wls,bls=selected_cells.bls,record=record,print_info=print_data)
+        res_array,_,_,_,_ = measurements
+        cells_to_write = self.check_cell_resistance(res_array, selected_cells.wls, selected_cells.bls, selected_cells.sls, target_res, mode)
+        if cells_to_write == "DONE":
+            return cells_to_write, measurements
+        
+        selected_cells = self.update_memory_cells(selected_cells,wls=cells_to_write[0],bls=cells_to_write[1], replace_all=True)
+
+        return "NOT DONE", selected_cells
+        # Read given cells, if they are within target resistance,
+        # remove them from the list of cells to be pulsed
+
+    def define_voltages_to_be_pulsed(self, mode="SET", wl_bl_sl_voltages=None, vwl_unsel_offset=None, vbl_unsel=None):
+            # Set the initial bias for BLS, WLS, SLS, based on settings or input
+            vwl, vbl, vsl = wl_bl_sl_voltages
+            vbl = vbl or self.op[mode][self.polarity]["VBL"]
+            vsl = vsl or self.op[mode][self.polarity]["VSL"]
+            vwl = vwl or self.op[mode][self.polarity]["VWL"]
+            v_base = vbl if mode == "RESET" else vsl
+            vbl_unsel = vbl_unsel or v_base + ((vbl - v_base) / 4.0)
+            vwl_unsel_offset = vwl_unsel_offset or self.op[mode][self.polarity]["VWL_UNSEL_OFFSET"]
+            vwl_unsel = v_base + vwl_unsel_offset
+
+            return VoltageSettings(vbl, vbl_unsel, vsl, vwl, vwl_unsel, v_base)
+
+    def setup_pulse(
+            self, 
+            masks, 
+            mode="SET",
+            bls=None,  # List of BLs used with every listed WL
+            bls_unselected=[], # List of BLs not being written to in 1TNR
+            wls=None, # List of WLs used with every listed BL
+            cells=None, # List of individual cells [(WL,BL)] to pulse
+            wl_bl_sl_voltages=None,
+            vbl_unsel=None, 
+            vwl_unsel_offset=None, 
+            pulse_width=None, 
+            init_setup = True,
+            measure_res = True,
+            target_res = None,
+            print_data = True,
+            average_resistance = False,
+            record = True,
+            debug = None,
+        ):
+
+        self.dbg.start_function_debug(debug)
+        """
+        Setup Pulse: This function is used to set up a pulse operation. This includes
+            1) Defining the channels to be pulsed
+                - Determined by function call or TOML settings
+                - If cells are given, the BLs and WLs are determined by the cells in addition to BLs and WLs
+                - If meas_res is given, BLs and WLs already in target resistance are removed from the list
+            2) Setting the voltages for the pulse
+                - Determined by function call or TOML settings
+            3) Setting the mask for the pulse
+                - Determined by function call or TOML settings
+                - Set only if Mask is not already defined, otherwise uses the given mask
+
+        Parameters:
+        # region
+        mask: Masks
+            Mask to be used for the pulse, blocks all channels except pin groups where channesl are being pulsed
+        mode: str
+            Operation mode, either "SET", "RESET", or "FORM"
+        bls: list of str or list of list of str
+            List of BLs to be pulsed
+        wls: list of str
+            List of WLs to be pulsed
+        cells: list of tuple of str
+            List of cells to be pulsed, each cell is a tuple of WL and BL
+        wl_bl_sl_voltages: list of list of float
+            List of voltages for WL, BL, and SL
+        vbl_unsel: float
+            Voltage for unselected BLs
+        vwl_unsel_offset: float
+            Offset for unselected WLs
+        pulse_len: float
+            Length of the pulse
+        high_z: list of str
+            List of channels to set to high-z before the pulse
+        init_setup: bool
+            If True, the function will set up the pulse, if False, the function will only return the necessary parameters
+        measure_res: bool
+            If True, the function will measure the resistance of the cells before pulsing
+        print_data: bool
+            If True, the function will print the resistance, conductance, current, and voltage of the cells
+        average_resistance: bool
+            If True, the function will average the resistance of 3 cell measurements
+        record: bool
+            If True, the function will record the resistance, conductance, current, and voltage of the cells
+        debug: bool
+            If True, the function will print debug information
+        # endregion
+        """ 
+        if init_setup:
+            # Define the channels to be pulsed
+            cells_to_pulse = self.select_memory_cells(cells,bls, bls_unselected, wls, debug=debug)   
+
+            # Determine the target resistance, used to determine if pulse should occur
+
+            # Define the voltages to be pulsed
+            voltages_to_pulse = self.define_voltages_to_be_pulsed(mode, wl_bl_sl_voltages, vwl_unsel_offset, vbl_unsel)
+        
+        target_res = target_res or self.settings["target_res"][mode.upper()]
+    # Check if the pulse is necessary by reading the cells and returning the resistance + cells that need to be pulsed
+        # If no cells need to be pulsed, the function ends and the measurements are returned with the "DONE" flag
+        if measure_res:
+            read_results = self.remove_cells_at_target_resistance(cells_to_pulse, mode,average_resistance=average_resistance,target_res=target_res,record=record,print_data=print_data)
+            if read_results[0]== "DONE":
+                res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = read_results[1][:]
+                
+                # Record the write pulse with the updated measurements
+                self._record_write_pulse(record=record,cells=cells_to_pulse.cells,mode=mode,measurements=[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],voltages=wl_bl_sl_voltages, success=pd.DataFrame(True,index=wls,columns=bls))
+                print("All cells are within target resistance. No pulse required.")
+                
+                self.dbg.end_function_debug()
+                return "DONE", res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
+            
+            cells_to_pulse = read_results[1]
+            wls,bls,sls = cells_to_pulse.wls, cells_to_pulse.bls, cells_to_pulse.sls
+
+            wls = self.relay_switch(wls)
+        # If mask is None, make the mask using Mask class
+        if masks is None:
+            # If only pulsing one Wordline, create a single mask for the wordline
+            masks = []
+            for wl, wl_bls, wl_sls in zip(wls,bls,sls):
+                    if isinstance(wl,str):
+                        wl = [wl]
+                    masks.append(Masks(
+                            sel_pins = [wl_bls,wl_sls,wl], 
+                            pingroups = self.digital_patterns.pingroup_data, 
+                            all_pins = self.all_channels_flat, 
+                            pingroup_names = self.digital_patterns.pingroup_names,
+                            sort=False,
+                            debug_printout = debug))
+        
+        if init_setup or measure_res:
+            pulse = RRAMPulseOperation(mode.upper(), cells_to_pulse, voltages_to_pulse, pulse_width, target_res)
+            
+        self.dbg.end_function_debug
+        if masks:
+            return pulse, [mask.get_pulse_masks() for mask in masks]
+        else:
+            return pulse, masks
+
+    
     def set_pulse(
         self,
-        mask,
+        mask=None,
         mode="SET",
-        bl_selected=None, # selected BL
+        wls=None,
+        bls=None,
         vwl=None,
         vbl=None,
         vsl=None,
         vbl_unsel=None,
         vwl_unsel_offset=None,
         pulse_len=None,
-        high_z = ["wl"]
+        high_z = None,
+        debug=None
     ):
         """Perform a SET operation.
         To support 1TNR devices (1 WL, 1 SL, multiple BLs), have input
@@ -926,12 +1243,27 @@ class NIRRAM:
             2.0     1.2      0.30          1.8
             2.0     1.0      0.25          1.75
         """
+        pulse_setup = self.setup_pulse(mask, mode, bls=bls, wls=wls, wl_bl_sl_voltages=[vwl, vbl, vsl], vwl_unsel_offset=vwl_unsel_offset, pulse_width=pulse_len)
+        if pulse_setup[0] == "DONE":
+            return pulse_setup[1:]
+        else:
+            pulse, masks = pulse_setup
         
-        self.write_pulse(mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
+        self.write_pulse(
+            masks, 
+            mode=mode, 
+            bl_selected=bls, 
+            vwl=vwl, 
+            vbl=vbl, 
+            vsl=vsl, 
+            pulse_len=pulse, 
+            high_z=None,
+            debug=debug)
+
 
     def reset_pulse(
         self,
-        mask,
+        mask=None,
         mode="RESET",
         bl_selected=None, # selected BL
         vwl=None,
@@ -940,7 +1272,7 @@ class NIRRAM:
         vbl_unsel=None,
         vwl_unsel_offset=None,
         pulse_len=None,
-        high_z = ["wl"]
+        high_z = None
     ):
         """Perform a RESET operation.
         To support 1TNR devices (1 WL, 1 SL, multiple BLs), have input
@@ -959,11 +1291,13 @@ class NIRRAM:
             1.2     2.0      0.5           1.40
             1.0     2.0      0.5           1.25
         """
+        self.setup_pulse(mask, mode, bl_selected, [vbl, vsl, vwl], vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
+
         self.write_pulse(mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
 
     def form_pulse(
         self,
-        mask,
+        mask=None,
         mode="FORM",
         bl_selected=None, # selected BL
         vwl=None,
@@ -972,7 +1306,7 @@ class NIRRAM:
         vbl_unsel=None,
         vwl_unsel_offset=None,
         pulse_len=None,
-        high_z = ["wl"]
+        high_z = None
     ):
 
         """Perform a FORM operation.
@@ -995,56 +1329,9 @@ class NIRRAM:
         
         self.write_pulse(mask, mode, bl_selected, vwl, vbl, vsl, vbl_unsel, vwl_unsel_offset, pulse_len, high_z)
 
-    # region TODO: Single Pulse Form, Reset, Set (with option to do dynamic writes)
     
-    def form_rram(self,sessions,cells=None,bls=None, wls=None,sort=True,reset=False,reset_threshold=None,dynamic=False,debug_printout=None):
-        """
-        Form RRAM: For the given sessions and cells (in the form of sets or BLs and WLs), form the given cells.
-        If reset is True, check all cells and reset them if they are not in the safe reset resistance range.
-        
-        Parameters:
-        sessions: list of NI-Digital sessions
-            List of sessions to form the RRAM cells
-        cells: list of tuples of strings
-            List of cells to form, in the form of (BL_#, WL_#)
-        bls: list of strings
-            List of BL channels to form
-        wls: list of strings
-            List of WL channels to form
-        sort: bool
-            Sort the channels before forming the cells
-        reset: bool
-            Reset the cells if they are not in the safe reset resistance range
-        reset_threshold: float
-            Resistance threshold for resetting the cells
-        dynamic: bool
-            Run a dynamic Form RRAM operation
-        debug_printout: bool
-            Print debug information
+    # region TODO: Single Pulse Form, Reset, Set (with option to do dynamic writes)
 
-        Returns:
-            None
-        """
-        debug_printout = debug_printout or self.debug_printout
-
-        cells = cells or []
-        if cells != []:
-            for cell in cells:
-                if cell[0] in wls:
-                    bls[wls.index(cell[0])].apppend(cell[1])
-            else:
-                wls.append(cell[0])
-                bls.append([cell[1]])
-
-        pass
-
-    def set_rram():
-        pass
-
-    def reset_rram(self,sessions=None,cells=None,bls=None,wls=None,sort=True,debug_printout=None):
-        pass
-
-    # endregion
 
 
     """ ================================================================= """
@@ -1052,11 +1339,11 @@ class NIRRAM:
     """ ================================================================= """
 
 
-    def read_written_cells(self,average_resistance=True,wls=None,bls=None,record=False,print_info=False):
+    def read_written_cells(self,mode, average_resistance=True,wls=None,bls=None,record=False,print_info=True):
         if not average_resistance:
             res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
             if print_info:
-                print(f"VSL: {vsl}, VBL: {vbl}, VWL: {vwl}, PW: {pw}, Resistance: {res_array}")
+                print(f"Operation {mode}, Resistances: {res_array}, Target Resistance:")
         else:
             res_array1, cond_array1, meas_i_array1, meas_v_array1, meas_i_leak_array1 = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
             res_array2, cond_array2, meas_i_array2, meas_v_array2, meas_i_leak_array2 = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
@@ -1070,15 +1357,15 @@ class NIRRAM:
 
         return res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array
 
-    def check_cell_resistance(self,res_array, wls, bls, sls, target_res,voltages, mode,writer=None,print_info=False,debug_printout=None):
+    def check_cell_resistance(self,res_array, wls, bls, sls, target_res, mode,print_info=True,debug=None):
 
         # Remove every cell that is in target resistance
         if mode.upper() == "RESET":
-            for wl,wl_bls in zip(wls,bls):
+            for wl,wl_bls,wl_sls in zip(wls,bls,sls):
                 for bl in wl_bls:
                     if res_array.loc[wl,bl] >= target_res:
-                        bls.remove(bl)
-                        sls.remove("SL_" + str(bl[3:]))
+                        wl_bls.remove(bl)
+                        wl_sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
                             wls.remove(wl)
                             if len(wls) == 0:
@@ -1091,9 +1378,9 @@ class NIRRAM:
                 for bl in wl_bls:
                     if print_info:
                         print(res_array)
-                    if res_array.loc[wl,bl] <= target_res:
+                    if res_array.at[wl,bl] <= target_res:
                         bls.remove(bl)
-                        sls.remove("SL_" + str(bl[3:]))
+                        sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
                             wls.remove(wl)
                             if len(wls) == 0:
@@ -1103,17 +1390,16 @@ class NIRRAM:
         return wls,bls,sls
     
 
-    def record_write_pulse(self,record, cells, mode, measurements, voltages, success):
+    def _record_write_pulse(self,record, cells, mode, measurements, voltages, success):
         if record:
             with open(self.datafile_path, "a", newline='') as file_object:
                 writer = csv.writer(file_object)
                 for cell in cells:
-                    writer.writerow([self.chip_id, self.device_id, cell[0], cell[1]] + measurements + [mode, f"{mode}:{success[cell[0]][cell[1]]}"]+voltages)
+                    pass# writer.writerow([self.chip, self.device, cell[0], cell[1]] + measurements + [mode, f"{mode}:{success[cell[0]][cell[1]]}"]+voltages)
         return None
 
 
-
-    def dynamic_pulse(self, sessions=None, cells=None, bls=None, wls=None, mode="RESET", print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, voltages=[None,None,None],relayed=False,reset_after=False,debug_printout=None):
+    def dynamic_pulse(self, sessions=None, cells=None, bls=None, wls=None, mode="RESET", print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, voltages=[None,None,None],relayed=False,reset_after=False,debug=None):
         
         """
         Dynamic Pulse: Performs increasingly more aggressive RESET or SET pulses on the given cells.
@@ -1131,136 +1417,93 @@ class NIRRAM:
             Mode of operation (RESET or SET)
         """
         # Check for debug printout
-        debug_printout = debug_printout or self.debug_printout
+        self.dbg.start_function_debug(debug)
 
-        # Set WLS and BLS based on self or input
-        wls = wls or self.wls
-
-        bls = bls or self.bls
+        # Initial Pulse Setup
+        pulse_setup = self.setup_pulse(
+                        masks=False,
+                        mode=mode,
+                        bls=bls,
+                        wls=wls,
+                        cells=cells,
+                        wl_bl_sl_voltages=voltages,
+                        vbl_unsel=None,
+                        vwl_unsel_offset=None,
+                        pulse_width=None,
+                        init_setup=True,
+                        measure_res=True,
+                        print_data=print_data,
+                        average_resistance=average_resistance,
+                        record=record,
+                        debug=debug
+                    )
+        if pulse_setup[0] == "DONE":
+            return pulse_setup[1:]
+        else:
+            pulse, masks = pulse_setup
         
-
-        # If the BLS is a list of strings, convert to list of lists copying for each WL
-        if isinstance(bls[0], str):
-            bls = [bls for _ in range(len(wls))]
-        elif not isinstance(bls[0], list):
-            raise NIRRAMException("Invalid BLS input: Please provide a list of strings or a list of lists of strings")
-
-        # Set SLS as a list of lists of strings as SL_{BL#} based on bls
-        sls = [["SL_" + str(bl[3:]) for bl in wl_bls] for wl_bls in bls]
+        
+        # ------------------------- #
+        # Configure Dynamic Pulse   #
+        # ------------------------- #
         cfg = self.op[mode][self.polarity]
 
-        # Set the initial bias for BLS, WLS, SLS, based on settings or input
-        vbl, vsl, vwl = voltages
-        vbl = vbl or self.op[mode][self.polarity]["VBL"]
-        vsl = vsl or self.op[mode][self.polarity]["VSL"]
-        vwl = vwl or self.op[mode][self.polarity]["VWL"]
+        # Set the initial pulse parameters
+        wls,bls,sls = [pulse.cells.wls, pulse.cells.bls, pulse.cells.sls]
+        # print("WLS: ", wls, "BLS: ", bls, "SLS: ", sls)
 
-        # Determine the target resistance
-        target_res = target_res or self.settings["target_res"][mode.upper()]
-
-
-        # Add additional cells based on cells (add new WLS BLS and SLS based on [(WL,BL)])
-        if cells:
-            for cell in cells:
-                if cell[0] not in wls:
-                    wls.append(cell[0])
-                    bls.append([cell[1]])
-                    sls.append(["SL_" + str(cell[1][3:])])
-                else:
-                    bls[wls.index(cell[0])].append(cell[1])
-                    bls = [list(set(bl)) for bl in bls]
-                    sls[wls.index(cell[0])].append("SL_" + str(cell[1][3:]))
-                    sls = [list(set(sl)) for sl in sls]
-    
-        cells = [wls,bls]
-
+        vbl, vsl, vwl = [pulse.voltages.vbl, pulse.voltages.vsl, pulse.voltages.vwl]
+        target_res = pulse.target
+        
         # Set the pulse width and word line voltage sweep based on settings or input
-        pw_start = cfg["PW_start"]
-        pw_stop = cfg["PW_stop"]
-        pw_step = cfg["PW_steps"]
+        pw_start, pw_stop, pw_step = [cfg["PW_start"], cfg["PW_stop"], cfg["PW_steps"]]
+        vwl_start, vwl_stop, vwl_step = [cfg["VWL_start"], cfg["VWL_stop"], cfg["VWL_step"]]
 
-        vwl_start = cfg["VWL_start"]   
-        vwl_stop = cfg["VWL_stop"]
-        vwl_step = cfg["VWL_step"]
-
-        # Set test given the mode provided
+        # Set the bitline and source line voltages nased on settings/input given the mode
         if mode.upper() == "SET" or mode.upper() == "FORM":
             # If we are running a set operation, we iterate the bit line voltage, 
             # keeping source line constant
-            vbl_start = cfg["VBL_start"]
-            vbl_stop = cfg["VBL_stop"]
-            vbl_step = cfg["VBL_step"]
-
-            vsl_start = vsl
-            vsl_stop = vsl + 1
-            vsl_step = 2
-        
-            pulsetype = "SET"
-
+            vbl_start, vbl_stop, vbl_step = [cfg["VBL_start"], cfg["VBL_stop"], cfg["VBL_step"]]
+            vsl_start, vsl_stop, vsl_step = [vsl, vsl+1, 2]
         elif mode.upper() == "RESET":
-            if debug_printout:
-                print("Performing Dynamic RESET")
             # If we are running a reset operation, we iterate the source line voltage, 
             # keeping bit line constant
             vsl_start, vsl_stop, vsl_step = [cfg["VSL_start"],cfg["VSL_stop"], cfg["VSL_step"]]
-
-            vbl_start = vbl
-            vbl_stop = vbl + 1
-            vbl_step = 2
-
-            pulsetype = "RESET"
+            vbl_start, vbl_stop, vbl_step = [vbl, vbl+1, 2]
         else:
             raise NIRRAMException(f"Invalid mode: {mode}: Please use 'SET', 'RESET', or 'FORM'")
+    
 
-        measurements = self.read_written_cells(average_resistance=average_resistance,wls=wls,bls=bls,record=record,print_info=print_data)
-        res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
-        cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, voltages, mode)
-        
-        if cells_to_write == "DONE":
-            self.record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
-            return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
-        
-        wls,bls,sls = cells_to_write
-        
+        # Need to be redone to actually iterate through multiple WLs, currently can only iterate through one WL
+        # Success condition has an early return, can be fixed but requires some WL check reworking
         for wl,wl_bls,wl_sls in zip(wls,bls,sls):
 
             # Connect the relay and change the name of the word line signal
             if self.relays:
-                wl_signals,_ = self.relay_switch([wl], relayed=True, debug_printout = debug_printout)
+                WL_IN,_ = self.relay_switch([wl], relayed=True, debug = debug)
             else:
-                wl_signals = [wl]
+                WL_IN = [wl]
 
-            self.wls = wl_signals
+            self.wls = WL_IN
             self.bls = wl_bls
             self.sls = wl_sls
-
             for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
                 for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
                     for pw in np.arange(pw_start,pw_stop,pw_step):
                         for vwl in np.arange(vwl_start,vwl_stop,vwl_step):
-                             # Set the masks for the cells that are not in target resistance
-                            if self.relays is not None:
-                                all_channels = [self.all_bls,self.all_sls,self.all_wl_signals]
-                            else:
-                                all_channels = [self.all_bls,self.all_sls,self.all_wls]
-                            
+                            # Set the masks for the cells that are not in target resistance
                             mask_list = Masks(
-                                self.polarity, 
-                                sel_pins = [wl_bls,wl_sls,wl_signals], 
+                                sel_pins = [wl_bls,wl_sls,WL_IN], 
                                 pingroups = self.digital_patterns.pingroup_data, 
-                                all_pins = all_channels, 
+                                all_pins = self.all_channels, 
                                 pingroup_names = self.digital_patterns.pingroup_names,
                                 sort=False,
-                                debug_printout = debug_printout)
-                            
-                            
+                                debug_printout = debug)
+                        
                             masks = mask_list.get_pulse_masks()
                             # Write the pulse
 
                             print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pw)
-                            # for i in range(5):
-                            #     print("Pulsing in ", 5-i)
-                            #     time.sleep(1)
 
                             self.write_pulse(
                                 masks, 
@@ -1271,29 +1514,34 @@ class NIRRAM:
                                 vbl=vbl, 
                                 vsl=vsl, 
                                 pulse_len=pw, 
-                                high_z=["wl"], 
-                                debug_printout=debug_printout)
-                            print("Pulsed ")
+                                high_z=None,
+                                debug=debug)
                             
-                            measurements = self.read_written_cells(average_resistance=average_resistance,wls=wls,bls=bls,record=record,print_info=print_data)
+                            measurements = self.read_written_cells(mode, average_resistance=average_resistance,wls=wls,bls=bls,record=record,print_info=print_data)
                             res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
-                            cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, voltages, mode)
+                            cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, mode)
                             
+                            print(res_array)
                             if cells_to_write == "DONE":
-                                self.record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
+                                self._record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
+                                
+                                self.dbg.end_function_debug() 
                                 return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
                             
-                            wls,bls,sls = cells_to_write     
+                            wls,bls,sls = cells_to_write  
+                
+        self.dbg.end_function_debug()
+        return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array   
         
 
-    def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug_printout=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="SET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug_printout=debug_printout)
+    def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+        return self.dynamic_pulse(sessions, cells, bls, wls, mode="SET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
     
-    def dynamic_reset(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug_printout=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="RESET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug_printout=debug_printout)
+    def dynamic_reset(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+        return self.dynamic_pulse(sessions, cells, bls, wls, mode="RESET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
 
-    def dynamic_form(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug_printout=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="FORM", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug_printout=debug_printout)
+    def dynamic_form(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+        return self.dynamic_pulse(sessions, cells, bls, wls, mode="FORM", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
     
 
     """ =================================================== """
@@ -1313,19 +1561,7 @@ class NIRRAM:
         """
 
         # Path to the CSV file
-
-        if type(self.settings) is str:
-            with open(self.settings, "rb") as settings_file:
-                settings = tomli.load(settings_file)
-        elif type(self.settings) is dict:
-            settings = self.settings
-        else:
-            raise ValueError(f"Settings should be a dict or a string, got {repr(settings)}.")
-        
-        if not isinstance(settings, dict):
-            raise ValueError(f"Settings should be a dict, got {repr(settings)}.")
-
-        test_log_path = settings["path"]["test_log_file"]
+        test_log_path = self.settings["path"].get("test_log_file", "data/test_log.csv")
 
         # Read the last row of the CSV file to get the last identifier
         last_hash = "0000"
@@ -1347,11 +1583,11 @@ class NIRRAM:
             writer.writerow([date, time, filename, location, last_hash, notes])
 
         # Return the updated identifier
-        return last_hash
+        return last_hash   
 
-    
-
-    def def_target_res(self, mode, target_res):
+    def def_target_res(self, mode, target_res,debug=None):
+        self.dbg.start_function_debug(debug)
+        
         if mode.lower() == "form":
             self.form_target_res = target_res
         elif mode.lower() == "reset":
@@ -1360,9 +1596,11 @@ class NIRRAM:
             self.set_target_res = target_res
         else:
             raise NIRRAMException("Invalid mode. Please select 'form', 'reset', or 'set'.")
-  
-    def relay_switch(self, wls, relayed=True, debug_printout = None):
-        if debug_printout is None: debug_printout = self.debug_printout
+        
+        self.dbg.end_function_debug()
+
+    def relay_switch(self, wls, relayed=True, debug = None):
+        self.dbg.start_function_debug(debug)
 
         for wl in wls: 
             assert(wl in self.all_wls), f"Invalid WL channel {wl}: Please make sure the WL channel is in the all_WLS list."
@@ -1382,57 +1620,87 @@ class NIRRAM:
         
         # Switch the relays at the given WL channels, separated by relay.
         if relayed:
-            self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug_printout)
-        all_wls = self.settings["device"]["WL_SIGNALS"]
+            self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)
+        all_wls = self.settings["device"]["WL_IN"]
+        
+        self.dbg.end_function_debug()
         return wl_input_signals, all_wls
+    
+    def _flatten(self, nested_list):
+        """Recursively flattens a list of lists to any depth."""
+        flattened = []
+        for item in nested_list:
+            if isinstance(item, list):
+                flattened.extend(self._flatten(item))
+            else:
+                flattened.append(item)
+        return flattened
     
     #endregion other bookkeeping functions
 
 
-    # region Debugging Functions  
-    def start_function_debug_printout(self, debug_printout, current_function):
-        if debug_printout is None:
-            debug_printout = self.debug_printout 
-        if debug_printout:
-            dash = "-"*len(current_function)
-            print("\n\n--------",dash)
-            print(f"Running {current_function}...")
-            print(dash,"------\n")
-            del(dash)
-        return debug_printout
+    # region Unimplemented Functions
+    def read_1tnr(        
+            self,
+            vbl=None,
+            vsl=None,
+            vwl=None,
+            vwl_unsel_offset=None,
+            vb=None,
+            record=False,
+            check=True,
+            dynam_read=False,
+        wl_name = None
+        ):
+            print("No 1TNR Read Functionality, will be implemented in the future")
+            # ============================= #
+            # TODO: 1TNR Read Functionality #
+            # ============================= #
+            return None
 
-    def internal_function_debug_printout(self, debug_printout, internal, variables, values):
-        if debug_printout:
-            print(f"{internal} variables: {variables}:\n")
-            for variable, value in zip(variables, values):
-                print(f"{variable}: {value}")
-            return 0
+    # endregion Unimplemented Functions
+
+def arg_parse():
+    parser = argparse.ArgumentParser(description="NIRRAM Abstracted Class")
+    parser.add_argument("--chip", type=str, help="Chip ID", default="chip")
+    parser.add_argument("--device", type=str, help="Device ID", default="device")
+    parser.add_argument("--polarity", type=str, help="Polarity of the device", default="NMOS")
+    parser.add_argument("--settings", type=str, help="Path to the settings file", default="settings/MPW_Direct_Write.toml")
+    parser.add_argument("--test_type", type=str, help="Type of test to run", default="Dir_Write")
+    parser.add_argument("--additional_info", type=str, help="Additional information", default="NIRRAM Direct Write Test")
+    args = parser.parse_args()
+    return args
 
 
-    def end_function_debug_printout(self, debug_printout, current_function):
-        if debug_printout:
-            print("\n\n ---------------------------------")
-            print(f"Finished {current_function}...")
-            print(" ---------------------------------\n")
-            return 0
-    # endregion
-
-    
-if __name__ == "__main__":
-    rram = NIRRAM("chip", "device",settings="settings/MPW_Direct_Write.toml", test_type="debug", additional_info="Debugging NIRRAM Pulse Operation.")
-
-    # rram.relay_switch(["WL_0","WL_127"])
+def main():
+    # Parse arguments and initialize the NIRRAM object
+    args = arg_parse()
+    rram = NIRRAM(args.chip, args.device, polarity=args.polarity, settings=args.settings, 
+                  test_type=args.test_type, additional_info=args.additional_info)
     print("NIRRAM Abstracted Class Loaded Successfully.")
 
-    # rram.direct_read(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],record=True,check=True,print_info="all",debug_printout=False,relayed=True)
-    
-    print("NIRRAM Read Operation Completed Successfully.")
-    
-    # rram.ppmu_set_vbl(["BL_0","BL_7","BL_15"],vbl=0.5)
-    # rram.digital_patterns.commit_all()
-    # time.sleep(10)
-    rram.dynamic_pulse(wls=["WL_4"],bls=["BL_0","BL_7","BL_15"],mode="SET",record=True,print_data=True,target_res=None,average_resistance=True,debug_printout=False)
-    
-    print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
-    
-    quit()
+    vwl = np.arange(0,2,0.2)
+    vbl = np.arange(0,1.5,0.2)
+
+    bls = [f"BL_{i}" for i in range(32)]
+    # relayed=True
+    # for bl in bls:
+    #     pdb.set_trace()
+    #     rram.measure_iv(wl=["WL_0"], bl=["BL_5"], vwl=vwl, vbl=vbl,vwl_unsel=1, relayed=relayed)
+    #     relayed=False
+    # # Example dynamic pulse operation (currently commented out)
+    # rram.dynamic_pulse(wls=["WL_0"], bls=["BL_0"], mode="RESET", record=True, 
+    #                    print_data=True, target_res=None, average_resistance=True, debug=False)
+
+
+    # 
+    rram.direct_read(wls=["WL_0"], bls=bls, record=True, relayed=True, print_info=True)
+    # print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
+
+    # rram.dynamic_pulse(wls=["WL_0"], bls=["BL_5"], mode="RESET", record=True, print_data=True, target_res=100_000, average_resistance=True, debug=False)
+    # rram.set_pulse(wls=["WL_0"],bls=["BL_5"],vwl=2.0, vbl=2.0, vsl=1.0,vwl_unsel_offset=0.0,pulse_len=1.0,high_z=None,debug=False)
+
+    # quit()
+
+if __name__ == "__main__":
+    main()

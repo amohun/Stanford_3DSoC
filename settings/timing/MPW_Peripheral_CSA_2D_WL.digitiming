@@ -3,60 +3,82 @@
   <TimingSheet>
     <TimeSets>
       <TimeSet name="CSA">
-        <Period>1E-06</Period>
+        <Period>1E-05</Period>
         <PinEdges>
           <PinEdge pin="WL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>2E-06</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="COLSEL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>2E-06</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="VREAD">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>2E-06</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="SA_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>2E-06</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="RMUX_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>5E-07</Data>
-              <Off>1E-06</Off>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-06</Strobe>
+              <Strobe>2E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="DO_SA_RDY">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>2E-06</Strobe>
+            </CompareStrobe>
+            <DataSource>Pattern</DataSource>
+          </PinEdge>
+          <PinEdge pin="DIR_PERIPH_SEL">
+            <DriveNonReturn>
+              <On>0</On>
+              <Data>5E-06</Data>
+              <Off>1E-05</Off>
+            </DriveNonReturn>
+            <CompareStrobe>
+              <Strobe>2E-06</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>

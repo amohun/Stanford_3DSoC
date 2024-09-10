@@ -19,7 +19,6 @@ class Masks:
 
     def __init__(
             self,
-            polarity="NMOS", # Define Transistor Polarity
             sel_pins=None,   # List of selected pins by the user, if None, all pins are selected, either sorted by session or not
             pingroups=None,  # List of pins, separated by pin groups to be selected sorted by session
             all_pins=None,   # List of all pins, used for verifying pins and pingroups are correct
@@ -28,8 +27,6 @@ class Masks:
             sort=True, # If true, sort the pins by session
             debug_printout=False # If true, print debug information
     ):
-    
-        self.polarity = polarity
         self.sel_pins = sel_pins
         self.pingroups = pingroups
         self.all_pins = all_pins
@@ -50,8 +47,6 @@ class Masks:
     
     
     def ensure_all_required_arguments(self):
-        if self.polarity.upper() not in {"NMOS", "PMOS", "N", "P"}:
-            raise MasksException("Invalid polarity, must be either 'NMOS' or 'PMOS'")
 
         if self.sel_pins is None:
             raise MasksException("Must provide a list of pins to be selected")
@@ -91,11 +86,9 @@ class Masks:
         """
         Verifies that all pins in the pin groups are in the list of all pins
         """
-
         self.pingroups_flattened_by_session = list(chain.from_iterable(self.pingroups))
-        
+
         for pin_session,group_session in zip(self.sel_pins,self.pingroups):
-            
             for pin in pin_session:
                 if pin not in list(chain.from_iterable(group_session)):
                     raise MasksException(f"Pin {pin} is not found in session pingroups despite being in session")
@@ -125,21 +118,45 @@ class Masks:
         pins will be False (0). The masks will be sorted by group, by session.
         """   
 
+        # Initialize an empty list to store the masks for each session
         self.masks = []
-        for session_groups, session_pins in zip(self.pingroups,self.sel_pins):
-            session_masks = [np.array([pin in sel_pins for pin in group]) for group,sel_pins in zip(session_groups,session_pins)]
-            self.masks.append(session_masks)
+        
+        # Iterate through each session's groups and selected pins
+        for session_groups, session_pins in zip(self.pingroups, self.sel_pins):
             
+            # For each group in the session, create a mask array where each pin's mask
+            # is True if it is selected, otherwise False
+            session_masks = [
+                np.array([pin in sel_pins for pin in group]) 
+                for group, sel_pins in zip(session_groups, session_pins)
+            ]
+            
+            # Append the mask for this session to the overall masks list
+            self.masks.append(session_masks)
+        
+        # Flatten the list of masks across all sessions into a single list
         masks_flattened = list(chain.from_iterable(list(chain.from_iterable(self.masks))))
+        
+        # Flatten the list of all pin groups across all sessions into a single list
         bits_flattened = list(chain.from_iterable(list(chain.from_iterable(self.pingroups))))
 
-        self.masks_df_list = [pd.DataFrame({"Pin": [pin for pin in group], "Mask": [pin in group_sel_pins for pin in group]}) for group_sel_pins, group in zip(session_pins, session_groups)]        
+        # Create a list of DataFrames, one for each session
+        # Each DataFrame contains the pin names and their corresponding mask values
+        self.masks_df_list = [
+            pd.DataFrame({"Pin": [pin for pin in group], 
+                        "Mask": [pin in group_sel_pins for pin in group]}) 
+            for group_sel_pins, group in zip(session_pins, session_groups)
+        ]
+        
+        # Create a single DataFrame combining all pins and masks across all sessions
         self.flattened_masks_df = pd.DataFrame({
             "Pin": bits_flattened,
             "Mask": masks_flattened
         })
 
+        # Return the masks list, the list of session DataFrames, and the flattened DataFrame
         return self.masks, self.masks_df_list, self.flattened_masks_df
+
 
     def get_pulse_masks(self):
         """

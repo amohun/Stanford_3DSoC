@@ -34,8 +34,9 @@ patterns = [
     "settings/patterns/MPW_Peripheral_CSA_2D_WL.digipat"
 ]
 
-pulse_pingroups = ["BL","SL", "WL","PWR"]
-clock_pins = ["SA_CLK"]
+pingroups = ["BL","SL","WL"]
+pingroup_names = [["BL"],["SL"], ["WL_IN"]]
+pingroup_data = [["BL"], ["SL"], ["WL"]] 
 
 [NISwitch]
 deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
@@ -53,12 +54,15 @@ RMUX_EN = 0
 measure_iv = true
 sweep = true
 
-[pins]
+
+
+[device]
 
 # Defining WL Pins
 WL_IN = [
     "WL_IN_0",
-    ]
+]
+
 WL = [
         "WL_0",
         "WL_1",
@@ -229,6 +233,183 @@ COL_SEL = [
 CLK = "SA_CLK"
 CLK_EN = "SA_CLK_EXT"
 
+
+[pins]
+WL_IN = [
+    "WL_IN_0",
+]
+
+WL = [
+        "WL_0",
+        "WL_1",
+        "WL_2",
+        "WL_3",
+        "WL_4",
+        "WL_5",
+        "WL_6",
+        "WL_7",
+        "WL_8",
+        "WL_9",
+        "WL_10",
+        "WL_11",
+        "WL_12",
+        "WL_13",
+        "WL_14",
+        "WL_15",
+        "WL_16",
+        "WL_17",
+        "WL_18",
+        "WL_19",
+        "WL_20",
+        "WL_21",
+        "WL_22",
+        "WL_23",
+        "WL_24",
+        "WL_25",
+        "WL_26",
+        "WL_28",
+        "WL_29",
+        "WL_30",
+        "WL_31",
+        "WL_32",
+        "WL_33",
+        "WL_34",
+        "WL_35",
+        "WL_36",
+        "WL_37",
+        "WL_38",
+        "WL_39",
+        "WL_40",
+        "WL_41",
+        "WL_42",
+        "WL_43",
+        "WL_44",
+        "WL_45",
+        "WL_46",
+        "WL_47",
+        "WL_48",
+        "WL_49",
+        "WL_50",
+        "WL_51",
+        "WL_52",
+        "WL_53",
+        "WL_54",
+        "WL_55",
+        "WL_56",
+        "WL_57",
+        "WL_58",
+        "WL_59",
+        "WL_60",
+        "WL_61",
+        "WL_62",
+        "WL_63",
+        "WL_64",
+        "WL_65",
+        "WL_66",
+        "WL_67",
+        "WL_68",
+        "WL_69",
+        "WL_70",
+        "WL_71",
+        "WL_72",
+        "WL_73",
+        "WL_74",
+        "WL_75",
+        "WL_76",
+        "WL_77",
+        "WL_78",
+        "WL_79",
+        "WL_80",
+        "WL_81",
+        "WL_82",
+        "WL_83",
+        "WL_84",
+        "WL_85",
+        "WL_86",
+        "WL_87",
+        "WL_88",
+        "WL_89",
+        "WL_90",
+        "WL_91",
+        "WL_92",
+        "WL_93",
+        "WL_94",
+        "WL_95",
+        "WL_96",
+        "WL_97",
+        "WL_98",
+        "WL_99",
+        "WL_100",
+        "WL_101",
+        "WL_102",
+        "WL_103",
+        "WL_104",
+        "WL_105",
+        "WL_106",
+        "WL_107",
+        "WL_108",
+        "WL_109",
+        "WL_110",
+        "WL_111",
+        "WL_112",
+        "WL_113",
+        "WL_114",
+        "WL_115",
+        "WL_116",
+        "WL_117",
+        "WL_118",
+        "WL_119",
+        "WL_120",
+        "WL_121",
+        "WL_122",
+        "WL_123",
+        "WL_124",
+        "WL_125",
+        "WL_126",
+        "WL_127",
+]
+
+# Defining BL Pins
+BL = [
+    "BL_0",
+    "BL_1",
+    "BL_2",
+    "BL_3",
+]
+
+# Defining SL Pins
+SL = [
+    "SL_0",
+    "SL_1",
+    "SL_2",
+    "SL_3",
+]
+
+# Defining COL_SEL Pins
+COL_SEL = [
+    "COL_SEL_0",
+    "COL_SEL_1",
+    "COL_SEL_2",
+    "COL_SEL_3",
+    "COL_SEL_4",
+    "COL_SEL_5",
+    "COL_SEL_6",
+    "COL_SEL_7",
+    "COL_SEL_8",
+    "COL_SEL_9",
+    "COL_SEL_10",
+    "COL_SEL_11",
+    "COL_SEL_12",
+    "COL_SEL_13",
+    "COL_SEL_14",
+    "COL_SEL_15",
+]
+
+# Defining clock pins
+CLK = "SA_CLK"
+CLK_EN = "SA_CLK_EXT"
+
+
 [pins.device]
 # device specifications for the csa test
 # Only one col-sel should be set at a time
@@ -265,8 +446,8 @@ SA_CLK_EXT = 1.8
 
 [TIMING]
 direct = 2e-5
-CSA_out = 1e-5
-CSA_in = 1e-5
+CSA_out = 1e-7
+CSA_in = 1e-7
 
 [op]
 
