@@ -7,30 +7,31 @@
         <Vih>1.8 V</Vih>
         <Vol>0</Vol>
         <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="DO_0">
         <Vil>0</Vil>
-        <Vih>1.8 V</Vih>
+        <Vih>1</Vih>
         <Vol>0</Vol>
-        <Voh>1.8 V</Voh>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="DO_1">
         <Vil>0</Vil>
-        <Vih>1.8 V</Vih>
+        <Vih>1</Vih>
         <Vol>0</Vol>
-        <Voh>1.8 V</Voh>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="SA_RDY_0">
         <Vil>0</Vil>
-        <Vih>1.8 V</Vih>
+        <Vih>1</Vih>
         <Vol>0</Vol>
-        <Voh>1.8 V</Voh>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="SA_RDY_1">
         <Vil>0</Vil>
-        <Vih>1.8 V</Vih>
+        <Vih>1</Vih>
         <Vol>0</Vol>
-        <Voh>1.8 V</Voh>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="COL_SEL_15">
         <Vil>0</Vil>
@@ -168,6 +169,8 @@
         <Vih>1.8 V</Vih>
         <Vol>0</Vol>
         <Voh>1.8 V</Voh>
+        <Vterm>0</Vterm>
+        <TerminationMode>Vterm</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="SA_CLK">
         <Vil>0</Vil>
@@ -180,6 +183,7 @@
         <Vih>1.8 V</Vih>
         <Vol>0</Vol>
         <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="NONE_2">
         <Vil>0</Vil>
@@ -209,9 +213,9 @@
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="VREAD">
         <Vil>0</Vil>
-        <Vih>2 V</Vih>
+        <Vih>0.1</Vih>
         <Vol>0</Vol>
-        <Voh>2 V</Voh>
+        <Voh>0.1</Voh>
       </DigitalPinLevelSet>
     </DigitalPinLevelSets>
     <PpmuPinLevelSets>

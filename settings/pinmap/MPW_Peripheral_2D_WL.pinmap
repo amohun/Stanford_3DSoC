@@ -43,8 +43,8 @@
 			<PinReference pin="WL_UNSEL" />
 		</PinGroup>
 		<PinGroup name="DO">
-			<PinReference pin="DO_0" />
 			<PinReference pin="DO_1" />
+			<PinReference pin="DO_0" />
 		</PinGroup>
 		<PinGroup name="COLSEL">
 			<PinReference pin="COL_SEL_15" />
@@ -65,8 +65,8 @@
 			<PinReference pin="COL_SEL_0" />
 		</PinGroup>
 		<PinGroup name="SA_RDY">
-			<PinReference pin="SA_RDY_0" />
 			<PinReference pin="SA_RDY_1" />
+			<PinReference pin="SA_RDY_0" />
 		</PinGroup>
 		<PinGroup name="DO_SA_RDY">
 			<PinReference pin="DO" />

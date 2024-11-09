@@ -1178,7 +1178,7 @@ class DigitalPattern:
         for session_num, session in enumerate(sessions):
             session.start_label = self.pattern_names[session_num]
             session.configure_pattern_burst_sites()
-        _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
+            _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
         nitclk.synchronize(sessions,1e-7)
         # pdb.set_trace()
         sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])

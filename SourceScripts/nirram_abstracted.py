@@ -7,6 +7,7 @@ import sys
 from os.path import abspath
 from os import getcwd
 from os import remove as remove_file
+import os
 import nidigital
 import numpy as np
 import pandas as pd
@@ -251,6 +252,7 @@ class NIRRAM:
         self.digital_patterns.configure_read(sessions=None, pins=[self.bls, self.sls], sort=False)
         self.digital_patterns.digital_all_pins_to_zero()
         self.digital_patterns.commit_all()
+        self.closed_relays = []
 
 
 
@@ -285,8 +287,6 @@ class NIRRAM:
         arrays of devices, where each device has its own WL/BL.
         Returns list (per-bitline) of tuple with (res, cond, meas_i, meas_v)"""
         self.dbg.start_function_debug(debug)
-        # 
-        
         rram_cells = self.select_memory_cells(bls=bls, wls=wls)
         wls, bls, sls = [rram_cells.wls, rram_cells.bls, rram_cells.sls]
 
@@ -298,6 +298,7 @@ class NIRRAM:
         vsl = self.op["READ"][self.polarity]["VSL"] if vsl is None else vsl
         vb  = self.op["READ"][self.polarity]["VB"]  if vb  is None else vb
 
+        print(f"VBL: {vbl}, VSL{vsl}, VWL:{vwl}")
         # Initialize dataframes to store resistance, conductance, current, and voltage measurements
         self._define_measurement_dataframes(wls, bls)
         
@@ -371,20 +372,16 @@ class NIRRAM:
                         _,_,meas_wls_i = self.digital_patterns.measure_current([[],[],[f"WL_IN_{wl}"]],sort=False)
                     else:
                         _,_,meas_wls_i = self.digital_patterns.measure_current([[],[],[f"WL_{wl}"]],sort=False)
-
-
-
-
-
-
+            print(meas_wls_i)
+  
+            self.ppmu_set_vbl(self.bls,0)
+            self.ppmu_set_vsl(self.sls,0)
+        
             self.ppmu_set_vwl(wl, 0)
             for wl_i in remove_bias:
                 self.ppmu_set_vwl(wl, 0)
-               
-            self.ppmu_set_vbl(self.bls,0)
-            self.ppmu_set_vsl(self.sls,0)
             self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True)
-            
+
             r_wl_sl = None
             r_wl_bl = None
 
@@ -494,7 +491,10 @@ class NIRRAM:
                         if self.res_array.loc[wl, bl] < self.set_target_res:
                             check_on = "set"
                         elif self.res_array.loc[wl, bl] > self.reset_target_res:
-                            check_on = "reset"
+                            if self.res_array.loc[wl, bl] < 200_000:
+                                check_on = "reset"
+                            else:
+                                check_on = "unformed"
                         else:
                             check_on = "unknown"
                     print(f"checking ({wl}, {bl}): {self.res_array.loc[wl, bl]} | {check_on}")
@@ -514,7 +514,7 @@ class NIRRAM:
     """                PPMU and Digital sources are defined               """
     """ ================================================================= """
 
-    def set_to_ppmu(self,channels,name, sort=True,debug=None):
+    def set_to_ppmu(self,channels,name=None, sort=True,debug=None):
     
         if type(channels) is not list:
             channels = [channels]
@@ -526,7 +526,6 @@ class NIRRAM:
 
         if type(channels[0]) is int or type(channels[0]) is np.uint8:
             channels = [f"{name}_{chan}" for chan in channels]
-        
         self.digital_patterns.set_channel_mode("ppmu", pins=channels,sessions=None,sort=sort,debug=debug)
 
     def ppmu_set_voltage(self, v, channels, name, sort=True,source=True):
@@ -582,7 +581,7 @@ class NIRRAM:
 
 
 
-    def measure_iv(self, wl, bl, vwl, vbl, vwl_unsel = 0, plot=True,relayed=True):
+    def measure_iv(self, wl, bl, vwl, vbl, vsl=0, vwl_unsel = 0, plot=True,relayed=True):
         """Measure the current between the bitline and the gate."""
         if not isinstance(vwl, list) and not isinstance(vwl, np.ndarray):
             vwl = [vwl]
@@ -603,8 +602,8 @@ class NIRRAM:
         for wl in wls:
             for bl,sl in zip(bls,sls):
 
-                self.ppmu_set_vsl(self.sls, 0)
-                self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True)
+                self.ppmu_set_vsl(self.sls, vsl,source=True)
+                self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True,source=True)
 
                 IbVg = {}
                 IwVg = {}
@@ -616,8 +615,10 @@ class NIRRAM:
                         self.ppmu_set_vbl(bl, bitline_voltage)
                         self._settle(2e-3)
                         _, _, Isl = self.digital_patterns.measure_current([[], [sl], []], sort=False)
-                        IbVg[f"{wordline_voltage}"][f"{bitline_voltage}"] = [-i for i in Isl]
+                        self._settle(2e-3)
+                        IbVg[f"{wordline_voltage}"][f"{bitline_voltage}"] = [abs(i) for i in Isl]
                         _, _, Iwl = self.digital_patterns.measure_current([[], [], [wl]], sort=False)
+                        self._settle(2e-3)
                         IwVg[f"{wordline_voltage}"][f"{bitline_voltage}"] = Iwl
                 
                 self.ppmu_set_vwl(wl, 0)
@@ -629,36 +630,39 @@ class NIRRAM:
                     plt.subplot(2, 2, 1)
                     for bitline_voltage in vbl:
                         ibl_values = [IbVg[str(wordline_voltage)][str(bitline_voltage)] for wordline_voltage in vwl]
-                        plt.plot(vwl, ibl_values, label=f'VBL = {bitline_voltage} V')
+                        plt.plot(np.array(vwl)-vsl, ibl_values, label=f'VBL = {bitline_voltage} V')
+                    plt.xscale('linear')
+                    plt.yscale('log')
+                    # plt.yscale('log')
                     plt.title('Ibl vs VWL')
-                    plt.xlabel('VWL (V)')
+                    plt.xlabel('VWL-VSL (V)')
                     plt.ylabel('Ibl (A)')
 
                     # Plot for IblVbl (X-axis: VBL, Y-axis: IBL, Multiple lines for different VWL)
                     plt.subplot(2, 2, 2)
                     for wordline_voltage in vwl:
                         ibl_values = [IbVg[str(wordline_voltage)][str(bitline_voltage)] for bitline_voltage in vbl]
-                        plt.plot(vbl, ibl_values, label=f'VWL = {wordline_voltage} V')
+                        plt.plot(np.array(vbl)-vsl, ibl_values, label=f'VWL = {wordline_voltage} V')
                     plt.title('Ibl vs VBL')
-                    plt.xlabel('VBL (V)')
+                    plt.xlabel('VBL-VSL (V)')
                     plt.ylabel('Ibl (A)')
 
                     # Plot for IwlVbl (X-axis: VBL, Y-axis: IWL, Multiple lines for different VWL)
                     plt.subplot(2, 2, 3)
                     for wordline_voltage in vwl:
                         iwl_values = [IwVg[str(wordline_voltage)][str(bitline_voltage)] for bitline_voltage in vbl]
-                        plt.plot(vbl, iwl_values, label=f'VWL = {wordline_voltage} V')
+                        plt.plot(np.array(vbl)-vsl, iwl_values, label=f'VWL = {wordline_voltage} V')
                     plt.title('Iwl vs VBL')
-                    plt.xlabel('VBL (V)')
+                    plt.xlabel('VBL-VSL (V)')
                     plt.ylabel('Iwl (A)')
 
                     # Plot for IwlVwl (X-axis: VWL, Y-axis: IWL, Multiple lines for different VBL)
                     plt.subplot(2, 2, 4)
                     for bitline_voltage in vbl:
                         iwl_values = [IwVg[str(wordline_voltage)][str(bitline_voltage)] for wordline_voltage in vwl]
-                        plt.plot(vwl, iwl_values, label=f'VBL = {bitline_voltage} V')
+                        plt.plot(np.array(vwl)-vsl, iwl_values, label=f'VBL = {bitline_voltage} V')
                     plt.title('Iwl vs VWL')
-                    plt.xlabel('VWL (V)')
+                    plt.xlabel('VWL-VSL (V)')
                     plt.ylabel('Iwl (A)')
 
                     # Adjust layout and show the plots
@@ -961,7 +965,7 @@ class NIRRAM:
         
         self.set_to_ppmu(["WL_UNSEL"], ["WL"], sort=True)
         self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel)
-        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[[],["WL_IN"],["BL","SL","WL_IN"],["BL","SL"],[]] )
+        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[[],["WL_IN"],["BL","SL","WL_IN"],["WL_IN"],[]] )
         self.ppmu_set_vwl(["WL_UNSEL"], v_base)
         # ---------------------------------------- #
         #       Set to Off and Disconnect          #
@@ -1174,7 +1178,6 @@ class NIRRAM:
             read_results = self.remove_cells_at_target_resistance(cells_to_pulse, mode,average_resistance=average_resistance,target_res=target_res,record=record,print_data=print_data)
             if read_results[0]== "DONE":
                 res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = read_results[1][:]
-                
                 # Record the write pulse with the updated measurements
                 self._record_write_pulse(record=record,cells=cells_to_pulse.cells,mode=mode,measurements=[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],voltages=wl_bl_sl_voltages, success=pd.DataFrame(True,index=wls,columns=bls))
                 print("All cells are within target resistance. No pulse required.")
@@ -1187,19 +1190,19 @@ class NIRRAM:
 
             wls = self.relay_switch(wls)
         # If mask is None, make the mask using Mask class
-        if masks is None:
-            # If only pulsing one Wordline, create a single mask for the wordline
-            masks = []
-            for wl, wl_bls, wl_sls in zip(wls,bls,sls):
-                    if isinstance(wl,str):
-                        wl = [wl]
-                    masks.append(Masks(
-                            sel_pins = [wl_bls,wl_sls,wl], 
-                            pingroups = self.digital_patterns.pingroup_data, 
-                            all_pins = self.all_channels_flat, 
-                            pingroup_names = self.digital_patterns.pingroup_names,
-                            sort=False,
-                            debug_printout = debug))
+        # if masks is None:
+        #     # If only pulsing one Wordline, create a single mask for the wordline
+        #     masks = []
+        #     for wl, wl_bls, wl_sls in zip(wls,bls,sls):
+        #             if isinstance(wl,str):
+        #                 wl = [wl]
+        #             masks.append(Masks(
+        #                     sel_pins = [wl_bls,wl_sls,wl], 
+        #                     pingroups = self.digital_patterns.pingroup_data, 
+        #                     all_pins = self.all_channels_flat, 
+        #                     pingroup_names = self.digital_patterns.pingroup_names,
+        #                     sort=False,
+        #                     debug_printout = debug))
         
         if init_setup or measure_res:
             pulse = RRAMPulseOperation(mode.upper(), cells_to_pulse, voltages_to_pulse, pulse_width, target_res)
@@ -1340,25 +1343,25 @@ class NIRRAM:
 
 
     def read_written_cells(self,mode, average_resistance=True,wls=None,bls=None,record=False,print_info=True):
-        if not average_resistance:
-            res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
+        if average_resistance:
+            res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array = self.direct_read(wls=wls,bls=bls,record=False,relayed=True,print_info=True)
             if print_info:
                 print(f"Operation {mode}, Resistances: {res_array}, Target Resistance:")
         else:
-            res_array1, cond_array1, meas_i_array1, meas_v_array1, meas_i_leak_array1 = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
-            res_array2, cond_array2, meas_i_array2, meas_v_array2, meas_i_leak_array2 = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
-            res_array3, cond_array3, meas_i_array3, meas_v_array3, meas_i_leak_array3 = self.direct_read(wls=wls,bls=bls,record=False,print_info=False)
-
+            res_array1, cond_array1, meas_i_array1, meas_v_array1, meas_i_leak_array1 = self.direct_read(wls=wls,bls=bls,record=False,relayed=True,print_info=False)
+            res_array2, cond_array2, meas_i_array2, meas_v_array2, meas_i_leak_array2 = self.direct_read(wls=wls,bls=bls,record=False,relayed=True,print_info=False)
+            res_array3, cond_array3, meas_i_array3, meas_v_array3, meas_i_leak_array3 = self.direct_read(wls=wls,bls=bls,record=False,relayed=True,print_info=False)
+            
             res_array = pd.concat([res_array1,res_array2,res_array3]).groupby(level=0).mean()
             cond_array = pd.concat([cond_array1,cond_array2,cond_array3]).groupby(level=0).mean()
+            
             meas_i_array = pd.concat([meas_i_array1,meas_i_array2,meas_i_array3]).groupby(level=0).mean()
             meas_v_array = pd.concat([meas_v_array1,meas_v_array2,meas_v_array3]).groupby(level=0).mean()
             meas_i_leak_array = pd.concat([meas_i_leak_array1,meas_i_leak_array2,meas_i_leak_array3]).groupby(level=0).mean()
-
+        
         return res_array, cond_array, meas_i_array, meas_v_array, meas_i_leak_array
 
     def check_cell_resistance(self,res_array, wls, bls, sls, target_res, mode,print_info=True,debug=None):
-
         # Remove every cell that is in target resistance
         if mode.upper() == "RESET":
             for wl,wl_bls,wl_sls in zip(wls,bls,sls):
@@ -1372,7 +1375,8 @@ class NIRRAM:
                                 # If no cells remain, return True: 
                                 # All cells are set to desired resistance range
                                 return "DONE"
-        
+                    
+
         if mode.upper() == "SET" or mode.upper() == "FORM":
             for wl,wl_bls in zip(wls,bls):
                 for bl in wl_bls:
@@ -1504,7 +1508,6 @@ class NIRRAM:
                             # Write the pulse
 
                             print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pw)
-
                             self.write_pulse(
                                 masks, 
                                 sessions=sessions, 
@@ -1516,12 +1519,12 @@ class NIRRAM:
                                 pulse_len=pw, 
                                 high_z=None,
                                 debug=debug)
-                            
-                            measurements = self.read_written_cells(mode, average_resistance=average_resistance,wls=wls,bls=bls,record=record,print_info=print_data)
+                            time.sleep(0.5)
+                            print(f"WLS:{wls} ; BLS: {bls}")
+                            measurements = self.read_written_cells(mode, average_resistance=True,wls=wls,bls=bls,record=record,print_info=print_data)
                             res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
                             cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, mode)
                             
-                            print(res_array)
                             if cells_to_write == "DONE":
                                 self._record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
                                 
@@ -1619,8 +1622,9 @@ class NIRRAM:
         wl_input_signals = [f"WL_IN_{int(wl[3:])%24}"for wl in wls] 
         
         # Switch the relays at the given WL channels, separated by relay.
-        if relayed:
+        if relayed and sorted_wls != self.closed_relays:
             self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)
+            self.closed_relays = sorted_wls
         all_wls = self.settings["device"]["WL_IN"]
         
         self.dbg.end_function_debug()
@@ -1660,6 +1664,25 @@ class NIRRAM:
 
     # endregion Unimplemented Functions
 
+    def format_output(self):
+        dir_path = os.path.dirname(self.datafile_path)
+        filename = os.path.basename(self.datafile_path)
+
+        formatted_dir = os.path.join(dir_path,"formatted")
+        os.makedirs(formatted_dir, exist_ok=True)
+
+        formatted_file_path = os.path.join(formatted_dir,filename)
+        data = pd.read_csv(self.datafile_path,header=None)
+
+        if data.shape[1] < 6:
+            raise ValueError("IN too short")
+        row_names = data.iloc[:,3]
+        column_names = data.iloc[:,4]
+        values = data.iloc[:,5]
+
+        formatted_data = pd.DataFrame({col: [val] for col, val in zip(column_names, values)}, index=row_names)
+        formatted_data.to_csv(formatted_file_path, index=True)
+
 def arg_parse():
     parser = argparse.ArgumentParser(description="NIRRAM Abstracted Class")
     parser.add_argument("--chip", type=str, help="Chip ID", default="chip")
@@ -1668,6 +1691,8 @@ def arg_parse():
     parser.add_argument("--settings", type=str, help="Path to the settings file", default="settings/MPW_Direct_Write.toml")
     parser.add_argument("--test_type", type=str, help="Type of test to run", default="Dir_Write")
     parser.add_argument("--additional_info", type=str, help="Additional information", default="NIRRAM Direct Write Test")
+    parser.add_argument("--measurement",type=list,help="Measurement run",default=["r"])
+    parser.add_argument("--iter", type=int,help="Number of Reads", default=1)
     args = parser.parse_args()
     return args
 
@@ -1679,28 +1704,53 @@ def main():
                   test_type=args.test_type, additional_info=args.additional_info)
     print("NIRRAM Abstracted Class Loaded Successfully.")
 
-    vwl = np.arange(0,2,0.2)
-    vbl = np.arange(0,1.5,0.2)
+    vwl = np.arange(-2,6,0.2)
+    vbl = np.arange(1,3,0.5)
+    vsl=2
+    # vwl = [1,6]
+    # vbl = np.arange(0,6.1,0.1)
+    bls = []
+    wls = []
+    for i in range(128):
+        wls.append(f"WL_{i}")
+        if i > -1 and i < 32:
+            bls.append(f"BL_{i}")
+    
+    # bls = ["BL_12","BL_28"]
+    # wls = ["WL_0"]
+    # bls = ["BL_9"]
+    wls=["WL_24"]
+    bls=["BL_0"]
+    # bls = ["BL_12"]
 
-    bls = [f"BL_{i}" for i in range(32)]
-    # relayed=True
-    # for bl in bls:
-    #     pdb.set_trace()
-    #     rram.measure_iv(wl=["WL_0"], bl=["BL_5"], vwl=vwl, vbl=vbl,vwl_unsel=1, relayed=relayed)
-    #     relayed=False
-    # # Example dynamic pulse operation (currently commented out)
-    # rram.dynamic_pulse(wls=["WL_0"], bls=["BL_0"], mode="RESET", record=True, 
-    #                    print_data=True, target_res=None, average_resistance=True, debug=False)
+    # for wl in wls:
+    #     for bl in bls:
+    #         # rram.ppmu_set_vwl(["WL_UNSEL"],3.5)
+    #         rram.measure_iv(wl=[wl], bl=[bl], vwl=vwl, vbl=vbl, vsl=vsl, vwl_unsel=0, relayed=True)
 
 
-    # 
-    rram.direct_read(wls=["WL_0"], bls=bls, record=True, relayed=True, print_info=True)
-    # print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
+    # # 
+#     rram.direct_read(wls=["WL_6"], bls=bls, record=True, relayed=True, print_info=["i","v","res"])
+#     # print("NIRRAM Dynamic Pulse Operation Completed Successfully.")
+# # 
+#     rram.dynamic_pulse(wls=["WL_6"], bls=["BL_8"], mode="RESET", record=True, print_data=True, target_res=100_000, average_resistance=True, debug=False)
+    # rram.reset_pulse(wl=["WL_6"],bls=["BL_8"],vwl=2.2, vbl=0.0, vsl=2.5,vwl_unsel_offset=0.0,pulse_len=1.0,high_z=None,debug=False)
+    # rram.direct_read(wls=["WL_6"], bls=bls, record=True, relayed=True, print_info=["i","v","res"])
+ 
+    # bls = [bl for bl in bls if bl not in ["BL_13"]]
 
-    # rram.dynamic_pulse(wls=["WL_0"], bls=["BL_5"], mode="RESET", record=True, print_data=True, target_res=100_000, average_resistance=True, debug=False)
-    # rram.set_pulse(wls=["WL_0"],bls=["BL_5"],vwl=2.0, vbl=2.0, vsl=1.0,vwl_unsel_offset=0.0,pulse_len=1.0,high_z=None,debug=False)
+    x = args.measurement
+    iterations = args.iter
+    if 'r' in x:
+        for i in range(iterations):
+            rram.direct_read(wls=wls, bls=bls, record=True, relayed=True, print_info=["res"])
+        rram.format_output()
+    if 'w' in x:
+        for wl in wls:
+            rram.dynamic_pulse(wls=[wl], bls=bls, mode="RESET", record=True, print_data=True, target_res=100_000, average_resistance=False, debug=False)
 
-    # quit()
+
+    # # quit()
 
 if __name__ == "__main__":
     main()

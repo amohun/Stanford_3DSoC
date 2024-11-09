@@ -547,8 +547,8 @@ DIR_PERIPH_SEL = [ "DIR_PERIPH_SEL" ]
 # RRAM resistance target level corresponding to each operation defined below
 [target_res]
 FORM = 20_000
-SET = 5_000
-RESET =100_000
+SET = 12_000
+RESET = 80_000
 
 # =============================================================================
 # MEASUREMENT OPERATION (OP) CONFIGS
@@ -564,7 +564,7 @@ RESET =100_000
 # TIMING
 # =============================================================================
 [TIMING]
-direct = 2e-5
+direct = 1e-8
 CSA_out = 1e-5
 CSA_in = 1e-5
 
@@ -581,21 +581,21 @@ max_pulse_len = 2000
 # =============================================================================
 [op.READ]
 mode = "digital"
-aperture_time = 0.0005
+aperture_time = 0.005
 
 #2 uA, 32uA, 128uA, 2mA, 32mA
-current_limit_range = 128e-6
+current_limit_range = 32e-6
 relaxation_cycles = 100
-settling_time = 0.002
+settling_time = 0.0001
 shunt_res_value = 0
 
 # =============== #
 #    NMOS READ    #
 # =============== #
 [op.READ.NMOS]
-VWL = 0
-VBL = 0
-VSL = 1
+VWL = 1.8
+VBL = 0.3
+VSL = 0
 VWL_UNSEL_OFFSET = 0
 VB = 0
 
@@ -604,7 +604,7 @@ VB = 0
 # =============== #
 [op.READ.PMOS]
 VWL = -1.2
-VBL = 0.3
+VBL = 0.7
 VSL = 0
 VWL_UNSEL_OFFSET = 3
 VB = 0
@@ -613,7 +613,6 @@ VB = 0
 # FORM PULSE
 # =============================================================================
 [op.FORM]
-reset_threshold = 30e3 #kOhm
 
 # =============== #
 #    NMOS FORM    #
@@ -621,17 +620,17 @@ reset_threshold = 30e3 #kOhm
 [op.FORM.NMOS]
 VWL = 1.8
 VBL = 3
-VSL = 1
+VSL = 0
 VWL_UNSEL_OFFSET = 0.0
-PW = 1200
+PW = 100
 
-VWL_start = 2
+VWL_start = 1.5
 VWL_step = 0.2
-VWL_stop = 2.5
+VWL_stop = 2.2
 
-VBL_start = 0
-VBL_step = -0.5
-VBL_stop = -2
+VBL_start = 1
+VBL_step = 0.1
+VBL_stop = 3.3
 
 PW_start = 100
 PW_stop = 101
@@ -645,20 +644,20 @@ VWL = 1.5
 VBL = 0.5
 VSL = 0.5
 PW = 1200
-
+VWL_UNSEL_OFFSET = 3
 #VWL_UNSEL_OFFSET from PMOS SET
 
 VWL_start = -1.5
 VWL_step = -0.1
-VWL_stop = -1.51
+VWL_stop = -2
 
 VBL_start = -0.5
 VBL_step = -0.1
-VBL_stop = -1
+VBL_stop = -2
 
 PW_start = 100
 PW_stop = 101
-PW_steps = 1
+PW_steps = 10
 
 
 # =============================================================================
@@ -670,15 +669,18 @@ VBL = 3
 VSL = 0
 VWL_UNSEL_OFFSET = 0
 PW = 1200
-VWL_start = 2.0
+
+VWL_start = 2.3
 VWL_step = 0.2
-VWL_stop = 2.2
-VBL_start = 1.0
+VWL_stop = 2.7
+
+VBL_start = 2
 VBL_step = 0.05
-VBL_stop = 3
-PW_start = 1
-PW_stop = 2
-PW_steps = 3
+VBL_stop = 2.5
+
+PW_start = 10
+PW_stop = 20
+PW_steps = 20
 
 
 [op.SET.PMOS]
@@ -697,9 +699,9 @@ VBL_start = -2
 VBL_step = -0.1
 VBL_stop = -2.01
 
-PW_start = 1
-PW_stop = 2
-PW_steps = 2
+PW_start = 10
+PW_stop = 20
+PW_steps = 20
 
 # =============================================================================
 # RESET PULSE
@@ -712,38 +714,38 @@ VBL = 0
 VWL_UNSEL_OFFSET = 0
 PW = 100
 
-VWL_start = 1.5
-VWL_step = 0.25
-VWL_stop = 3.0
+VWL_start = 1.8
+VWL_step = 0.1
+VWL_stop = 2.26
 
-VSL_start = 1.5
+VSL_start = 2.2
 VSL_step = 0.05
 VSL_stop = 3
 
 PW_start = 100
 PW_stop = 101
-PW_steps = 3
+PW_steps = 10
 
 
 [op.RESET.PMOS]
 VWL = 0.8
 VSL = 1.5
-VBL = 0.5
+VBL = 1
 PW = 100
 
-VWL_UNSEL_OFFSET = 2
+VWL_UNSEL_OFFSET = 3
 
 # Word Line Voltage Sweep
 VWL_start = -1.8
 VWL_step = -0.1
-VWL_stop = -1.91
+VWL_stop = -2
 
 # Source Line Voltage Sweep
-VSL_start = -0.8
+VSL_start = -1
 VSL_step = -0.1
 VSL_stop = -2
 
 # Pulse Width Sweep
-PW_start = 1000
-PW_stop = 1001
+PW_start = 100
+PW_stop = 101
 PW_steps = 33

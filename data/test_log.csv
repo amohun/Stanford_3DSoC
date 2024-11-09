@@ -748,3 +748,1094 @@ Date,Time,Name,Category,Hash,Comments
 2024-09-04,17:49:15,chip_chip1_device_Array,Dir_Write,0107,NIRRAM Direct Write Test
 2024-09-06,14:48:50,chip_chip1_device_Array,Dir_Write,0000,NIRRAM Direct Write Test
 2024-09-06,14:49:06,chip_chip1_device_Array,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-13,10:51:47,chip_chip1_device_Array,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-13,10:52:43,chip_chip1_device_Array,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-13,10:53:17,chip_chip1_device_Array,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-13,10:54:09,chip_chip1_device_Array,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-13,10:54:27,chip_chip1_device_Array,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-13,10:54:35,chip_chip1_device_Array,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-13,10:55:47,chip_chip1_device_Array,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-13,10:56:01,chip_chip1_device_Array,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-13,10:56:08,chip_chip1_device_Array,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-13,10:56:46,chip_chip1_device_Array,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-13,10:56:56,chip_chip1_device_Array,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-13,10:57:56,chip_chip1_device_Array,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-13,10:58:27,chip_chip1_device_Array,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-13,10:58:47,chip_chip1_device_Array,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-13,10:59:01,chip_chip1_device_Array,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-13,11:00:41,chip_chip1_device_Array,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-13,11:00:57,chip_chip1_device_Array,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-13,11:01:09,chip_chip1_device_Array,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-13,11:06:03,chip_chip1_device_Array,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-13,11:06:25,chip_chip1_device_Array,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-13,11:07:08,chip_chip1_device_Array,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-13,11:07:48,chip_chip1_device_Array,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-13,11:08:08,chip_chip1_device_Array,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-13,11:09:54,chip_chip1_device_Array,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-13,12:52:17,chip_wafer1_device_Chip2,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-13,12:54:08,chip_wafer1_device_Chip2,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-13,12:56:14,chip_wafer1_device_Chip2,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-13,13:03:08,chip_wafer1_device_Chip2,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-13,13:03:33,chip_wafer1_device_Chip2,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-13,13:03:48,chip_wafer1_device_Chip2,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-13,13:04:44,chip_wafer1_device_Chip2,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-13,13:05:01,chip_wafer1_device_Chip2,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-13,13:06:41,chip_wafer1_device_Chip2,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-13,13:07:07,chip_wafer1_device_Chip2,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-13,13:07:21,chip_wafer1_device_Chip2,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-13,13:07:47,chip_wafer1_device_Chip2,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-13,13:08:20,chip_wafer1_device_Chip2,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-13,13:08:40,chip_wafer1_device_Chip2,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-13,13:10:26,chip_wafer1_device_Chip2,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-13,13:10:38,chip_wafer1_device_Chip2,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-13,13:10:47,chip_wafer1_device_Chip2,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-13,13:11:21,chip_wafer1_device_Chip2,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-13,13:11:55,chip_wafer1_device_Chip2,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-13,13:13:08,chip_wafer1_device_Chip2,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-13,13:14:40,chip_wafer1_device_Chip2,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-13,13:15:07,chip_wafer1_device_Chip2,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-13,13:15:12,chip_wafer1_device_Chip2,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-13,13:16:51,chip_wafer1_device_Chip2,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-13,13:17:03,chip_wafer1_device_Chip2,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-13,13:19:12,chip_wafer1_device_Chip2,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-13,13:19:55,chip_wafer1_device_Chip2,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-13,13:21:08,chip_wafer1_device_Chip2,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-13,13:21:46,chip_wafer1_device_Chip2,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-13,13:22:08,chip_wafer1_device_Chip2,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-13,13:22:44,chip_wafer1_device_Chip2,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-13,13:23:23,chip_wafer1_device_Chip2,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-13,13:23:58,chip_wafer1_device_Chip2,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-13,13:24:32,chip_wafer1_device_Chip2,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-13,13:25:10,chip_wafer1_device_Chip2,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-13,13:25:39,chip_wafer1_device_Chip2,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-13,13:26:04,chip_wafer1_device_Chip2,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-13,13:26:12,chip_wafer1_device_Chip2,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-13,13:26:47,chip_wafer1_device_Chip2,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-13,13:28:30,chip_wafer1_device_Chip2,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-13,13:28:44,chip_wafer1_device_Chip2,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-13,13:30:11,chip_wafer1_device_Chip2,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-13,13:42:11,chip_wafer1_device_Chip2,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-16,17:40:15,chip_wafer1_device_Chip2,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-16,17:40:50,chip_wafer1_device_Chip2,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-16,17:42:16,chip_wafer1_device_Chip2,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-16,17:42:42,chip_wafer1_device_Chip2,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-16,17:44:20,chip_wafer1_device_Chip2,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-16,17:46:18,chip_wafer1_device_Chip2,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-16,17:47:57,chip_wafer1_device_Chip2,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-16,17:48:58,chip_wafer1_device_Chip2,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-16,17:50:51,chip_wafer1_device_Chip2,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-16,17:51:34,chip_wafer1_device_Chip2,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-16,17:52:11,chip_wafer1_device_Chip2,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-16,17:54:43,chip_wafer1_device_Chip2,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-16,17:55:14,chip_wafer1_device_Chip2,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-16,17:55:25,chip_wafer1_device_Chip2,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-16,17:56:36,chip_wafer1_device_Chip2,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-16,17:58:55,chip_wafer1_device_Chip2,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-16,18:08:45,chip_wafer1_device_Chip2,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-16,18:11:17,chip_wafer1_device_Chip2,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-16,18:12:28,chip_wafer1_device_Chip2,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-16,18:12:43,chip_wafer1_device_Chip2,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-16,18:13:19,chip_wafer1_device_Chip2,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-16,18:14:04,chip_wafer1_device_Chip2,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-16,18:14:33,chip_wafer1_device_Chip2,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-16,18:15:35,chip_wafer1_device_Chip2,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-16,18:16:20,chip_wafer1_device_Chip2,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-16,18:17:14,chip_wafer1_device_Chip2,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-16,18:17:43,chip_wafer1_device_Chip2,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-16,18:18:03,chip_wafer1_device_Chip2,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-16,18:18:40,chip_wafer1_device_Chip2,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-16,18:19:12,chip_wafer1_device_Chip2,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-16,18:19:29,chip_wafer1_device_Chip2,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-16,18:19:49,chip_wafer1_device_Chip2,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-16,18:20:51,chip_wafer1_device_Chip2,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-16,18:21:06,chip_wafer1_device_Chip2,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-16,18:29:35,chip_wafer1_device_Chip2,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-16,18:31:15,chip_wafer1_device_Chip2,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-16,18:45:38,chip_wafer1_device_Chip2,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-16,18:46:02,chip_wafer1_device_Chip2,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-16,18:46:35,chip_wafer1_device_Chip2,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-16,18:47:32,chip_wafer1_device_Chip2,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-16,18:47:53,chip_wafer1_device_Chip2,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-16,18:48:29,chip_wafer1_device_Chip2,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-16,18:49:55,chip_wafer1_device_Chip2,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-16,18:50:07,chip_wafer1_device_Chip2,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-16,18:50:19,chip_wafer1_device_Chip2,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-16,18:50:32,chip_wafer1_device_Chip2,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-16,18:50:48,chip_wafer1_device_Chip2,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-16,18:51:09,chip_wafer1_device_Chip2,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-16,18:51:20,chip_wafer1_device_Chip2,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-16,18:51:32,chip_wafer1_device_Chip2,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-16,18:51:52,chip_wafer1_device_Chip2,Dir_Write,0050,NIRRAM Direct Write Test
+2024-09-16,18:52:06,chip_wafer1_device_Chip2,Dir_Write,0051,NIRRAM Direct Write Test
+2024-09-16,18:52:42,chip_wafer1_device_Chip2,Dir_Write,0052,NIRRAM Direct Write Test
+2024-09-16,19:03:35,chip_wafer1_device_Chip2,Dir_Write,0053,NIRRAM Direct Write Test
+2024-09-16,19:03:41,chip_wafer1_device_Chip2,Dir_Write,0054,NIRRAM Direct Write Test
+2024-09-16,19:03:46,chip_wafer1_device_Chip2,Dir_Write,0055,NIRRAM Direct Write Test
+2024-09-16,19:03:56,chip_wafer1_device_Chip2,Dir_Write,0056,NIRRAM Direct Write Test
+2024-09-16,19:04:48,chip_wafer1_device_Chip2,Dir_Write,0057,NIRRAM Direct Write Test
+2024-09-16,19:04:56,chip_wafer1_device_Chip2,Dir_Write,0058,NIRRAM Direct Write Test
+2024-09-16,19:05:03,chip_wafer1_device_Chip2,Dir_Write,0059,NIRRAM Direct Write Test
+2024-09-16,19:05:15,chip_wafer1_device_Chip2,Dir_Write,0060,NIRRAM Direct Write Test
+2024-09-16,19:05:54,chip_wafer1_device_Chip2,Dir_Write,0061,NIRRAM Direct Write Test
+2024-09-16,19:05:59,chip_wafer1_device_Chip2,Dir_Write,0062,NIRRAM Direct Write Test
+2024-09-16,19:06:04,chip_wafer1_device_Chip2,Dir_Write,0063,NIRRAM Direct Write Test
+2024-09-16,19:06:09,chip_wafer1_device_Chip2,Dir_Write,0064,NIRRAM Direct Write Test
+2024-09-16,19:06:14,chip_wafer1_device_Chip2,Dir_Write,0065,NIRRAM Direct Write Test
+2024-09-16,19:06:19,chip_wafer1_device_Chip2,Dir_Write,0066,NIRRAM Direct Write Test
+2024-09-16,19:06:24,chip_wafer1_device_Chip2,Dir_Write,0067,NIRRAM Direct Write Test
+2024-09-16,19:06:29,chip_wafer1_device_Chip2,Dir_Write,0068,NIRRAM Direct Write Test
+2024-09-16,19:06:34,chip_wafer1_device_Chip2,Dir_Write,0069,NIRRAM Direct Write Test
+2024-09-16,19:08:40,chip_wafer1_device_Chip2,Dir_Write,0070,NIRRAM Direct Write Test
+2024-09-16,19:11:45,chip_wafer1_device_Chip2,Dir_Write,0071,NIRRAM Direct Write Test
+2024-09-16,19:12:16,chip_wafer1_device_Chip2,Dir_Write,0072,NIRRAM Direct Write Test
+2024-09-16,19:12:52,chip_wafer1_device_Chip2,Dir_Write,0073,NIRRAM Direct Write Test
+2024-09-16,19:13:33,chip_wafer1_device_Chip2,Dir_Write,0074,NIRRAM Direct Write Test
+2024-09-16,19:15:19,chip_wafer1_device_Chip2,Dir_Write,0075,NIRRAM Direct Write Test
+2024-09-16,19:15:43,chip_wafer1_device_Chip2,Dir_Write,0076,NIRRAM Direct Write Test
+2024-09-16,19:23:51,chip_wafer1_device_Chip2,Dir_Write,0077,NIRRAM Direct Write Test
+2024-09-16,19:24:42,chip_wafer1_device_Chip2,Dir_Write,0078,NIRRAM Direct Write Test
+2024-09-16,19:26:08,chip_wafer1_device_Chip2,Dir_Write,0079,NIRRAM Direct Write Test
+2024-09-16,19:26:27,chip_wafer1_device_Chip2,Dir_Write,0080,NIRRAM Direct Write Test
+2024-09-16,19:26:44,chip_wafer1_device_Chip2,Dir_Write,0081,NIRRAM Direct Write Test
+2024-09-16,19:27:36,chip_wafer1_device_Chip2,Dir_Write,0082,NIRRAM Direct Write Test
+2024-09-16,19:28:30,chip_wafer1_device_Chip2,Dir_Write,0083,NIRRAM Direct Write Test
+2024-09-16,19:28:43,chip_wafer1_device_Chip2,Dir_Write,0084,NIRRAM Direct Write Test
+2024-09-16,19:29:24,chip_wafer1_device_Chip2,Dir_Write,0085,NIRRAM Direct Write Test
+2024-09-16,19:29:57,chip_wafer1_device_Chip2,Dir_Write,0086,NIRRAM Direct Write Test
+2024-09-16,19:31:29,chip_wafer1_device_Chip2,Dir_Write,0087,NIRRAM Direct Write Test
+2024-09-16,19:32:06,chip_wafer1_device_Chip2,Dir_Write,0088,NIRRAM Direct Write Test
+2024-09-16,19:32:22,chip_wafer1_device_Chip2,Dir_Write,0089,NIRRAM Direct Write Test
+2024-09-16,19:32:59,chip_wafer1_device_Chip2,Dir_Write,0090,NIRRAM Direct Write Test
+2024-09-16,19:33:47,chip_wafer1_device_Chip2,Dir_Write,0091,NIRRAM Direct Write Test
+2024-09-16,19:35:09,chip_wafer1_device_Chip2,Dir_Write,0092,NIRRAM Direct Write Test
+2024-09-16,19:38:22,chip_wafer1_device_Chip2,Dir_Write,0093,NIRRAM Direct Write Test
+2024-09-16,19:39:14,chip_wafer1_device_Chip2,Dir_Write,0094,NIRRAM Direct Write Test
+2024-09-16,19:40:59,chip_wafer1_device_Chip2,Dir_Write,0095,NIRRAM Direct Write Test
+2024-09-16,21:20:34,chip_wafer1_device_Chip2,Dir_Write,0096,NIRRAM Direct Write Test
+2024-09-16,21:21:00,chip_wafer1_device_Chip2,Dir_Write,0097,NIRRAM Direct Write Test
+2024-09-16,21:21:26,chip_wafer1_device_Chip2,Dir_Write,0098,NIRRAM Direct Write Test
+2024-09-16,21:21:53,chip_wafer1_device_Chip2,Dir_Write,0099,NIRRAM Direct Write Test
+2024-09-16,21:22:11,chip_wafer1_device_Chip2,Dir_Write,0100,NIRRAM Direct Write Test
+2024-09-16,21:22:55,chip_wafer1_device_Chip2,Dir_Write,0101,NIRRAM Direct Write Test
+2024-09-16,21:24:51,chip_wafer1_device_Chip2,Dir_Write,0102,NIRRAM Direct Write Test
+2024-09-16,21:25:09,chip_wafer1_device_Chip2,Dir_Write,0103,NIRRAM Direct Write Test
+2024-09-16,21:26:40,chip_wafer1_device_Chip2,Dir_Write,0104,NIRRAM Direct Write Test
+2024-09-16,21:27:09,chip_wafer1_device_Chip2,Dir_Write,0105,NIRRAM Direct Write Test
+2024-09-16,21:27:30,chip_wafer1_device_Chip2,Dir_Write,0106,NIRRAM Direct Write Test
+2024-09-16,21:27:41,chip_wafer1_device_Chip2,Dir_Write,0107,NIRRAM Direct Write Test
+2024-09-16,21:28:01,chip_wafer1_device_Chip2,Dir_Write,0108,NIRRAM Direct Write Test
+2024-09-16,21:28:17,chip_wafer1_device_Chip2,Dir_Write,0109,NIRRAM Direct Write Test
+2024-09-16,21:28:27,chip_wafer1_device_Chip2,Dir_Write,0110,NIRRAM Direct Write Test
+2024-09-16,21:28:43,chip_wafer1_device_Chip2,Dir_Write,0111,NIRRAM Direct Write Test
+2024-09-16,21:28:54,chip_wafer1_device_Chip2,Dir_Write,0112,NIRRAM Direct Write Test
+2024-09-16,21:32:19,chip_wafer1_device_Chip2,Dir_Write,0113,NIRRAM Direct Write Test
+2024-09-16,21:33:05,chip_wafer1_device_Chip2,Dir_Write,0114,NIRRAM Direct Write Test
+2024-09-16,21:33:11,chip_wafer1_device_Chip2,Dir_Write,0115,NIRRAM Direct Write Test
+2024-09-16,21:33:43,chip_wafer1_device_Chip2,Dir_Write,0116,NIRRAM Direct Write Test
+2024-09-16,21:35:13,chip_wafer1_device_Chip2,Dir_Write,0117,NIRRAM Direct Write Test
+2024-09-16,21:35:57,chip_wafer1_device_Chip2,Dir_Write,0118,NIRRAM Direct Write Test
+2024-09-17,10:49:30,chip_wafer1_device_Chip2,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,10:51:34,chip_wafer1_device_Chip2,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-17,10:52:01,chip_wafer1_device_Chip2,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-17,10:52:55,chip_wafer1_device_Chip2,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-17,10:53:25,chip_wafer1_device_Chip2,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-17,10:54:57,chip_wafer1_device_Chip2,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-17,10:56:33,chip_wafer1_device_Chip2,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-17,10:56:40,chip_wafer1_device_Chip2,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-17,10:57:12,chip_wafer1_device_Chip2,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-17,10:57:38,chip_wafer1_device_Chip2,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-17,11:00:14,chip_wafer1_device_Chip2,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-17,11:01:15,chip_wafer1_device_Chip2,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-17,11:02:45,chip_wafer1_device_Chip2,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-17,11:08:16,chip_wafer1_device_Chip2,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-17,11:08:42,chip_wafer1_device_Chip2,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-17,11:11:08,chip_wafer1_device_Chip2,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-17,11:12:21,chip_wafer1_device_Chip2,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-17,11:13:20,chip_wafer1_device_Chip2,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-17,11:14:20,chip_wafer1_device_Chip2,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-17,11:15:38,chip_wafer1_device_Chip2,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-17,11:23:45,chip_wafer1_device_Chip2,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-17,11:24:03,chip_wafer1_device_Chip2,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-17,11:25:11,chip_wafer1_device_Chip2,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-17,11:39:10,chip_wafer1_device_Chip2,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-17,11:40:04,chip_wafer1_device_Chip2,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-17,11:41:48,chip_wafer1_device_Chip2,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-17,11:43:02,chip_wafer1_device_Chip2,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-17,11:50:10,chip_wafer1_device_Chip2,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-17,11:52:07,chip_wafer1_device_Chip2,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-17,11:54:05,chip_wafer1_device_Chip2,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-17,11:54:31,chip_wafer1_device_Chip2,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-17,11:55:13,chip_wafer1_device_Chip2,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-17,11:56:38,chip_wafer1_device_Chip2,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-17,11:57:33,chip_wafer1_device_Chip2,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-17,12:03:50,chip_wafer1_device_Chip2,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-17,12:05:06,chip_wafer1_device_Chip2,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-17,12:05:39,chip_wafer1_device_Chip2,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-17,12:06:05,chip_wafer1_device_Chip2,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-17,12:06:34,chip_wafer1_device_Chip2,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-17,12:06:47,chip_wafer1_device_Chip2,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-17,12:07:32,chip_wafer1_device_Chip2,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-17,12:07:41,chip_wafer1_device_Chip2,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-17,12:09:07,chip_wafer1_device_Chip2,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-17,12:10:18,chip_wafer1_device_Chip2,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-17,12:11:31,chip_wafer1_device_Chip2,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-17,12:38:05,chip_wafer1_device_Chip2,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-17,12:38:57,chip_wafer1_device_Chip2,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-17,12:42:12,chip_wafer1_device_Chip2,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-17,12:42:31,chip_wafer1_device_Chip2,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-17,12:42:54,chip_wafer1_device_Chip2,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-17,12:43:38,chip_wafer1_device_Chip2,Dir_Write,0050,NIRRAM Direct Write Test
+2024-09-17,12:43:44,chip_wafer1_device_Chip2,Dir_Write,0051,NIRRAM Direct Write Test
+2024-09-17,12:44:51,chip_wafer1_device_Chip2,Dir_Write,0052,NIRRAM Direct Write Test
+2024-09-17,12:45:52,chip_wafer1_device_Chip2,Dir_Write,0053,NIRRAM Direct Write Test
+2024-09-17,12:46:08,chip_wafer1_device_Chip2,Dir_Write,0054,NIRRAM Direct Write Test
+2024-09-17,12:46:59,chip_wafer1_device_Chip2,Dir_Write,0055,NIRRAM Direct Write Test
+2024-09-17,12:47:33,chip_wafer1_device_Chip2,Dir_Write,0056,NIRRAM Direct Write Test
+2024-09-17,12:48:10,chip_wafer1_device_Chip2,Dir_Write,0057,NIRRAM Direct Write Test
+2024-09-17,12:48:26,chip_wafer1_device_Chip2,Dir_Write,0058,NIRRAM Direct Write Test
+2024-09-17,12:48:42,chip_wafer1_device_Chip2,Dir_Write,0059,NIRRAM Direct Write Test
+2024-09-17,12:48:57,chip_wafer1_device_Chip2,Dir_Write,0060,NIRRAM Direct Write Test
+2024-09-17,12:49:09,chip_wafer1_device_Chip2,Dir_Write,0061,NIRRAM Direct Write Test
+2024-09-17,12:49:13,chip_wafer1_device_Chip2,Dir_Write,0062,NIRRAM Direct Write Test
+2024-09-17,12:49:27,chip_wafer1_device_Chip2,Dir_Write,0063,NIRRAM Direct Write Test
+2024-09-17,12:51:03,chip_wafer1_device_Chip2,Dir_Write,0064,NIRRAM Direct Write Test
+2024-09-17,12:51:13,chip_wafer1_device_Chip2,Dir_Write,0065,NIRRAM Direct Write Test
+2024-09-17,12:51:42,chip_wafer1_device_Chip2,Dir_Write,0066,NIRRAM Direct Write Test
+2024-09-17,12:52:09,chip_wafer1_device_Chip2,Dir_Write,0067,NIRRAM Direct Write Test
+2024-09-17,13:14:31,chip_wafer1_device_Chip2,Dir_Write,0068,NIRRAM Direct Write Test
+2024-09-17,13:15:07,chip_wafer1_device_Chip2,Dir_Write,0069,NIRRAM Direct Write Test
+2024-09-17,13:15:43,chip_wafer1_device_Chip2,Dir_Write,0070,NIRRAM Direct Write Test
+2024-09-17,13:15:50,chip_wafer1_device_Chip2,Dir_Write,0071,NIRRAM Direct Write Test
+2024-09-17,13:16:31,chip_wafer1_device_Chip2,Dir_Write,0072,NIRRAM Direct Write Test
+2024-09-17,13:17:36,chip_wafer1_device_Chip2,Dir_Write,0073,NIRRAM Direct Write Test
+2024-09-17,13:18:13,chip_wafer1_device_Chip2,Dir_Write,0074,NIRRAM Direct Write Test
+2024-09-17,13:18:42,chip_wafer1_device_Chip2,Dir_Write,0075,NIRRAM Direct Write Test
+2024-09-17,13:19:11,chip_wafer1_device_Chip2,Dir_Write,0076,NIRRAM Direct Write Test
+2024-09-17,13:19:53,chip_wafer1_device_Chip2,Dir_Write,0077,NIRRAM Direct Write Test
+2024-09-17,13:20:35,chip_wafer1_device_Chip2,Dir_Write,0078,NIRRAM Direct Write Test
+2024-09-17,13:20:55,chip_wafer1_device_Chip2,Dir_Write,0079,NIRRAM Direct Write Test
+2024-09-17,13:21:35,chip_wafer1_device_Chip2,Dir_Write,0080,NIRRAM Direct Write Test
+2024-09-17,13:22:31,chip_wafer1_device_Chip2,Dir_Write,0081,NIRRAM Direct Write Test
+2024-09-17,13:23:03,chip_wafer1_device_Chip2,Dir_Write,0082,NIRRAM Direct Write Test
+2024-09-17,13:23:28,chip_wafer1_device_Chip2,Dir_Write,0083,NIRRAM Direct Write Test
+2024-09-17,13:23:55,chip_wafer1_device_Chip2,Dir_Write,0084,NIRRAM Direct Write Test
+2024-09-17,13:24:31,chip_wafer1_device_Chip2,Dir_Write,0085,NIRRAM Direct Write Test
+2024-09-17,13:24:46,chip_wafer1_device_Chip2,Dir_Write,0086,NIRRAM Direct Write Test
+2024-09-17,13:25:03,chip_wafer1_device_Chip2,Dir_Write,0087,NIRRAM Direct Write Test
+2024-09-17,13:25:40,chip_wafer1_device_Chip2,Dir_Write,0088,NIRRAM Direct Write Test
+2024-09-17,13:26:15,chip_wafer1_device_Chip2,Dir_Write,0089,NIRRAM Direct Write Test
+2024-09-17,13:26:43,chip_wafer1_device_Chip2,Dir_Write,0090,NIRRAM Direct Write Test
+2024-09-17,13:27:03,chip_wafer1_device_Chip2,Dir_Write,0091,NIRRAM Direct Write Test
+2024-09-17,13:27:39,chip_wafer1_device_Chip2,Dir_Write,0092,NIRRAM Direct Write Test
+2024-09-17,13:27:44,chip_wafer1_device_Chip2,Dir_Write,0093,NIRRAM Direct Write Test
+2024-09-17,13:27:58,chip_wafer1_device_Chip2,Dir_Write,0094,NIRRAM Direct Write Test
+2024-09-17,13:28:15,chip_wafer1_device_Chip2,Dir_Write,0095,NIRRAM Direct Write Test
+2024-09-17,13:28:41,chip_wafer1_device_Chip2,Dir_Write,0096,NIRRAM Direct Write Test
+2024-09-17,13:29:12,chip_wafer1_device_Chip2,Dir_Write,0097,NIRRAM Direct Write Test
+2024-09-17,13:29:21,chip_wafer1_device_Chip2,Dir_Write,0098,NIRRAM Direct Write Test
+2024-09-17,13:29:28,chip_wafer1_device_Chip2,Dir_Write,0099,NIRRAM Direct Write Test
+2024-09-17,13:29:35,chip_wafer1_device_Chip2,Dir_Write,0100,NIRRAM Direct Write Test
+2024-09-17,13:30:12,chip_wafer1_device_Chip2,Dir_Write,0101,NIRRAM Direct Write Test
+2024-09-17,13:30:19,chip_wafer1_device_Chip2,Dir_Write,0102,NIRRAM Direct Write Test
+2024-09-17,13:30:42,chip_wafer1_device_Chip2,Dir_Write,0103,NIRRAM Direct Write Test
+2024-09-17,13:30:53,chip_wafer1_device_Chip2,Dir_Write,0104,NIRRAM Direct Write Test
+2024-09-17,13:31:25,chip_wafer1_device_Chip2,Dir_Write,0105,NIRRAM Direct Write Test
+2024-09-17,13:31:36,chip_wafer1_device_Chip2,Dir_Write,0106,NIRRAM Direct Write Test
+2024-09-17,13:32:11,chip_wafer1_device_Chip2,Dir_Write,0107,NIRRAM Direct Write Test
+2024-09-17,13:32:21,chip_wafer1_device_Chip2,Dir_Write,0108,NIRRAM Direct Write Test
+2024-09-17,13:32:30,chip_wafer1_device_Chip2,Dir_Write,0109,NIRRAM Direct Write Test
+2024-09-17,13:32:52,chip_wafer1_device_Chip2,Dir_Write,0110,NIRRAM Direct Write Test
+2024-09-17,13:32:57,chip_wafer1_device_Chip2,Dir_Write,0111,NIRRAM Direct Write Test
+2024-09-17,13:33:05,chip_wafer1_device_Chip2,Dir_Write,0112,NIRRAM Direct Write Test
+2024-09-17,13:33:24,chip_wafer1_device_Chip2,Dir_Write,0113,NIRRAM Direct Write Test
+2024-09-17,13:33:38,chip_wafer1_device_Chip2,Dir_Write,0114,NIRRAM Direct Write Test
+2024-09-17,13:34:24,chip_wafer1_device_Chip2,Dir_Write,0115,NIRRAM Direct Write Test
+2024-09-17,13:35:19,chip_wafer1_device_Chip2,Dir_Write,0116,NIRRAM Direct Write Test
+2024-09-17,13:35:40,chip_wafer1_device_Chip2,Dir_Write,0117,NIRRAM Direct Write Test
+2024-09-17,13:36:15,chip_wafer1_device_Chip2,Dir_Write,0118,NIRRAM Direct Write Test
+2024-09-17,13:36:19,chip_wafer1_device_Chip2,Dir_Write,0119,NIRRAM Direct Write Test
+2024-09-17,13:36:36,chip_wafer1_device_Chip2,Dir_Write,0120,NIRRAM Direct Write Test
+2024-09-17,13:36:53,chip_wafer1_device_Chip2,Dir_Write,0121,NIRRAM Direct Write Test
+2024-09-17,13:37:24,chip_wafer1_device_Chip2,Dir_Write,0122,NIRRAM Direct Write Test
+2024-09-17,13:37:33,chip_wafer1_device_Chip2,Dir_Write,0123,NIRRAM Direct Write Test
+2024-09-17,13:37:42,chip_wafer1_device_Chip2,Dir_Write,0124,NIRRAM Direct Write Test
+2024-09-17,13:38:18,chip_wafer1_device_Chip2,Dir_Write,0125,NIRRAM Direct Write Test
+2024-09-17,13:38:36,chip_wafer1_device_Chip2,Dir_Write,0126,NIRRAM Direct Write Test
+2024-09-17,13:38:41,chip_wafer1_device_Chip2,Dir_Write,0127,NIRRAM Direct Write Test
+2024-09-17,13:38:52,chip_wafer1_device_Chip2,Dir_Write,0128,NIRRAM Direct Write Test
+2024-09-17,13:39:04,chip_wafer1_device_Chip2,Dir_Write,0129,NIRRAM Direct Write Test
+2024-09-17,13:39:15,chip_wafer1_device_Chip2,Dir_Write,0130,NIRRAM Direct Write Test
+2024-09-17,13:39:30,chip_wafer1_device_Chip2,Dir_Write,0131,NIRRAM Direct Write Test
+2024-09-17,13:39:49,chip_wafer1_device_Chip2,Dir_Write,0132,NIRRAM Direct Write Test
+2024-09-17,13:39:55,chip_wafer1_device_Chip2,Dir_Write,0133,NIRRAM Direct Write Test
+2024-09-17,13:40:09,chip_wafer1_device_Chip2,Dir_Write,0134,NIRRAM Direct Write Test
+2024-09-17,13:40:22,chip_wafer1_device_Chip2,Dir_Write,0135,NIRRAM Direct Write Test
+2024-09-17,13:40:42,chip_wafer1_device_Chip2,Dir_Write,0136,NIRRAM Direct Write Test
+2024-09-17,13:40:57,chip_wafer1_device_Chip2,Dir_Write,0137,NIRRAM Direct Write Test
+2024-09-17,13:41:09,chip_wafer1_device_Chip2,Dir_Write,0138,NIRRAM Direct Write Test
+2024-09-17,13:41:15,chip_wafer1_device_Chip2,Dir_Write,0139,NIRRAM Direct Write Test
+2024-09-17,13:43:28,chip_wafer1_device_Chip2,Dir_Write,0140,NIRRAM Direct Write Test
+2024-09-17,13:43:40,chip_wafer1_device_Chip2,Dir_Write,0141,NIRRAM Direct Write Test
+2024-09-17,13:50:48,chip_wafer1_device_Chip2,Dir_Write,0142,NIRRAM Direct Write Test
+2024-09-17,13:50:59,chip_wafer1_device_Chip2,Dir_Write,0143,NIRRAM Direct Write Test
+2024-09-17,13:51:12,chip_wafer1_device_Chip2,Dir_Write,0144,NIRRAM Direct Write Test
+2024-09-17,13:51:17,chip_wafer1_device_Chip2,Dir_Write,0145,NIRRAM Direct Write Test
+2024-09-17,13:51:39,chip_wafer1_device_Chip2,Dir_Write,0146,NIRRAM Direct Write Test
+2024-09-17,13:51:44,chip_wafer1_device_Chip2,Dir_Write,0147,NIRRAM Direct Write Test
+2024-09-17,13:51:56,chip_wafer1_device_Chip2,Dir_Write,0148,NIRRAM Direct Write Test
+2024-09-17,13:52:18,chip_wafer1_device_Chip2,Dir_Write,0149,NIRRAM Direct Write Test
+2024-09-17,13:52:23,chip_wafer1_device_Chip2,Dir_Write,0150,NIRRAM Direct Write Test
+2024-09-17,13:52:28,chip_wafer1_device_Chip2,Dir_Write,0151,NIRRAM Direct Write Test
+2024-09-17,13:52:46,chip_wafer1_device_Chip2,Dir_Write,0152,NIRRAM Direct Write Test
+2024-09-17,13:52:51,chip_wafer1_device_Chip2,Dir_Write,0153,NIRRAM Direct Write Test
+2024-09-17,13:52:57,chip_wafer1_device_Chip2,Dir_Write,0154,NIRRAM Direct Write Test
+2024-09-17,13:53:06,chip_wafer1_device_Chip2,Dir_Write,0155,NIRRAM Direct Write Test
+2024-09-17,13:53:26,chip_wafer1_device_Chip2,Dir_Write,0156,NIRRAM Direct Write Test
+2024-09-17,13:53:34,chip_wafer1_device_Chip2,Dir_Write,0157,NIRRAM Direct Write Test
+2024-09-17,13:53:48,chip_wafer1_device_Chip2,Dir_Write,0158,NIRRAM Direct Write Test
+2024-09-17,13:54:13,chip_wafer1_device_Chip2,Dir_Write,0159,NIRRAM Direct Write Test
+2024-09-17,13:54:19,chip_wafer1_device_Chip2,Dir_Write,0160,NIRRAM Direct Write Test
+2024-09-17,13:54:23,chip_wafer1_device_Chip2,Dir_Write,0161,NIRRAM Direct Write Test
+2024-09-17,13:54:29,chip_wafer1_device_Chip2,Dir_Write,0162,NIRRAM Direct Write Test
+2024-09-17,13:54:44,chip_wafer1_device_Chip2,Dir_Write,0163,NIRRAM Direct Write Test
+2024-09-17,13:54:58,chip_wafer1_device_Chip2,Dir_Write,0164,NIRRAM Direct Write Test
+2024-09-17,13:55:24,chip_wafer1_device_Chip2,Dir_Write,0165,NIRRAM Direct Write Test
+2024-09-17,13:55:31,chip_wafer1_device_Chip2,Dir_Write,0166,NIRRAM Direct Write Test
+2024-09-17,13:55:38,chip_wafer1_device_Chip2,Dir_Write,0167,NIRRAM Direct Write Test
+2024-09-17,13:55:54,chip_wafer1_device_Chip2,Dir_Write,0168,NIRRAM Direct Write Test
+2024-09-17,13:55:58,chip_wafer1_device_Chip2,Dir_Write,0169,NIRRAM Direct Write Test
+2024-09-17,13:56:08,chip_wafer1_device_Chip2,Dir_Write,0170,NIRRAM Direct Write Test
+2024-09-17,13:56:13,chip_wafer1_device_Chip2,Dir_Write,0171,NIRRAM Direct Write Test
+2024-09-17,13:56:22,chip_wafer1_device_Chip2,Dir_Write,0172,NIRRAM Direct Write Test
+2024-09-17,13:56:34,chip_wafer1_device_Chip2,Dir_Write,0173,NIRRAM Direct Write Test
+2024-09-17,13:56:45,chip_wafer1_device_Chip2,Dir_Write,0174,NIRRAM Direct Write Test
+2024-09-17,13:57:02,chip_wafer1_device_Chip2,Dir_Write,0175,NIRRAM Direct Write Test
+2024-09-17,13:57:08,chip_wafer1_device_Chip2,Dir_Write,0176,NIRRAM Direct Write Test
+2024-09-17,13:57:20,chip_wafer1_device_Chip2,Dir_Write,0177,NIRRAM Direct Write Test
+2024-09-17,13:57:32,chip_wafer1_device_Chip2,Dir_Write,0178,NIRRAM Direct Write Test
+2024-09-17,13:57:45,chip_wafer1_device_Chip2,Dir_Write,0179,NIRRAM Direct Write Test
+2024-09-17,13:58:03,chip_wafer1_device_Chip2,Dir_Write,0180,NIRRAM Direct Write Test
+2024-09-17,13:58:33,chip_wafer1_device_Chip2,Dir_Write,0181,NIRRAM Direct Write Test
+2024-09-17,13:58:38,chip_wafer1_device_Chip2,Dir_Write,0182,NIRRAM Direct Write Test
+2024-09-17,13:58:55,chip_wafer1_device_Chip2,Dir_Write,0183,NIRRAM Direct Write Test
+2024-09-17,13:59:00,chip_wafer1_device_Chip2,Dir_Write,0184,NIRRAM Direct Write Test
+2024-09-17,13:59:09,chip_wafer1_device_Chip2,Dir_Write,0185,NIRRAM Direct Write Test
+2024-09-17,14:00:13,chip_wafer1_device_Chip2,Dir_Write,0186,NIRRAM Direct Write Test
+2024-09-17,14:00:26,chip_wafer1_device_Chip2,Dir_Write,0187,NIRRAM Direct Write Test
+2024-09-17,14:00:40,chip_wafer1_device_Chip2,Dir_Write,0188,NIRRAM Direct Write Test
+2024-09-17,14:00:59,chip_wafer1_device_Chip2,Dir_Write,0189,NIRRAM Direct Write Test
+2024-09-17,14:01:05,chip_wafer1_device_Chip2,Dir_Write,0190,NIRRAM Direct Write Test
+2024-09-17,14:01:28,chip_wafer1_device_Chip2,Dir_Write,0191,NIRRAM Direct Write Test
+2024-09-17,14:01:43,chip_wafer1_device_Chip2,Dir_Write,0192,NIRRAM Direct Write Test
+2024-09-17,14:01:52,chip_wafer1_device_Chip2,Dir_Write,0193,NIRRAM Direct Write Test
+2024-09-17,14:02:31,chip_wafer1_device_Chip2,Dir_Write,0194,NIRRAM Direct Write Test
+2024-09-17,14:03:18,chip_wafer1_device_Chip2,Dir_Write,0195,NIRRAM Direct Write Test
+2024-09-17,14:03:53,chip_wafer1_device_Chip2,Dir_Write,0196,NIRRAM Direct Write Test
+2024-09-17,14:04:09,chip_wafer1_device_Chip2,Dir_Write,0197,NIRRAM Direct Write Test
+2024-09-17,14:04:37,chip_wafer1_device_Chip2,Dir_Write,0198,NIRRAM Direct Write Test
+2024-09-17,14:04:53,chip_wafer1_device_Chip2,Dir_Write,0199,NIRRAM Direct Write Test
+2024-09-17,14:05:15,chip_wafer1_device_Chip2,Dir_Write,0200,NIRRAM Direct Write Test
+2024-09-17,14:05:22,chip_wafer1_device_Chip2,Dir_Write,0201,NIRRAM Direct Write Test
+2024-09-17,14:05:27,chip_wafer1_device_Chip2,Dir_Write,0202,NIRRAM Direct Write Test
+2024-09-17,14:05:33,chip_wafer1_device_Chip2,Dir_Write,0203,NIRRAM Direct Write Test
+2024-09-17,14:05:45,chip_wafer1_device_Chip2,Dir_Write,0204,NIRRAM Direct Write Test
+2024-09-17,14:06:08,chip_wafer1_device_Chip2,Dir_Write,0205,NIRRAM Direct Write Test
+2024-09-17,14:06:13,chip_wafer1_device_Chip2,Dir_Write,0206,NIRRAM Direct Write Test
+2024-09-17,14:06:19,chip_wafer1_device_Chip2,Dir_Write,0207,NIRRAM Direct Write Test
+2024-09-17,14:06:48,chip_wafer1_device_Chip2,Dir_Write,0208,NIRRAM Direct Write Test
+2024-09-17,14:06:52,chip_wafer1_device_Chip2,Dir_Write,0209,NIRRAM Direct Write Test
+2024-09-17,14:06:59,chip_wafer1_device_Chip2,Dir_Write,0210,NIRRAM Direct Write Test
+2024-09-17,14:07:17,chip_wafer1_device_Chip2,Dir_Write,0211,NIRRAM Direct Write Test
+2024-09-17,14:07:26,chip_wafer1_device_Chip2,Dir_Write,0212,NIRRAM Direct Write Test
+2024-09-17,14:07:42,chip_wafer1_device_Chip2,Dir_Write,0213,NIRRAM Direct Write Test
+2024-09-17,14:07:52,chip_wafer1_device_Chip2,Dir_Write,0214,NIRRAM Direct Write Test
+2024-09-17,14:08:11,chip_wafer1_device_Chip2,Dir_Write,0215,NIRRAM Direct Write Test
+2024-09-17,14:08:21,chip_wafer1_device_Chip2,Dir_Write,0216,NIRRAM Direct Write Test
+2024-09-17,14:08:26,chip_wafer1_device_Chip2,Dir_Write,0217,NIRRAM Direct Write Test
+2024-09-17,14:08:35,chip_wafer1_device_Chip2,Dir_Write,0218,NIRRAM Direct Write Test
+2024-09-17,14:08:52,chip_wafer1_device_Chip2,Dir_Write,0219,NIRRAM Direct Write Test
+2024-09-17,14:08:59,chip_wafer1_device_Chip2,Dir_Write,0220,NIRRAM Direct Write Test
+2024-09-17,14:09:17,chip_wafer1_device_Chip2,Dir_Write,0221,NIRRAM Direct Write Test
+2024-09-17,14:09:32,chip_wafer1_device_Chip2,Dir_Write,0222,NIRRAM Direct Write Test
+2024-09-17,14:09:44,chip_wafer1_device_Chip2,Dir_Write,0223,NIRRAM Direct Write Test
+2024-09-17,14:09:49,chip_wafer1_device_Chip2,Dir_Write,0224,NIRRAM Direct Write Test
+2024-09-17,17:24:43,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,17:25:24,chip_wafer1_device_Chip2,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,17:25:48,chip_wafer1_device_Chip2,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-17,17:26:43,chip_wafer1_device_Chip2,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-17,17:27:03,chip_wafer1_device_Chip2,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-17,17:32:44,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,17:33:06,chip_wafer1_device_Chip1,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-17,17:34:18,chip_wafer1_device_Chip1,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-17,17:34:26,chip_wafer1_device_Chip1,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-17,17:34:54,chip_wafer1_device_Chip1,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-17,17:35:18,chip_wafer1_device_Chip1,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-17,17:36:09,chip_wafer1_device_Chip1,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-17,17:36:16,chip_wafer1_device_Chip1,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-17,17:37:15,chip_wafer1_device_Chip1,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-17,17:37:24,chip_wafer1_device_Chip1,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-17,17:37:40,chip_wafer1_device_Chip1,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-17,17:38:34,chip_wafer1_device_Chip1,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-17,17:38:43,chip_wafer1_device_Chip1,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-17,17:39:29,chip_wafer1_device_Chip1,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-17,17:47:09,chip_wafer1_device_Chip1,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-17,17:48:25,chip_wafer1_device_Chip1,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-17,17:52:01,chip_wafer1_device_Chip1,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-17,17:52:27,chip_wafer1_device_Chip1,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-17,17:53:21,chip_wafer1_device_Chip1,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-17,17:53:38,chip_wafer1_device_Chip1,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-17,17:54:20,chip_wafer1_device_Chip1,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-17,17:55:23,chip_wafer1_device_Chip2,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,17:56:12,chip_wafer1_device_Chip2,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-17,17:56:47,chip_wafer1_device_Chip2,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-17,19:13:19,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-17,19:13:34,chip_wafer1_device_Chip1,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-17,19:13:49,chip_wafer1_device_Chip1,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-17,19:14:08,chip_wafer1_device_Chip1,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-17,19:14:30,chip_wafer1_device_Chip1,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-17,19:14:37,chip_wafer1_device_Chip1,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-17,19:15:30,chip_wafer1_device_Chip1,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-17,19:17:07,chip_wafer1_device_Chip1,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-17,19:17:57,chip_wafer1_device_Chip1,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-17,19:18:10,chip_wafer1_device_Chip1,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-17,19:18:18,chip_wafer1_device_Chip1,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-17,19:18:31,chip_wafer1_device_Chip1,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-17,19:18:51,chip_wafer1_device_Chip1,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-17,19:19:01,chip_wafer1_device_Chip1,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-17,19:19:38,chip_wafer1_device_Chip1,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-17,19:19:53,chip_wafer1_device_Chip1,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-17,19:21:56,chip_wafer1_device_Chip1,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-17,19:22:15,chip_wafer1_device_Chip1,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-17,19:22:20,chip_wafer1_device_Chip1,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-17,19:23:07,chip_wafer1_device_Chip1,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-17,19:23:36,chip_wafer1_device_Chip1,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-17,19:24:03,chip_wafer1_device_Chip1,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-17,19:24:08,chip_wafer1_device_Chip1,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-17,19:24:21,chip_wafer1_device_Chip1,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-17,19:24:42,chip_wafer1_device_Chip1,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-17,19:24:49,chip_wafer1_device_Chip1,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-17,19:24:54,chip_wafer1_device_Chip1,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-17,19:25:05,chip_wafer1_device_Chip1,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-17,19:25:11,chip_wafer1_device_Chip1,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-17,19:25:33,chip_wafer1_device_Chip1,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-17,19:25:57,chip_wafer1_device_Chip1,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-17,19:26:11,chip_wafer1_device_Chip1,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-17,19:26:28,chip_wafer1_device_Chip1,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-17,19:26:43,chip_wafer1_device_Chip1,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-17,19:27:11,chip_wafer1_device_Chip1,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-17,19:27:51,chip_wafer1_device_Chip1,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-17,19:28:30,chip_wafer1_device_Chip1,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-17,19:28:50,chip_wafer1_device_Chip1,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-17,19:28:59,chip_wafer1_device_Chip1,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-17,19:29:05,chip_wafer1_device_Chip1,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-17,19:29:28,chip_wafer1_device_Chip1,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-17,19:29:35,chip_wafer1_device_Chip1,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-17,19:30:01,chip_wafer1_device_Chip1,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-17,19:31:05,chip_wafer1_device_Chip1,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-17,19:33:23,chip_wafer1_device_Chip1,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-17,19:33:29,chip_wafer1_device_Chip1,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-17,19:33:45,chip_wafer1_device_Chip1,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-17,19:34:04,chip_wafer1_device_Chip1,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-17,19:34:10,chip_wafer1_device_Chip1,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-17,19:35:13,chip_wafer1_device_Chip1,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-17,19:35:19,chip_wafer1_device_Chip1,Dir_Write,0050,NIRRAM Direct Write Test
+2024-09-17,19:35:40,chip_wafer1_device_Chip1,Dir_Write,0051,NIRRAM Direct Write Test
+2024-09-17,19:36:10,chip_wafer1_device_Chip1,Dir_Write,0052,NIRRAM Direct Write Test
+2024-09-17,19:36:15,chip_wafer1_device_Chip1,Dir_Write,0053,NIRRAM Direct Write Test
+2024-09-17,19:36:23,chip_wafer1_device_Chip1,Dir_Write,0054,NIRRAM Direct Write Test
+2024-09-17,19:36:38,chip_wafer1_device_Chip1,Dir_Write,0055,NIRRAM Direct Write Test
+2024-09-17,19:36:48,chip_wafer1_device_Chip1,Dir_Write,0056,NIRRAM Direct Write Test
+2024-09-17,19:37:02,chip_wafer1_device_Chip1,Dir_Write,0057,NIRRAM Direct Write Test
+2024-09-17,19:42:27,chip_wafer1_device_Chip1,Dir_Write,0058,NIRRAM Direct Write Test
+2024-09-17,19:42:49,chip_wafer1_device_Chip1,Dir_Write,0059,NIRRAM Direct Write Test
+2024-09-17,19:42:55,chip_wafer1_device_Chip1,Dir_Write,0060,NIRRAM Direct Write Test
+2024-09-17,19:43:20,chip_wafer1_device_Chip1,Dir_Write,0061,NIRRAM Direct Write Test
+2024-09-17,19:43:29,chip_wafer1_device_Chip1,Dir_Write,0062,NIRRAM Direct Write Test
+2024-09-17,19:43:38,chip_wafer1_device_Chip1,Dir_Write,0063,NIRRAM Direct Write Test
+2024-09-17,19:43:55,chip_wafer1_device_Chip1,Dir_Write,0064,NIRRAM Direct Write Test
+2024-09-17,19:44:15,chip_wafer1_device_Chip1,Dir_Write,0065,NIRRAM Direct Write Test
+2024-09-17,19:44:24,chip_wafer1_device_Chip1,Dir_Write,0066,NIRRAM Direct Write Test
+2024-09-17,19:44:41,chip_wafer1_device_Chip1,Dir_Write,0067,NIRRAM Direct Write Test
+2024-09-17,19:45:00,chip_wafer1_device_Chip1,Dir_Write,0068,NIRRAM Direct Write Test
+2024-09-17,19:45:07,chip_wafer1_device_Chip1,Dir_Write,0069,NIRRAM Direct Write Test
+2024-09-17,19:45:36,chip_wafer1_device_Chip1,Dir_Write,0070,NIRRAM Direct Write Test
+2024-09-17,19:45:49,chip_wafer1_device_Chip1,Dir_Write,0071,NIRRAM Direct Write Test
+2024-09-17,19:46:20,chip_wafer1_device_Chip1,Dir_Write,0072,NIRRAM Direct Write Test
+2024-09-17,19:46:26,chip_wafer1_device_Chip1,Dir_Write,0073,NIRRAM Direct Write Test
+2024-09-17,19:46:44,chip_wafer1_device_Chip1,Dir_Write,0074,NIRRAM Direct Write Test
+2024-09-17,19:47:29,chip_wafer1_device_Chip1,Dir_Write,0075,NIRRAM Direct Write Test
+2024-09-17,19:47:36,chip_wafer1_device_Chip1,Dir_Write,0076,NIRRAM Direct Write Test
+2024-09-17,19:48:05,chip_wafer1_device_Chip1,Dir_Write,0077,NIRRAM Direct Write Test
+2024-09-17,19:48:11,chip_wafer1_device_Chip1,Dir_Write,0078,NIRRAM Direct Write Test
+2024-09-17,19:48:18,chip_wafer1_device_Chip1,Dir_Write,0079,NIRRAM Direct Write Test
+2024-09-17,19:48:22,chip_wafer1_device_Chip1,Dir_Write,0080,NIRRAM Direct Write Test
+2024-09-17,19:48:26,chip_wafer1_device_Chip1,Dir_Write,0081,NIRRAM Direct Write Test
+2024-09-17,19:48:34,chip_wafer1_device_Chip1,Dir_Write,0082,NIRRAM Direct Write Test
+2024-09-17,19:48:51,chip_wafer1_device_Chip1,Dir_Write,0083,NIRRAM Direct Write Test
+2024-09-17,19:49:29,chip_wafer1_device_Chip1,Dir_Write,0084,NIRRAM Direct Write Test
+2024-09-17,19:50:00,chip_wafer1_device_Chip1,Dir_Write,0085,NIRRAM Direct Write Test
+2024-09-17,19:50:11,chip_wafer1_device_Chip1,Dir_Write,0086,NIRRAM Direct Write Test
+2024-09-17,19:50:21,chip_wafer1_device_Chip1,Dir_Write,0087,NIRRAM Direct Write Test
+2024-09-17,19:50:31,chip_wafer1_device_Chip1,Dir_Write,0088,NIRRAM Direct Write Test
+2024-09-17,19:50:39,chip_wafer1_device_Chip1,Dir_Write,0089,NIRRAM Direct Write Test
+2024-09-17,19:50:52,chip_wafer1_device_Chip1,Dir_Write,0090,NIRRAM Direct Write Test
+2024-09-17,19:51:15,chip_wafer1_device_Chip1,Dir_Write,0091,NIRRAM Direct Write Test
+2024-09-17,19:51:22,chip_wafer1_device_Chip1,Dir_Write,0092,NIRRAM Direct Write Test
+2024-09-17,19:51:32,chip_wafer1_device_Chip1,Dir_Write,0093,NIRRAM Direct Write Test
+2024-09-17,21:59:37,chip_wafer1_device_Chip1,Dir_Write,0094,NIRRAM Direct Write Test
+2024-09-17,22:00:50,chip_wafer1_device_Chip1,Dir_Write,0095,NIRRAM Direct Write Test
+2024-09-17,22:01:30,chip_wafer1_device_Chip1,Dir_Write,0096,NIRRAM Direct Write Test
+2024-09-17,22:01:39,chip_wafer1_device_Chip1,Dir_Write,0097,NIRRAM Direct Write Test
+2024-09-17,22:02:38,chip_wafer1_device_Chip1,Dir_Write,0098,NIRRAM Direct Write Test
+2024-09-17,22:02:49,chip_wafer1_device_Chip1,Dir_Write,0099,NIRRAM Direct Write Test
+2024-09-17,22:03:26,chip_wafer1_device_Chip1,Dir_Write,0100,NIRRAM Direct Write Test
+2024-09-17,22:04:04,chip_wafer1_device_Chip1,Dir_Write,0101,NIRRAM Direct Write Test
+2024-09-17,22:04:43,chip_wafer1_device_Chip1,Dir_Write,0102,NIRRAM Direct Write Test
+2024-09-17,22:05:46,chip_wafer1_device_Chip1,Dir_Write,0103,NIRRAM Direct Write Test
+2024-09-17,22:05:57,chip_wafer1_device_Chip1,Dir_Write,0104,NIRRAM Direct Write Test
+2024-09-17,22:06:31,chip_wafer1_device_Chip1,Dir_Write,0105,NIRRAM Direct Write Test
+2024-09-17,22:06:45,chip_wafer1_device_Chip1,Dir_Write,0106,NIRRAM Direct Write Test
+2024-09-17,22:07:06,chip_wafer1_device_Chip1,Dir_Write,0107,NIRRAM Direct Write Test
+2024-09-17,22:07:22,chip_wafer1_device_Chip1,Dir_Write,0108,NIRRAM Direct Write Test
+2024-09-17,22:07:35,chip_wafer1_device_Chip1,Dir_Write,0109,NIRRAM Direct Write Test
+2024-09-18,22:19:07,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-18,22:19:56,chip_wafer1_device_Chip1,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-18,22:22:24,chip_wafer1_device_Chip1,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-18,22:23:43,chip_wafer1_device_Chip1,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-18,22:23:56,chip_wafer1_device_Chip1,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,17:26:46,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,17:29:14,chip_wafer1_device_Chip1,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,17:30:15,chip_wafer1_device_Chip1,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,17:32:29,chip_wafer1_device_Chip1,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,17:32:49,chip_wafer1_device_Chip1,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,17:34:00,chip_wafer1_device_Chip1,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,17:34:21,chip_wafer1_device_Chip1,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-19,17:35:02,chip_wafer1_device_Chip1,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-19,17:36:00,chip_wafer1_device_Chip1,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-19,17:36:06,chip_wafer1_device_Chip1,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-19,17:36:28,chip_wafer1_device_Chip1,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-19,17:36:49,chip_wafer1_device_Chip1,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-19,17:38:28,chip_wafer1_device_Chip1,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-19,17:43:51,chip_wafer1_device_Chip1,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-19,17:44:36,chip_wafer1_device_Chip1,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-19,17:45:03,chip_wafer1_device_Chip1,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-19,17:47:10,chip_wafer1_device_Chip1,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-19,17:47:19,chip_wafer1_device_Chip1,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-19,17:55:53,chip_wafer1_device_Chip1,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-19,17:58:37,chip_wafer1_device_Chip1,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-19,17:58:43,chip_wafer1_device_Chip1,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-19,17:59:19,chip_wafer1_device_Chip1,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-19,18:02:10,chip_wafer1_device_Chip1,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-19,18:02:37,chip_wafer1_device_Chip1,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-19,18:44:26,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,18:54:30,chip_wafer1_device_Chip5,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,18:55:13,chip_wafer1_device_Chip5,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,18:56:35,chip_wafer1_device_Chip5,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,18:56:43,chip_wafer1_device_Chip5,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,18:57:20,chip_wafer1_device_Chip5,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,18:57:49,chip_wafer1_device_Chip5,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-19,18:59:08,chip_wafer1_device_Chip5,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-19,18:59:35,chip_wafer1_device_Chip5,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-19,19:00:18,chip_wafer1_device_Chip5,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-19,19:00:32,chip_wafer1_device_Chip5,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-19,19:00:59,chip_wafer1_device_Chip5,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-19,19:01:41,chip_wafer1_device_Chip5,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-19,19:02:38,chip_wafer1_device_Chip1,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:02:53,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:03:00,chip_wafer1_device_Chip5,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:03:08,chip_wafer1_device_Chip5,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,19:03:48,chip_wafer1_device_Chip5,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,19:04:17,chip_wafer1_device_Chip5,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,19:05:48,chip_wafer1_device_Chip5,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,19:06:20,chip_wafer1_device_Chip5,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-19,19:07:54,chip_wafer1_device_Chip5,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-19,19:08:16,chip_wafer1_device_Chip5,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-19,19:08:21,chip_wafer1_device_Chip5,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-19,19:08:34,chip_wafer1_device_Chip5,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-19,19:09:18,chip_wafer1_device_Chip5,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-19,19:09:33,chip_wafer1_device_Chip5,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-19,19:09:41,chip_wafer1_device_Chip5,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-19,19:10:12,chip_wafer1_device_Chip5,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-19,19:10:23,chip_wafer1_device_Chip5,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-19,19:12:13,chip_wafer1_device_Chip5,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-19,19:12:55,chip_wafer1_device_Chip5,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-19,19:13:06,chip_wafer1_device_Chip5,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-19,19:13:17,chip_wafer1_device_Chip5,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-19,19:13:47,chip_wafer1_device_Chip5,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-19,19:14:48,chip_wafer1_device_Chip5,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-19,19:14:57,chip_wafer1_device_Chip5,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-19,19:15:18,chip_wafer1_device_Chip5,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-19,19:16:22,chip_wafer1_device_Chip5,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-19,19:16:56,chip_wafer1_device_Chip5,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-19,19:17:13,chip_wafer1_device_Chip5,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-19,19:17:34,chip_wafer1_device_Chip5,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-19,19:18:20,chip_wafer1_device_Chip5,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-19,19:18:52,chip_wafer1_device_Chip5,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-19,19:19:12,chip_wafer1_device_Chip5,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-19,19:19:36,chip_wafer1_device_Chip5,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-19,19:20:36,chip_wafer1_device_Chip5,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-19,19:22:28,chip_wafer1_device_Chip5,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-19,19:22:37,chip_wafer1_device_Chip5,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-19,19:23:29,chip_wafer1_device_Chip5,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-19,19:23:57,chip_wafer1_device_Chip5,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-19,19:25:08,chip_wafer1_device_Chip5,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-19,19:25:31,chip_wafer1_device_Chip5,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-19,19:25:39,chip_wafer1_device_Chip5,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-19,19:25:51,chip_wafer1_device_Chip5,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-19,19:25:58,chip_wafer1_device_Chip5,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-19,19:26:07,chip_wafer1_device_Chip5,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-19,19:26:17,chip_wafer1_device_Chip5,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-19,19:26:25,chip_wafer1_device_Chip5,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-19,19:26:33,chip_wafer1_device_Chip5,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-19,19:26:42,chip_wafer1_device_Chip5,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-19,19:26:51,chip_wafer1_device_Chip5,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-19,19:27:04,chip_wafer1_device_Chip5,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-19,19:27:16,chip_wafer1_device_Chip5,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-19,19:29:00,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:31:55,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:32:03,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:32:20,chip_wafer1_device_Chip5,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:32:41,chip_wafer1_device_Chip5,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,19:34:21,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:34:31,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:34:39,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:34:55,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:35:07,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:35:12,chip_wafer1_device_Chip4,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,19:35:16,chip_wafer1_device_Chip4,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,19:36:45,chip_wafer1_device_Chip4,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,19:36:58,chip_wafer1_device_Chip4,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,19:37:21,chip_wafer1_device_Chip4,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-19,19:38:58,chip_wafer1_device_Chip4,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-19,19:39:37,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:40:43,chip_wafer1_device_Chip5,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:41:34,chip_wafer1_device_Chip5,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,19:42:11,chip_wafer1_device_Chip5,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,19:42:47,chip_wafer1_device_Chip5,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,19:43:12,chip_wafer1_device_Chip5,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,19:43:37,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:45:20,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:45:24,chip_wafer1_device_Chip5,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:46:13,chip_wafer1_device_Chip5,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:46:30,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-19,19:46:43,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-19,19:47:40,chip_wafer1_device_Chip4,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-19,19:49:00,chip_wafer1_device_Chip4,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-19,19:49:21,chip_wafer1_device_Chip4,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-19,19:53:01,chip_wafer1_device_Chip4,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-19,19:53:18,chip_wafer1_device_Chip4,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-19,19:53:33,chip_wafer1_device_Chip4,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-19,19:53:53,chip_wafer1_device_Chip4,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-19,19:54:28,chip_wafer1_device_Chip4,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-19,19:55:45,chip_wafer1_device_Chip4,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-19,19:58:17,chip_wafer1_device_Chip4,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-19,19:58:24,chip_wafer1_device_Chip4,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-19,19:58:35,chip_wafer1_device_Chip4,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-19,19:58:40,chip_wafer1_device_Chip4,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-19,19:59:08,chip_wafer1_device_Chip4,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-19,19:59:15,chip_wafer1_device_Chip4,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-19,19:59:20,chip_wafer1_device_Chip4,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-19,19:59:39,chip_wafer1_device_Chip4,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-19,19:59:45,chip_wafer1_device_Chip4,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-19,20:00:06,chip_wafer1_device_Chip4,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-19,20:00:25,chip_wafer1_device_Chip4,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-19,20:00:31,chip_wafer1_device_Chip4,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-19,20:00:44,chip_wafer1_device_Chip4,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-19,20:01:27,chip_wafer1_device_Chip4,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-19,20:02:23,chip_wafer1_device_Chip4,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-19,20:03:13,chip_wafer1_device_Chip4,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-19,20:03:50,chip_wafer1_device_Chip4,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-19,20:07:57,chip_wafer1_device_Chip4,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-19,20:08:36,chip_wafer1_device_Chip4,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-19,20:09:07,chip_wafer1_device_Chip4,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-19,20:09:25,chip_wafer1_device_Chip4,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-19,20:09:43,chip_wafer1_device_Chip4,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-19,20:10:08,chip_wafer1_device_Chip4,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-19,20:10:26,chip_wafer1_device_Chip4,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-19,20:11:08,chip_wafer1_device_Chip4,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-19,20:11:41,chip_wafer1_device_Chip4,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-19,20:12:20,chip_wafer1_device_Chip4,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-19,20:12:44,chip_wafer1_device_Chip4,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-19,20:13:41,chip_wafer1_device_Chip4,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-19,20:14:36,chip_wafer1_device_Chip4,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-19,20:14:52,chip_wafer1_device_Chip4,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-19,20:15:54,chip_wafer1_device_Chip4,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-19,20:17:31,chip_wafer1_device_Chip4,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-19,20:17:40,chip_wafer1_device_Chip4,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-19,20:18:22,chip_wafer1_device_Chip4,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-19,20:19:07,chip_wafer1_device_Chip4,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-19,20:20:39,chip_wafer1_device_Chip4,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-19,20:21:00,chip_wafer1_device_Chip4,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-19,20:23:38,chip_wafer1_device_Chip4,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-19,20:25:17,chip_wafer1_device_Chip4,Dir_Write,0050,NIRRAM Direct Write Test
+2024-09-19,20:25:39,chip_wafer1_device_Chip4,Dir_Write,0051,NIRRAM Direct Write Test
+2024-09-19,20:26:09,chip_wafer1_device_Chip4,Dir_Write,0052,NIRRAM Direct Write Test
+2024-09-19,20:26:21,chip_wafer1_device_Chip4,Dir_Write,0053,NIRRAM Direct Write Test
+2024-09-19,20:26:50,chip_wafer1_device_Chip4,Dir_Write,0054,NIRRAM Direct Write Test
+2024-09-19,20:27:02,chip_wafer1_device_Chip4,Dir_Write,0055,NIRRAM Direct Write Test
+2024-09-19,20:27:21,chip_wafer1_device_Chip4,Dir_Write,0056,NIRRAM Direct Write Test
+2024-09-20,09:01:28,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-20,09:01:38,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-20,09:01:55,chip_wafer1_device_Chip4,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-20,09:02:25,chip_wafer1_device_Chip4,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-20,09:03:52,chip_wafer1_device_Chip4,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-20,09:04:34,chip_wafer1_device_Chip4,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-20,09:05:13,chip_wafer1_device_Chip4,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-20,09:05:28,chip_wafer1_device_Chip4,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-20,09:07:06,chip_wafer1_device_Chip4,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-20,09:08:32,chip_wafer1_device_Chip4,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-20,09:10:11,chip_wafer1_device_Chip4,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-20,09:10:16,chip_wafer1_device_Chip4,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-20,09:10:36,chip_wafer1_device_Chip4,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-20,09:11:13,chip_wafer1_device_Chip4,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-20,09:11:59,chip_wafer1_device_Chip4,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-20,09:12:29,chip_wafer1_device_Chip4,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-20,09:13:01,chip_wafer1_device_Chip4,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-20,09:14:45,chip_wafer1_device_Chip4,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-20,09:15:18,chip_wafer1_device_Chip4,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-20,09:16:07,chip_wafer1_device_Chip4,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-20,09:17:23,chip_wafer1_device_Chip4,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-20,09:17:28,chip_wafer1_device_Chip4,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-20,09:17:51,chip_wafer1_device_Chip4,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-20,09:18:04,chip_wafer1_device_Chip4,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-20,09:18:48,chip_wafer1_device_Chip4,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-20,09:19:14,chip_wafer1_device_Chip4,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-20,09:19:37,chip_wafer1_device_Chip4,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-20,09:20:40,chip_wafer1_device_Chip4,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-20,09:22:15,chip_wafer1_device_Chip4,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-20,09:22:50,chip_wafer1_device_Chip4,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-21,15:10:49,chip_none_device_open,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-21,15:11:10,chip_none_device_open,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-21,15:12:21,chip_none_device_open,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-21,15:13:04,chip_none_device_open,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-21,15:13:13,chip_none_device_open,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-21,15:14:50,chip_none_device_open,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-21,15:15:07,chip_none_device_open,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-21,15:15:18,chip_none_device_open,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-21,15:15:38,chip_none_device_open,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-21,15:15:58,chip_none_device_open,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-21,15:16:15,chip_none_device_open,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-21,15:16:34,chip_none_device_open,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-21,15:16:48,chip_none_device_open,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-21,15:17:22,chip_none_device_open,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-21,15:18:44,chip_none_device_open,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-21,15:19:40,chip_none_device_open,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-21,15:21:46,chip_none_device_open,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-21,15:23:07,chip_none_device_open,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-21,15:23:21,chip_none_device_open,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-21,15:23:31,chip_none_device_open,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-21,15:24:18,chip_none_device_open,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-21,15:24:42,chip_none_device_open,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-21,15:25:19,chip_none_device_open,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-21,15:26:06,chip_none_device_open,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-21,15:28:58,chip_none_device_open,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-21,15:29:15,chip_none_device_open,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-21,15:30:33,chip_none_device_open,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-21,15:31:00,chip_none_device_open,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-21,15:31:26,chip_none_device_open,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-21,15:31:56,chip_none_device_open,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-21,15:32:32,chip_none_device_open,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-21,15:33:24,chip_none_device_open,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-21,15:33:55,chip_none_device_open,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-21,15:34:47,chip_none_device_open,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-21,15:35:45,chip_none_device_open,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-21,15:38:44,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-21,15:39:50,chip_wafer1_device_Chip4,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-21,15:40:14,chip_wafer1_device_Chip4,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-21,15:40:32,chip_wafer1_device_Chip4,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-21,15:40:57,chip_wafer1_device_Chip4,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-21,15:44:26,chip_wafer1_device_Chip4,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-21,15:46:05,chip_wafer1_device_Chip4,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-21,15:54:57,chip_wafer1_device_Chip4,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-21,15:55:18,chip_wafer1_device_Chip4,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-21,15:55:37,chip_wafer1_device_Chip4,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-21,15:56:29,chip_wafer1_device_Chip4,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-21,15:56:48,chip_wafer1_device_Chip4,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-21,15:57:12,chip_wafer1_device_Chip4,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-21,15:57:17,chip_wafer1_device_Chip4,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-21,15:57:36,chip_wafer1_device_Chip4,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-21,15:57:50,chip_wafer1_device_Chip4,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-21,15:57:56,chip_wafer1_device_Chip4,Dir_Write,0016,NIRRAM Direct Write Test
+2024-09-21,15:58:17,chip_wafer1_device_Chip4,Dir_Write,0017,NIRRAM Direct Write Test
+2024-09-21,15:59:02,chip_wafer1_device_Chip4,Dir_Write,0018,NIRRAM Direct Write Test
+2024-09-21,15:59:23,chip_wafer1_device_Chip4,Dir_Write,0019,NIRRAM Direct Write Test
+2024-09-21,15:59:32,chip_wafer1_device_Chip4,Dir_Write,0020,NIRRAM Direct Write Test
+2024-09-21,15:59:55,chip_wafer1_device_Chip4,Dir_Write,0021,NIRRAM Direct Write Test
+2024-09-21,16:00:12,chip_wafer1_device_Chip4,Dir_Write,0022,NIRRAM Direct Write Test
+2024-09-21,16:00:24,chip_wafer1_device_Chip4,Dir_Write,0023,NIRRAM Direct Write Test
+2024-09-21,16:00:38,chip_wafer1_device_Chip4,Dir_Write,0024,NIRRAM Direct Write Test
+2024-09-21,16:00:44,chip_wafer1_device_Chip4,Dir_Write,0025,NIRRAM Direct Write Test
+2024-09-21,16:00:49,chip_wafer1_device_Chip4,Dir_Write,0026,NIRRAM Direct Write Test
+2024-09-21,16:00:59,chip_wafer1_device_Chip4,Dir_Write,0027,NIRRAM Direct Write Test
+2024-09-21,16:01:03,chip_wafer1_device_Chip4,Dir_Write,0028,NIRRAM Direct Write Test
+2024-09-21,16:02:31,chip_wafer1_device_Chip4,Dir_Write,0029,NIRRAM Direct Write Test
+2024-09-21,16:03:38,chip_wafer1_device_Chip4,Dir_Write,0030,NIRRAM Direct Write Test
+2024-09-21,16:04:29,chip_wafer1_device_Chip4,Dir_Write,0031,NIRRAM Direct Write Test
+2024-09-21,16:10:54,chip_wafer1_device_Chip4,Dir_Write,0032,NIRRAM Direct Write Test
+2024-09-21,16:12:12,chip_wafer1_device_Chip4,Dir_Write,0033,NIRRAM Direct Write Test
+2024-09-21,16:12:39,chip_wafer1_device_Chip4,Dir_Write,0034,NIRRAM Direct Write Test
+2024-09-21,16:13:10,chip_wafer1_device_Chip4,Dir_Write,0035,NIRRAM Direct Write Test
+2024-09-21,16:13:56,chip_wafer1_device_Chip4,Dir_Write,0036,NIRRAM Direct Write Test
+2024-09-21,16:14:19,chip_wafer1_device_Chip4,Dir_Write,0037,NIRRAM Direct Write Test
+2024-09-21,16:14:57,chip_wafer1_device_Chip4,Dir_Write,0038,NIRRAM Direct Write Test
+2024-09-21,16:15:25,chip_wafer1_device_Chip4,Dir_Write,0039,NIRRAM Direct Write Test
+2024-09-21,16:15:44,chip_wafer1_device_Chip4,Dir_Write,0040,NIRRAM Direct Write Test
+2024-09-21,16:17:00,chip_wafer1_device_Chip4,Dir_Write,0041,NIRRAM Direct Write Test
+2024-09-21,16:17:06,chip_wafer1_device_Chip4,Dir_Write,0042,NIRRAM Direct Write Test
+2024-09-21,16:19:40,chip_wafer1_device_Chip4,Dir_Write,0043,NIRRAM Direct Write Test
+2024-09-21,16:20:21,chip_wafer1_device_Chip4,Dir_Write,0044,NIRRAM Direct Write Test
+2024-09-21,16:24:35,chip_wafer1_device_Chip4,Dir_Write,0045,NIRRAM Direct Write Test
+2024-09-21,16:26:04,chip_wafer1_device_Chip4,Dir_Write,0046,NIRRAM Direct Write Test
+2024-09-21,16:27:14,chip_wafer1_device_Chip4,Dir_Write,0047,NIRRAM Direct Write Test
+2024-09-21,16:30:09,chip_wafer1_device_Chip4,Dir_Write,0048,NIRRAM Direct Write Test
+2024-09-21,16:30:33,chip_wafer1_device_Chip4,Dir_Write,0049,NIRRAM Direct Write Test
+2024-09-21,16:31:08,chip_wafer1_device_Chip4,Dir_Write,0050,NIRRAM Direct Write Test
+2024-09-21,16:31:22,chip_wafer1_device_Chip4,Dir_Write,0051,NIRRAM Direct Write Test
+2024-09-23,21:42:38,chip_wafer1_device_Chip4,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-23,21:43:16,chip_wafer1_device_Chip25NMOS,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-23,21:43:38,chip_wafer1_device_Chip25NMOS,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-23,21:43:46,chip_wafer1_device_Chip25NMOS,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-23,21:45:53,chip_wafer1_device_Chip25NMOS,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-23,21:48:19,chip_wafer1_device_Chip25NMOS,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-23,21:49:06,chip_wafer1_device_Chip25NMOS,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-23,21:49:57,chip_wafer1_device_Chip25NMOS,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-23,21:51:34,chip_wafer1_device_Chip25NMOS,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-23,21:51:54,chip_wafer1_device_Chip25NMOS,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-23,21:53:51,chip_wafer1_device_Chip24NMOS,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-23,21:56:17,chip_wafer1_device_Chip24NMOS,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-23,22:03:02,chip_wafer1_device_Chip24NMOS,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-23,22:03:23,chip_wafer1_device_Chip24NMOS,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-23,22:03:59,chip_wafer1_device_Chip24NMOS,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-23,22:04:40,chip_wafer1_device_Chip24NMOS,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-23,22:05:24,chip_wafer1_device_Chip24NMOS,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-23,22:06:20,chip_wafer1_device_Chip24NMOS,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-23,22:06:46,chip_wafer1_device_Chip24NMOS,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-23,22:07:34,chip_wafer1_device_Chip24NMOS,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-26,16:54:21,chip_wafer1_device_Chip24NMOS,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-26,16:55:26,chip_wafer1_device_Chip24NMOS,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-26,16:56:07,chip_wafer1_device_Chip24NMOS,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-26,17:00:10,chip_wafer1_device_Chip24NMOS,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-26,17:08:40,chip_wafer1_device_Chip24NMOS,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-26,17:09:12,chip_wafer1_device_Chip24NMOS,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-26,17:10:14,chip_wafer1_device_Chip24NMOS,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-26,17:10:29,chip_wafer1_device_Chip24NMOS,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-26,17:11:08,chip_wafer1_device_Chip24NMOS,Dir_Write,0008,NIRRAM Direct Write Test
+2024-09-26,17:12:26,chip_wafer1_device_Chip24NMOS,Dir_Write,0009,NIRRAM Direct Write Test
+2024-09-26,17:13:53,chip_wafer1_device_Chip24NMOS,Dir_Write,0010,NIRRAM Direct Write Test
+2024-09-26,17:14:15,chip_wafer1_device_Chip24NMOS,Dir_Write,0011,NIRRAM Direct Write Test
+2024-09-26,17:15:27,chip_wafer1_device_Chip24NMOS,Dir_Write,0012,NIRRAM Direct Write Test
+2024-09-26,17:15:51,chip_wafer1_device_Chip24NMOS,Dir_Write,0013,NIRRAM Direct Write Test
+2024-09-26,17:16:11,chip_wafer1_device_Chip24NMOS,Dir_Write,0014,NIRRAM Direct Write Test
+2024-09-26,17:22:41,chip_wafer1_device_Chip24NMOS,Dir_Write,0015,NIRRAM Direct Write Test
+2024-09-26,19:50:35,chip_chip3nmos_device_wl0bl0,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-26,19:51:19,chip_chip3nmos_device_wl0bl0,Dir_Write,0001,NIRRAM Direct Write Test
+2024-09-26,19:51:24,chip_chip3nmos_device_wl0bl0,Dir_Write,0002,NIRRAM Direct Write Test
+2024-09-26,19:51:36,chip_chip3nmos_device_wl0bl0,Dir_Write,0003,NIRRAM Direct Write Test
+2024-09-26,19:51:45,chip_chip3nmos_device_wl0bl0,Dir_Write,0004,NIRRAM Direct Write Test
+2024-09-26,19:51:55,chip_chip3nmos_device_wl0bl0,Dir_Write,0005,NIRRAM Direct Write Test
+2024-09-26,19:52:03,chip_chip3nmos_device_wl0bl0,Dir_Write,0006,NIRRAM Direct Write Test
+2024-09-26,19:54:17,chip_chip3nmos_device_wl0bl0,Dir_Write,0007,NIRRAM Direct Write Test
+2024-09-26,19:55:17,chip_chip3nmos_device_fullarray,Dir_Write,0000,NIRRAM Direct Write Test
+2024-09-26,19:56:19,chip_chip3nmos_device_fullarray,Dir_Write,0001,Full NMOS array chip 3
+2024-09-26,19:59:28,chip_chip3nmos_device_wl3bl12,Dir_Write,0000,IV Curve
+2024-09-26,20:00:54,chip_chip3nmos_device_BL12,Dir_Write,0000,WL Leakage Measurement
+2024-09-26,20:01:05,chip_chip3nmos_device_BL12,Dir_Write,0001,WL Leakage Measurement
+2024-09-26,20:02:32,chip_chip3nmos_device_BL12,Dir_Write,0002,WL Leakage Measurement
+2024-09-26,20:03:28,chip_chip3nmos_device_BL12,Dir_Write,0003,WL Leakage Measurement
+2024-09-26,20:04:31,chip_chip3nmos_device_BL12,Dir_Write,0004,WL Leakage Measurement
+2024-09-26,20:04:53,chip_chip3nmos_device_BL12,Dir_Write,0005,WL Leakage Measurement
+2024-09-26,20:09:31,chip_chip3nmos_device_FullArrayRaw,Dir_Write,0000,WL Leakage Measurement
+2024-09-27,13:56:50,chip_chip2nmos_device_FullArrayRaw,Dir_Write,0000,Full Array Measurement
+2024-09-29,17:26:15,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0000,Full CSA Direct Measurement
+2024-09-29,17:26:24,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0001,Full CSA Direct Measurement
+2024-09-29,19:38:41,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0002,Full CSA Direct Measurement
+2024-09-30,18:18:13,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0000,Full CSA Direct Measurement
+2024-09-30,18:18:21,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0001,Full CSA Direct Measurement
+2024-09-30,18:18:42,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0002,Full CSA Direct Measurement
+2024-09-30,18:19:17,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0003,Full CSA Direct Measurement
+2024-09-30,18:19:30,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0004,Full CSA Direct Measurement
+2024-10-08,11:52:53,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0000,Full CSA Direct Measurement
+2024-10-08,11:53:46,chip_chipXnmos_device_FullArrayRaw,Dir_Write,0001,Full CSA Direct Measurement
+2024-10-13,18:37:10,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0000,Set Check
+2024-10-13,18:37:25,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0001,Set Check
+2024-10-13,18:38:03,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0002,Set Check
+2024-10-13,18:38:18,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0003,Set Check
+2024-10-13,18:38:32,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0004,Set Check
+2024-10-13,18:38:52,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0005,Set Check
+2024-10-13,18:39:23,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0006,Set Check
+2024-10-13,18:39:43,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0007,Set Check
+2024-10-13,18:43:33,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0008,Set Check
+2024-10-13,18:44:16,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0009,Set Check
+2024-10-13,18:44:52,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0010,Set Check
+2024-10-13,18:45:01,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0011,Set Check
+2024-10-13,18:45:33,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0012,Set Check
+2024-10-13,18:45:50,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0013,Set Check
+2024-10-13,18:46:07,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0014,Set Check
+2024-10-13,18:46:32,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0015,Set Check
+2024-10-13,18:48:41,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0016,Set Check
+2024-10-13,18:48:50,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0017,Set Check
+2024-10-13,18:49:02,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0018,Set Check
+2024-10-13,18:53:29,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0019,Set Check
+2024-10-13,18:54:21,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0020,Set Check
+2024-10-13,18:56:23,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0021,Set Check
+2024-10-13,18:58:58,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0022,Set Check
+2024-10-13,18:59:38,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0023,Set Check
+2024-10-13,19:04:37,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0024,Set Check
+2024-10-13,19:05:39,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0025,Set Check
+2024-10-13,19:06:55,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0026,Set Check
+2024-10-13,19:07:22,chip_chip4nmos_device_FullArrayRaw,Dir_Write,0027,Set Check
+2024-10-21,16:19:01,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0000,Set Check
+2024-10-21,16:20:20,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0001,Set Check
+2024-10-21,16:21:11,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0002,Set Check
+2024-10-21,16:21:50,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0003,Set Check
+2024-10-21,16:23:07,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0004,Set Check
+2024-10-21,16:23:15,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0005,Set Check
+2024-10-21,16:34:23,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0006,Set Check
+2024-10-21,16:35:05,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0007,Set Check
+2024-10-21,16:36:37,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0008,Set Check
+2024-10-21,16:37:39,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0009,Set Check
+2024-10-21,18:54:04,chip_chip5nmos_device_FullArrayRaw,Dir_Write,0010,Set Check
+2024-10-21,19:00:05,chip_chip1nmos_device_0-0,Dir_Write,0000,IV_Measure
+2024-10-21,19:00:55,chip_chip1nmos_device_0-0,Dir_Write,0001,IV_Measure
+2024-10-21,19:01:15,chip_chip1nmos_device_0-0,Dir_Write,0002,IV_Measure
+2024-10-21,19:01:40,chip_chip1nmos_device_0-0,Dir_Write,0003,IV_Measure
+2024-10-21,19:01:58,chip_chip1nmos_device_0-0,Dir_Write,0004,IV_Measure
+2024-10-21,19:02:25,chip_chip1nmos_device_3-4,Dir_Write,0000,IV_Measure
+2024-10-21,19:03:00,chip_chip1nmos_device_4-5,Dir_Write,0000,IV_Measure
+2024-10-21,19:03:32,chip_chip1nmos_device_4-5,Dir_Write,0001,IV_Measure
+2024-10-21,19:03:56,chip_chip1nmos_device_4-5,Dir_Write,0002,IV_Measure
+2024-10-21,19:04:32,chip_chip1nmos_device_4-5,Dir_Write,0003,IV_Measure
+2024-10-21,19:04:54,chip_chip1nmos_device_4-5,Dir_Write,0004,IV_Measure
+2024-10-21,19:05:20,chip_chip1nmos_device_4-5,Dir_Write,0005,IV_Measure
+2024-10-21,19:05:46,chip_chip1nmos_device_4-5,Dir_Write,0006,IV_Measure
+2024-10-21,19:06:57,chip_chip1nmos_device_4-5,Dir_Write,0007,IV_Measure
+2024-10-21,19:07:19,chip_chip1nmos_device_4-5,Dir_Write,0008,IV_Measure
+2024-10-21,19:07:49,chip_chip1nmos_device_4-5,Dir_Write,0009,IV_Measure
+2024-10-21,19:09:53,chip_chip1nmos_device_4-5,Dir_Write,0010,IV_Measure
+2024-10-21,19:10:38,chip_chip1nmos_device_4-5,Dir_Write,0011,IV_Measure
+2024-10-21,19:11:30,chip_chip1nmos_device_4-5,Dir_Write,0012,IV_Measure
+2024-11-01,20:07:34,chip_chip1nmos_device_0-0,Dir_Write,0000,Check Device for CSA
+2024-11-01,20:08:16,chip_chip1nmos_device_0-0,Dir_Write,0001,Check Device for CSA
+2024-11-01,20:08:42,chip_chip1nmos_device_0-0,Dir_Write,0002,Check Device for CSA
+2024-11-01,20:08:53,chip_chip1nmos_device_0-0,Dir_Write,0003,Check Device for CSA
+2024-11-01,20:09:13,chip_chip1nmos_device_0-0,Dir_Write,0004,Check Device for CSA
+2024-11-01,20:09:31,chip_chip1nmos_device_0-0,Dir_Write,0005,Check Device for CSA
+2024-11-01,20:13:17,chip_chip1nmos_device_0-0,Dir_Write,0006,Check Device for CSA
+2024-11-06,16:40:13,chip_wafer_device_0,Dir_Write,0000,Single Device Measurement
+2024-11-06,16:40:28,chip_wafer_device_0,Dir_Write,0001,Single Device Measurement
+2024-11-06,16:41:19,chip_wafer_device_0,Dir_Write,0002,Single Device Measurement
+2024-11-06,16:44:41,chip_wafer_device_0,Dir_Write,0003,Single Device Measurement
+2024-11-06,16:46:27,chip_wafer_device_0,Dir_Write,0004,Single Device Measurement
+2024-11-06,16:47:28,chip_wafer_device_0,Dir_Write,0005,Single Device Measurement
+2024-11-06,16:49:29,chip_wafer_device_0,Dir_Write,0006,Single Device SD Only Contacted
+2024-11-06,16:51:33,chip_wafer_device_0,Dir_Write,0007,Single Device SD Only Contacted
+2024-11-06,16:52:56,chip_wafer_device_0,Dir_Write,0008,Single Device SD Only Contacted
+2024-11-06,16:53:44,chip_wafer_device_0,Dir_Write,0009,Single Device SD Only Contacted
+2024-11-06,16:54:22,chip_wafer_device_0,Dir_Write,0010,Single Device SD Only Contacted
+2024-11-06,16:57:17,chip_wafer_device_0,Dir_Write,0011,Single Device SD Only Contacted
+2024-11-06,16:58:26,chip_wafer_device_0,Dir_Write,0012,Single Device SD Only Contacted
+2024-11-06,16:59:27,chip_wafer_device_0,Dir_Write,0013,Single Device SD Only Contacted
+2024-11-06,17:00:11,chip_wafer_device_0,Dir_Write,0014,Single Device SD Only Contacted
+2024-11-06,17:01:43,chip_wafer_device_0,Dir_Write,0015,Single Device SD Only Contacted
+2024-11-06,17:02:37,chip_wafer_device_0,Dir_Write,0016,Single Device SD Only Contacted
+2024-11-06,17:03:07,chip_wafer_device_0,Dir_Write,0017,Single Device SD Only Contacted
+2024-11-06,17:03:33,chip_wafer_device_0,Dir_Write,0018,Single Device SD Only Contacted
+2024-11-06,17:05:01,chip_wafer_device_0,Dir_Write,0019,Single Device SD Only Contacted
+2024-11-06,17:06:13,chip_wafer_device_0,Dir_Write,0020,Single Device SD Only Contacted
+2024-11-06,17:08:17,chip_wafer_device_0,Dir_Write,0021,Single Device SD Only Contacted
+2024-11-06,17:11:30,chip_wafer_device_0,Dir_Write,0022,Single Device 1T1R
+2024-11-06,17:12:22,chip_wafer_device_0,Dir_Write,0023,Single Device 1T1R
+2024-11-06,17:12:47,chip_wafer_device_0,Dir_Write,0024,Single Device 1T1R
+2024-11-06,17:13:58,chip_wafer_device_0,Dir_Write,0025,Single Device 1T1R
+2024-11-06,17:15:49,chip_wafer_device_0,Dir_Write,0026,Single Device 1T1R
+2024-11-06,17:16:09,chip_wafer_device_0,Dir_Write,0027,Single Device 1T1R
+2024-11-06,17:16:27,chip_wafer_device_0,Dir_Write,0028,Single Device 1T1R
+2024-11-06,17:16:35,chip_wafer_device_0,Dir_Write,0029,Single Device 1T1R
+2024-11-06,17:17:22,chip_wafer_device_0,Dir_Write,0030,Single Device 1T1R
+2024-11-06,17:19:09,chip_wafer_device_0,Dir_Write,0031,Single Device 1T1R
+2024-11-06,17:19:28,chip_wafer_device_0,Dir_Write,0032,Single Device 1T1R
+2024-11-06,17:20:19,chip_wafer_device_0,Dir_Write,0033,Single Device 1T1R
+2024-11-06,17:20:30,chip_wafer_device_0,Dir_Write,0034,Single Device 1T1R
+2024-11-06,17:20:42,chip_wafer_device_0,Dir_Write,0035,Single Device 1T1R
+2024-11-06,17:20:50,chip_wafer_device_0,Dir_Write,0036,Single Device 1T1R
+2024-11-06,17:20:59,chip_wafer_device_0,Dir_Write,0037,Single Device 1T1R
+2024-11-06,17:21:22,chip_wafer_device_0,Dir_Write,0038,Single Device 1T1R
+2024-11-06,17:21:45,chip_wafer_device_0,Dir_Write,0039,Single Device 1T1R
+2024-11-06,17:21:50,chip_wafer_device_0,Dir_Write,0040,Single Device 1T1R
+2024-11-06,17:21:57,chip_wafer_device_0,Dir_Write,0041,Single Device 1T1R
+2024-11-06,17:22:01,chip_wafer_device_0,Dir_Write,0042,Single Device 1T1R
+2024-11-06,17:22:07,chip_wafer_device_0,Dir_Write,0043,Single Device 1T1R
+2024-11-06,17:22:12,chip_wafer_device_0,Dir_Write,0044,Single Device 1T1R
+2024-11-06,20:37:46,chip_wafer_device_0,Dir_Write,0045,Single Device 1T1R
+2024-11-06,20:38:04,chip_wafer_device_0,Dir_Write,0046,Single Device 1T1R
+2024-11-06,20:38:17,chip_wafer_device_0,Dir_Write,0047,Single Device 1T1R
+2024-11-06,20:38:35,chip_wafer_device_0,Dir_Write,0048,Single Device 1T1R
+2024-11-06,20:38:45,chip_wafer_device_0,Dir_Write,0049,Single Device 1T1R
+2024-11-06,20:38:50,chip_wafer_device_0,Dir_Write,0050,Single Device 1T1R
+2024-11-06,20:39:24,chip_wafer_device_0,Dir_Write,0051,Single Device 1T1R
+2024-11-06,20:39:36,chip_wafer_device_0,Dir_Write,0052,Single Device 1T1R
+2024-11-06,20:40:57,chip_wafer_device_0,Dir_Write,0053,Single Device 1T1R
+2024-11-06,20:41:03,chip_wafer_device_0,Dir_Write,0054,Single Device 1T1R
+2024-11-06,20:41:11,chip_wafer_device_0,Dir_Write,0055,Single Device 1T1R
+2024-11-06,20:42:07,chip_wafer_device_0,Dir_Write,0056,Single Device 1T1R
+2024-11-06,20:42:13,chip_wafer_device_0,Dir_Write,0057,Single Device 1T1R
+2024-11-06,20:44:43,chip_wafer_device_0,Dir_Write,0058,Single Device 1T1R
+2024-11-06,20:44:52,chip_wafer_device_0,Dir_Write,0059,Single Device 1T1R
+2024-11-06,20:45:01,chip_wafer_device_0,Dir_Write,0060,Single Device 1T1R
+2024-11-06,20:45:05,chip_wafer_device_0,Dir_Write,0061,Single Device 1T1R
+2024-11-06,20:45:09,chip_wafer_device_0,Dir_Write,0062,Single Device 1T1R
+2024-11-06,20:45:32,chip_wafer_device_0,Dir_Write,0063,Single Device 1T1R
+2024-11-06,20:45:42,chip_wafer_device_0,Dir_Write,0064,Single Device 1T1R
+2024-11-06,20:48:01,chip_wafer_device_0,Dir_Write,0065,Single Device 1T1R
+2024-11-06,20:48:06,chip_wafer_device_0,Dir_Write,0066,Single Device 1T1R
+2024-11-06,20:48:16,chip_wafer_device_0,Dir_Write,0067,Single Device 1T1R
+2024-11-06,20:48:22,chip_wafer_device_0,Dir_Write,0068,Single Device 1T1R
+2024-11-06,20:48:38,chip_wafer_device_0,Dir_Write,0069,Single Device 1T1R
+2024-11-06,20:48:43,chip_wafer_device_0,Dir_Write,0070,Single Device 1T1R
+2024-11-06,20:48:47,chip_wafer_device_0,Dir_Write,0071,Single Device 1T1R
+2024-11-06,20:48:57,chip_wafer_device_0,Dir_Write,0072,Single Device 1T1R
+2024-11-06,20:49:04,chip_wafer_device_0,Dir_Write,0073,Single Device 1T1R
+2024-11-06,20:50:16,chip_wafer_device_0,Dir_Write,0074,Single Device 1T1R PMOS
+2024-11-06,20:51:04,chip_wafer_device_0,Dir_Write,0075,Single Device 1T1R
+2024-11-06,20:51:32,chip_wafer_device_0,Dir_Write,0076,Single Device 1T1R
+2024-11-06,20:52:20,chip_wafer_device_0,Dir_Write,0077,Single Device 1T1R
+2024-11-06,20:53:58,chip_wafer_device_0,Dir_Write,0078,Single Device 1T1R
+2024-11-06,20:55:17,chip_wafer_device_0,Dir_Write,0079,Single Device 1T1R
+2024-11-06,20:55:32,chip_wafer_device_0,Dir_Write,0080,Single Device 1T1R PMOS
+2024-11-06,20:55:36,chip_wafer_device_0,Dir_Write,0081,Single Device 1T1R PMOS
+2024-11-06,20:55:55,chip_wafer_device_0,Dir_Write,0082,Single Device 1T1R PMOS
+2024-11-06,20:56:00,chip_wafer_device_0,Dir_Write,0083,Single Device 1T1R
+2024-11-06,20:57:35,chip_wafer_device_0,Dir_Write,0084,Single Device 1T1R
+2024-11-06,20:58:08,chip_wafer_device_0,Dir_Write,0085,Single Device 1T1R
+2024-11-06,20:59:12,chip_wafer_device_0,Dir_Write,0086,Single Device 1T1R
+2024-11-06,20:59:33,chip_wafer_device_0,Dir_Write,0087,Single Device 1T1R
+2024-11-06,21:02:21,chip_wafer_device_0,Dir_Write,0088,Single Device 1T1R
+2024-11-06,21:02:46,chip_wafer_device_0,Dir_Write,0089,Single Device 1T1R
+2024-11-06,21:03:09,chip_wafer_device_0,Dir_Write,0090,Single Device 1T1R
+2024-11-06,21:03:47,chip_wafer_device_0,Dir_Write,0091,Single Device 1T1R
+2024-11-06,21:03:55,chip_wafer_device_0,Dir_Write,0092,Single Device 1T1R
+2024-11-06,21:04:22,chip_wafer_device_0,Dir_Write,0093,Single Device 1T1R
+2024-11-06,21:04:37,chip_wafer_device_0,Dir_Write,0094,Single Device 1T1R PMOS
+2024-11-06,21:04:41,chip_wafer_device_0,Dir_Write,0095,Single Device 1T1R PMOS
+2024-11-06,21:04:45,chip_wafer_device_0,Dir_Write,0096,Single Device 1T1R PMOS
+2024-11-06,21:04:58,chip_wafer_device_0,Dir_Write,0097,Single Device 1T1R PMOS
+2024-11-06,21:05:06,chip_wafer_device_0,Dir_Write,0098,Single Device 1T1R PMOS
+2024-11-06,21:05:29,chip_wafer_device_0,Dir_Write,0099,Single Device 1T1R PMOS
+2024-11-06,21:05:36,chip_wafer_device_0,Dir_Write,0100,Single Device 1T1R
+2024-11-06,21:05:56,chip_wafer_device_0,Dir_Write,0101,Single Device 1T1R PMOS
+2024-11-06,21:06:07,chip_wafer_device_0,Dir_Write,0102,Single Device 1T1R
+2024-11-06,21:07:35,chip_wafer_device_0,Dir_Write,0103,Single Device 1T1R
+2024-11-06,21:07:47,chip_wafer_device_0,Dir_Write,0104,Single Device 1T1R
+2024-11-06,21:07:55,chip_wafer_device_0,Dir_Write,0105,Single Device 1T1R PMOS
+2024-11-06,21:08:07,chip_wafer_device_0,Dir_Write,0106,Single Device 1T1R
+2024-11-06,21:08:18,chip_wafer_device_0,Dir_Write,0107,Single Device 1T1R PMOS
+2024-11-06,21:09:08,chip_wafer_device_0,Dir_Write,0108,Single Device 1T1R PMOS
+2024-11-06,21:09:20,chip_wafer_device_0,Dir_Write,0109,Single Device 1T1R PMOS
+2024-11-06,21:09:59,chip_wafer_device_0,Dir_Write,0110,Single Device 1T1R PMOS
+2024-11-06,21:10:08,chip_wafer_device_0,Dir_Write,0111,Single Device 1T1R pmos
+2024-11-06,21:10:46,chip_wafer_device_0,Dir_Write,0112,Single Device 1T1R PMOS
+2024-11-06,21:11:03,chip_wafer_device_0,Dir_Write,0113,Single Device 1T1R pmos
+2024-11-06,21:11:11,chip_wafer_device_0,Dir_Write,0114,Single Device 1T1R PMOS
+2024-11-06,21:11:21,chip_wafer_device_0,Dir_Write,0115,Single Device 1T1R pmos
+2024-11-06,21:11:30,chip_wafer_device_0,Dir_Write,0116,Single Device 1T1R PMOS
+2024-11-06,21:11:43,chip_wafer_device_0,Dir_Write,0117,Single Device 1T1R pmos

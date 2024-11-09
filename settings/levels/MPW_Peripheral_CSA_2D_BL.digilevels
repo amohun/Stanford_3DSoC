@@ -7,24 +7,28 @@
         <Vih>1.8</Vih>
         <Vol>0</Vol>
         <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_1">
         <Vil>0</Vil>
         <Vih>1.8</Vih>
         <Vol>0</Vol>
         <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_2">
         <Vil>0</Vil>
         <Vih>1.8</Vih>
         <Vol>0</Vol>
         <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_3">
         <Vil>0</Vil>
         <Vih>1.8</Vih>
         <Vol>0</Vol>
         <Voh>1.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_0">
         <Vil>0</Vil>
@@ -181,6 +185,8 @@
         <Vih>1.8</Vih>
         <Vol>0</Vol>
         <Voh>1.8</Voh>
+        <Vterm>0</Vterm>
+        <TerminationMode>Vterm</TerminationMode>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="BL_NONE_0">
         <Vil>0</Vil>

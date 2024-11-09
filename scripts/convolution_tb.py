@@ -89,6 +89,23 @@ class Convolution:
         voh = self.settings_manager.get_setting("voltages.voh", 1.8)
         vol = self.settings_manager.get_setting("voltages.vol", 0.0)
 
+        # Non-traditional voltages
+
+        # Outputs should be < 1.8V to trigger high
+        vih_do = self.settings_manager.get_setting("other_voltages.OFMAP.vih", 1.0)
+        vil_do = self.settings_manager.get_setting("other_voltages.OFMAP.vil", 0.0)
+        voh_do = self.settings_manager.get_setting("other_voltages.OFMAP.voh", 1.0)
+        vol_do = self.settings_manager.get_setting("other_voltages.OFMAP.vol", 0.0)
+
+        
+        self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
+        self.digital_patterns.digital_set_voltages([["OFMAP_0", "OFMAP_1","OFMAP_2", "OFMAP_3","OFMAP_4", "OFMAP_5","OFMAP_6", "OFMAP_7",
+                                                     "OFMAP_8", "OFMAP_9","OFMAP_10", "OFMAP_11","OFMAP_12", "OFMAP_13","OFMAP_14", "OFMAP_15",
+                                                     "OFMAP_16", "OFMAP_17","OFMAP_18", "OFMAP_19","OFMAP_20", "OFMAP_21","OFMAP_22", "OFMAP_23"]
+                                                    ,[],[]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
+
+
+
         self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
         self.digital_patterns.commit_all()
 
@@ -106,8 +123,6 @@ class Convolution:
             date = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
             test = self.settings_manager.get_setting("path.test_name","CONV")
             filename = f"{header}/{test}/{date}_{self.chip}_{self.device}_{waveform_name}.csv"
-    
-        
     
 def arg_parse():
     parser = argparse.ArgumentParser(description="Define a Chip")
@@ -140,9 +155,10 @@ def main(args):
     conv.initialize_session()
     conv.define_pins()
     conv.set_channel_mode()
-    pdb.set_trace()
+    # pdb.set_trace()
     conv.set_pin_voltages()
-    for i in range(1):
+    # pdb.set_trace()
+    for i in range(10):
         conv.broadcast_waveforms_from_file()
     
     conv.read_captured_waveforms()

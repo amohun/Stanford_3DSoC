@@ -69,7 +69,7 @@ CSA = 2e-6
 
 [device]
 pins = [["PE_EN", "ACCUM_EN", "OFMAP"],
-        ["IFMAP", "IFMAP_EN", "EXT_WT","WEIGHT_EN","WEIGHT_SHIFT","WT_SEL_EXT","RST_N","PSUM_SLC"],
+        ["IFMAP", "IFMAP_EN", "EXT_WT","WEIGHT_EN","WEIGHT_SHIFT","WT_SEL_EXT","RST_N","PSUM_SLC","MUX_SEL_CONV_CLK"],
         ["SA_CLK","SA_CLK_EXT"]
         ]
 
@@ -118,12 +118,18 @@ WEIGHT_SHIFT = "WEIGHT_SHIFT"
 WT_SEL_EXT = "WT_SEL_EXT"
 RST_N = "RST_N"
 PSUM_SLC = "PSUM_SLC"
+MUX_SEL_CONV_CLK="MUX_SEL_CONV_CLK"
 SA_CLK = "SA_CLK"
 SA_CLK_EXT = "SA_CLK_EXT"
 
 [voltages]
-vih = 1.8
+vih = 1.81
 vil = 0.0
-voh = 1.8
+voh = 1.81
 vol = 0.0
 
+[other_voltages.OFMAP]
+vih = 1.0
+vil = 0.0
+voh = 1.0
+vol = 0.0

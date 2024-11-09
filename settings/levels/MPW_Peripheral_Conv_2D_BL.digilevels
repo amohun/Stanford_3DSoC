@@ -27,148 +27,148 @@
         <Voh>1.8</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_0">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_1">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_2">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_3">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_4">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_5">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_6">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_7">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_8">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_9">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_10">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_11">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_12">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_13">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_14">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_15">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_16">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_17">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_18">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_19">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_20">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_21">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_22">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="OFMAP_23">
-        <Vil>0</Vil>
-        <Vih>1.8</Vih>
-        <Vol>0</Vol>
-        <Voh>1.8</Voh>
+        <Vil>0.8</Vil>
+        <Vih>1</Vih>
+        <Vol>0.8</Vol>
+        <Voh>1</Voh>
       </DigitalPinLevelSet>
       <DigitalPinLevelSet pin="PE_EN">
         <Vil>0</Vil>

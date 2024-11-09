@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SourceFile Checksum="C1CC5EDD7D6C9C06C4978D31C2C145205789C4A96035C4AC2B6420B905272A984243C33AE6F5CD94939475CD57966BAF0BBC6C3A82DE4120BC54700761D62D2E" xmlns="http://www.ni.com/PlatformFramework">
+<SourceFile Checksum="4E9AB1065BBBFB3FC55C493D17576185B87CEAEB7CB3D4427AFE3C01C94893ACF04E0F76313B4C84C47A37D67EB6D5FCED0FFA89F816FAA83F84D9C102DE8F22" xmlns="http://www.ni.com/PlatformFramework">
 	<SourceModelFeatureSet>
 		<ParsableNamespace AssemblyFileVersion="9.12.0.49737" FeatureSetName="Digital Pattern Editor" Name="http://www.ni.com/PatternBasedDigital" OldestCompatibleVersion="4.5.0.0" Version="5.3.1.49152" />
 		<ParsableNamespace AssemblyFileVersion="9.12.0.49737" FeatureSetName="Editor" Name="http://www.ni.com/PlatformFramework" OldestCompatibleVersion="8.1.0.49152" Version="8.1.0.49152" />
@@ -42,7 +42,7 @@
 			<FileReference Id="69" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_BL.digipat" StoragePath="..\patterns\MPW_Direct_Write_BL.digipat" />
 			<FileReference Id="70" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_SL.digipat" StoragePath="..\patterns\MPW_Direct_Write_SL.digipat" />
 			<FileReference Id="71" ModelDefinitionType="DigitalPatternEditor.PatternDefinition" Name="MPW_Direct_Write_WL.digipat" StoragePath="..\patterns\MPW_Direct_Write_WL.digipat" />
-			<FileReference Id="72" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_SL.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_SL.pinmap" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
+			<FileReference Id="72" ModelDefinitionType="PinMap" Name="MPW_Direct_Write_SL.pinmap" StoragePath="..\pinmap\MPW_Direct_Write_SL.pinmap" />
 			<FileReference Id="77" ModelDefinitionType="TimingDefinition" Name="MPW_Direct_Write_BL.digitiming" StoragePath="MPW_Direct_Write_BL.digitiming" />
 			<FileReference Id="78" ModelDefinitionType="TimingDefinition" Name="MPW_Direct_Write_SL.digitiming" StoragePath="MPW_Direct_Write_SL.digitiming" />
 			<FileReference Id="79" ModelDefinitionType="TimingDefinition" Name="MPW_Direct_Write_WL.digitiming" StoragePath="MPW_Direct_Write_WL.digitiming" />
@@ -66,14 +66,16 @@
 			<FileReference Id="2aa2b8ea7f65444f8d77d9c2f33bff3d" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_Conv_2D_BL.tdms" StoragePath="..\waveforms\MPW_Peripheral_Conv_2D_BL.tdms" />
 			<FileReference Id="6143fec6130e42f584d85ef5ff6dd2b3" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_Conv_2D_SL.tdms" StoragePath="..\waveforms\MPW_Peripheral_Conv_2D_SL.tdms" />
 			<FileReference Id="18b3a1109564497596b6a2010e751f0b" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_Conv_2D_WL.tdms" StoragePath="..\waveforms\MPW_Peripheral_Conv_2D_WL.tdms" />
-			<FileReference Id="92231d26b96b4d688ca314da2e94dee9" ModelDefinitionType="TimingDefinition" Name="MPW_Peripheral_Conv_2D_BL.digitiming" StoragePath="..\timing\MPW_Peripheral_Conv_2D_BL.digitiming" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
-			<FileReference Id="68d6f94421094bd88b081f0dd39d4c52" ModelDefinitionType="TimingDefinition" Name="MPW_Peripheral_Conv_2D_SL.digitiming" StoragePath="..\timing\MPW_Peripheral_Conv_2D_SL.digitiming" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
+			<FileReference Id="92231d26b96b4d688ca314da2e94dee9" ModelDefinitionType="TimingDefinition" Name="MPW_Peripheral_Conv_2D_BL.digitiming" StoragePath="..\timing\MPW_Peripheral_Conv_2D_BL.digitiming" />
+			<FileReference Id="68d6f94421094bd88b081f0dd39d4c52" ModelDefinitionType="TimingDefinition" Name="MPW_Peripheral_Conv_2D_SL.digitiming" StoragePath="..\timing\MPW_Peripheral_Conv_2D_SL.digitiming" />
 			<FileReference Id="b3db9324cc7d4249858639579c585967" ModelDefinitionType="TimingDefinition" Name="MPW_Peripheral_Conv_2D_WL.digitiming" StoragePath="..\timing\MPW_Peripheral_Conv_2D_WL.digitiming" />
-			<FileReference Id="c7087fb52ae8439c92467419321d069c" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_BL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_BL.digilevels" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
-			<FileReference Id="2fe3d3b7b2a849ad8b98746b7c1a500f" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_SL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_SL.digilevels" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
-			<FileReference Id="f2380fa0d4b041eb8c9873dedc9e6fee" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_WL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_WL.digilevels" p4:IsActive="False" xmlns:p4="http://www.ni.com/PatternBasedDigital" />
+			<FileReference Id="c7087fb52ae8439c92467419321d069c" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_BL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_BL.digilevels" />
+			<FileReference Id="2fe3d3b7b2a849ad8b98746b7c1a500f" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_SL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_SL.digilevels" />
+			<FileReference Id="f2380fa0d4b041eb8c9873dedc9e6fee" ModelDefinitionType="PinLevelsDefinition" Name="MPW_Peripheral_Conv_2D_WL.digilevels" StoragePath="..\levels\MPW_Peripheral_Conv_2D_WL.digilevels" />
 			<FileReference Id="e539c6be92e74c4c994809b086c7dabb" ModelDefinitionType="CaptureWaveformDefinition" Name="MPW_Peripheral_CSA_2D_WL.digicapture" StoragePath="..\waveforms\MPW_Peripheral_CSA_2D_WL.digicapture" />
 			<FileReference Id="455e1967092342f081d4e7e1109e2f8e" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_CSA_2D_WL.tdms" StoragePath="..\waveforms\MPW_Peripheral_CSA_2D_WL.tdms" />
+			<FileReference Id="e8f62b957a2344899215106772e71846" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_CSA_2D_BL.tdms" StoragePath="..\waveforms\MPW_Peripheral_CSA_2D_BL.tdms" />
+			<FileReference Id="82fcf5a20654bd38b7549f49b3fa8d2" ModelDefinitionType="SourceWaveformDefinition" Name="MPW_Peripheral_CSA_2D_SL.tdms" StoragePath="..\waveforms\MPW_Peripheral_CSA_2D_SL.tdms" />
 		</NameScopingEnvoy>
 		<EmbeddedDefinitionReference Id="6" ModelDefinitionType="DigitalPatternEditor.ProjectPropertiesDefinition" Name="ProjectProperties">
 			<ProjectPropertiesDefinition xmlns="http://www.ni.com/PatternBasedDigital" />
