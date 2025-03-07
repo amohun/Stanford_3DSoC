@@ -1839,3 +1839,696 @@ Date,Time,Name,Category,Hash,Comments
 2024-11-06,21:11:21,chip_wafer_device_0,Dir_Write,0115,Single Device 1T1R pmos
 2024-11-06,21:11:30,chip_wafer_device_0,Dir_Write,0116,Single Device 1T1R PMOS
 2024-11-06,21:11:43,chip_wafer_device_0,Dir_Write,0117,Single Device 1T1R pmos
+2024-12-17,15:06:46,chip_3_device_A,Dir_Write,0000,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:08:35,chip_3_device_A,Dir_Write,0001,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:16:26,chip_3_device_A,Dir_Write,0002,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:27:06,chip_3_device_0-0,Dir_Write,0000,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:27:20,chip_3_device_0-0,Dir_Write,0001,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:27:58,chip_3_device_0-0,Dir_Write,0002,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:28:16,chip_3_device_0-0,Dir_Write,0003,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:28:27,chip_3_device_0-0,Dir_Write,0004,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:28:33,chip_3_device_0-0,Dir_Write,0005,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:28:42,chip_3_device_0-0,Dir_Write,0006,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:29:28,chip_3_device_0-0,Dir_Write,0007,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:29:38,chip_3_device_0-0,Dir_Write,0008,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:30:06,chip_3_device_0-0,Dir_Write,0009,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:30:22,chip_3_device_0-0,Dir_Write,0010,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:30:34,chip_3_device_0-0,Dir_Write,0011,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:31:28,chip_3_device_0-0,Dir_Write,0012,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:32:57,chip_3_device_0-0,Dir_Write,0013,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:33:11,chip_3_device_0-0,Dir_Write,0014,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:33:24,chip_3_device_0-0,Dir_Write,0015,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:33:49,chip_3_device_0-0,Dir_Write,0016,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:34:25,chip_3_device_0-0,Dir_Write,0017,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:37:25,chip_NoChip_device_0-0,Dir_Write,0000,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:37:32,chip_NoChip_device_0-0,Dir_Write,0001,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:37:38,chip_NoChip_device_0-0,Dir_Write,0002,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:37:49,chip_NoChip_device_0-0,Dir_Write,0003,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:38:01,chip_NoChip_device_0-0,Dir_Write,0004,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:38:13,chip_NoChip_device_0-0,Dir_Write,0005,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:39:03,chip_NoChip_device_0-0,Dir_Write,0006,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:40:28,chip_NoChip_device_0-0,Dir_Write,0007,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:41:13,chip_NoChip_device_0-0,Dir_Write,0008,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:41:32,chip_NoChip_device_0-0,Dir_Write,0009,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:46:17,chip_NoChip_device_0-0,Dir_Write,0010,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:46:33,chip_NoChip_device_0-0,Dir_Write,0011,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:47:35,chip_NoChip_device_0-0,Dir_Write,0012,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:47:54,chip_NoChip_device_0-0,Dir_Write,0013,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:48:36,chip_NoChip_device_0-0,Dir_Write,0014,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:06,chip_NoChip_device_0-0,Dir_Write,0015,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:15,chip_NoChip_device_0-0,Dir_Write,0016,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:27,chip_NoChip_device_0-0,Dir_Write,0017,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:37,chip_NoChip_device_0-0,Dir_Write,0018,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:51,chip_3_device_0-0,Dir_Write,0000,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:49:59,chip_3_device_0-0,Dir_Write,0001,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:50:22,chip_3_device_0-0,Dir_Write,0002,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:50:30,chip_3_device_0-0,Dir_Write,0003,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:50:42,chip_3_device_0-0,Dir_Write,0004,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:50:48,chip_3_device_0-0,Dir_Write,0005,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:51:19,chip_3_device_0-0,Dir_Write,0006,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:51:45,chip_3_device_0-0,Dir_Write,0007,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:52:08,chip_3_device_0-0,Dir_Write,0008,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:54:34,chip_3_device_0-0,Dir_Write,0009,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:56:06,chip_3_device_0-0,Dir_Write,0010,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:59:25,chip_3_device_0-0,Dir_Write,0011,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:59:42,chip_3_device_0-0,Dir_Write,0012,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,15:59:55,chip_3_device_0-0,Dir_Write,0013,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:00:50,chip_3_device_0-0,Dir_Write,0014,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:01:01,chip_3_device_0-0,Dir_Write,0015,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:03:13,chip_3_device_0-0,Dir_Write,0016,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:03:22,chip_3_device_0-0,Dir_Write,0017,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:03:32,chip_3_device_0-0,Dir_Write,0018,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:03:40,chip_3_device_0-0,Dir_Write,0019,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:03:51,chip_3_device_0-0,Dir_Write,0020,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:04:08,chip_3_device_0-0,Dir_Write,0021,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:04:16,chip_3_device_0-0,Dir_Write,0022,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:04:23,chip_3_device_0-0,Dir_Write,0023,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:04:37,chip_3_device_0-0,Dir_Write,0024,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:04:52,chip_3_device_0-0,Dir_Write,0025,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:15:28,chip_3_device_0-0,Dir_Write,0026,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:15:39,chip_3_device_0-0,Dir_Write,0027,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:15:48,chip_3_device_0-0,Dir_Write,0028,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:16:16,chip_3_device_0-0,Dir_Write,0029,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:18:04,chip_3_device_0-0,Dir_Write,0030,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:18:11,chip_3_device_0-0,Dir_Write,0031,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:18:18,chip_3_device_0-0,Dir_Write,0032,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:18:37,chip_3_device_0-0,Dir_Write,0033,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,16:18:47,chip_3_device_0-0,Dir_Write,0034,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:03:10,chip_3_device_0-0,Dir_Write,0035,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:03:17,chip_3_device_0-0,Dir_Write,0036,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:03:31,chip_3_device_0-0,Dir_Write,0037,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:03:42,chip_3_device_0-0,Dir_Write,0038,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:03:57,chip_3_device_0-0,Dir_Write,0039,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:04:25,chip_3_device_0-0,Dir_Write,0040,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:04:36,chip_3_device_0-0,Dir_Write,0041,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:04:42,chip_3_device_0-0,Dir_Write,0042,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:07:27,chip_1_device_0-0,Dir_Write,0000,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:07:54,chip_1_device_0-0,Dir_Write,0001,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:08:01,chip_1_device_0-0,Dir_Write,0002,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:08:09,chip_1_device_0-0,Dir_Write,0003,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:08:44,chip_1_device_0-0,Dir_Write,0004,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:08:53,chip_1_device_0-0,Dir_Write,0005,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:06,chip_1_device_0-0,Dir_Write,0006,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:18,chip_1_device_0-0,Dir_Write,0007,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:34,chip_1_device_0-0,Dir_Write,0008,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:41,chip_1_device_0-0,Dir_Write,0009,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:47,chip_1_device_0-0,Dir_Write,0010,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:09:54,chip_1_device_0-0,Dir_Write,0011,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:10:00,chip_1_device_0-0,Dir_Write,0012,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:10:13,chip_1_device_0-0,Dir_Write,0013,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2024-12-17,18:10:30,chip_1_device_0-0,Dir_Write,0014,Chip 3 Array  1T1R pmos VBL-1V2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:27:48,chip_4_device_0-0,Dir_Write,0000,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:28:16,chip_4_device_all,Dir_Write,0000,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:36:23,chip_4_device_all,Dir_Write,0001,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:36:34,chip_4_device_all,Dir_Write,0002,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:37:52,chip_4_device_all,Dir_Write,0003,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:39:33,chip_4_device_all,Dir_Write,0004,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:39:39,chip_4_device_all,Dir_Write,0005,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:39:49,chip_4_device_all,Dir_Write,0006,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:40:09,chip_4_device_all,Dir_Write,0007,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:40:19,chip_4_device_all,Dir_Write,0008,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:40:32,chip_4_device_all,Dir_Write,0009,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:40:44,chip_4_device_all,Dir_Write,0010,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:41:06,chip_4_device_all,Dir_Write,0011,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:41:16,chip_4_device_all,Dir_Write,0012,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:45:26,chip_4_device_all,Dir_Write,0013,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:45:55,chip_4_device_all,Dir_Write,0014,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:45:59,chip_4_device_all,Dir_Write,0015,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:46:06,chip_4_device_all,Dir_Write,0016,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:46:14,chip_4_device_all,Dir_Write,0017,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:46:27,chip_4_device_all,Dir_Write,0018,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,13:46:37,chip_4_device_all,Dir_Write,0019,Chip 4 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,14:24:32,chip_2_device_0-0,Dir_Write,0000,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,14:25:40,chip_2_device_0-0,Dir_Write,0001,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-04,14:25:51,chip_2_device_0-0,Dir_Write,0002,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3
+2025-01-05,17:26:34,chip_2_device_0-0,Dir_Write,0000,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-05,18:26:54,chip_3_device_all,Dir_Write,0000,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-05,18:28:28,chip_3_device_all,Dir_Write,0001,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-05,18:29:13,chip_3_device_all,Dir_Write,0002,Chip 2 Array  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,16:57:30,chip_3_device_all,Dir_Write,0000,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,16:57:55,chip_3_device_all,Dir_Write,0001,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,16:58:10,chip_3_device_all,Dir_Write,0002,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:01:15,chip_3_device_all,Dir_Write,0003,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:01:41,chip_3_device_all,Dir_Write,0004,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:02:01,chip_3_device_all,Dir_Write,0005,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:02:38,chip_3_device_all,Dir_Write,0006,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:03:48,chip_3_device_all,Dir_Write,0007,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:04:08,chip_3_device_all,Dir_Write,0008,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:07:11,chip_3_device_all,Dir_Write,0009,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:07:29,chip_3_device_all,Dir_Write,0010,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:08:07,chip_3_device_all,Dir_Write,0011,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:08:28,chip_3_device_all,Dir_Write,0012,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:08:50,chip_3_device_all,Dir_Write,0013,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:09:06,chip_3_device_all,Dir_Write,0014,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:09:26,chip_3_device_all,Dir_Write,0015,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:09:44,chip_3_device_all,Dir_Write,0016,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:10:03,chip_3_device_all,Dir_Write,0017,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:10:57,chip_3_device_all,Dir_Write,0018,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:11:04,chip_3_device_all,Dir_Write,0019,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:11:24,chip_3_device_all,Dir_Write,0020,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:21:28,chip_3_device_all,Dir_Write,0021,Chip 3 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:21:46,chip_3_device_all,Dir_Write,0022,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:23:07,chip_3_device_all,Dir_Write,0023,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:23:57,chip_3_device_all,Dir_Write,0024,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:30:59,chip_3_device_all,Dir_Write,0025,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:31:49,chip_3_device_all,Dir_Write,0026,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:32:20,chip_3_device_all,Dir_Write,0027,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:32:53,chip_3_device_all,Dir_Write,0028,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:33:23,chip_3_device_all,Dir_Write,0029,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:34:18,chip_3_device_all,Dir_Write,0030,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:34:33,chip_3_device_all,Dir_Write,0031,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:35:14,chip_3_device_all,Dir_Write,0032,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:35:41,chip_3_device_all,Dir_Write,0033,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:39:55,chip_3_device_all,Dir_Write,0034,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:40:10,chip_3_device_all,Dir_Write,0035,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:40:49,chip_3_device_all,Dir_Write,0036,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:44:07,chip_3_device_all,Dir_Write,0037,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:44:52,chip_3_device_all,Dir_Write,0038,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:45:57,chip_3_device_all,Dir_Write,0039,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:47:28,chip_3_device_all,Dir_Write,0040,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-21,17:48:14,chip_3_device_all,Dir_Write,0041,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-22,15:43:53,chip_3_device_all,Dir_Write,0000,Chip 1 0-0  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-22,20:42:15,chip_3_device_all,Dir_Write,0001,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-22,20:43:20,chip_3_device_all,Dir_Write,0002,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-22,20:43:45,chip_3_device_all,Dir_Write,0003,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:45:26,chip_3_device_all,Dir_Write,0000,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:45:36,chip_3_device_all,Dir_Write,0001,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:45:51,chip_3_device_all,Dir_Write,0002,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:45:59,chip_3_device_all,Dir_Write,0003,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:46:19,chip_3_device_all,Dir_Write,0004,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:46:41,chip_3_device_all,Dir_Write,0005,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:47:27,chip_3_device_all,Dir_Write,0006,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:47:34,chip_3_device_all,Dir_Write,0007,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:47:52,chip_3_device_all,Dir_Write,0008,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:48:19,chip_3_device_all,Dir_Write,0009,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:48:48,chip_3_device_all,Dir_Write,0010,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:57:28,chip_3_device_all,Dir_Write,0011,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:58:08,chip_3_device_all,Dir_Write,0012,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:59:33,chip_3_device_all,Dir_Write,0013,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,19:59:47,chip_3_device_all,Dir_Write,0014,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:00:10,chip_3_device_all,Dir_Write,0015,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:00:30,chip_3_device_all,Dir_Write,0016,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:01:20,chip_3_device_all,Dir_Write,0017,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:03:04,chip_3_device_all,Dir_Write,0018,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:03:20,chip_3_device_all,Dir_Write,0019,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:04:15,chip_3_device_all,Dir_Write,0020,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:04:24,chip_3_device_all,Dir_Write,0021,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:04:31,chip_3_device_all,Dir_Write,0022,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:04:54,chip_3_device_all,Dir_Write,0023,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:05:15,chip_3_device_all,Dir_Write,0024,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:05:26,chip_3_device_all,Dir_Write,0025,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:06:06,chip_3_device_all,Dir_Write,0026,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:06:17,chip_3_device_all,Dir_Write,0027,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:10:38,chip_3_device_all,Dir_Write,0028,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:10:56,chip_3_device_all,Dir_Write,0029,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:11:21,chip_3_device_all,Dir_Write,0030,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:11:47,chip_3_device_all,Dir_Write,0031,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:12:12,chip_3_device_all,Dir_Write,0032,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:12:44,chip_3_device_all,Dir_Write,0033,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:13:32,chip_3_device_all,Dir_Write,0034,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-24,20:13:52,chip_3_device_all,Dir_Write,0035,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:32:36,chip_3_device_all,Dir_Write,0000,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:32:52,chip_3_device_all,Dir_Write,0001,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:33:13,chip_3_device_all,Dir_Write,0002,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:33:45,chip_3_device_all,Dir_Write,0003,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:34:01,chip_3_device_all,Dir_Write,0004,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:35:09,chip_3_device_all,Dir_Write,0005,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:35:49,chip_3_device_all,Dir_Write,0006,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:36:00,chip_3_device_all,Dir_Write,0007,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:36:07,chip_3_device_all,Dir_Write,0008,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:36:23,chip_3_device_all,Dir_Write,0009,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:37:00,chip_3_device_all,Dir_Write,0010,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:37:06,chip_3_device_all,Dir_Write,0011,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:37:11,chip_3_device_all,Dir_Write,0012,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:37:56,chip_3_device_all,Dir_Write,0013,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:38:07,chip_3_device_all,Dir_Write,0014,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:38:20,chip_3_device_all,Dir_Write,0015,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:38:51,chip_3_device_all,Dir_Write,0016,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:38:57,chip_3_device_all,Dir_Write,0017,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:39:06,chip_3_device_all,Dir_Write,0018,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:39:21,chip_3_device_all,Dir_Write,0019,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:39:36,chip_3_device_all,Dir_Write,0020,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:40:03,chip_3_device_all,Dir_Write,0021,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:40:14,chip_3_device_all,Dir_Write,0022,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:40:20,chip_3_device_all,Dir_Write,0023,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:40:28,chip_3_device_all,Dir_Write,0024,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:40:38,chip_3_device_all,Dir_Write,0025,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:41:00,chip_3_device_all,Dir_Write,0026,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:41:19,chip_3_device_all,Dir_Write,0027,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:41:53,chip_3_device_all,Dir_Write,0028,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:41:59,chip_3_device_all,Dir_Write,0029,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:43:13,chip_3_device_all,Dir_Write,0030,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,18:44:45,chip_3_device_all,Dir_Write,0031,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:00:35,chip_3_device_all,Dir_Write,0032,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:00:56,chip_3_device_all,Dir_Write,0033,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:02:04,chip_3_device_all,Dir_Write,0034,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:02:46,chip_3_device_all,Dir_Write,0035,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:02:53,chip_3_device_all,Dir_Write,0036,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:03:27,chip_3_device_all,Dir_Write,0037,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:03:36,chip_3_device_all,Dir_Write,0038,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:04:01,chip_3_device_all,Dir_Write,0039,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:04:13,chip_3_device_all,Dir_Write,0040,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:04:54,chip_3_device_all,Dir_Write,0041,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:05:05,chip_3_device_all,Dir_Write,0042,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:05:34,chip_3_device_all,Dir_Write,0043,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:07:29,chip_3_device_all,Dir_Write,0044,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:08:55,chip_3_device_all,Dir_Write,0045,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:10:09,chip_3_device_all,Dir_Write,0046,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:10:26,chip_3_device_all,Dir_Write,0047,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:15:13,chip_3_device_all,Dir_Write,0048,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:15:59,chip_3_device_all,Dir_Write,0049,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:16:24,chip_3_device_all,Dir_Write,0050,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:17:55,chip_3_device_all,Dir_Write,0051,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:18:39,chip_3_device_all,Dir_Write,0052,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:21:05,chip_3_device_all,Dir_Write,0053,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:22:06,chip_3_device_all,Dir_Write,0054,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:24:05,chip_3_device_all,Dir_Write,0055,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:27:26,chip_3_device_all,Dir_Write,0056,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:27:35,chip_3_device_all,Dir_Write,0057,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:27:46,chip_3_device_all,Dir_Write,0058,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:27:56,chip_3_device_all,Dir_Write,0059,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:28:55,chip_3_device_all,Dir_Write,0060,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:30:35,chip_3_device_all,Dir_Write,0061,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:31:34,chip_3_device_all,Dir_Write,0062,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:36:56,chip_3_device_all,Dir_Write,0063,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:38:22,chip_3_device_all,Dir_Write,0064,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:38:28,chip_3_device_all,Dir_Write,0065,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:39:16,chip_3_device_all,Dir_Write,0066,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:39:32,chip_3_device_all,Dir_Write,0067,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:41:31,chip_3_device_all,Dir_Write,0068,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,19:41:48,chip_3_device_all,Dir_Write,0069,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,20:21:07,chip_3_device_all,Dir_Write,0070,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:17:02,chip_3_device_all,Dir_Write,0071,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:17:26,chip_3_device_all,Dir_Write,0072,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:18:07,chip_3_device_all,Dir_Write,0073,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:18:32,chip_3_device_all,Dir_Write,0074,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:19:12,chip_3_device_all,Dir_Write,0075,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:19:27,chip_3_device_all,Dir_Write,0076,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:19:53,chip_3_device_all,Dir_Write,0077,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:20:00,chip_3_device_all,Dir_Write,0078,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:20:19,chip_3_device_all,Dir_Write,0079,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:20:44,chip_3_device_all,Dir_Write,0080,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:21:27,chip_3_device_all,Dir_Write,0081,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:22:07,chip_3_device_all,Dir_Write,0082,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:22:22,chip_3_device_all,Dir_Write,0083,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:22:30,chip_3_device_all,Dir_Write,0084,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:22:41,chip_3_device_all,Dir_Write,0085,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:22:57,chip_3_device_all,Dir_Write,0086,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:24:25,chip_3_device_all,Dir_Write,0087,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:24:31,chip_3_device_all,Dir_Write,0088,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:25:31,chip_3_device_all,Dir_Write,0089,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:25:50,chip_3_device_all,Dir_Write,0090,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:26:49,chip_3_device_all,Dir_Write,0091,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:28:49,chip_3_device_all,Dir_Write,0092,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:29:03,chip_3_device_all,Dir_Write,0093,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:29:16,chip_3_device_all,Dir_Write,0094,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:30:05,chip_3_device_all,Dir_Write,0095,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:30:42,chip_3_device_all,Dir_Write,0096,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:32:22,chip_3_device_all,Dir_Write,0097,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:32:35,chip_3_device_all,Dir_Write,0098,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:32:53,chip_3_device_all,Dir_Write,0099,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:33:22,chip_3_device_all,Dir_Write,0100,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:33:45,chip_3_device_all,Dir_Write,0101,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:34:00,chip_3_device_all,Dir_Write,0102,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:34:16,chip_3_device_all,Dir_Write,0103,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:34:57,chip_3_device_all,Dir_Write,0104,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:37:12,chip_3_device_all,Dir_Write,0105,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:37:30,chip_3_device_all,Dir_Write,0106,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:37:57,chip_3_device_all,Dir_Write,0107,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:38:14,chip_3_device_all,Dir_Write,0108,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:38:44,chip_3_device_all,Dir_Write,0109,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:38:58,chip_3_device_all,Dir_Write,0110,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:39:10,chip_3_device_all,Dir_Write,0111,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:39:21,chip_3_device_all,Dir_Write,0112,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:39:31,chip_3_device_all,Dir_Write,0113,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:39:43,chip_3_device_all,Dir_Write,0114,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:39:55,chip_3_device_all,Dir_Write,0115,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:40:45,chip_3_device_all,Dir_Write,0116,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:40:56,chip_3_device_all,Dir_Write,0117,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:41:20,chip_3_device_all,Dir_Write,0118,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:42:02,chip_3_device_all,Dir_Write,0119,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:42:15,chip_3_device_all,Dir_Write,0120,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:42:35,chip_3_device_all,Dir_Write,0121,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:43:05,chip_3_device_all,Dir_Write,0122,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:54:36,chip_3_device_all,Dir_Write,0123,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,22:59:57,chip_3_device_all,Dir_Write,0124,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:00:21,chip_3_device_all,Dir_Write,0125,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:00:32,chip_3_device_all,Dir_Write,0126,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:02:19,chip_3_device_all,Dir_Write,0127,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:02:32,chip_3_device_all,Dir_Write,0128,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:03:18,chip_3_device_all,Dir_Write,0129,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:05:28,chip_3_device_all,Dir_Write,0130,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:41:58,chip_3_device_all,Dir_Write,0131,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:43:15,chip_3_device_all,Dir_Write,0132,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:43:33,chip_3_device_all,Dir_Write,0133,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:44:20,chip_3_device_all,Dir_Write,0134,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:44:52,chip_3_device_all,Dir_Write,0135,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:44:59,chip_3_device_all,Dir_Write,0136,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:45:12,chip_3_device_all,Dir_Write,0137,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:46:54,chip_3_device_all,Dir_Write,0138,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:47:03,chip_3_device_all,Dir_Write,0139,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:48:30,chip_3_device_all,Dir_Write,0140,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:49:04,chip_3_device_all,Dir_Write,0141,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:53:05,chip_3_device_all,Dir_Write,0142,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:54:12,chip_3_device_all,Dir_Write,0143,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:56:40,chip_3_device_all,Dir_Write,0144,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-25,23:57:27,chip_3_device_all,Dir_Write,0145,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,12:59:55,chip_3_device_all,Dir_Write,0000,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:00:45,chip_3_device_all,Dir_Write,0001,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:01:35,chip_3_device_all,Dir_Write,0002,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:04:03,chip_3_device_all,Dir_Write,0003,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:04:51,chip_3_device_all,Dir_Write,0004,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:05:07,chip_3_device_all,Dir_Write,0005,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:05:32,chip_3_device_all,Dir_Write,0006,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:08:24,chip_3_device_all,Dir_Write,0007,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:09:06,chip_3_device_all,Dir_Write,0008,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:09:29,chip_3_device_all,Dir_Write,0009,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:09:39,chip_3_device_all,Dir_Write,0010,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:10:18,chip_3_device_all,Dir_Write,0011,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:10:26,chip_3_device_all,Dir_Write,0012,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:11:36,chip_3_device_all,Dir_Write,0013,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:11:45,chip_3_device_all,Dir_Write,0014,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:12:32,chip_3_device_all,Dir_Write,0015,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:12:48,chip_3_device_all,Dir_Write,0016,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:13:02,chip_3_device_all,Dir_Write,0017,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:17:03,chip_3_device_all,Dir_Write,0018,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:17:44,chip_3_device_all,Dir_Write,0019,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:17:59,chip_3_device_all,Dir_Write,0020,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:18:05,chip_3_device_all,Dir_Write,0021,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:24:57,chip_3_device_all,Dir_Write,0022,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:26:55,chip_3_device_all,Dir_Write,0023,Chip X all  1T1R pmos VBL-1.2 VBL 0.3 VSL 0 VWLUNSEL 3.5
+2025-01-26,13:48:39,chip_3_device_all,Dir_Write,0024,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,13:49:17,chip_3_device_all,Dir_Write,0025,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,13:51:14,chip_3_device_all,Dir_Write,0026,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,13:51:42,chip_3_device_all,Dir_Write,0027,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,13:55:07,chip_3_device_all,Dir_Write,0028,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,13:57:56,chip_3_device_all,Dir_Write,0029,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:00:24,chip_3_device_all,Dir_Write,0030,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:15:02,chip_3_device_all,Dir_Write,0031,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:16:13,chip_3_device_all,Dir_Write,0032,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:20:28,chip_3_device_all,Dir_Write,0033,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:21:31,chip_3_device_all,Dir_Write,0034,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:24:57,chip_3_device_all,Dir_Write,0035,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:27:27,chip_3_device_all,Dir_Write,0036,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:28:10,chip_3_device_all,Dir_Write,0037,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:28:53,chip_3_device_all,Dir_Write,0038,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:32:11,chip_3_device_all,Dir_Write,0039,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:33:24,chip_3_device_all,Dir_Write,0040,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:35:22,chip_3_device_all,Dir_Write,0041,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:36:17,chip_3_device_all,Dir_Write,0042,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:37:13,chip_3_device_all,Dir_Write,0043,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:38:53,chip_3_device_all,Dir_Write,0044,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:39:28,chip_3_device_all,Dir_Write,0045,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:40:22,chip_3_device_all,Dir_Write,0046,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:40:38,chip_3_device_all,Dir_Write,0047,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:47:22,chip_3_device_all,Dir_Write,0048,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:47:40,chip_3_device_all,Dir_Write,0049,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:48:01,chip_3_device_all,Dir_Write,0050,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:49:22,chip_3_device_all,Dir_Write,0051,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:49:30,chip_3_device_all,Dir_Write,0052,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:52:04,chip_3_device_all,Dir_Write,0053,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:52:32,chip_3_device_all,Dir_Write,0054,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:53:11,chip_3_device_all,Dir_Write,0055,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:55:17,chip_3_device_all,Dir_Write,0056,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:55:47,chip_3_device_all,Dir_Write,0057,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:58:19,chip_3_device_all,Dir_Write,0058,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,14:58:44,chip_3_device_all,Dir_Write,0059,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:00:48,chip_3_device_all,Dir_Write,0060,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:26:36,chip_3_device_all,Dir_Write,0061,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:29:21,chip_3_device_all,Dir_Write,0062,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:29:38,chip_3_device_all,Dir_Write,0063,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:36:38,chip_3_device_all,Dir_Write,0064,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:37:25,chip_3_device_all,Dir_Write,0065,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:37:36,chip_3_device_all,Dir_Write,0066,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:38:06,chip_3_device_all,Dir_Write,0067,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:38:26,chip_3_device_all,Dir_Write,0068,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:39:01,chip_3_device_all,Dir_Write,0069,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:39:48,chip_3_device_all,Dir_Write,0070,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:39:53,chip_3_device_all,Dir_Write,0071,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:40:38,chip_3_device_all,Dir_Write,0072,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:42:54,chip_3_device_all,Dir_Write,0073,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:44:47,chip_3_device_all,Dir_Write,0074,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:45:17,chip_3_device_all,Dir_Write,0075,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:45:33,chip_3_device_all,Dir_Write,0076,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:45:41,chip_3_device_all,Dir_Write,0077,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:47:00,chip_3_device_all,Dir_Write,0078,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:50:25,chip_3_device_all,Dir_Write,0079,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:55:54,chip_3_device_all,Dir_Write,0080,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:57:09,chip_3_device_all,Dir_Write,0081,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:57:40,chip_3_device_all,Dir_Write,0082,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:58:35,chip_3_device_all,Dir_Write,0083,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:58:43,chip_3_device_all,Dir_Write,0084,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:58:58,chip_3_device_all,Dir_Write,0085,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:59:05,chip_3_device_all,Dir_Write,0086,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:59:40,chip_3_device_all,Dir_Write,0087,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,15:59:47,chip_3_device_all,Dir_Write,0088,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,16:00:00,chip_3_device_all,Dir_Write,0089,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,16:00:08,chip_3_device_all,Dir_Write,0090,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,16:00:14,chip_3_device_all,Dir_Write,0091,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,16:01:40,chip_3_device_all,Dir_Write,0092,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,16:02:29,chip_3_device_all,Dir_Write,0093,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:14:27,chip_3_device_all,Dir_Write,0094,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:17:34,chip_3_device_all,Dir_Write,0095,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:17:47,chip_3_device_all,Dir_Write,0096,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:18:13,chip_3_device_all,Dir_Write,0097,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:18:18,chip_3_device_all,Dir_Write,0098,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:19:36,chip_3_device_all,Dir_Write,0099,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:25:08,chip_3_device_all,Dir_Write,0100,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:26:21,chip_3_device_all,Dir_Write,0101,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:28:42,chip_3_device_all,Dir_Write,0102,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:31:16,chip_3_device_all,Dir_Write,0103,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:32:31,chip_3_device_all,Dir_Write,0104,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:32:54,chip_3_device_all,Dir_Write,0105,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:33:03,chip_3_device_all,Dir_Write,0106,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:33:12,chip_3_device_all,Dir_Write,0107,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:33:22,chip_3_device_all,Dir_Write,0108,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:33:33,chip_3_device_all,Dir_Write,0109,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:33:41,chip_3_device_all,Dir_Write,0110,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:34:32,chip_3_device_all,Dir_Write,0111,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:34:38,chip_3_device_all,Dir_Write,0112,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:35:37,chip_3_device_all,Dir_Write,0113,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:35:49,chip_3_device_all,Dir_Write,0114,Chip 5 0-0  1T1R nmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:40:40,chip_3_device_all,Dir_Write,0115,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:41:10,chip_3_device_all,Dir_Write,0116,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:52:40,chip_3_device_all,Dir_Write,0117,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:54:18,chip_3_device_all,Dir_Write,0118,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:55:35,chip_3_device_all,Dir_Write,0119,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:55:56,chip_3_device_all,Dir_Write,0120,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:56:11,chip_3_device_all,Dir_Write,0121,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:57:08,chip_3_device_all,Dir_Write,0122,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:57:21,chip_3_device_all,Dir_Write,0123,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:59:04,chip_3_device_all,Dir_Write,0124,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,19:59:26,chip_3_device_all,Dir_Write,0125,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:01:51,chip_3_device_all,Dir_Write,0126,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:04:34,chip_3_device_all,Dir_Write,0127,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:05:37,chip_3_device_all,Dir_Write,0128,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:34:47,chip_3_device_all,Dir_Write,0129,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:38:03,chip_3_device_all,Dir_Write,0130,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:38:47,chip_3_device_all,Dir_Write,0131,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:42:41,chip_3_device_all,Dir_Write,0132,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:43:45,chip_3_device_all,Dir_Write,0133,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:46:02,chip_3_device_all,Dir_Write,0134,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:46:43,chip_3_device_all,Dir_Write,0135,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:47:03,chip_3_device_all,Dir_Write,0136,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:47:25,chip_3_device_all,Dir_Write,0137,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:48:50,chip_3_device_all,Dir_Write,0138,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:49:26,chip_3_device_all,Dir_Write,0139,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:49:59,chip_3_device_all,Dir_Write,0140,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:50:58,chip_3_device_all,Dir_Write,0141,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:51:09,chip_3_device_all,Dir_Write,0142,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:51:39,chip_3_device_all,Dir_Write,0143,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:52:01,chip_3_device_all,Dir_Write,0144,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:52:07,chip_3_device_all,Dir_Write,0145,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:52:21,chip_3_device_all,Dir_Write,0146,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:53:46,chip_3_device_all,Dir_Write,0147,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:54:03,chip_3_device_all,Dir_Write,0148,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:54:14,chip_3_device_all,Dir_Write,0149,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:55:46,chip_3_device_all,Dir_Write,0150,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:56:51,chip_3_device_all,Dir_Write,0151,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:57:16,chip_3_device_all,Dir_Write,0152,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:57:46,chip_3_device_all,Dir_Write,0153,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,20:59:25,chip_3_device_all,Dir_Write,0154,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:01:57,chip_3_device_all,Dir_Write,0155,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:03:49,chip_3_device_all,Dir_Write,0156,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:04:52,chip_3_device_all,Dir_Write,0157,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:05:33,chip_3_device_all,Dir_Write,0158,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:05:48,chip_3_device_all,Dir_Write,0159,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:07:05,chip_3_device_all,Dir_Write,0160,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:07:58,chip_3_device_all,Dir_Write,0161,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:08:08,chip_3_device_all,Dir_Write,0162,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:09:09,chip_3_device_all,Dir_Write,0163,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:09:24,chip_3_device_all,Dir_Write,0164,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,21:10:27,chip_3_device_all,Dir_Write,0165,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:16:52,chip_3_device_all,Dir_Write,0166,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:17:48,chip_3_device_all,Dir_Write,0167,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:20:04,chip_3_device_all,Dir_Write,0168,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:39:47,chip_3_device_all,Dir_Write,0169,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:40:01,chip_3_device_all,Dir_Write,0170,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:40:51,chip_3_device_all,Dir_Write,0171,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:41:27,chip_3_device_all,Dir_Write,0172,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:42:03,chip_3_device_all,Dir_Write,0173,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:42:42,chip_3_device_all,Dir_Write,0174,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:42:49,chip_3_device_all,Dir_Write,0175,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:43:09,chip_3_device_all,Dir_Write,0176,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:43:25,chip_3_device_all,Dir_Write,0177,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:45:27,chip_3_device_all,Dir_Write,0178,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:46:20,chip_3_device_all,Dir_Write,0179,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:46:30,chip_3_device_all,Dir_Write,0180,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:46:38,chip_3_device_all,Dir_Write,0181,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:46:45,chip_3_device_all,Dir_Write,0182,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:46:53,chip_3_device_all,Dir_Write,0183,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:47:22,chip_3_device_all,Dir_Write,0184,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:47:55,chip_3_device_all,Dir_Write,0185,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:48:06,chip_3_device_all,Dir_Write,0186,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:48:17,chip_3_device_all,Dir_Write,0187,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:48:25,chip_3_device_all,Dir_Write,0188,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:48:32,chip_3_device_all,Dir_Write,0189,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:49:04,chip_3_device_all,Dir_Write,0190,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:49:15,chip_3_device_all,Dir_Write,0191,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:49:24,chip_3_device_all,Dir_Write,0192,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:49:30,chip_3_device_all,Dir_Write,0193,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:49:57,chip_3_device_all,Dir_Write,0194,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:50:06,chip_3_device_all,Dir_Write,0195,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:50:13,chip_3_device_all,Dir_Write,0196,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:50:25,chip_3_device_all,Dir_Write,0197,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:51:15,chip_3_device_all,Dir_Write,0198,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:51:41,chip_3_device_all,Dir_Write,0199,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:51:57,chip_3_device_all,Dir_Write,0200,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:53:36,chip_3_device_all,Dir_Write,0201,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,22:54:33,chip_3_device_all,Dir_Write,0202,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:34:14,chip_3_device_all,Dir_Write,0203,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:55:23,chip_3_device_all,Dir_Write,0204,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:55:53,chip_3_device_all,Dir_Write,0205,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:56:23,chip_3_device_all,Dir_Write,0206,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:56:36,chip_3_device_all,Dir_Write,0207,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:58:08,chip_3_device_all,Dir_Write,0208,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:58:21,chip_3_device_all,Dir_Write,0209,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:58:58,chip_3_device_all,Dir_Write,0210,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:59:03,chip_3_device_all,Dir_Write,0211,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:59:09,chip_3_device_all,Dir_Write,0212,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-26,23:59:46,chip_3_device_all,Dir_Write,0213,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:00:26,chip_3_device_all,Dir_Write,0000,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:00:30,chip_3_device_all,Dir_Write,0001,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:00:58,chip_3_device_all,Dir_Write,0002,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:01:06,chip_3_device_all,Dir_Write,0003,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:01:43,chip_3_device_all,Dir_Write,0004,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:05:24,chip_3_device_all,Dir_Write,0005,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:05:32,chip_3_device_all,Dir_Write,0006,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:06:03,chip_3_device_all,Dir_Write,0007,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:06:19,chip_3_device_all,Dir_Write,0008,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:06:34,chip_3_device_all,Dir_Write,0009,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:06:45,chip_3_device_all,Dir_Write,0010,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:06:56,chip_3_device_all,Dir_Write,0011,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:07:10,chip_3_device_all,Dir_Write,0012,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:07:27,chip_3_device_all,Dir_Write,0013,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:07:45,chip_3_device_all,Dir_Write,0014,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:07:51,chip_3_device_all,Dir_Write,0015,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:08:25,chip_3_device_all,Dir_Write,0016,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:08:30,chip_3_device_all,Dir_Write,0017,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:09:01,chip_3_device_all,Dir_Write,0018,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:09:20,chip_3_device_all,Dir_Write,0019,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:09:40,chip_3_device_all,Dir_Write,0020,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:09:49,chip_3_device_all,Dir_Write,0021,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:10:06,chip_3_device_all,Dir_Write,0022,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:10:22,chip_3_device_all,Dir_Write,0023,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:10:57,chip_3_device_all,Dir_Write,0024,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:11:25,chip_3_device_all,Dir_Write,0025,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:11:30,chip_3_device_all,Dir_Write,0026,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:11:35,chip_3_device_all,Dir_Write,0027,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:12:14,chip_3_device_all,Dir_Write,0028,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:12:36,chip_3_device_all,Dir_Write,0029,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:12:49,chip_3_device_all,Dir_Write,0030,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:13:17,chip_3_device_all,Dir_Write,0031,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:13:23,chip_3_device_all,Dir_Write,0032,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:13:43,chip_3_device_all,Dir_Write,0033,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:13:47,chip_3_device_all,Dir_Write,0034,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:14:12,chip_3_device_all,Dir_Write,0035,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:14:19,chip_3_device_all,Dir_Write,0036,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:15:00,chip_3_device_all,Dir_Write,0037,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:15:04,chip_3_device_all,Dir_Write,0038,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:17:20,chip_3_device_all,Dir_Write,0039,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:17:38,chip_3_device_all,Dir_Write,0040,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:18:19,chip_3_device_all,Dir_Write,0041,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:18:34,chip_3_device_all,Dir_Write,0042,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:18:50,chip_3_device_all,Dir_Write,0043,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:18:55,chip_3_device_all,Dir_Write,0044,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:19:11,chip_3_device_all,Dir_Write,0045,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:19:27,chip_3_device_all,Dir_Write,0046,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:19:32,chip_3_device_all,Dir_Write,0047,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:19:47,chip_3_device_all,Dir_Write,0048,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:26:33,chip_3_device_all,Dir_Write,0049,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:27:00,chip_3_device_all,Dir_Write,0050,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:27:14,chip_3_device_all,Dir_Write,0051,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:27:48,chip_3_device_all,Dir_Write,0052,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:28:16,chip_3_device_all,Dir_Write,0053,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:28:29,chip_3_device_all,Dir_Write,0054,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:28:58,chip_3_device_all,Dir_Write,0055,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:29:14,chip_3_device_all,Dir_Write,0056,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:29:29,chip_3_device_all,Dir_Write,0057,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:29:41,chip_3_device_all,Dir_Write,0058,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:29:54,chip_3_device_all,Dir_Write,0059,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:02,chip_3_device_all,Dir_Write,0060,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:10,chip_3_device_all,Dir_Write,0061,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:28,chip_3_device_all,Dir_Write,0062,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:35,chip_3_device_all,Dir_Write,0063,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:43,chip_3_device_all,Dir_Write,0064,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:30:54,chip_3_device_all,Dir_Write,0065,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:31:09,chip_3_device_all,Dir_Write,0066,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:31:27,chip_3_device_all,Dir_Write,0067,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:31:42,chip_3_device_all,Dir_Write,0068,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:32:09,chip_3_device_all,Dir_Write,0069,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:32:25,chip_3_device_all,Dir_Write,0070,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:57:56,chip_3_device_all,Dir_Write,0071,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,00:58:18,chip_3_device_all,Dir_Write,0072,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:00:33,chip_3_device_all,Dir_Write,0073,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:00:47,chip_3_device_all,Dir_Write,0074,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:09:01,chip_3_device_all,Dir_Write,0075,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:09:29,chip_3_device_all,Dir_Write,0076,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:10:03,chip_3_device_all,Dir_Write,0077,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:15:19,chip_3_device_all,Dir_Write,0078,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:15:56,chip_3_device_all,Dir_Write,0079,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:18:09,chip_3_device_all,Dir_Write,0080,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:24:18,chip_3_device_all,Dir_Write,0081,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:24:31,chip_3_device_all,Dir_Write,0082,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:24:47,chip_3_device_all,Dir_Write,0083,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:24:57,chip_3_device_all,Dir_Write,0084,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:25:14,chip_3_device_all,Dir_Write,0085,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:25:18,chip_3_device_all,Dir_Write,0086,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:25:32,chip_3_device_all,Dir_Write,0087,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:26:00,chip_3_device_all,Dir_Write,0088,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:26:46,chip_3_device_all,Dir_Write,0089,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:26:50,chip_3_device_all,Dir_Write,0090,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:27:27,chip_3_device_all,Dir_Write,0091,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,01:27:50,chip_3_device_all,Dir_Write,0092,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:35:27,chip_3_device_all,Dir_Write,0093,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:35:39,chip_3_device_all,Dir_Write,0094,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:43:24,chip_3_device_all,Dir_Write,0095,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:45:58,chip_3_device_all,Dir_Write,0096,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:50:21,chip_3_device_all,Dir_Write,0097,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:51:10,chip_3_device_all,Dir_Write,0098,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:51:37,chip_3_device_all,Dir_Write,0099,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:51:59,chip_3_device_all,Dir_Write,0100,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:52:23,chip_3_device_all,Dir_Write,0101,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:52:46,chip_3_device_all,Dir_Write,0102,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:53:19,chip_3_device_all,Dir_Write,0103,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:53:33,chip_3_device_all,Dir_Write,0104,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:53:59,chip_3_device_all,Dir_Write,0105,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:54:07,chip_3_device_all,Dir_Write,0106,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:55:13,chip_3_device_all,Dir_Write,0107,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:55:42,chip_3_device_all,Dir_Write,0108,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:55:54,chip_3_device_all,Dir_Write,0109,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,05:58:17,chip_3_device_all,Dir_Write,0110,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:09:51,chip_3_device_all,Dir_Write,0111,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:21:51,chip_3_device_all,Dir_Write,0112,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:22:27,chip_3_device_all,Dir_Write,0113,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:24:28,chip_3_device_all,Dir_Write,0114,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:25:26,chip_3_device_all,Dir_Write,0115,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-27,06:25:31,chip_3_device_all,Dir_Write,0116,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-28,11:21:30,chip_3_device_all,Dir_Write,0000,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-28,11:22:42,chip_3_device_all,Dir_Write,0001,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-01-28,11:23:52,chip_3_device_all,Dir_Write,0002,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-02-03,13:44:51,chip_3_device_all,Dir_Write,0000,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-02-03,13:45:31,chip_3_device_all,Dir_Write,0001,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-02-03,13:46:15,chip_3_device_all,Dir_Write,0002,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-02-06,13:51:59,chip_3_device_all,Dir_Write,0000,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0
+2025-02-06,13:54:01,chip_3_device_all,Dir_Write,0001,Chip 5 0-0  1T1R pmos VBL 0.7 VWL 1.8 VSL 0 VWLUNSEL 0

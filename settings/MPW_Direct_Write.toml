@@ -546,8 +546,8 @@ WL_UNSEL = [ "WL_UNSEL" ]
 DIR_PERIPH_SEL = [ "DIR_PERIPH_SEL" ]
 # RRAM resistance target level corresponding to each operation defined below
 [target_res]
-FORM = 20_000
-SET = 12_000
+FORM = 5_000
+SET = 10
 RESET = 80_000
 
 # =============================================================================
@@ -569,12 +569,12 @@ CSA_out = 1e-5
 CSA_in = 1e-5
 
 [PULSE]
-prepulse_len = 100
+prepulse_len = 1000
 wl_buffer = 2
 pulse_len = 1000
 blsl_buffer = 1
-postpulse_len = 100
-max_pulse_len = 2000
+postpulse_len = 1000
+max_pulse_len = 4000
 
 # =============================================================================
 # READ PULSE
@@ -593,20 +593,20 @@ shunt_res_value = 0
 #    NMOS READ    #
 # =============== #
 [op.READ.NMOS]
-VWL = 1.8
-VBL = 0.3
+VWL = 1.8 
+VBL = 1
 VSL = 0
-VWL_UNSEL_OFFSET = 0
+VWL_UNSEL_OFFSET = 0.0
 VB = 0
 
 # =============== #
 #    PMOS READ    #
 # =============== #
 [op.READ.PMOS]
-VWL = -1.2
-VBL = 0.7
+VWL = -1
+VBL = -0.7
 VSL = 0
-VWL_UNSEL_OFFSET = 3
+VWL_UNSEL_OFFSET = 2
 VB = 0
 
 # =============================================================================
@@ -624,16 +624,16 @@ VSL = 0
 VWL_UNSEL_OFFSET = 0.0
 PW = 100
 
-VWL_start = 1.5
+VWL_start = 2
 VWL_step = 0.2
 VWL_stop = 2.2
 
-VBL_start = 1
+VBL_start = 2
 VBL_step = 0.1
-VBL_stop = 3.3
+VBL_stop = 3.5
 
-PW_start = 100
-PW_stop = 101
+PW_start = 1000
+PW_stop = 1001
 PW_steps = 10
 
 # =============== #
@@ -642,7 +642,7 @@ PW_steps = 10
 [op.FORM.PMOS]
 VWL = 1.5
 VBL = 0.5
-VSL = 0.5
+VSL = 2
 PW = 1200
 VWL_UNSEL_OFFSET = 3
 #VWL_UNSEL_OFFSET from PMOS SET
@@ -686,21 +686,21 @@ PW_steps = 20
 [op.SET.PMOS]
 VWL = 1.5
 VBL = 0.5
-VSL = 0.5
+VSL = 3
 PW = 1200
 
 VWL_UNSEL_OFFSET = 2
 
-VWL_start = -1.5
+VWL_start = -2
 VWL_step = -0.1
-VWL_stop = -2
+VWL_stop = -2.01
 
 VBL_start = -2
 VBL_step = -0.1
 VBL_stop = -2.01
 
-PW_start = 10
-PW_stop = 20
+PW_start = 1500
+PW_stop = 3000
 PW_steps = 20
 
 # =============================================================================
@@ -714,11 +714,11 @@ VBL = 0
 VWL_UNSEL_OFFSET = 0
 PW = 100
 
-VWL_start = 1.8
+VWL_start = 2
 VWL_step = 0.1
 VWL_stop = 2.26
 
-VSL_start = 2.2
+VSL_start = 2.5
 VSL_step = 0.05
 VSL_stop = 3
 
@@ -730,22 +730,22 @@ PW_steps = 10
 [op.RESET.PMOS]
 VWL = 0.8
 VSL = 1.5
-VBL = 1
+VBL = 1.1
 PW = 100
 
 VWL_UNSEL_OFFSET = 3
 
 # Word Line Voltage Sweep
-VWL_start = -1.8
+VWL_start = -1.9
 VWL_step = -0.1
 VWL_stop = -2
 
 # Source Line Voltage Sweep
-VSL_start = -1
+VSL_start = -1.7
 VSL_step = -0.1
 VSL_stop = -2
 
 # Pulse Width Sweep
-PW_start = 100
-PW_stop = 101
+PW_start = 1000
+PW_stop = 1001
 PW_steps = 33

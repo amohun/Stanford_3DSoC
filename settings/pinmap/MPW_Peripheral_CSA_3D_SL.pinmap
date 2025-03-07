@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PinMap xmlns="http://www.ni.com/TestStand/SemiconductorModule/PinMap.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.5">
+	<Instruments>
+		<NIDigitalPatternInstrument name="PXI6571Slot5" numberOfChannels="32" group="Digital" />
+	</Instruments>
+	<Pins>
+		<DUTPin name="SL_0" />
+		<DUTPin name="SL_1" />
+		<DUTPin name="SL_2" />
+		<DUTPin name="SL_3" />
+		<DUTPin name="IFMAP_0" />
+		<DUTPin name="IFMAP_1" />
+		<DUTPin name="IFMAP_2" />
+		<DUTPin name="IFMAP_3" />
+		<DUTPin name="IFMAP_4" />
+		<DUTPin name="IFMAP_5" />
+		<DUTPin name="IFMAP_6" />
+		<DUTPin name="IFMAP_7" />
+		<DUTPin name="SL_NONE_0" />
+		<DUTPin name="SL_NONE_1" />
+		<DUTPin name="SL_NONE_2" />
+		<DUTPin name="SL_NONE_3" />
+		<DUTPin name="SL_NONE_4" />
+		<DUTPin name="SL_NONE_5" />
+		<DUTPin name="SL_NONE_6" />
+		<DUTPin name="SL_NONE_7" />
+		<DUTPin name="WT_SEL_EXT" />
+		<DUTPin name="IFMAP_EN" />
+		<DUTPin name="WEIGHT_SHIFT" />
+		<DUTPin name="WEIGHT_EN" />
+		<DUTPin name="MUX_SEL_CONV_CLK" />
+		<DUTPin name="MUX_SEL_WT" />
+		<DUTPin name="PSUM_SLC" />
+		<DUTPin name="SL_NONE_8" />
+		<DUTPin name="SL_NONE_9" />
+		<DUTPin name="RST_N" />
+		<DUTPin name="EXT_WT_1" />
+		<DUTPin name="EXT_WT_0" />
+	</Pins>
+	<PinGroups>
+		<PinGroup name="SL">
+			<PinReference pin="SL_0" />
+			<PinReference pin="SL_1" />
+			<PinReference pin="SL_2" />
+			<PinReference pin="SL_3" />
+		</PinGroup>
+	</PinGroups>
+	<Sites>
+		<Site siteNumber="0" />
+	</Sites>
+	<Connections>
+		<Connection pin="SL_0" siteNumber="0" instrument="PXI6571Slot5" channel="0" />
+		<Connection pin="SL_1" siteNumber="0" instrument="PXI6571Slot5" channel="1" />
+		<Connection pin="SL_2" siteNumber="0" instrument="PXI6571Slot5" channel="2" />
+		<Connection pin="SL_3" siteNumber="0" instrument="PXI6571Slot5" channel="3" />
+		<Connection pin="IFMAP_0" siteNumber="0" instrument="PXI6571Slot5" channel="4" />
+		<Connection pin="IFMAP_1" siteNumber="0" instrument="PXI6571Slot5" channel="5" />
+		<Connection pin="IFMAP_2" siteNumber="0" instrument="PXI6571Slot5" channel="6" />
+		<Connection pin="IFMAP_3" siteNumber="0" instrument="PXI6571Slot5" channel="7" />
+		<Connection pin="IFMAP_4" siteNumber="0" instrument="PXI6571Slot5" channel="8" />
+		<Connection pin="IFMAP_5" siteNumber="0" instrument="PXI6571Slot5" channel="9" />
+		<Connection pin="IFMAP_6" siteNumber="0" instrument="PXI6571Slot5" channel="10" />
+		<Connection pin="IFMAP_7" siteNumber="0" instrument="PXI6571Slot5" channel="11" />
+		<Connection pin="SL_NONE_0" siteNumber="0" instrument="PXI6571Slot5" channel="12" />
+		<Connection pin="SL_NONE_1" siteNumber="0" instrument="PXI6571Slot5" channel="13" />
+		<Connection pin="SL_NONE_2" siteNumber="0" instrument="PXI6571Slot5" channel="14" />
+		<Connection pin="SL_NONE_3" siteNumber="0" instrument="PXI6571Slot5" channel="15" />
+		<Connection pin="SL_NONE_4" siteNumber="0" instrument="PXI6571Slot5" channel="16" />
+		<Connection pin="SL_NONE_5" siteNumber="0" instrument="PXI6571Slot5" channel="17" />
+		<Connection pin="SL_NONE_6" siteNumber="0" instrument="PXI6571Slot5" channel="18" />
+		<Connection pin="SL_NONE_7" siteNumber="0" instrument="PXI6571Slot5" channel="19" />
+		<Connection pin="WT_SEL_EXT" siteNumber="0" instrument="PXI6571Slot5" channel="20" />
+		<Connection pin="IFMAP_EN" siteNumber="0" instrument="PXI6571Slot5" channel="21" />
+		<Connection pin="WEIGHT_SHIFT" siteNumber="0" instrument="PXI6571Slot5" channel="22" />
+		<Connection pin="WEIGHT_EN" siteNumber="0" instrument="PXI6571Slot5" channel="23" />
+		<Connection pin="MUX_SEL_CONV_CLK" siteNumber="0" instrument="PXI6571Slot5" channel="24" />
+		<Connection pin="MUX_SEL_WT" siteNumber="0" instrument="PXI6571Slot5" channel="25" />
+		<Connection pin="PSUM_SLC" siteNumber="0" instrument="PXI6571Slot5" channel="26" />
+		<Connection pin="SL_NONE_8" siteNumber="0" instrument="PXI6571Slot5" channel="27" />
+		<Connection pin="SL_NONE_9" siteNumber="0" instrument="PXI6571Slot5" channel="28" />
+		<Connection pin="RST_N" siteNumber="0" instrument="PXI6571Slot5" channel="29" />
+		<Connection pin="EXT_WT_1" siteNumber="0" instrument="PXI6571Slot5" channel="30" />
+		<Connection pin="EXT_WT_0" siteNumber="0" instrument="PXI6571Slot5" channel="31" />
+	</Connections>
+</PinMap>

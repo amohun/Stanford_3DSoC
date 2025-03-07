@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PinLevelsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/PinLevels">
+  <PinLevelsSheet>
+    <DigitalPinLevelSets>
+      <DigitalPinLevelSet pin="BL">
+        <Vil>0</Vil>
+        <Vih>1</Vih>
+        <Vol>0</Vol>
+        <Voh>1</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="OFMAP">
+        <Vil>0.3</Vil>
+        <Vih>0.7</Vih>
+        <Vol>0.3</Vol>
+        <Voh>0.7</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="PE_EN">
+        <Vil>0</Vil>
+        <Vih>1</Vih>
+        <Vol>0</Vol>
+        <Voh>1</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+    </DigitalPinLevelSets>
+    <PpmuPinLevelSets>
+      <PpmuPinLevelSet pin="BL">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="OFMAP">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="PE_EN">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+    </PpmuPinLevelSets>
+  </PinLevelsSheet>
+</PinLevelsFile>

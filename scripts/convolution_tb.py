@@ -60,12 +60,22 @@ class Convolution:
         
         self.digital_patterns.broadcast_waveforms()
 
-    def read_captured_waveforms(self, pins=None, waveform_names=None):
+    def read_captured_waveforms(self, chip,condition="None", pins=None, waveform_names=None):
         captured_waveforms = self.digital_patterns.fetch_waveforms(pins, waveform_names)
+        OFMAP_LIST = []
+        if condition != "None":
+            import os
+            os.makedirs(f"C:/c{chip}/{condition}",exist_ok=True)
+            with open(f"C:/c{chip}/{condition}/0-23.txt","+a") as file:
+                for i in range(98):
+                    OFMAP_VALS = format(list(captured_waveforms[0].values())[0][i],'024b')[::-1]
+                    file.write(f"0b{OFMAP_VALS}\n")
+
         for i in range(98):
-            print(bin(list(captured_waveforms[0].values())[0][i]))
+            OFMAP_VALS = format(list(captured_waveforms[0].values())[0][i],'024b')[::-1]
+            print("0b"+OFMAP_VALS)
+            # print(bin(list(captured_waveforms[0].values())[0][i]))
         return captured_waveforms
-    
     def define_pins(self):
         self.pins = []
         pingroups = self.settings_manager.get_setting("device.pins")
@@ -128,8 +138,14 @@ def arg_parse():
     parser = argparse.ArgumentParser(description="Define a Chip")
     parser.add_argument("chip", help="Chip name for logging")
     parser.add_argument("device", help="Device name for logging")
+    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_true")
     parser.add_argument("--polarity", help="Polarity of the device", default="NMOS")
-    parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_Conv_Test.toml")
+    
+    if parser.parse_args().CNT:
+        parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_3D_Conv_Test.toml")
+    else:
+        parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_2D_Conv_Test.toml")
+    
     parser.add_argument("--debug", help="Enable debug mode", action="store_true")
     parser.add_argument("--test_type", help="Type of test being performed", default="CSA")
     parser.add_argument("--comments", help="Additional information about the test", default="")
@@ -158,10 +174,11 @@ def main(args):
     # pdb.set_trace()
     conv.set_pin_voltages()
     # pdb.set_trace()
-    for i in range(10):
+    
+    for i in range(1000):
         conv.broadcast_waveforms_from_file()
     
-    conv.read_captured_waveforms()
+    conv.read_captured_waveforms(chip=4, condition="0 -255")
 
 
 if __name__ == "__main__":

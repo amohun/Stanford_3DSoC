@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PinLevelsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.0" xmlns="http://www.ni.com/Semiconductor/PinLevels">
+  <PinLevelsSheet>
+    <DigitalPinLevelSets>
+      <DigitalPinLevelSet pin="WL_IN">
+        <Vil>0</Vil>
+        <Vih>-2 V</Vih>
+        <Vol>0</Vol>
+        <Voh>-2 V</Voh>
+        <Vterm>0</Vterm>
+        <TerminationMode>Vterm</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="COLSEL">
+        <Vil>0</Vil>
+        <Vih>5</Vih>
+        <Vol>0</Vol>
+        <Voh>5</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="DO_SA_RDY">
+        <Vil>0</Vil>
+        <Vih>0.8</Vih>
+        <Vol>0</Vol>
+        <Voh>0.8</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="RMUX_EN">
+        <Vil>0</Vil>
+        <Vih>5 V</Vih>
+        <Vol>0</Vol>
+        <Voh>5 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="ACCUM_EN">
+        <Vil>0</Vil>
+        <Vih>1.8 V</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="WL_UNSEL">
+        <Vil>0</Vil>
+        <Vih>2</Vih>
+        <Vol>0</Vol>
+        <Voh>2</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="SA_CLK">
+        <Vil>0</Vil>
+        <Vih>0.5</Vih>
+        <Vol>0</Vol>
+        <Voh>0.5</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="SA_CLK_EXT">
+        <Vil>0</Vil>
+        <Vih>1.8 V</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="SA_EN">
+        <Vil>0</Vil>
+        <Vih>1.8 V</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="DIR_PERIPH_SEL">
+        <Vil>0</Vil>
+        <Vih>1.8 V</Vih>
+        <Vol>0</Vol>
+        <Voh>1.8 V</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+      <DigitalPinLevelSet pin="VREAD">
+        <Vil>0</Vil>
+        <Vih>0.3</Vih>
+        <Vol>0</Vol>
+        <Voh>0.3</Voh>
+        <TerminationMode>HighZ</TerminationMode>
+      </DigitalPinLevelSet>
+    </DigitalPinLevelSets>
+    <PpmuPinLevelSets>
+      <PpmuPinLevelSet pin="WL_IN">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="COLSEL">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="DO_SA_RDY">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="RMUX_EN">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="ACCUM_EN">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="WL_UNSEL">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="SA_CLK">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="SA_CLK_EXT">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="SA_EN">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="DIR_PERIPH_SEL">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+      <PpmuPinLevelSet pin="VREAD">
+        <Vf>0</Vf>
+        <IRange>32 µA</IRange>
+      </PpmuPinLevelSet>
+    </PpmuPinLevelSets>
+  </PinLevelsSheet>
+</PinLevelsFile>

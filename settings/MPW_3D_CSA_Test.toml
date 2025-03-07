@@ -1,0 +1,158 @@
+[path]
+master_log_file = "data/debug/logs/master.log"
+prog_log_file = "data/debug/logs/prog.log"
+data_header = "data/"
+test_log_file = "data/test_log.csv"
+path_data = "D:\\nirram\\data\\MPW_Test\\"
+
+[NIDigital]
+deviceID = ["PXI6571Slot4", "PXI6571Slot5", "PXI6570Slot8"]
+pinmap = ["settings/pinmap/MPW_Peripheral_3D_BL.pinmap","settings/pinmap/MPW_Peripheral_3D_SL.pinmap",  "settings/pinmap/MPW_Peripheral_3D_WL.pinmap"]
+specs = ["settings/Stanford_3DSoC/MPW_3DSoC.specs"]
+
+timing = [
+  "settings/timing/MPW_Peripheral_3D_BL.digitiming",
+  "settings/timing/MPW_Peripheral_3D_SL.digitiming",
+  "settings/timing/MPW_Peripheral_3D_WL.digitiming"
+]
+levels = [
+    "settings/levels/MPW_Peripheral_3D_BL.digilevels",
+    "settings/levels/MPW_Peripheral_3D_SL.digilevels",
+    "settings/levels/MPW_Peripheral_3D_WL.digilevels"
+]
+# Each pattern is defined by an array of each session pattern
+# So a pattern for direct write is defined by the array of 
+# the BLSL session pattern and the WL session pattern for direct write
+patterns = [
+    "settings/patterns/3D/MPW_Peripheral_CSA_3D_BL.digipat",
+    "settings/patterns/3D/MPW_Peripheral_CSA_3D_SL.digipat",
+    "settings/patterns/3D/MPW_Peripheral_CSA_3D_WL.digipat"
+]
+
+source_waveforms = [
+    "settings/waveforms/3D/MPW_Peripheral_CSA_3D_BL.tdms",
+    "settings/waveforms/3D/MPW_Peripheral_CSA_3D_SL.tdms",
+    "settings/waveforms/3D/MPW_Peripheral_CSA_3D_WL.tdms"
+]
+
+source_waveform_names = [
+    "CSA_Test_3D_BL",
+    "CSA_Test_3D_SL",
+    "CSA_Test_3D_WL"
+]
+capture_waveforms = [
+    "NO_WAVEFORM",
+    "NO_WAVEFORM",
+    "MPW_Peripheral_CSA_3D_WL.digicapture",
+    
+]
+
+capture_waveform_names = [
+    "NO_WAVEFORM",
+    "NO_WAVEFORM",
+    "CSA_Test_3D_WL_DO_SA_RDY",
+]
+
+capture_pins = [
+    [],
+    [],
+    ["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]
+]
+
+sample_length = 73
+
+[NISwitch]
+deviceID = ["PXI2571Slot2", "PXI2571Slot3"]
+
+[TIMING]
+direct = 2e-6
+CSA = 2e-7
+Conv = 2e-6
+
+[device]
+pins = [["BL","PE_EN"],
+        ["SL"],
+        ["SA_EN", "RMUX_EN","SA_CLK","SA_CLK_EXT","DO_SA_RDY","COLSEL"]
+        ]
+
+#Pin Groups for VHDCI 1
+BL = ["BL_0", "BL_1","BL_2","BL_3","BL_29","BL_30","BL_31"]
+PE_EN = "PE_EN"
+
+#Pin Groups for VHDCI 2
+SL = ["SL_0", "SL_1","SL_2","SL_3","SL_29","SL_30","SL_31"]
+# WT_SEL_EXT = "WT_SEL_EXT"
+# MUX_SEL_CONV_CLK = "MUX_SEL_CONV_CLK"
+# IFMAP_EN = "IFMAP_EN"
+# PSUM_SLC = "PSUM_SLC"
+# WEIGHT_EN = "WEIGHT_EN"
+# WEIGHT_SHIFT = "WEIGHT_SHIFT"
+# MUX_SEL_WT = "MUX_SEL_WT"
+# RST_N = "RST_N"
+
+# Pin Groups for VHDCI 3
+WL_IN = ["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]
+WL_UNSEL = "WL_UNSEL"
+VREAD = "VREAD"
+COLSEL = [
+    "COL_SEL_3",
+    "COL_SEL_2",
+    "COL_SEL_1",
+    "COL_SEL_0",
+]
+SA_EN = "SA_EN"
+RMUX_EN = "RMUX_EN"
+SA_CLK = "SA_CLK"
+SA_CLK_EXT = "SA_CLK_EXT"
+DIR_PERIPH_SEL = "DIR_PERIPH_SEL"
+DO_SA_RDY = ["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]
+ACCUM_EN = "ACCUM_EN"
+
+[voltages]
+vih = 1.8
+vil = 0.0
+voh = 1.8
+vol = 0.0
+
+[other_voltages]
+[other_voltages.RMUX_EN]
+vih = -1
+vil = 0
+voh = -1
+vol = 0
+
+[other_voltages.VREAD]
+vih = 0.1
+vil = 0.0
+voh = 0.1
+vol = 0.0
+
+[other_voltages.COL]
+vih = 5
+vil = 0
+voh = 5
+vol = 0.0
+
+[other_voltages.SL]
+vih = 0
+vil = 0.0
+voh = 0
+vol = 0.0
+
+[other_voltages.SARDY_DO]
+vih = 0.5
+vil = 0.3
+voh = 0.5
+vol = 0.3
+
+[other_voltages.WL_UNSEL]
+vih = 1
+vil = 0
+voh = 1
+vol = 0
+
+[other_voltages.WL_IN]
+vih = -1
+vil = 0
+voh = -1
+vol = 0

@@ -20,11 +20,12 @@ class CSAException(Exception):
         super().__init__(f"CSA: {msg}")
     
 class CSA:
-    def __init__(self,chip,device):
+    def __init__(self,chip,device,is_3D):
         self.settings = None
         self.debug = False
         self.chip = chip
         self.device = device
+        self.is_3D = is_3D
         
         
     def initialize_settings(self, settings_file):
@@ -44,6 +45,15 @@ class CSA:
 
         # pdb.set_trace()
         self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],0.0,source=True)
+        self._load_relay_settings(self.settings_manager)
+
+    def _load_relay_settings(self, settings_manager: SettingsUtil):
+        """Load relay-specific settings from the provided settings manager."""
+        self.relays = None
+        self.relay_information = settings_manager.get_setting("NISwitch", default=None)
+        
+        if self.relay_information:
+            self.relays = settings_manager.get_setting("NISwitch.deviceID", required=True)
 
     def broadcast_waveforms_from_file(self, source_waveforms=None, source_waveform_names=None, capture_waveforms=None, capture_waveform_names=None, pins=None):
         if source_waveforms is not None:
@@ -96,25 +106,57 @@ class CSA:
         voh_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.voh", 5)
         vol_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.vol", 0)
 
-        #RMUX_EN = 0.3V on 0V off
-        vih_vread = self.settings_manager.get_setting("other_voltages.VREAD.vih", 0.3)
+        #VREAD = 0.3V on 0V off
+        vih_vread = self.settings_manager.get_setting("other_voltages.VREAD.vih", 0.1)
         vil_vread = self.settings_manager.get_setting("other_voltages.VREAD.vil", 0)
-        voh_vread = self.settings_manager.get_setting("other_voltages.VREAD.voh", 0.3)
+        voh_vread = self.settings_manager.get_setting("other_voltages.VREAD.voh", 0.1)
         vol_vread = self.settings_manager.get_setting("other_voltages.VREAD.vol", 0)
 
+        #WL_UNSEL = Hi on, Lo off (2 to 4V)
+        vih_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 2)
+        vil_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vil", 0)
+        voh_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 2)
+        vol_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vol", 0)
+        # WL = Lo on, Hi off (-1 to -2V)
+        vih_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", -1)
+        vil_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vil", 0)
+        voh_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", -1)
+        vol_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vol", 0)
+
         # Outputs should be < 1.8V to trigger high
-        vih_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vih", 1.5)
-        vil_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vil", 0)
-        voh_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.voh", 1.5)
-        vol_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vol", 0)
+        vih_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vih", 1)
+        vil_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vil", 0.3)
+        voh_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.voh", 1)
+        vol_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vol", 0.3)
+
+        # Outputs should be < 1.8V to trigger high
+        vih_sl = self.settings_manager.get_setting("other_voltages.SL.vih", 0)
+        vil_sl = self.settings_manager.get_setting("other_voltages.SL.vil", 0)
+        voh_sl = self.settings_manager.get_setting("other_voltages.SL.voh", 0)
+        vol_sl = self.settings_manager.get_setting("other_voltages.SL.vol", 0)
+
+        # Outputs should be < 1.8V to trigger high
+        vih_colsel = self.settings_manager.get_setting("other_voltages.COL.vih", 3)
+        vil_colsel = self.settings_manager.get_setting("other_voltages.COL.vil", 0)
+        voh_colsel = self.settings_manager.get_setting("other_voltages.COL.voh", 3)
+        vol_colsel = self.settings_manager.get_setting("other_voltages.COL.vol", 0)
+
 
         self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["RMUX_EN"]], vi_lo=vil_rmuxen, vi_hi=vih_rmuxen, vo_lo=vol_rmuxen, vo_hi=voh_rmuxen,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["VREAD"]], vi_lo=vil_vread, vi_hi=vih_vread, vo_lo=vol_vread, vo_hi=voh_vread,sort=False)
-        self.digital_patterns.digital_set_voltages([[],[],["SA_RDY_0","SA_RDY_1","DO_0","DO_1"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
+        if self.is_3D:
+            self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)
+            self.digital_patterns.digital_set_voltages([[],[],["SA_CLK_EXT"]],vi_lo=vil_colsel, vi_hi=vih_colsel, vo_lo=vol_colsel, vo_hi=voh_colsel,sort=False)
+            self.digital_patterns.digital_set_voltages([[],["SL_0", "SL_1","SL_2","SL_3","SL_29","SL_30","SL_31"],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)        
+        else:
+            self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
+        self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
 
-        
-        
+        if "DO_7" in self.digital_patterns.all_pins:
+            self.digital_patterns.digital_set_voltages([[],[],["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
+        else:
+            self.digital_patterns.digital_set_voltages([[],[],["DO_1","DO_0","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)        
         self.digital_patterns.commit_all()
 
     def set_channel_mode(self, pins=None, mode="DIGITAL"):
@@ -123,29 +165,32 @@ class CSA:
         for session_pins in pins:
             self.digital_patterns.set_channel_mode(mode=mode,pins=session_pins)
     
-    def check_leakage(self, pins = ["COL_SEL"], source_pins=["VREAD"]):
+    def check_leakage(self, pins = ["RMUX_EN","SA_CLK_EXT","DIR_PERIPH_SEL"], source_pins=["DIR_PERIPH_SEL"]):
         if pins == ["COL_SEL"]:
             pins = [f"COL_SEL_{i}" for i in range(16)]
                 
         self.set_channel_mode(pins=pins, mode="PPMU")
         self.set_channel_mode(pins=source_pins, mode="PPMU")
+        for i in [r*0.1 for r in range(51)]:
+            self.digital_patterns.ppmu_set_voltage(pins=pins, voltage_levels = 0, source=True)
+            time.sleep(10)
 
-        self.digital_patterns.ppmu_set_voltage(pins=pins, voltage_levels = 0, source=True)
-        self.digital_patterns.ppmu_set_voltage(pins=source_pins, voltage_levels = 1.8, source=True)
+        # currents,_,_ = self.digital_patterns.measure_current(pins=source_pins)
+        # currents = np.array(currents[2])
+        # print(currents)
 
-        currents,_,_ = self.digital_patterns.measure_current(pins=pins)
-        currents = np.array(currents[2])
-        current_total = np.sum(currents)
-        print(currents)
-        print(current_total)
-
-        currents,_,_ = self.digital_patterns.measure_current(pins=source_pins)
-        currents = np.array(currents[2])
-        current_total = np.sum(currents)
-        print(currents)
-        print(current_total)
-
-
+    def check_vread_current(self):
+        pins= [f"COL_SEL_{i}" for i in range(4)] + ["BL_0"] + ["SL_0"] + ["DIR_PERIPH_SEL"]
+        self.set_channel_mode(pins=pins, mode="PPMU")
+        for i in range(4):
+            self.digital_patterns.ppmu_set_voltage(pins=pins, voltage_levels = 0, source=True)
+            self.digital_patterns.ppmu_set_voltage(pins=["BL_0"], voltage_levels = 0, source=True)
+            self.digital_patterns.ppmu_set_voltage(pins=[f"COL_SEL_{i}"], voltage_levels = 1, source=True)
+            time.sleep(1)
+            currents,_,_ = self.digital_patterns.measure_current(pins=pins)
+            time.sleep(1)
+            self.digital_patterns.ppmu_set_voltage(pins=pins, voltage_levels = 0, source=True)
+            print(currents)
 
     def save_captured_waveform(self, waveform_name=None, filename=None):
         if waveform_name is None:
@@ -156,14 +201,39 @@ class CSA:
             test = self.settings_manager.get_setting("path.test_name","CONV")
             filename = f"{header}/{test}/{date}_{self.chip}_{self.device}_{waveform_name}.csv"
     
+    def relay_switch(self, wls, relayed=True, debug = None):
+        if self.relays is None:
+            raise CSAException("No Relay Cards Found")
+
+        num_relays = len(self.relays)
+
+        sorted_wls = []
         
+        for i in range(num_relays):
+            # Sort the WL channels by relay 0-65 for relay 1, 66-131 for relay 2, (sending 0-65 for each relay)
+            sorted_wls.append([(int(wl[3:])-66*i) for wl in wls if int(wl[3:])//66 == i])        
+
+        wl_input_signals = [f"WL_IN_{int(wl[3:])%24}"for wl in wls] 
+        # for wl_in in wl_input_signals:
+            # if wl_in not in ["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]:
+                # raise CSAException(f"{wl_in} is out of bounds, please be sure the WL % 24 is 0, 21, 22 or 23")
+        # Switch the relays at the given WL channels, separated by relay.
+        self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)
+        
+        # return       
     
 def arg_parse():
     parser = argparse.ArgumentParser(description="Define a Chip")
     parser.add_argument("chip", help="Chip name for logging")
     parser.add_argument("device", help="Device name for logging")
+    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_true")
     parser.add_argument("--polarity", help="Polarity of the device", default="NMOS")
-    parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_CSA_Test.toml")
+    
+    if parser.parse_args().CNT:
+        parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_3D_CSA_Test.toml")
+    else:
+        parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_2D_CSA_Test.toml")
+    
     parser.add_argument("--debug", help="Enable debug mode", action="store_true")
     parser.add_argument("--test_type", help="Type of test being performed", default="CSA")
     parser.add_argument("--comments", help="Additional information about the test", default="")
@@ -184,19 +254,22 @@ def arg_parse():
     return args
 
 def main(args):
-    conv = CSA(chip=args.chip, device = args.device)
-    conv.initialize_settings(args.settings)
-    conv.initialize_session()
-    conv.define_pins()
-    conv.set_channel_mode()
-
+    connected_wl = 0
+    csa = CSA(chip=args.chip, device = args.device, is_3D = args.CNT)
+    csa.initialize_settings(args.settings)
+    csa.initialize_session()
+    csa.define_pins()
+    csa.set_channel_mode()
+    remove_bias=[]
+    # remove_bias=[f"WL_{i}" for i in [23,34,47,54,60,81,83,102,105,113,114,123]]
+    csa.relay_switch([f"wl_{connected_wl}"]+remove_bias,relayed=True,debug=False)
     # pdb.set_trace()
-    conv.set_pin_voltages()
-    # pdb.set_trace()
-    for i in range(200):
-        conv.broadcast_waveforms_from_file()
+    csa.set_pin_voltages()
+    for i in range(1000):
+        csa.broadcast_waveforms_from_file()
     
-    conv.read_captured_waveforms()
+    csa.read_captured_waveforms()
+    # csa.check_leakage()
 
 
 if __name__ == "__main__":

@@ -40,6 +40,7 @@ class DigitalPattern:
             self,
             settings="settings\default.toml",
             debug=False,
+            wl_unsel=False
         ):
 
         self.settings_manager = SettingsUtil(settings)
@@ -56,7 +57,7 @@ class DigitalPattern:
         self.configure_timing()
         self.load_level_and_timing()
         self.ppmu_set_pins_to_zero()
-        self.set_current_limit_range(self.all_pins, 2e-6, pin_sort=False)
+        self.set_current_limit_range(self.all_pins, 32e-3,pin_sort=False,wl_unsel_flag=wl_unsel)
         # self.set_power(ignore_empty=True)
 
     """ ================================================= """
@@ -274,7 +275,7 @@ class DigitalPattern:
         if "pattern_names" in digital:
             self.pattern_names = digital["pattern_names"]
         else:
-            self.pattern_names = [text_between(pattern,"patterns/",".digipat") for pattern in self.patterns]
+            self.pattern_names = [text_after(text_between(pattern,f"patterns/",".digipat"),"/") for pattern in self.patterns]
 
         self.dbg.end_function_debug()
 
@@ -300,6 +301,7 @@ class DigitalPattern:
 
         if capture_pins is None:
             capture_pins = self.settings_manager.get_setting("NIDigital.capture_pins")
+        
         # Define the capture waveforms and names from either settings or arguments
         if capture_waveforms is None:
             capture_waveforms = self.settings_manager.get_setting("NIDigital.capture_waveforms")
@@ -329,11 +331,10 @@ class DigitalPattern:
                         self.checkable_waveforms.append((session,capture_waveform_name,self.settings_manager.get_setting("NIDigital.sample_length")))
                     else:    
                         raise DigitalPatternException(f"Capture waveform file {capture_waveform} not found")
-        
         if source_waveforms is None and capture_waveforms is None:
             self.dbg.end_function_debug()
             return self.waveform_exists_check, self.checkable_waveforms
-            
+
     def fetch_waveforms(self,debug=None, waveforms=None):
         """
         Retrieve waveforms from the sessions
@@ -378,6 +379,7 @@ class DigitalPattern:
                 session_timing = digital["timing"][session_index]
                 session_specs = digital["specs"]
                 
+                print(session_timing)
                 session.load_specifications_levels_and_timing(session_specs, session_levels, session_timing)
                 session.apply_levels_and_timing(session_levels, session_timing)
                 session.load_pattern
@@ -1180,7 +1182,6 @@ class DigitalPattern:
             session.configure_pattern_burst_sites()
             _, nitclk_session_list = nitclk.configure_for_homogeneous_triggers(sessions)
         nitclk.synchronize(sessions,1e-7)
-        # pdb.set_trace()
         sessions[0].burst_pattern_synchronized(nitclk_session_list, self.pattern_names[0][:-3])
         nitclk.wait_until_done(sessions,20)
         
@@ -1197,7 +1198,6 @@ class DigitalPattern:
         for session, session_pins in zip(sessions,pins):
             for pin in session_pins:
                 session.channels[pin].create_capture_waveform_parallel()
-        
         self.dbg.end_function_debug()
         return 0
 
@@ -1205,7 +1205,7 @@ class DigitalPattern:
     """              NiDigital Read Functions             """
     """ ================================================= """
     # region
-    def set_current_limit_range(self, channel=None, current_limit=1e-6, pin_sort=True, debug=None):
+    def set_current_limit_range(self, channel=None, current_limit=1e-6, pin_sort=True, wl_unsel_flag=False, debug=None):
         """ Set current limit for a given channel """
         
         self.dbg.start_function_debug(debug)
@@ -1215,6 +1215,8 @@ class DigitalPattern:
         for digital,dev_pins in zip(self.sessions, channel):
             if dev_pins is not None:
                 digital.channels[dev_pins].ppmu_current_limit_range = current_limit
+        if wl_unsel_flag:
+            self.sessions[2].channels[channel[2]].ppmu_current_limit_range = 32E-6
         
         self.dbg.end_function_debug()
         
@@ -1329,13 +1331,55 @@ class DigitalPattern:
                 channels = [channels]
             else:
                 raise ValueError("Channels must be provided")
-
+        
+        channels = [list(set(channel)) for channel in channels]
+        
         for relay, channel in zip(relays, channels):
             with niswitch.Session(relay) as relay_session:
                 relay_session.disconnect_all()
                 for ch in channel:
                     self.dbg.debug_message(f"Connecting com{ch} to no{ch} on {relay}")
                     relay_session.connect(f"com{ch}",f"no{ch}")
+        
+        self.dbg.end_function_debug()
+        return 0
+
+    def disconnect_relays(self, relays=None, channels=None,debug=None):
+        """
+        Connect to specified channels on a relay module.
+
+        This method iterates over the provided list of channels and establishes connections
+        using the relay module's `connect` method, provided the relay module is initialized (`self.relays` is not `None`).
+
+        Args:
+            channels (list): A list of channels to connect.
+
+        Raises:
+            ValueError: If channels is not a list or if self.relays is not initialized.
+        """
+        if relays is None: relays = self.relays
+        if channels is None: raise DigitalPatternException("No channels/pins provided")
+
+        if isinstance(relays, str):
+            relays = [relays]
+        if not isinstance(relays, list):
+            raise ValueError("Relays must be a list, or a string if only one relay is used")
+        
+        if isinstance(channels, str):
+            channels = [[channels]]
+        elif not isinstance(channels[0], list):
+            if len(channels) > 0:
+                channels = [channels]
+            else:
+                raise ValueError("Channels must be provided")
+        
+        channels = [list(set(channel)) for channel in channels]
+        
+        for relay, channel in zip(relays, channels):
+            with niswitch.Session(relay) as relay_session:
+                for ch in channel:
+                    self.dbg.debug_message(f"Connecting com{ch} to no{ch} on {relay}")
+                    relay_session.disconnect(f"com{ch}",f"no{ch}")
         
         self.dbg.end_function_debug()
         return 0
