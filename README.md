@@ -2,27 +2,21 @@
 A selection of python scripts to use the NI PXIe 6570/6571 to program ReRAM, modified from a directory by Akash Levy and Robert Radway
 
 ## Pip environment
-Install: nidigital, numpy, (matplotlib, pandas, stats for analysis notebook)
+Install: nidigital, niswitch, nitclk, numpy, matplotlib
 
 ## Project environment config
-In settings there is a sample `settings/_env.toml` file. This contains
-local paths for storing data. Copy+paste the file into `settings/env.toml`
-and customize these paths as needed.
+On the NI System Windows OS the environment can be loaded using ./Source/Scripts/Activate.ps1
 
 ## Scripts
-- form_chip.py: FORM a chip
-- program_chip.py: Program a bitstream to a chip
+- digital_pattern.py: Basic functions for interacting with nidigital and niswitch
+    This program serves as a buffer between specific programs and the nidigital library. It also allows for synchronization across the
+    PXIe 6570 and PXIe 6571 
+- nirram_abstracted.py: Interaction with RRAM/The RRAM array. This program can interact with any RRAM but is tailored for the MPW 3DSoC array
+- csa_tb.py: This program runs the CSA testbench files in the settings/patterns folder. It is a brute force approach to running patterns
+- convolution_tb.py THis program runs the convolution testbench files in the settings/patterns folder. It is a brute force approach to running patterns.
 
-Make sure to specify the chip name in the arguments when running either script. Program chip also needs the bitstream file. Two examples can be found in `bitstream/` and the script for generating more can also be found in the other repo.
+When running the program, make sure to specify the chip/device you are runnign with.
 
-## Addressing Scheme
-
-```
-< MSB.................LSB >
-{wl_addr}|{wl_ext_sel}|{sl_addr[6:0]}|sl_ext_sel
-```
-
-Note that wl_ext_sel and sl_ext_sel need to be decoded programmatically to determine which wl_ext_[0:3] or bl_ext[0:1] should be high.
 =======
 # Stanford_3DSoC
 A selection of python scripts to use the NI PXIe 6570/6571 to program ReRAM, modified from a directory by Akash Levy and Robert Radway
