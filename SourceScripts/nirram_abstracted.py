@@ -315,7 +315,7 @@ class NIRRAM:
         vbl = self.op["READ"][self.polarity].get("VBL", vbl_default) if vbl is None else vbl
         vsl = self.op["READ"][self.polarity].get("VSL", vsl_default) if vsl is None else vsl
         vwl = self.op["READ"][self.polarity].get("VWL", vwl_default)  if vwl is None else vwl
-        vwl_unsel_offset = self.op["READ"][self.polarity].get("VWL_UNSEL_OFFSET", vwl/2) if vwl_unsel_offset is None else vwl_unsel_offset
+        vwl_unsel_offset = self.op["READ"][self.polarity].get("VWL_UNSEL_OFFSET", vwl_unsel_offset_default) if vwl_unsel_offset is None else vwl_unsel_offset
         vwl_unsel = vsl + vwl_unsel_offset
         
         vb  = self.op["READ"][self.polarity].get("VB", vb_default) if vb  is None else vb
@@ -346,23 +346,24 @@ class NIRRAM:
                 time.sleep(20e-3)
                 wl = wl[0]
 
-            self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERHIPH_SEL"])
-            # self.set_to_off([[bl for bl in self.bls if bl not in bls[0]],[sl for sl in self.sls if sl not in sls[0]]],["BL","SL"])
-            
+            self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERIPH_SEL"])
+            self.set_to_off([[bl for bl in self.bls if bl not in wl_bls],[sl for sl in self.sls if sl not in wl_sls]],["BL","SL"])
+
             self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
             
             # if remove_bias is not None:
             # self.set_to_off([w for w in self.WL_IN if wl not in wl_entry],["WL_IN"])
 
-            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True) 
             self.set_to_off([[f"WL_IN_{i}" for i in range(24)]],["WL_IN"])
             pdb.set_trace()
             self._settle(2e-3)
+            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True) 
+            self._settle(2e-6)
             self.ppmu_set_vwl(wl, vwl)
             self._settle(2e-6)
-            self.ppmu_set_vsl(sls[0],vsl)
+            self.ppmu_set_vsl(wl_sls,vsl)
             self._settle(2e-6)
-            self.ppmu_set_vbl(bls[0],vbl)
+            self.ppmu_set_vbl(wl_bls,vbl)
             # self.ppmu_set_vbl([bl for bl in self.bls if bl not in bls[0]],vwl/2)
             # self.ppmu_set_vsl([sl for sl in self.sls if sl not in sls[0]],vwl/2)
             
@@ -380,7 +381,7 @@ class NIRRAM:
                 # print(f"VSL_MEAS: {meas_sls_v}")
 
             if meas_vwls:
-                _,_,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wls],sort=False)
+                _,_,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wl],sort=False)
 
             # Measure selected current, default is to measure ISL and I gate
             if meas_isls: 
@@ -403,12 +404,12 @@ class NIRRAM:
                         _,_,meas_wls_i = self.digital_patterns.measure_current([[],[],[f"WL_{wl}"]],sort=False)
             self.ppmu_set_vbl(self.bls,0)
             self.ppmu_set_vsl(self.sls,0)
-        
             self.ppmu_set_vwl(wl, 0)
-            for wl_i in remove_bias:
-                self.ppmu_set_vwl(wl, 0)
-            self._settle(2E-3)
+
+            #for wl_i in remove_bias:
+            #    self.ppmu_set_vwl(wl, 0)
             self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True)
+            self._settle(2E-3)
 
             r_wl_sl = None
             r_wl_bl = None
