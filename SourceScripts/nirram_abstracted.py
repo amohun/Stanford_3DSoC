@@ -906,6 +906,84 @@ class NIRRAM:
     """               Setting up the write pulse signals                  """
     """ ================================================================= """
 
+    def direct_write(
+        self,
+        masks,
+        sessions=None,
+        pingroups=None,
+        sort=True,
+        mode="SET",
+        wl=None,
+        wl_bls=None,
+        wl_sls=None,   
+        wls=None,
+        bls=None,
+        sls=None,
+        vwl=None,
+        vbl=None,
+        vsl=None,
+        vbl_unsel=None,
+        vsl_unsel=None,
+        vwl_unsel_offset=None,
+        v_base=None,
+        pulse_len=None,
+        high_z = None,
+        debug = None,
+        relayed=True,
+        zeroes = None,
+        pulse_lens = None,
+        max_pulse_len = None,
+        record=None,
+        cells=None,
+        print_data=None,
+        target_res=None,
+        WL_IN=None
+        ):
+
+        measurements = self.read_written_cells(mode, average_resistance=True,wls=wls,bls=bls,record=record,print_info=print_data)
+        res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
+        cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, mode)
+        if cells_to_write == "DONE":
+            self._record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
+            
+            self.dbg.end_function_debug() 
+            # return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
+        
+        wls,bls,sls = cells_to_write  
+
+        if wl in wls and wl_bls in bls and wl_sls in sls:
+            mask_list = Masks(
+                sel_pins = [wl_bls,wl_sls,WL_IN], 
+                pingroups = self.digital_patterns.pingroup_data, 
+                all_pins = self.all_channels, 
+                pingroup_names = self.digital_patterns.pingroup_names,
+                sort=False,
+                debug_printout = debug)
+        
+            masks = mask_list.get_pulse_masks()
+            # Write the pulse
+
+            print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pulse_len)
+            self.write_pulse(
+                masks, 
+                sessions=sessions, 
+                mode=mode, 
+                bl_selected=wl_bls,
+                sl_selected=wl_sls,
+                vwl=vwl, 
+                vbl=vbl, 
+                vsl=vsl,
+                vbl_unsel=vbl_unsel,
+                vsl_unsel=vsl_unsel,
+                vwl_unsel_offset=vwl_unsel_offset, 
+                pulse_len=pulse_len, 
+                high_z=None,
+                debug=debug)
+
+        return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array,cells_to_write
+                      
+                            
+        
     def write_pulse(
         self,
         masks,
@@ -914,12 +992,14 @@ class NIRRAM:
         sort=True,
         mode="SET",
         bl_selected=None,
+        sl_selected=None,   
         wls=None,
         bls=None,
         vwl=None,
         vbl=None,
         vsl=None,
         vbl_unsel=None,
+        vsl_unsel=None,
         vwl_unsel_offset=None,
         v_base=None,
         pulse_len=None,
@@ -986,6 +1066,7 @@ class NIRRAM:
         # Set ZERO Wordlines to the base voltage
         if zeroes is not None:
             self.set_vwl(["WL_ZERO"], vwl_hi=v_base, vwl_lo=v_base, debug = debug)
+            # FIXME: WL_ZERO is not defined in the settings, or anywhere else in this file!!
             
 
         # Set SEL Wordlines to the desired voltage
@@ -997,14 +1078,18 @@ class NIRRAM:
             self.set_vbl(bls, vbl, vbl_lo=v_base, debug = debug)
             if len(bls_unselected) > 0:
                 self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug = debug)
-
         else:
-            self.set_vbl(bls, vbl_hi = vbl, vbl_lo=v_base, debug = debug)
+            self.set_vbl(bls, vbl_hi = vbl, vbl_lo=v_base, debug = debug)    
 
-        
-        # Set Source Lines to the Desired Voltage
-        self.set_vsl(sls, vsl, vsl_lo=v_base, debug = debug)
 
+        # Set Sourcelines to the desired voltage
+        if sl_selected is not None:
+            sls_unselected = [sl for sl in sls if sl not in sl_selected]
+            self.set_vsl(sls, vsl, vsl_lo=v_base, debug = debug)
+            if len(sls_unselected) > 0:
+                self.set_vsl(sls_unselected, vsl_unsel, vsl_lo=v_base, debug = debug)
+        else:
+            self.set_vsl(sls, vsl_hi = vsl, vsl_lo=v_base, debug = debug)
 
         # ----------------------------------- #
         #       Commit and send Pulse         #
@@ -1550,6 +1635,9 @@ class NIRRAM:
         # Set the pulse width and word line voltage sweep based on settings or input
         pw_start, pw_stop, pw_step = [cfg["PW_start"], cfg["PW_stop"], cfg["PW_steps"]]
         vwl_start, vwl_stop, vwl_step = [cfg["VWL_start"], cfg["VWL_stop"], cfg["VWL_step"]]
+        vbl_unsel = cfg["VBL_UNSEL"]
+        vsl_unsel = cfg["VSL_UNSEL"]
+        vwl_unsel_offset = cfg["VWL_UNSEL_OFFSET"]
 
         pdb.set_trace()
         
@@ -1590,56 +1678,47 @@ class NIRRAM:
                 for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
                     for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
                         for vwl in np.arange(vwl_start,vwl_stop,vwl_step):
-                            # Set the masks for the cells that are not in target resistance
-                            mask_list = Masks(
-                                sel_pins = [wl_bls,wl_sls,WL_IN], 
-                                pingroups = self.digital_patterns.pingroup_data, 
-                                all_pins = self.all_channels, 
-                                pingroup_names = self.digital_patterns.pingroup_names,
-                                sort=False,
-                                debug_printout = debug)
-                        
-                            masks = mask_list.get_pulse_masks()
-                            # Write the pulse
-
-                            print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pw)
-                            self.write_pulse(
+                            res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array,cells_to_write = self.direct_write(
                                 masks, 
                                 sessions=sessions, 
-                                mode=mode, 
-                                bl_selected=wl_bls, 
+                                mode=mode,
+                                wl=wl, 
+                                wl_bls=wl_bls,
+                                wl_sls=wl_sls,
+                                wls=wls,
+                                bls=bls,
+                                sls=sls,
                                 vwl=vwl, 
                                 vbl=vbl, 
-                                vsl=vsl, 
+                                vsl=vsl,
+                                vbl_unsel=vbl_unsel,
+                                vsl_unsel=vsl_unsel,
+                                vwl_unsel_offset=vwl_unsel_offset, 
                                 pulse_len=pw, 
                                 high_z=None,
-                                debug=debug)
-                            time.sleep(1)
-                            print(f"WLS:{wls} ; BLS: {bls}")
-                            measurements = self.read_written_cells(mode, average_resistance=True,wls=wls,bls=bls,record=record,print_info=print_data)
-                            res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array = measurements
-                            cells_to_write = self.check_cell_resistance(res_array, wls, bls, sls, target_res, mode)
-                            print(cells_to_write)
+                                debug=debug,
+                                record=record,
+                                cells=cells,
+                                print_data=print_data,
+                                target_res=target_res,
+                                WL_IN=WL_IN)
+                            time.sleep(1) 
+
                             if cells_to_write == "DONE":
-                                self._record_write_pulse(self,record,cells,mode,[res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array],success=pd.DataFrame(True,index=wls,columns=bls))
-                                
-                                self.dbg.end_function_debug() 
                                 return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
-                            
-                            wls,bls,sls = cells_to_write  
-                
+
         self.dbg.end_function_debug()
-        return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array   
-        
+        return res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array
 
-    def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="SET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
+
+    # def dynamic_set(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+    #     return self.dynamic_pulse(sessions, cells, bls, wls, mode="SET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
     
-    def dynamic_reset(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="RESET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
+    # def dynamic_reset(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+    #     return self.dynamic_pulse(sessions, cells, bls, wls, mode="RESET", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
 
-    def dynamic_form(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
-        return self.dynamic_pulse(sessions, cells, bls, wls, mode="FORM", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
+    # def dynamic_form(self, sessions=None, cells=None, bls=None, wls=None, print_data=True,record=True,target_res=None, average_resistance = False, is_1tnr=False,bl_selected=None, relayed=False,debug=None):
+    #     return self.dynamic_pulse(sessions, cells, bls, wls, mode="FORM", print_data=print_data,record=record,target_res=target_res, average_resistance=average_resistance, is_1tnr=is_1tnr,bl_selected=bl_selected, relayed=relayed,debug=debug)
     
 
     """ =================================================== """

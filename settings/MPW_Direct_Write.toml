@@ -610,7 +610,7 @@ VWL_UNSEL_OFFSET = 3
 VB = 0
 # Ranges: VWL: -0.3 ~ -1.0; VBL: +0.1 ~ +0.5
 
-
+# FIXME: VWL_UNSEL_OFFSET needs to be relative to VBL/VSL
 # =============================================================================
 # FORM PULSE
 # =============================================================================
@@ -646,7 +646,9 @@ PW_steps = 10
 #VBL = 0.5
 VSL = 2.0
 #PW = 1200
-VWL_UNSEL_OFFSET = 3
+VWL_UNSEL_OFFSET = 1
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 #VWL_UNSEL_OFFSET from PMOS SET
 
 VWL_start = -0.5
@@ -690,7 +692,9 @@ PW_steps = 20
 #VBL = 0.5
 VSL = 2.0
 #PW = 1200
-VWL_UNSEL_OFFSET = 3
+VWL_UNSEL_OFFSET = 1
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 #VWL_UNSEL_OFFSET from PMOS SET
 
 VWL_start = -0.5
@@ -735,7 +739,9 @@ PW_steps = 10
 VBL = 2
 #PW = 100
 
-VWL_UNSEL_OFFSET = 3
+VWL_UNSEL_OFFSET = 1
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 
 # Word Line Voltage Sweep
 VWL_start = -0.5
