@@ -546,9 +546,9 @@ WL_UNSEL = [ "WL_UNSEL" ]
 DIR_PERIPH_SEL = [ "DIR_PERIPH_SEL" ]
 # RRAM resistance target level corresponding to each operation defined below
 [target_res]
-FORM = 5_000
-SET = 10
-RESET = 80_000
+FORM = 30_000
+SET = 30_000
+RESET = 100_000
 
 # =============================================================================
 # MEASUREMENT OPERATION (OP) CONFIGS
@@ -642,10 +642,12 @@ PW_steps = 10
 #    PMOS FORM    #
 # =============== #
 [op.FORM.PMOS]
-#VWL = 1.5
-#VBL = 0.5
+VWL = -0.5
+VBL = 0
 VSL = 2.0
-#PW = 1200
+PW = 50
+# default values used for single direct write, dynamic write uses range sweeping
+
 VWL_UNSEL_OFFSET = 1
 VBL_UNSEL = -2
 VSL_UNSEL = -2
@@ -688,10 +690,12 @@ PW_steps = 20
 
 
 [op.SET.PMOS]
-#VWL = 1.5
-#VBL = 0.5
+VWL = -0.5
+VBL = 0
 VSL = 2.0
-#PW = 1200
+PW = 50
+# default values used for single direct write, dynamic write uses range sweeping
+
 VWL_UNSEL_OFFSET = 1
 VBL_UNSEL = -2
 VSL_UNSEL = -2
@@ -734,10 +738,11 @@ PW_steps = 10
 
 
 [op.RESET.PMOS]
-#VWL = 0.8
-#VSL = 1.5
+VWL = -0.5
+VSL = 0
 VBL = 2
-#PW = 100
+PW = 50
+# default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1
 VBL_UNSEL = -2
