@@ -1544,24 +1544,28 @@ class NIRRAM:
         wls,bls,sls = [pulse.cells.wls, pulse.cells.bls, pulse.cells.sls]
         # print("WLS: ", wls, "BLS: ", bls, "SLS: ", sls)
 
-        vbl, vsl, vwl = [pulse.voltages.vbl, pulse.voltages.vsl, pulse.voltages.vwl]
+        #vbl, vsl = [pulse.voltages.vbl, pulse.voltages.vsl]
         target_res = pulse.target
         
         # Set the pulse width and word line voltage sweep based on settings or input
         pw_start, pw_stop, pw_step = [cfg["PW_start"], cfg["PW_stop"], cfg["PW_steps"]]
         vwl_start, vwl_stop, vwl_step = [cfg["VWL_start"], cfg["VWL_stop"], cfg["VWL_step"]]
 
+        pdb.set_trace()
+        
         # Set the bitline and source line voltages nased on settings/input given the mode
         if mode.upper() == "SET" or mode.upper() == "FORM":
             # If we are running a set operation, we iterate the bit line voltage, 
             # keeping source line constant
             vbl_start, vbl_stop, vbl_step = [cfg["VBL_start"], cfg["VBL_stop"], cfg["VBL_step"]]
+            vsl = cfg["VSL"]
             vsl_start, vsl_stop, vsl_step = [vsl, vsl+1, 2]
        
         elif mode.upper() == "RESET":
             # If we are running a reset operation, we iterate the source line voltage, 
             # keeping bit line constant
             vsl_start, vsl_stop, vsl_step = [cfg["VSL_start"],cfg["VSL_stop"], cfg["VSL_step"]]
+            vbl = cfg["VBL"]
             vbl_start, vbl_stop, vbl_step = [vbl, vbl+1, 2]
         
         else:
@@ -1578,13 +1582,13 @@ class NIRRAM:
                 # _,_ =self.relay_switch(self.all_wls,relayed=True)
             else:
                 WL_IN = [wl]
-
+            
             self.wls = WL_IN
             self.bls = wl_bls
             self.sls = wl_sls
-            for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
-                for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
-                    for pw in np.arange(pw_start,pw_stop,pw_step):
+            for pw in np.arange(pw_start,pw_stop,pw_step):
+                for vsl in np.arange(vsl_start,vsl_stop,vsl_step):
+                    for vbl in np.arange(vbl_start,vbl_stop,vbl_step):
                         for vwl in np.arange(vwl_start,vwl_stop,vwl_step):
                             # Set the masks for the cells that are not in target resistance
                             mask_list = Masks(
@@ -1803,13 +1807,14 @@ def main(wls=None,bls=None,IV=False):
         all_wls.append(f"WL_{i}")
         if i >= 0 and i < 32:
             all_bls.append(f"BL_{i}")
-    remove_bias=[f"WL_{i}" for i in [23,34,47,54,60,81,83,102,105,113,114,123]]
-    all_wls = [wl for wl in all_wls if wl not in [remove_bias]]
+    #remove_bias=[f"WL_{i}" for i in [23,34,47,54,60,81,83,102,105,113,114,123]]
+    #all_wls = [wl for wl in all_wls if wl not in [remove_bias]]
     if wls is None:
         wls = all_wls
     if bls is None:
         bls = all_bls
     
+    '''
     vwl = np.arange(-1,2,0.2)
     vbl = np.arange(-1,2,0.1)
     vsl=0
@@ -1820,19 +1825,20 @@ def main(wls=None,bls=None,IV=False):
                 rram.ppmu_set_vwl(["WL_UNSEL"],0)
                 rram.measure_iv(wl=[wl], bl=[bl], vwl=vwl, vbl=vbl, vsl=vsl, vwl_unsel=0, relayed=True)
         quit()
-
+    '''
+    # FIXME: x is a list of our testing modes
     x = args.measurement
     iterations = args.iter
     if 'r' in x:
         for i in range(iterations):
-            for vwl_unsel_offset in [2]:
+            for vwl_unsel_offset in [2]:    #FIXME: hardcoded for now, should be set in settings
                 # 23,34,47,54,60,81,83,102,105,113,114,123
                 rram.direct_read(wls=wls, bls=bls, remove_bias=[],vwl_unsel_offset=vwl_unsel_offset, record=True, relayed=True, print_info=["res"])
         rram.format_output()
     if 'w' in x:
         for wl in wls:
             rram.dynamic_pulse(wls=[wl], bls=bls, mode="SET", record=True, print_data=True, target_res=500, average_resistance=False, debug=False)
-
+    #FIXME: target_res should be set in settings, not hardcoded, 
 
     # # quit()
 
