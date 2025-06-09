@@ -18,6 +18,7 @@ from BitVector import BitVector
 from itertools import chain
 import threading
 import matplotlib.pyplot as plt
+import copy
 
 # sys.path.append(getcwd() + '\\SourceScripts')
 from masks import Masks
@@ -294,6 +295,7 @@ class NIRRAM:
         rram_cells = self.select_memory_cells(bls=bls, wls=wls)
         wls, bls, sls = [rram_cells.wls, rram_cells.bls, rram_cells.sls]
         
+        
         read_op = self.op["READ"]
         
         # Default values for read voltages based on previous testing at MIT
@@ -320,7 +322,7 @@ class NIRRAM:
         
         vb  = self.op["READ"][self.polarity].get("VB", vb_default) if vb  is None else vb
 
-        print(f"VBL: {vbl}, VSL{vsl}, VWL:{vwl}")
+        # print(f"VBL: {vbl}, VSL{vsl}, VWL:{vwl}")
         settling_time = read_op.get("settling_time",1E-3)
 
         # Initialize dataframes to store resistance, conductance, current, and voltage measurements
@@ -347,18 +349,20 @@ class NIRRAM:
                 wl = wl[0]
 
             self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERIPH_SEL"])
-            print(f"Setting TO OFF: {self.bls}, {wl_bls}")
-            self.set_to_off([[bl for bl in self.bls if bl not in wl_bls],[sl for sl in self.sls if sl not in wl_sls]],["BL","SL"])
+            # print(f"Setting TO OFF: {self.bls}, {wl_bls}")
+            if self.bls != wl_bls:
+                self.set_to_off([bl for bl in self.bls if bl not in wl_bls],["BL"])
+                self.set_to_off([sl for sl in self.sls if sl not in wl_sls],["SL"])
 
             self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
             
             # if remove_bias is not None:
             # self.set_to_off([w for w in self.WL_IN if wl not in wl_entry],["WL_IN"])
 
-            self.set_to_off([[f"WL_IN_{i}" for i in range(24)]],["WL_IN"])
+            self.set_to_off([f"WL_IN_{i}" for i in range(24)],["WL_IN"])
             pdb.set_trace()
             self._settle(2e-3)
-            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True) 
+            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True)
             self._settle(2e-6)
             self.ppmu_set_vwl(wl, vwl)
             self._settle(2e-6)
@@ -543,19 +547,19 @@ class NIRRAM:
     """ Serially setting voltages and currents for VBL, VSL, ISL, and VWL """
     """                PPMU and Digital sources are defined               """
     """ ================================================================= """
-    def set_to_off(self,channels,name=None, sort=True,debug=None):
+    # def set_to_off(self,channels,name=None, sort=True,debug=None):
     
-        if type(channels) is not list:
-            channels = [channels]
-        if type(channels[0]) is list and sort==True:
-            if type(channels[0][0]) is int or type(channels[0][0]) is np.uint8:
-                channels = [[f"{name[channels.index[channel]]}_{chan}" for chan in channel]for channel in channels]
+    #     if type(channels) is not list:
+    #         channels = [channels]
+    #     if type(channels[0]) is list and sort==True:
+    #         if type(channels[0][0]) is int or type(channels[0][0]) is np.uint8:
+    #             channels = [[f"{name[channels.index[channel]]}_{chan}" for chan in channel]for channel in channels]
             
-            channels = self._flatten(channels)
+    #         channels = self._flatten(channels)
 
-        if type(channels[0]) is int or type(channels[0]) is np.uint8:
-            channels = [f"{name}_{chan}" for chan in channels]
-        self.digital_patterns.set_channel_mode("off", pins=channels,sessions=None,sort=sort,debug=debug)
+    #     if type(channels[0]) is int or type(channels[0]) is np.uint8:
+    #         channels = [f"{name}_{chan}" for chan in channels]
+    #     self.digital_patterns.set_channel_mode("off", pins=channels,sessions=None,sort=sort,debug=debug)
 
     def set_to_ppmu(self,channels,name=None, sort=True,debug=None):
     
@@ -879,6 +883,7 @@ class NIRRAM:
 
 
     def set_to_off(self,channels,name, sort=True,debug=None):
+        # print(f"Setting {name} channels {channels} to off")
         if type(channels) is not list:
             channels = [channels]
         
@@ -971,7 +976,7 @@ class NIRRAM:
             masks = mask_list.get_pulse_masks()
             # Write the pulse
 
-            print("VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pulse_len)
+            print("Direct Write Values: VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pulse_len)
             self.write_pulse(
                 masks, 
                 sessions=sessions, 
@@ -1138,36 +1143,37 @@ class NIRRAM:
             wls = [wls]
         
         # Ensure bls is a list of lists of strings or integers, matching the length of wls
-        print("bls: ", bls)
+        # print("bls: ", bls)
+        bls_list = bls
         if not isinstance(bls[0], list):
-            bls = [bls] * len(wls)
+            bls_list = [bls] * len(wls)
         
         # Set SLS as a list of lists of strings as SL_{BL#} based on bls
-        if isinstance(bls[0][0], int) or isinstance(bls[0][0], np.uint8):
-            sls = [[f"SL_{bl}" for bl in wl_bls] for wl_bls in bls]
+        if isinstance(bls_list[0][0], int) or isinstance(bls_list[0][0], np.uint8):
+            sls = [[f"SL_{bl}" for bl in wl_bls] for wl_bls in bls_list]
         else:
-            sls = [[f"SL{bl[2:]}" for bl in wl_bls] for wl_bls in bls]
+            sls = [[f"SL{bl[2:]}" for bl in wl_bls] for wl_bls in bls_list]
 
-        # Handle cells, avoiding repetition in wls and bls
+        # Handle cells, avoiding repetition in wls and bls_list
         if cells is not None and len(cells) > 0 and all(len(cell) == 2 for cell in cells):
             for cell in cells:
                 wl, bl = cell
                 if wl not in wls:
                     wls.append(wl)
-                    bls.append([bl])
+                    bls_list.append([bl])
                     sls.append([f"SL_{str(bl[3:])}" if isinstance(bl, str) else f"SL_{bl}"])
-                elif bl not in bls[wls.index(wl)]:
-                    bls[wls.index(wl)].append(bl)
+                elif bl not in bls_list[wls.index(wl)]:
+                    bls_list[wls.index(wl)].append(bl)
                     sls[wls.index(wl)].append(f"SL_{str(bl[3:])}" if isinstance(bl, str) else f"SL_{bl}")
         
         # Define the cells as a list of tuples of WL and BL
-        cells = [(wl, bl) for wl, wl_bls in zip(wls, bls) for bl in wl_bls]
+        cells = [(wl, bl) for wl, wl_bls in zip(wls, bls_list) for bl in wl_bls]
 
         # Filter selected BLs excluding the unselected BLs
-        selected_bls = [bl for bl in bls if bl not in bls_unselected]
+        selected_bls = [bl for bl in bls_list if bl not in bls_unselected]
 
         # Create an instance of RRAMCells with the updated parameters
-        selected_memory_cells = RRAMCells(cells, wls, bls, bls_unselected, selected_bls, sls)
+        selected_memory_cells = RRAMCells(cells, wls, bls_list, bls_unselected, selected_bls, sls)
 
         return selected_memory_cells
 
@@ -1546,12 +1552,15 @@ class NIRRAM:
     def check_cell_resistance(self,res_array, wls, bls, sls, target_res, mode,print_info=True,debug=None):
         # Remove every cell that is in target resistance
         if mode.upper() == "RESET":
-            for wl,wl_bls in zip(wls,bls):
+            for wl,wl_bls,wl_sls in zip(wls,bls, sls):
+                print(f"Checking resistance for {wl} with BLs {wl_bls}")
                 for bl in wl_bls:
+                    if print_info:
+                        print(res_array)
                     if res_array.at[wl,bl] >= target_res:
-                        print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} >= target_res {target_res}")
-                        bls.remove(bl)
-                        sls.remove(f"SL_{str(bl[3:])}")
+                        # print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} >= target_res {target_res}")
+                        wl_bls.remove(bl)
+                        wl_sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
                             wls.remove(wl)
                             if len(wls) == 0:
@@ -1561,20 +1570,23 @@ class NIRRAM:
                     
 
         if mode.upper() == "SET" or mode.upper() == "FORM":
-            for wl,wl_bls in zip(wls,bls):
+            for wl,wl_bls,wl_sls in zip(wls,bls,sls):
+                print(f"Checking resistance for {wl} with BLs {wl_bls}")
                 for bl in wl_bls:
                     if print_info:
                         print(res_array)
                     if res_array.at[wl,bl] <= target_res:
-                        print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} <= target_res {target_res}")
-                        bls.remove(bl)
-                        sls.remove(f"SL_{str(bl[3:])}")
+                        # print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} <= target_res {target_res}")
+                        wl_bls.remove(bl)
+                        wl_sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
                             wls.remove(wl)
                             if len(wls) == 0:
                                 # If no cells remain, return True: 
                                 # All cells are set to desired resistance range
                                 return "DONE"
+                            
+        # print(f"Cells to write: {wls, bls, sls}")
         return wls,bls,sls
     
 
@@ -1998,9 +2010,13 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
     #remove_bias=[f"WL_{i}" for i in [23,34,47,54,60,81,83,102,105,113,114,123]]
     #all_wls = [wl for wl in all_wls if wl not in [remove_bias]]
     if wls is None:
-        wls = all_wls
+        top_wls = all_wls
+    else:
+        top_wls = wls
     if bls is None:
-        bls = all_bls
+        top_bls = all_bls
+    else: 
+        top_bls = bls
     
     '''
     vwl = np.arange(-1,2,0.2)
@@ -2015,15 +2031,18 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
         quit()
     '''
     x = args.measurement
+    
     # print(f"Running single pulse test with operations: {x}")
     iterations = args.iter
     for oper in x:
         print(f"Running single pulse test with operation: {oper} for {iterations} iterations")
+        test_wls = copy.deepcopy(top_wls)
+        test_bls = copy.deepcopy(top_bls)
         if oper == "r":
             for i in range(iterations): #ususally just 1
                 vwl_unsel_offset = rram.op["READ"][rram.polarity]["VWL_UNSEL_OFFSET"] 
-                print(f"BLS: {bls}, WLS: {wls}, VWL_UNSEL_OFFSET: {vwl_unsel_offset}")
-                rram.direct_read(wls=wls, bls=bls, remove_bias=[],vwl_unsel_offset=vwl_unsel_offset, record=True, relayed=True, print_info=["res"])
+                # print(f"BLS: {bls}, WLS: {wls}, VWL_UNSEL_OFFSET: {vwl_unsel_offset}")
+                rram.direct_read(wls=test_wls, bls=test_bls, remove_bias=[],vwl_unsel_offset=vwl_unsel_offset, record=True, relayed=True, print_info=["res"])
             rram.format_output()
         elif oper in ["F","S","R"]:
             if oper == "F":
@@ -2033,8 +2052,8 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
             elif oper == "R":
                 oper = "RESET"
             target_res = rram.target_res[oper.upper()]
-            for wl in wls:
-                rram.single_pulse(wls=[wl], bls=bls, mode=oper.upper(), record=True, print_data=True, target_res=target_res, average_resistance=False, debug=False)
+            for wl in test_wls:
+                rram.single_pulse(wls=[wl], bls=test_bls, mode=oper.upper(), record=True, print_data=True, target_res=target_res, average_resistance=False, debug=False)
 
         else:
             raise NIRRAMException(f"Invalid operation: {oper}. Please use 'r' (read), 'S' (set), 'R' (reset), or 'F' (form) for dynamic pulse.")
@@ -2056,9 +2075,13 @@ def dynamic_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
     #remove_bias=[f"WL_{i}" for i in [23,34,47,54,60,81,83,102,105,113,114,123]]
     #all_wls = [wl for wl in all_wls if wl not in [remove_bias]]
     if wls is None:
-        wls = all_wls
+        top_wls = all_wls
+    else:
+        top_wls = wls
     if bls is None:
-        bls = all_bls
+        top_bls = all_bls
+    else: 
+        top_bls = bls
     
     '''
     vwl = np.arange(-1,2,0.2)
@@ -2074,6 +2097,8 @@ def dynamic_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
     '''
     x = args.measurement
     for oper in x:
+        test_wls = copy.deepcopy(top_wls)
+        test_bls = copy.deepcopy(top_bls)
         if oper in ["F","S","R"]:
             if oper == "F":
                 oper = "FORM"
@@ -2082,8 +2107,8 @@ def dynamic_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
             elif oper == "R":
                 oper = "RESET"
             target_res = rram.target_res[oper.upper()]
-            for wl in wls:
-                rram.dynamic_pulse(wls=[wl], bls=bls, mode=oper.upper(), record=True, print_data=True, target_res=target_res, average_resistance=False, debug=False)
+            for wl in test_wls:
+                rram.dynamic_pulse(wls=[wl], bls=test_bls, mode=oper.upper(), record=True, print_data=True, target_res=target_res, average_resistance=False, debug=False)
         else:
             raise NIRRAMException(f"Invalid operation: {oper}. Please use 'S' (set), 'R' (reset), or 'F' (form) for dynamic pulse.")
 
@@ -2101,8 +2126,8 @@ def main(wls=None,bls=None,sls=None):
 
 if __name__ == "__main__":
     wls = ["WL_0"]
-    bls = ["BL_0"]
-    sls = ["SL_0"]
+    bls = [["BL_0"]]
+    sls = [["SL_0"]]
     # bls = [f"BL_{b}" for b in [3,7,11,15,19,23,27,31]]
     main(wls=wls,bls=bls,sls=sls)
     # dynamic_pulse_test(wls=wls,bls=bls)
