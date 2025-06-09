@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 import csv
 from datetime import date, datetime, time
-from .rram_mask import RRAMArrayMask
+from rram_mask import RRAMArrayMask
 import niswitch
 from BitVector import BitVector
 

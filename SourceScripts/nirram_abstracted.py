@@ -347,6 +347,7 @@ class NIRRAM:
                 wl = wl[0]
 
             self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERIPH_SEL"])
+            print(f"Setting TO OFF: {self.bls}, {wl_bls}")
             self.set_to_off([[bl for bl in self.bls if bl not in wl_bls],[sl for sl in self.sls if sl not in wl_sls]],["BL","SL"])
 
             self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
@@ -1137,6 +1138,7 @@ class NIRRAM:
             wls = [wls]
         
         # Ensure bls is a list of lists of strings or integers, matching the length of wls
+        print("bls: ", bls)
         if not isinstance(bls[0], list):
             bls = [bls] * len(wls)
         
@@ -1544,11 +1546,12 @@ class NIRRAM:
     def check_cell_resistance(self,res_array, wls, bls, sls, target_res, mode,print_info=True,debug=None):
         # Remove every cell that is in target resistance
         if mode.upper() == "RESET":
-            for wl,wl_bls,wl_sls in zip(wls,bls,sls):
+            for wl,wl_bls in zip(wls,bls):
                 for bl in wl_bls:
-                    if res_array.loc[wl,bl] >= target_res:
-                        wl_bls.remove(bl)
-                        wl_sls.remove(f"SL_{str(bl[3:])}")
+                    if res_array.at[wl,bl] >= target_res:
+                        print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} >= target_res {target_res}")
+                        bls.remove(bl)
+                        sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
                             wls.remove(wl)
                             if len(wls) == 0:
@@ -1563,6 +1566,7 @@ class NIRRAM:
                     if print_info:
                         print(res_array)
                     if res_array.at[wl,bl] <= target_res:
+                        print(f"bl {bl}, bls {bls}, wl {wl}, res {res_array.at[wl,bl]} <= target_res {target_res}")
                         bls.remove(bl)
                         sls.remove(f"SL_{str(bl[3:])}")
                         if len(wl_bls) == 0:
@@ -1758,23 +1762,23 @@ class NIRRAM:
         cfg = self.op[mode][self.polarity]
 
         # Set the initial pulse parameters
-        wls,bls,sls = [pulse.cells.wls, pulse.cells.bls, pulse.cells.sls]
+        p_wls,p_bls,p_sls = [pulse.cells.wls, pulse.cells.bls, pulse.cells.sls]
         # print("WLS: ", wls, "BLS: ", bls, "SLS: ", sls)
 
         #vbl, vsl = [pulse.voltages.vbl, pulse.voltages.vsl]
         target_res = pulse.target
         
         # Set the pulse width and word line voltage sweep based on settings or input
+        vwl_unsel_offset = cfg["VWL_UNSEL_OFFSET"]
         vbl_unsel = cfg["VBL_UNSEL"]
         vsl_unsel = cfg["VSL_UNSEL"]
-        vwl_unsel_offset = cfg["VWL_UNSEL_OFFSET"]
 
         pdb.set_trace()
     
 
         # Need to be redone to actually iterate through multiple WLs, currently can only iterate through one WL
         # Success condition has an early return, can be fixed but requires some WL check reworking
-        for wl,wl_bls,wl_sls in zip(wls,bls,sls):
+        for wl,wl_bls,wl_sls in zip(p_wls,p_bls,p_sls):
 
             # Connect the relay and change the name of the word line signal
             if self.relays:
@@ -1784,8 +1788,8 @@ class NIRRAM:
                 WL_IN = [wl]
             
             self.wls = WL_IN
-            self.bls = wl_bls
-            self.sls = wl_sls
+            # self.bls = wl_bls
+            # self.sls = wl_sls
             res_array,cond_array,meas_i_array,meas_v_array,meas_i_leak_array,cells_to_write = self.direct_write(
                 masks, 
                 sessions=sessions, 
@@ -1793,9 +1797,9 @@ class NIRRAM:
                 wl=wl, 
                 wl_bls=wl_bls,
                 wl_sls=wl_sls,
-                wls=wls,
-                bls=bls,
-                sls=sls,
+                wls=p_wls,
+                bls=p_bls,
+                sls=p_sls,
                 vbl_unsel=vbl_unsel,
                 vsl_unsel=vsl_unsel,
                 vwl_unsel_offset=vwl_unsel_offset, 
@@ -1969,11 +1973,11 @@ def arg_parse():
     parser = argparse.ArgumentParser(description="NIRRAM Abstracted Class")
     parser.add_argument("--chip", type=str, help="Chip ID", default="chip")
     parser.add_argument("--device", type=str, help="Device ID", default="device")
-    parser.add_argument("--polarity", type=str, help="Polarity of the device", default="NMOS")
+    parser.add_argument("--polarity", type=str, help="Polarity of the device", default="PMOS")
     parser.add_argument("--settings", type=str, help="Path to the settings file", default="settings/MPW_Direct_Write.toml")
     parser.add_argument("--test_type", type=str, help="Type of test to run", default="single")
     parser.add_argument("--additional_info", type=str, help="Additional information", default="NIRRAM Direct Write Test")
-    parser.add_argument("--measurement",type=str,help="Measurement run",default=["rr"])
+    parser.add_argument("--measurement",type=str,help="Measurement run",default="rr")
     parser.add_argument("--iter", type=int,help="Number of Reads", default=1)
     args = parser.parse_args()
     return args
@@ -2011,11 +2015,14 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
         quit()
     '''
     x = args.measurement
+    # print(f"Running single pulse test with operations: {x}")
     iterations = args.iter
     for oper in x:
+        print(f"Running single pulse test with operation: {oper} for {iterations} iterations")
         if oper == "r":
             for i in range(iterations): #ususally just 1
                 vwl_unsel_offset = rram.op["READ"][rram.polarity]["VWL_UNSEL_OFFSET"] 
+                print(f"BLS: {bls}, WLS: {wls}, VWL_UNSEL_OFFSET: {vwl_unsel_offset}")
                 rram.direct_read(wls=wls, bls=bls, remove_bias=[],vwl_unsel_offset=vwl_unsel_offset, record=True, relayed=True, print_info=["res"])
             rram.format_output()
         elif oper in ["F","S","R"]:
