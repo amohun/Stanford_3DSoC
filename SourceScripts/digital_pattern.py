@@ -575,12 +575,15 @@ class DigitalPattern:
         self.dbg.start_function_debug(debug)
 
         sessions, pins = self.format_sessions_and_pins(sessions,pins,sort)
+        # print(f"PPMU Set Pin: {pins}, Session: {sessions}, channels: {sessions[2]._all_channels_in_session}")
 
         if sessions is not None:
             for session_num, session in enumerate(sessions):
                 for pin, level in zip(pins[session_num], levels):
                     if mode == "voltage":
+                        print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
                         session.channels[pin].ppmu_voltage_level = level
+                        print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
                     elif mode == "current":
                         session.channels[pin].ppmu_current_level = level
         
@@ -650,7 +653,9 @@ class DigitalPattern:
             pins = self.sort_pins(pins)
 
         for session,session_pins in zip(self.sessions,pins):
+            # print(f"Session: {sessions}. pins:{session_pins}")
             if len(session_pins) != 0:
+                print(f"Session: {session}, Pre-voltage: {session.channels[session_pins]}")
                 session.channels[session_pins].ppmu_source()
         self.dbg.end_function_debug()
         return 0
@@ -1329,15 +1334,18 @@ class DigitalPattern:
         elif not isinstance(channels[0], list):
             if len(channels) > 0:
                 channels = [channels]
+                # print(f"Made it here. channels is: {channels}")
             else:
                 raise ValueError("Channels must be provided")
         
         channels = [list(set(channel)) for channel in channels]
-        
+        print(f"Made it here. channels is: {channels}")
+
         for relay, channel in zip(relays, channels):
             with niswitch.Session(relay) as relay_session:
                 relay_session.disconnect_all()
                 for ch in channel:
+                    print(f"Disconnected the channels for relay {relay_session}. Working on connecting channel: {ch}")
                     self.dbg.debug_message(f"Connecting com{ch} to no{ch} on {relay}")
                     relay_session.connect(f"com{ch}",f"no{ch}")
         

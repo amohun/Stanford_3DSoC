@@ -198,7 +198,7 @@ class NIRRAM:
         """Load relay-specific settings from the provided settings manager."""
         self.relays = None
         self.relay_information = settings_manager.get_setting("NISwitch", default=None)
-        
+
         if self.relay_information:
             self.relays = settings_manager.get_setting("NISwitch.deviceID", required=True)
             self.all_channels = [self.all_bls, self.all_sls, self.all_WL_IN]
@@ -275,7 +275,7 @@ class NIRRAM:
         remove_bias=None,
         meas_vbls=True,
         meas_vsls=True,
-        meas_vwls=False,
+        meas_vwls=True,
         meas_isls=True,
         meas_ibls=False,
         meas_i_gate=True,
@@ -344,10 +344,12 @@ class NIRRAM:
         for wl,wl_bls,wl_sls in zip(wls,bls,sls):
             if self.relays is not None:
                 wl_entry = wl
-                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug=False)
+                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug=True)
                 time.sleep(20e-3)
-                wl = wl[0]
-
+            # wl = wl[0]
+ 
+            print(f"WL Checking: {wl}")
+            
             self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERIPH_SEL"])
             # print(f"Setting TO OFF: {self.bls}, {wl_bls}")
             if self.bls != wl_bls:
@@ -359,19 +361,26 @@ class NIRRAM:
             # if remove_bias is not None:
             # self.set_to_off([w for w in self.WL_IN if wl not in wl_entry],["WL_IN"])
 
-            self.set_to_off([f"WL_IN_{i}" for i in range(24)],["WL_IN"])
+            # self.set_to_off([f"WL_IN_{i}" for i in range(24)],["WL_IN"])
+
             pdb.set_trace()
-            self._settle(2e-3)
-            self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel, sort=True)
-            self._settle(2e-6)
+            self._settle(2e-3) # after disconnect
+            # print(self.all_channels_flat)
+            self.ppmu_set_vwl_unsel(["WL_UNSEL"], vwl_unsel, sort=True)
+            pdb.set_trace()
+            self._settle(2e-6) # after unselec wl
+            # vwl = 0.5
+            print(f"Writing {vwl} to selected word line {wl}")
             self.ppmu_set_vwl(wl, vwl)
-            self._settle(2e-6)
+            pdb.set_trace()
+            self._settle(2e-6) # after wl
             self.ppmu_set_vsl(wl_sls,vsl)
-            self._settle(2e-6)
+            pdb.set_trace()
+            self._settle(2e-6) # after sl
             self.ppmu_set_vbl(wl_bls,vbl)
             # self.ppmu_set_vbl([bl for bl in self.bls if bl not in bls[0]],vwl/2)
             # self.ppmu_set_vsl([sl for sl in self.sls if sl not in sls[0]],vwl/2)
-            
+            pdb.set_trace()
             #Let the supplies settle for accurate measurement
             self._settle(settling_time)
 
@@ -387,6 +396,7 @@ class NIRRAM:
 
             if meas_vwls:
                 _,_,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wl],sort=False)
+                print(f"Measured voltage: {meas_wls_v}")
 
             # Measure selected current, default is to measure ISL and I gate
             if meas_isls: 
@@ -625,13 +635,16 @@ class NIRRAM:
             raise NIRRAMException(f"Invalid V{name} voltage(s) in {v}. Voltage must be between -2V and 6V.")
 
         # Set the voltage levels using the digital patterns
+
+        print(f"Channels: {channels}")
+        session = self.digital
         if max(v) > 3 or min(v) < -3:
             for i in range(10):
                 v_inter = list((i-1)*(np.array(v)-1)/(10-1)+1)
-                self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v_inter, sessions=None, sort=sort, source=source)
+                self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v_inter, sessions=session, sort=sort, source=source, debug=True)
                 self._settle(1e-5)
         else:        
-            self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v, sessions=None, sort=sort, source=source)
+            self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v, sessions=session, sort=sort, source=source)
 
 
 
@@ -737,6 +750,14 @@ class NIRRAM:
         self.ppmu_set_voltage(vsl,vsl_chan,"SL",sort=sort,source=source) 
     
     def ppmu_set_vwl(self, vwl_chan, vwl,sort=True,source=True):
+        """Set (active) VWL using NI-Digital driver (inactive disabled)"""
+        if self.relays is not None:
+            name = "WL_IN"
+        else:
+            name = "WL"
+        self.ppmu_set_voltage(vwl,vwl_chan,name,sort=sort,source=source)
+
+    def ppmu_set_vwl_unsel(self, vwl_chan, vwl,sort=True,source=True):
         """Set (active) VWL using NI-Digital driver (inactive disabled)"""
         if self.relays is not None:
             name = "WL_IN"
@@ -1899,29 +1920,35 @@ class NIRRAM:
         self.dbg.end_function_debug()
 
     def relay_switch(self, wls, relayed=True, debug = None):
+        print(f"Relay switch wls: {wls}, All wls: {self.all_wls}, closed relays:{self.closed_relays}")
         self.dbg.start_function_debug(debug)
 
         for wl in wls: 
+            print(f"Assertion wl: {wl}")
             assert(wl in self.all_wls), f"Invalid WL channel {wl}: Please make sure the WL channel is in the all_WLS list."
         
         if self.relays is None:
             raise NIRRAMException("Relay card not found in settings.")
 
-        num_relays = len(self.relays)
+        num_relays = len(self.relays) #2
 
         sorted_wls = []
         
         for i in range(num_relays):
+            # print(f"Sorted word line: {sorted_wls}, for relay {i}, wl channel value: {int(wl[3:])}")
             # Sort the WL channels by relay 0-65 for relay 1, 66-131 for relay 2, (sending 0-65 for each relay)
             sorted_wls.append([(int(wl[3:])-66*i) for wl in wls if int(wl[3:])//66 == i])        
 
         wl_input_signals = [f"WL_IN_{int(wl[3:])%24}"for wl in wls] 
+        # print(f"wl_inputs signal in relay switch: {wl_input_signals}, Sorted wls: {sorted_wls}, self.relays:{self.relays}")
         
+        print(f"Sorted WL: {sorted_wls}")
         # Switch the relays at the given WL channels, separated by relay.
+        print(f"relayed :{relayed}, sorted_wls: {sorted_wls}, closed_relays: {self.closed_relays}, relays:{self.relays}")
         if relayed and sorted_wls != self.closed_relays:
             pdb.set_trace()
             # print(f"Connecting WL {sorted_wls[0]} and {list(np.array(sorted_wls[1])+66)}")
-            self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)
+            self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)  
             self.closed_relays = sorted_wls
         all_wls = self.settings["device"]["WL_IN"]
         
@@ -2026,7 +2053,7 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
     if IV:
         for wl in wls:
             for bl in bls:
-                rram.ppmu_set_vwl(["WL_UNSEL"],0)
+               5 rram.ppmu_set_vwl(["WL_UNSEL"],0)
                 rram.measure_iv(wl=[wl], bl=[bl], vwl=vwl, vbl=vbl, vsl=vsl, vwl_unsel=0, relayed=True)
         quit()
     '''
@@ -2125,7 +2152,7 @@ def main(wls=None,bls=None,sls=None):
         raise NIRRAMException(f"Invalid operation: {args.test_type}. Please use 'single' or 'dynamic' for testing.")
 
 if __name__ == "__main__":
-    wls = ["WL_0"]
+    wls = ["WL_46"]
     bls = [["BL_0"]]
     sls = [["SL_0"]]
     # bls = [f"BL_{b}" for b in [3,7,11,15,19,23,27,31]]
