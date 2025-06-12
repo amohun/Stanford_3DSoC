@@ -344,11 +344,11 @@ class NIRRAM:
         for wl,wl_bls,wl_sls in zip(wls,bls,sls):
             if self.relays is not None:
                 wl_entry = wl
-                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug=True)
+                wl,all_wls = self.relay_switch([wl]+remove_bias,relayed=relayed,debug=False)
                 time.sleep(20e-3)
             # wl = wl[0]
  
-            print(f"WL Checking: {wl}")
+            # print(f"WL Checking: {wl}")
             
             self.set_to_ppmu([self.bls,self.sls],["BL","SL","DIR_PERIPH_SEL"])
             # print(f"Setting TO OFF: {self.bls}, {wl_bls}")
@@ -363,26 +363,27 @@ class NIRRAM:
 
             # self.set_to_off([f"WL_IN_{i}" for i in range(24)],["WL_IN"])
 
-            pdb.set_trace()
+            # pdb.set_trace()
             self._settle(2e-3) # after disconnect
             # print(self.all_channels_flat)
-            self.ppmu_set_vwl_unsel(["WL_UNSEL"], vwl_unsel, sort=True)
-            pdb.set_trace()
+            self.ppmu_set_vwl_unsel(["WL_UNSEL"], vwl_unsel, sort=True)  # SET unselected WL
+            # pdb.set_trace()
             self._settle(2e-6) # after unselec wl
             # vwl = 0.5
-            print(f"Writing {vwl} to selected word line {wl}")
+            # print(f"Writing {vwl} to selected word line {wl}")
             self.ppmu_set_vwl(wl, vwl)
-            pdb.set_trace()
+            # pdb.set_trace()
             self._settle(2e-6) # after wl
             self.ppmu_set_vsl(wl_sls,vsl)
-            pdb.set_trace()
+            # pdb.set_trace()
             self._settle(2e-6) # after sl
             self.ppmu_set_vbl(wl_bls,vbl)
             # self.ppmu_set_vbl([bl for bl in self.bls if bl not in bls[0]],vwl/2)
             # self.ppmu_set_vsl([sl for sl in self.sls if sl not in sls[0]],vwl/2)
-            pdb.set_trace()
+            # pdb.set_trace()
             #Let the supplies settle for accurate measurement
             self._settle(settling_time)
+
 
             # Measure selected voltage. Default is to measure VBL
             if meas_vbls:
@@ -396,7 +397,7 @@ class NIRRAM:
 
             if meas_vwls:
                 _,_,meas_wls_v = self.digital_patterns.measure_voltage([[],[],wl],sort=False)
-                print(f"Measured voltage: {meas_wls_v}")
+                # print(f"Measured voltage: {meas_wls_v}")
 
             # Measure selected current, default is to measure ISL and I gate
             if meas_isls: 
@@ -423,7 +424,7 @@ class NIRRAM:
 
             #for wl_i in remove_bias:
             #    self.ppmu_set_vwl(wl, 0)
-            self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True)
+            self.ppmu_set_vwl(["WL_UNSEL"], 0, sort=True) 
             self._settle(2E-3)
 
             r_wl_sl = None
@@ -636,12 +637,12 @@ class NIRRAM:
 
         # Set the voltage levels using the digital patterns
 
-        print(f"Channels: {channels}")
+        # print(f"Channels: {channels}")
         session = self.digital
         if max(v) > 3 or min(v) < -3:
             for i in range(10):
                 v_inter = list((i-1)*(np.array(v)-1)/(10-1)+1)
-                self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v_inter, sessions=session, sort=sort, source=source, debug=True)
+                self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v_inter, sessions=session, sort=sort, source=source, debug=False)
                 self._settle(1e-5)
         else:        
             self.digital_patterns.ppmu_set_voltage(pins=channels, voltage_levels=v, sessions=session, sort=sort, source=source)
@@ -997,6 +998,7 @@ class NIRRAM:
             masks = mask_list.get_pulse_masks()
             # Write the pulse
 
+            pdb.set_trace()
             print("Direct Write Values: VWL: ", vwl, "VBL: ", vbl, "VSL: ", vsl, "PW: ", pulse_len)
             self.write_pulse(
                 masks, 
@@ -1104,11 +1106,14 @@ class NIRRAM:
             
 
         # Set SEL Wordlines to the desired voltage
-        self.set_vwl(wls, vwl_hi=vwl, vwl_lo=v_base, debug=debug)
+        # TODO: Come back to this later!@!
+        # self.set_vwl(wls, vwl_hi=vwl, vwl_lo=v_base, debug=debug)
+        self.set_vwl(wls, vwl_hi=vwl, vwl_lo=0, debug=debug)
         
         # Set Bitlines to the desired voltage
         if bl_selected is not None:
             bls_unselected = [bl for bl in bls if bl not in bl_selected]
+            print(f"bls: {bls}, bl_selected: {bl_selected}, bls_unselected: {bls_unselected}, vbl: {vbl}, vbl_unsel: {vbl_unsel}, v_base: {v_base}")
             self.set_vbl(bls, vbl, vbl_lo=v_base, debug = debug)
             if len(bls_unselected) > 0:
                 self.set_vbl(bls_unselected, vbl_unsel, vbl_lo=v_base, debug = debug)
@@ -1119,11 +1124,11 @@ class NIRRAM:
         # Set Sourcelines to the desired voltage
         if sl_selected is not None:
             sls_unselected = [sl for sl in sls if sl not in sl_selected]
-            self.set_vsl(sls, vsl, vsl_lo=v_base, debug = debug)
+            self.set_vsl(sls, vsl, vsl_lo=0, debug = debug)
             if len(sls_unselected) > 0:
-                self.set_vsl(sls_unselected, vsl_unsel, vsl_lo=v_base, debug = debug)
+                self.set_vsl(sls_unselected, vsl_unsel, vsl_lo=0, debug = debug)
         else:
-            self.set_vsl(sls, vsl_hi = vsl, vsl_lo=v_base, debug = debug)
+            self.set_vsl(sls, vsl_hi = vsl, vsl_lo=0, debug = debug)
 
         # ----------------------------------- #
         #       Commit and send Pulse         #
@@ -1134,8 +1139,18 @@ class NIRRAM:
         
         self.set_to_ppmu(["WL_UNSEL"], ["WL"], sort=True)
         self.ppmu_set_vwl(["WL_UNSEL"], vwl_unsel)
-        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[[],["WL_IN"],["BL","SL","WL_IN"],["WL_IN"],[]] )
-        self.ppmu_set_vwl(["WL_UNSEL"], v_base)
+
+        # pdb.set_trace()  # before pulse        
+        print(f"mask: {masks[0].sel_pins}, {masks[0].pingroups}, {masks[0].all_pins}, {masks[0].pingroup_names}")
+        pdb.set_trace()
+        self.digital_patterns.pulse(masks,pulse_lens=pulse_lens,max_pulse_len=max_pulse_len, pulse_groups=[[],["WL_IN"],["BL","SL","WL_IN"],["WL_IN","SL"],[]] )
+        # print(f"vwl: {vwl}; vwl_unsel: {vwl_unsel}; vbl: {vbl}; vbl_unsel: {vbl_unsel}; vsl: {vsl}; vsl_unsel: {vsl_unsel}")
+        # _,_,meas_wls_v = self.digital_patterns.measure_voltage([[],[],vwl],sort=False)
+        # print(f"Measured voltage: {meas_wls_v}")
+        # pdb.set_trace() # after pulse
+        
+        # self.ppmu_set_vwl(["WL_UNSEL"], v_base)
+        # pdb.set_trace() # after unsel pulse
         # ---------------------------------------- #
         #       Set to Off and Disconnect          #
         # ---------------------------------------- #
@@ -1276,7 +1291,7 @@ class NIRRAM:
             vwl_unsel_offset=None, 
             pulse_width=None, 
             init_setup = True,
-            measure_res = True,
+            measure_res = False,
             target_res = None,
             print_data = True,
             average_resistance = False,
@@ -1652,7 +1667,7 @@ class NIRRAM:
                         vwl_unsel_offset=None,
                         pulse_width=None,
                         init_setup=True,
-                        measure_res=True,
+                        measure_res=False,
                         print_data=print_data,
                         average_resistance=average_resistance,
                         record=record,
@@ -1683,7 +1698,7 @@ class NIRRAM:
         vsl_unsel = cfg["VSL_UNSEL"]
         vwl_unsel_offset = cfg["VWL_UNSEL_OFFSET"]
 
-        pdb.set_trace()
+        # pdb.set_trace()
         
         # Set the bitline and source line voltages nased on settings/input given the mode
         if mode.upper() == "SET" or mode.upper() == "FORM":
@@ -1777,7 +1792,7 @@ class NIRRAM:
                         vwl_unsel_offset=None,
                         pulse_width=None,
                         init_setup=True,
-                        measure_res=True,
+                        measure_res=False,
                         print_data=print_data,
                         average_resistance=average_resistance,
                         record=record,
@@ -1806,7 +1821,7 @@ class NIRRAM:
         vbl_unsel = cfg["VBL_UNSEL"]
         vsl_unsel = cfg["VSL_UNSEL"]
 
-        pdb.set_trace()
+        # pdb.set_trace()
     
 
         # Need to be redone to actually iterate through multiple WLs, currently can only iterate through one WL
@@ -1920,11 +1935,11 @@ class NIRRAM:
         self.dbg.end_function_debug()
 
     def relay_switch(self, wls, relayed=True, debug = None):
-        print(f"Relay switch wls: {wls}, All wls: {self.all_wls}, closed relays:{self.closed_relays}")
+        # print(f"Relay switch wls: {wls}, All wls: {self.all_wls}, closed relays:{self.closed_relays}")
         self.dbg.start_function_debug(debug)
 
         for wl in wls: 
-            print(f"Assertion wl: {wl}")
+            # print(f"Assertion wl: {wl}")
             assert(wl in self.all_wls), f"Invalid WL channel {wl}: Please make sure the WL channel is in the all_WLS list."
         
         if self.relays is None:
@@ -1942,11 +1957,11 @@ class NIRRAM:
         wl_input_signals = [f"WL_IN_{int(wl[3:])%24}"for wl in wls] 
         # print(f"wl_inputs signal in relay switch: {wl_input_signals}, Sorted wls: {sorted_wls}, self.relays:{self.relays}")
         
-        print(f"Sorted WL: {sorted_wls}")
+        # print(f"Sorted WL: {sorted_wls}")
         # Switch the relays at the given WL channels, separated by relay.
-        print(f"relayed :{relayed}, sorted_wls: {sorted_wls}, closed_relays: {self.closed_relays}, relays:{self.relays}")
+        # print(f"relayed :{relayed}, sorted_wls: {sorted_wls}, closed_relays: {self.closed_relays}, relays:{self.relays}")
         if relayed and sorted_wls != self.closed_relays:
-            pdb.set_trace()
+            # pdb.set_trace()
             # print(f"Connecting WL {sorted_wls[0]} and {list(np.array(sorted_wls[1])+66)}")
             self.digital_patterns.connect_relays(relays=self.relays,channels=sorted_wls,debug=debug)  
             self.closed_relays = sorted_wls
@@ -2022,7 +2037,7 @@ def arg_parse():
     return args
 
 
-def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
+def single_pulse_test(wls=None,bls=None,IV=False,args=None):
     # initialize the NIRRAM object
     rram = NIRRAM(args.chip, args.device, polarity=args.polarity, settings=args.settings, 
                   test_type=args.test_type, additional_info=args.additional_info)
@@ -2087,7 +2102,7 @@ def single_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
     # # quit()
 
 
-def dynamic_pulse_test(wls=None,bls=None,sls=None,IV=False,args=None):
+def dynamic_pulse_test(wls=None,bls=None,IV=False,args=None):
     # initialize the NIRRAM object
     rram = NIRRAM(args.chip, args.device, polarity=args.polarity, settings=args.settings, 
                   test_type=args.test_type, additional_info=args.additional_info)
@@ -2145,18 +2160,19 @@ def main(wls=None,bls=None,sls=None):
 
     print("NIRRAM Abstracted Class Loaded Successfully.")
     if args.test_type == "single":
-        single_pulse_test(wls=wls,bls=bls,sls=sls,args=args)
+        single_pulse_test(wls=wls,bls=bls,args=args)
     elif args.test_type == "dynamic":
-        dynamic_pulse_test(wls=wls,bls=bls,sls=sls,args=args)
+        dynamic_pulse_test(wls=wls,bls=bls,args=args)
     else:
         raise NIRRAMException(f"Invalid operation: {args.test_type}. Please use 'single' or 'dynamic' for testing.")
 
 if __name__ == "__main__":
-    wls = ["WL_46"]
+    wls = ["WL_0"]
     bls = [["BL_0"]]
-    sls = [["SL_0"]]
+    # sls = [["SL_0"]]
     # bls = [f"BL_{b}" for b in [3,7,11,15,19,23,27,31]]
-    main(wls=wls,bls=bls,sls=sls)
+    main(wls=wls,bls=bls)
+    pdb.set_trace()
     # dynamic_pulse_test(wls=wls,bls=bls)
     # single_pulse_test(wls=wls,bls=bls)
 

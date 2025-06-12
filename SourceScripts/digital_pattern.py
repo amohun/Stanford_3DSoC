@@ -581,9 +581,9 @@ class DigitalPattern:
             for session_num, session in enumerate(sessions):
                 for pin, level in zip(pins[session_num], levels):
                     if mode == "voltage":
-                        print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
+                        # print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
                         session.channels[pin].ppmu_voltage_level = level
-                        print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
+                        # print(f"PPMU Set Pin: {pin}, Session: {session}, Pre-voltage: {session.channels[pin].ppmu_voltage_level}, voltage:{level}")
                     elif mode == "current":
                         session.channels[pin].ppmu_current_level = level
         
@@ -655,7 +655,7 @@ class DigitalPattern:
         for session,session_pins in zip(self.sessions,pins):
             # print(f"Session: {sessions}. pins:{session_pins}")
             if len(session_pins) != 0:
-                print(f"Session: {session}, Pre-voltage: {session.channels[session_pins]}")
+                # print(f"Session: {session}, Pre-voltage: {session.channels[session_pins]}")
                 session.channels[session_pins].ppmu_source()
         self.dbg.end_function_debug()
         return 0
@@ -1339,7 +1339,7 @@ class DigitalPattern:
                 raise ValueError("Channels must be provided")
         
         channels = [list(set(channel)) for channel in channels]
-        print(f"Made it here. channels is: {channels}")
+        # print(f"Made it here. channels is: {channels}")
 
         for relay, channel in zip(relays, channels):
             with niswitch.Session(relay) as relay_session:

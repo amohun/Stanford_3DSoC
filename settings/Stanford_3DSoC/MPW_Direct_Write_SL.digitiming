@@ -3,7 +3,7 @@
   <TimingSheet>
     <TimeSets>
       <TimeSet name="direct">
-        <Period>1E-05</Period>
+        <Period>1E-07</Period>
         <PinEdges>
           <PinEdge pin="SL">
             <DriveNonReturn>

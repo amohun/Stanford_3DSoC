@@ -564,16 +564,16 @@ RESET = 100_000
 # TIMING
 # =============================================================================
 [TIMING]
-direct = 1e-8
+direct = 1e-7
 CSA_out = 1e-5
 CSA_in = 1e-5
 
 [PULSE]
-prepulse_len = 1000
-wl_buffer = 2
+prepulse_len = 0
+wl_buffer = 0
 pulse_len = 1000
-blsl_buffer = 1
-postpulse_len = 1000
+blsl_buffer = 0
+postpulse_len = 2
 max_pulse_len = 4000
 
 # =============================================================================
@@ -645,7 +645,7 @@ PW_steps = 10
 VWL = -0.5
 VBL = 0
 VSL = 2.0
-PW = 50
+PW = 5
 # default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1
