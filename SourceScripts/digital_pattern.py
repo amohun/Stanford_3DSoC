@@ -146,7 +146,8 @@ class DigitalPattern:
 
         self.dbg.end_function_debug()
 
-    def load_pin_maps(self,sessions=None,pinmaps=None, pingroups=None, debug=None):
+    def load_pin_maps(self,sessions=None,pinmaps=None, pingroups=None, debug=None
+                      ):
         """
         Load Pin Maps: Load pin maps for each session based on arguments or settings.
         Raises DigitalPatternException if pinmaps are not found in settings.

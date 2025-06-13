@@ -606,7 +606,7 @@ VB = 0
 VWL = -0.3
 VBL = 0.1
 VSL = 0
-VWL_UNSEL_OFFSET = 3
+VWL_UNSEL_OFFSET = 2
 VB = 0
 # Ranges: VWL: -0.3 ~ -1.0; VBL: +0.1 ~ +0.5
 
@@ -642,9 +642,9 @@ PW_steps = 10
 #    PMOS FORM    #
 # =============== #
 [op.FORM.PMOS]
-VWL = -0.5
-VBL = 0
-VSL = 2.0
+VWL = -1
+VBL = -2
+VSL = 2
 PW = 5
 # default values used for single direct write, dynamic write uses range sweeping
 
@@ -693,7 +693,7 @@ PW_steps = 20
 VWL = -0.5
 VBL = 0
 VSL = 2.0
-PW = 50
+PW = 5
 # default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1
@@ -741,7 +741,7 @@ PW_steps = 10
 VWL = -0.5
 VSL = 0
 VBL = 2
-PW = 50
+PW = 5
 # default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1
