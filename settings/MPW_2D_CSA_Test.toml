@@ -56,7 +56,7 @@ capture_waveform_names = [
 capture_pins = [
     [],
     [],
-    ["DO_1","DO_0","SA_RDY_1","SA_RDY_0"]
+    ["SA_CLK","DO_1","DO_0","SA_RDY_1","SA_RDY_0"]
 ]
 
 sample_length = 73

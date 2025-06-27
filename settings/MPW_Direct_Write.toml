@@ -546,9 +546,9 @@ WL_UNSEL = [ "WL_UNSEL" ]
 DIR_PERIPH_SEL = [ "DIR_PERIPH_SEL" ]
 # RRAM resistance target level corresponding to each operation defined below
 [target_res]
-FORM = 30_000
-SET = 30_000
-RESET = 100_000
+FORM = 10_000
+SET = 10_000
+RESET = 20_000
 
 # =============================================================================
 # MEASUREMENT OPERATION (OP) CONFIGS
@@ -564,7 +564,7 @@ RESET = 100_000
 # TIMING
 # =============================================================================
 [TIMING]
-direct = 1e-7
+direct = 1e-6
 CSA_out = 1e-5
 CSA_in = 1e-5
 
@@ -603,9 +603,9 @@ VB = 0
 #    PMOS READ    #
 # =============== #
 [op.READ.PMOS]
-VWL = -0.3
-VBL = 0.1
-VSL = 0
+VWL = 2.5
+VBL = 2
+VSL = 0.3
 VWL_UNSEL_OFFSET = 2
 VB = 0
 # Ranges: VWL: -0.3 ~ -1.0; VBL: +0.1 ~ +0.5
@@ -621,10 +621,13 @@ VB = 0
 # =============== #
 [op.FORM.NMOS]
 VWL = 1.8
-VBL = 3
+VBL = 4
 VSL = 0
-VWL_UNSEL_OFFSET = 0.0
-PW = 100
+VWL_UNSEL_OFFSET = 0
+PW = 5
+
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 
 VWL_start = 1.5
 VWL_step = 0.2
@@ -642,10 +645,10 @@ PW_steps = 10
 #    PMOS FORM    #
 # =============== #
 [op.FORM.PMOS]
-VWL = -1
+VWL = 0
 VBL = -2
-VSL = 2
-PW = 5
+VSL = 1.1
+PW = 50000
 # default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1
@@ -670,11 +673,14 @@ PW_steps = 10
 # SET PULSE
 # =============================================================================
 [op.SET.NMOS]
-VWL = 0
+VWL = 1.8
 VBL = 3
 VSL = 0
 VWL_UNSEL_OFFSET = 0
-PW = 1200
+PW = 5
+
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 
 VWL_start = 2.3
 VWL_step = 0.2
@@ -718,11 +724,14 @@ PW_steps = 10
 # =============================================================================
 
 [op.RESET.NMOS]
-VWL = 4
-VSL = 2
+VWL = 2.5
+VSL = 6
 VBL = 0
 VWL_UNSEL_OFFSET = 0
-PW = 100
+PW = 50000
+
+VBL_UNSEL = -2
+VSL_UNSEL = -2
 
 VWL_start = 1.8
 VWL_step = 0.1
@@ -738,10 +747,10 @@ PW_steps = 10
 
 
 [op.RESET.PMOS]
-VWL = -0.5
-VSL = 0
-VBL = 2
-PW = 5
+VWL = 6
+VSL = -2
+VBL = 6
+PW = 50000
 # default values used for single direct write, dynamic write uses range sweeping
 
 VWL_UNSEL_OFFSET = 1

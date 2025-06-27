@@ -66,6 +66,7 @@ class CSA:
             if pins is None:
                 raise CSAException("Capture Pins not provided, and no file is given, cannot retrieve waveforms")
         if source_waveforms is not None or capture_waveforms is not None or capture_waveform_names is not None:
+            print("I'm here!")
             self.digital_patterns.load_waveforms(source_waveforms, source_waveform_names, capture_waveforms, capture_waveform_names,pins) 
         
         self.digital_patterns.broadcast_waveforms()
@@ -92,6 +93,19 @@ class CSA:
                     raise CSAException(f"Invalid pin setting {pingroup}")
             self.pins.append(session_pins)  # Append the session pins to the overall list
 
+    def set_to_off(self,channels,name, sort=True,debug=None):
+        # print(f"Setting {name} channels {channels} to off")
+        if type(channels) is not list:
+            channels = [channels]
+        
+        if type(channels[0]) is list and sort==True:
+            channels = [item for sublist in channels for item in sublist]
+
+        if type(channels[0]) is int or type(channels[0]) is np.uint8:
+            channels = [f"{name}_{chan}" for chan in channels]
+        
+        self.digital_patterns.set_channel_mode("off", pins=channels,sessions=None,sort=sort,debug=debug)
+
     def set_pin_voltages(self):
 
         vih = self.settings_manager.get_setting("voltages.vih", 1.8)
@@ -113,14 +127,14 @@ class CSA:
         vol_vread = self.settings_manager.get_setting("other_voltages.VREAD.vol", 0)
 
         #WL_UNSEL = Hi on, Lo off (2 to 4V)
-        vih_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 2)
+        vih_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 1.8)
         vil_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vil", 0)
-        voh_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 2)
+        voh_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 1.8)
         vol_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vol", 0)
         # WL = Lo on, Hi off (-1 to -2V)
-        vih_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", -1)
+        vih_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", 1.8)
         vil_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vil", 0)
-        voh_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", -1)
+        voh_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", 1.8)
         vol_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vol", 0)
 
         # Outputs should be < 1.8V to trigger high
@@ -151,7 +165,9 @@ class CSA:
             self.digital_patterns.digital_set_voltages([[],["SL_0", "SL_1","SL_2","SL_3","SL_29","SL_30","SL_31"],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)        
         else:
             self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
-        self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
+        # self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
+        # Set WL_UNSEL to OFF to avoid leakage
+        self.set_to_off([["WL_UNSEL"]],["WL"])
 
         if "DO_7" in self.digital_patterns.all_pins:
             self.digital_patterns.digital_set_voltages([[],[],["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
@@ -265,7 +281,8 @@ def main(args):
     csa.relay_switch([f"wl_{connected_wl}"]+remove_bias,relayed=True,debug=False)
     # pdb.set_trace()
     csa.set_pin_voltages()
-    for i in range(1000):
+    pdb.set_trace()
+    for i in range(100):
         csa.broadcast_waveforms_from_file()
     
     csa.read_captured_waveforms()
