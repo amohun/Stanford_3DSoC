@@ -50,8 +50,14 @@ class DigitalPattern:
         
         self.dbg = DebugUtil(debug)
 
+        print("Loading instruments...")
         self.load_instruments()
+        print("Loaded instruments")
+
+        print("Loading pin maps...")
         self.load_pin_maps()
+        print("Loaded pin maps")
+
         self.load_patterns()
         self.load_waveforms()
         self.configure_timing()

@@ -16,28 +16,6 @@
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
-          <PinEdge pin="OFMAP">
-            <DriveNonReturn>
-              <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
-            </DriveNonReturn>
-            <CompareStrobe>
-              <Strobe>2E-05</Strobe>
-            </CompareStrobe>
-            <DataSource>Pattern</DataSource>
-          </PinEdge>
-          <PinEdge pin="PE_EN">
-            <DriveNonReturn>
-              <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
-            </DriveNonReturn>
-            <CompareStrobe>
-              <Strobe>2E-05</Strobe>
-            </CompareStrobe>
-            <DataSource>Pattern</DataSource>
-          </PinEdge>
         </PinEdges>
       </TimeSet>
     </TimeSets>

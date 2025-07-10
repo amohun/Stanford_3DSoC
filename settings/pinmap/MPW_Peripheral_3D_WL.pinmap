@@ -56,10 +56,10 @@
 			<PinReference pin="DO_7" />
 		</PinGroup>
 		<PinGroup name="COLSEL">
-			<PinReference pin="COL_SEL_0" />
-			<PinReference pin="COL_SEL_1" />
-			<PinReference pin="COL_SEL_2" />
 			<PinReference pin="COL_SEL_3" />
+			<PinReference pin="COL_SEL_1" />
+			<PinReference pin="COL_SEL_0" />
+			<PinReference pin="COL_SEL_2" />
 		</PinGroup>
 		<PinGroup name="SA_RDY">
 			<PinReference pin="SA_RDY_0" />

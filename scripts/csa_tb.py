@@ -44,7 +44,13 @@ class CSA:
         self.digital_patterns.commit_all()
 
         # pdb.set_trace()
-        self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],0.0,source=True)
+        # FOR 2D board
+        # self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],0.0,source=True)
+
+        #FOR 3D board+chip
+        self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],6,source=True)
+
+
         self._load_relay_settings(self.settings_manager)
 
     def _load_relay_settings(self, settings_manager: SettingsUtil):
@@ -159,15 +165,29 @@ class CSA:
         self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["RMUX_EN"]], vi_lo=vil_rmuxen, vi_hi=vih_rmuxen, vo_lo=vol_rmuxen, vo_hi=voh_rmuxen,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["VREAD"]], vi_lo=vil_vread, vi_hi=vih_vread, vo_lo=vol_vread, vo_hi=voh_vread,sort=False)
+        # Only for 3D board
+        self.digital_patterns.digital_set_voltages([[],[],["DIR_PERIPH_SEL"]], vi_lo=2, vi_hi=2, vo_lo=2, vo_hi=2,sort=False)
         if self.is_3D:
-            self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)
-            self.digital_patterns.digital_set_voltages([[],[],["SA_CLK_EXT"]],vi_lo=vil_colsel, vi_hi=vih_colsel, vo_lo=vol_colsel, vo_hi=voh_colsel,sort=False)
-            self.digital_patterns.digital_set_voltages([[],["SL_0", "SL_1","SL_2","SL_3","SL_29","SL_30","SL_31"],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)        
+            self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
+            # self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)
+            self.set_to_off([["WL_IN_21","WL_IN_22","WL_IN_23"]],["WL"])
+            # self.digital_patterns.digital_set_voltages([[],[],["SA_CLK_EXT"]],vi_lo=vil_colsel, vi_hi=vih_colsel, vo_lo=vol_colsel, vo_hi=voh_colsel,sort=False)
+            # self.digital_patterns.digital_set_voltages([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"],[],[]], vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl, sort=False)
+            # self.digital_patterns.digital_set_voltages([[],["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_7","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_27","SL_28","SL_29","SL_30","SL_31"],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)     
+            self.digital_patterns.digital_set_voltages([["BL_5","BL_7","BL_13","BL_15","BL_17","BL_19","BL_25","BL_27"],[],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)     
+            self.set_to_off([["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_7","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_28","SL_29","SL_30","SL_31"]],["SL"])
+            # self.set_to_off([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"]],["BL"])
+            self.set_to_off([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_6","BL_8","BL_9","BL_10","BL_11","BL_12","BL_14","BL_16","BL_18","BL_20","BL_21","BL_22","BL_23","BL_24","BL_26","BL_28","BL_29","BL_30","BL_31"]],["BL"])
+            # self.set_to_off([["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_27","SL_28","SL_29","SL_30","SL_31"]],["SL"])
+            # self.set_to_off([["BL_6"]],["BL"])
+
         else:
             self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
         # self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
         # Set WL_UNSEL to OFF to avoid leakage
         self.set_to_off([["WL_UNSEL"]],["WL"])
+        self.digital_patterns.digital_set_voltages([[],[],["COL_SEL_3","COL_SEL_2","COL_SEL_1","COL_SEL_0"]],vi_lo=vil_colsel, vi_hi=vih_colsel, vo_lo=vol_colsel, vo_hi=voh_colsel,sort=False)
+        
 
         if "DO_7" in self.digital_patterns.all_pins:
             self.digital_patterns.digital_set_voltages([[],[],["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
@@ -242,8 +262,8 @@ def arg_parse():
     parser = argparse.ArgumentParser(description="Define a Chip")
     parser.add_argument("chip", help="Chip name for logging")
     parser.add_argument("device", help="Device name for logging")
-    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_true")
-    parser.add_argument("--polarity", help="Polarity of the device", default="NMOS")
+    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_false")
+    parser.add_argument("--polarity", help="Polarity of the device", default="PMOS")
     
     if parser.parse_args().CNT:
         parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_3D_CSA_Test.toml")
@@ -281,8 +301,8 @@ def main(args):
     csa.relay_switch([f"wl_{connected_wl}"]+remove_bias,relayed=True,debug=False)
     # pdb.set_trace()
     csa.set_pin_voltages()
-    pdb.set_trace()
-    for i in range(100):
+    # pdb.set_trace()
+    for i in range(100000):
         csa.broadcast_waveforms_from_file()
     
     csa.read_captured_waveforms()

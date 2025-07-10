@@ -122,7 +122,7 @@ class NIRRAM:
         self.zero_rows = None
         self.NC_rows = None
 
-        self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],6,source=True)
+        self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
 
         self.dbg.end_function_debug()
 
@@ -250,12 +250,15 @@ class NIRRAM:
 
     def _configure_digital_session(self):
         """Configure the NIDigital session."""
-        self.digital_patterns = DigitalPattern(self.settings_manager,wl_unsel=True)
+        print("Before DigitalPattern instantiation")
+        self.digital_patterns = DigitalPattern(self.settings_manager, wl_unsel=True)
+
         self.digital = self.digital_patterns.sessions
 
         self.digital_patterns.configure_read(sessions=None, pins=[self.bls, self.sls], sort=False)
         self.digital_patterns.digital_all_pins_to_zero()
         self.digital_patterns.commit_all()
+
         self.closed_relays = []
 
 
@@ -344,7 +347,7 @@ class NIRRAM:
         if self.relays is not None:
             self.WL_IN = self.settings["device"]["all_WL_IN"]
 
-        file_object = open("output_tefasdt1_w0_.csv", mode= 'a',  newline='')
+        file_object = open("output_test2.csv", mode= 'a',  newline='')
         datafile = csv.writer(file_object)
             
         for wl,wl_bls,wl_sls in zip(wls,bls,sls):
@@ -366,8 +369,12 @@ class NIRRAM:
                 # self.ppmu_set_vsl([sl for sl in self.sls if sl not in wl_sls],0)
                 # self.ppmu_set_vbl([bl for bl in self.bls if bl not in wl_bls],0)
 
+            # NMOS: WL_UNSEL floating to avoid leakage current
             self.set_to_off([["WL_UNSEL"]],["WL"])
-            self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],6,source=True)
+            # PMOS: Cannot keep floating (because floating potential = 0V)
+            # self.ppmu_set_vwl_unsel(["WL_UNSEL"], vwl_unsel, sort=True)  # SET unselected WL
+
+            self.digital_patterns.ppmu_set_voltage(["DIR_PERIPH_SEL"],2,source=True)
             
             # if remove_bias is not None:
             # self.set_to_off([w for w in self.WL_IN if wl not in wl_entry],["WL_IN"])
@@ -483,6 +490,7 @@ class NIRRAM:
             else:
                 r_wl = r_wl_sl if r_wl_sl is not None else r_wl_bl
             
+            print(f"Resistance between WL and SL: {r_wl_sl}, Resistance between WL and BL: {r_wl_bl}")
 
             if r_wl is None:
                 if meas_i_gate: 
@@ -493,10 +501,12 @@ class NIRRAM:
                     r_wl = None
 
             wl = wl_entry if self.relays is not None else wl
+            
+            # if abs(meas_wls_i[0]) < 1e-6:
+            #    datafile.writerow([ wls, bls, meas_bls_v, meas_sls_v, meas_wls_v, meas_bls_i, meas_sls_i, meas_wls_i, r_wl_bl/1000, r_wl_sl/1000])
+            datafile.writerow([r_wl_bl/1000])
 
-            datafile.writerow([meas_bls_v, meas_sls_v, meas_wls_v, meas_bls_i, meas_sls_i, meas_wls_i, r_wl_bl/1000, r_wl_sl/1000])
-
-            r_wl = r_wl_bl
+            r_wl = r_wl_sl
             r_wl = np.array([None if res_bit not in wl_bls else r_wl[wl_bls.index(res_bit)] for res_bit in self.res_array_bls])
 
             r_wl = np.maximum(r_wl, 1e-12)            
@@ -2099,7 +2109,7 @@ def arg_parse():
     parser = argparse.ArgumentParser(description="NIRRAM Abstracted Class")
     parser.add_argument("--chip", type=str, help="Chip ID", default="chip")
     parser.add_argument("--device", type=str, help="Device ID", default="device")
-    parser.add_argument("--polarity", type=str, help="Polarity of the device", default="NMOS")
+    parser.add_argument("--polarity", type=str, help="Polarity of the device", default="PMOS")
     parser.add_argument("--settings", type=str, help="Path to the settings file", default="settings/MPW_Direct_Write.toml")
     parser.add_argument("--test_type", type=str, help="Type of test to run", default="single")
     parser.add_argument("--additional_info", type=str, help="Additional information", default="NIRRAM Direct Write Test")
@@ -2110,10 +2120,13 @@ def arg_parse():
 
 
 def single_pulse_test(wls=None,bls=None,IV=False,args=None):
-    # initialize the NIRRAM object
-    rram = NIRRAM(args.chip, args.device, polarity=args.polarity, settings=args.settings, 
-                  test_type=args.test_type, additional_info=args.additional_info)
-    print("NIRRAM Abstracted Class Loaded Successfully.")
+    try:
+        # initialize the NIRRAM object
+        rram = NIRRAM(args.chip, args.device, polarity=args.polarity, settings=args.settings, 
+                    test_type=args.test_type, additional_info=args.additional_info)
+        print("NIRRAM Abstracted Class Loaded Successfully.")
+    except Exception as e:
+        print(f"Initialization failed: {e}")
 
     all_bls = []
     all_wls = []
@@ -2242,7 +2255,7 @@ if __name__ == "__main__":
     # wls = ["WL_0","WL_1","WL_2","WL_3","WL_4","WL_5","WL_6","WL_7","WL_8","WL_9","WL_10","WL_11","WL_12","WL_13","WL_14","WL_15","WL_16","WL_17","WL_18","WL_19","WL_20","WL_21","WL_22","WL_23","WL_24","WL_25","WL_26","WL_27","WL_28","WL_29","WL_30", "WL_31", "WL_32", "WL_33", "WL_34", "WL_35", "WL_36", "WL_37", "WL_38", "WL_39", "WL_40", "WL_41", "WL_42", "WL_43", "WL_44", "WL_45", "WL_46", "WL_47", "WL_48", "WL_49", "WL_50", "WL_51", "WL_52", "WL_53", "WL_54", "WL_55", "WL_56", "WL_57", "WL_58", "WL_59", "WL_60", "WL_61", "WL_62", "WL_63", "WL_64", "WL_65", "WL_66", "WL_67", "WL_68", "WL_69", "WL_70", "WL_71", "WL_72", "WL_73", "WL_74", "WL_75", "WL_76", "WL_77", "WL_78", "WL_79", "WL_80", "WL_81", "WL_82", "WL_83", "WL_84", "WL_85", "WL_86", "WL_87", "WL_88", "WL_89", "WL_90", "WL_91", "WL_92", "WL_93", "WL_94", "WL_95", "WL_96", "WL_97", "WL_98", "WL_99", "WL_100", "WL_101", "WL_102", "WL_103", "WL_104", "WL_105", "WL_106", "WL_107", "WL_108", "WL_109", "WL_110", "WL_111", "WL_112", "WL_113", "WL_114", "WL_115", "WL_116", "WL_117", "WL_118", "WL_119", "WL_120", "WL_121", "WL_122", "WL_123", "WL_124", "WL_125", "WL_126", "WL_127"]
     wls=["WL_0"]
     # wls =["WL_0", "WL_21", "WL_22", "WL_23"]
-    bls = [["BL_3"]]
+    bls = [["BL_27"]]
     # bls = [["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"]]
     # sls = [["SL_0"]]
     # bls = [f"BL_{b}" for b in [3,7,11,15,19,23,27,31]]
