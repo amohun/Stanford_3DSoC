@@ -302,7 +302,7 @@ def main(args):
     # pdb.set_trace()
     csa.set_pin_voltages()
     # pdb.set_trace()
-    for i in range(100000):
+    for i in range(1000):
         csa.broadcast_waveforms_from_file()
     
     csa.read_captured_waveforms()
