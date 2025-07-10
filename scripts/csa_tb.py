@@ -281,8 +281,8 @@ def main(args):
     csa.relay_switch([f"wl_{connected_wl}"]+remove_bias,relayed=True,debug=False)
     # pdb.set_trace()
     csa.set_pin_voltages()
-    pdb.set_trace()
-    for i in range(100):
+    # pdb.set_trace()
+    for i in range(10000):
         csa.broadcast_waveforms_from_file()
     
     csa.read_captured_waveforms()
