@@ -172,12 +172,12 @@ class CSA:
             # self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)
             self.set_to_off([["WL_IN_21","WL_IN_22","WL_IN_23"]],["WL"])
             # self.digital_patterns.digital_set_voltages([[],[],["SA_CLK_EXT"]],vi_lo=vil_colsel, vi_hi=vih_colsel, vo_lo=vol_colsel, vo_hi=voh_colsel,sort=False)
-            # self.digital_patterns.digital_set_voltages([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"],[],[]], vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl, sort=False)
+            self.digital_patterns.digital_set_voltages([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"],[],[]], vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl, sort=False)
             # self.digital_patterns.digital_set_voltages([[],["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_7","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_27","SL_28","SL_29","SL_30","SL_31"],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)     
-            self.digital_patterns.digital_set_voltages([["BL_5","BL_7","BL_13","BL_15","BL_17","BL_19","BL_25","BL_27"],[],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)     
+            # self.digital_patterns.digital_set_voltages([["BL_5","BL_7","BL_13","BL_15","BL_17","BL_19","BL_25","BL_27"],[],[]],vi_lo=vil_sl, vi_hi=vih_sl, vo_lo=vol_sl, vo_hi=voh_sl,sort=False)     
             self.set_to_off([["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_7","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_28","SL_29","SL_30","SL_31"]],["SL"])
             # self.set_to_off([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_5","BL_6","BL_7","BL_8","BL_9","BL_10","BL_11","BL_12","BL_13","BL_14","BL_15","BL_16","BL_17","BL_18","BL_19","BL_20","BL_21","BL_22","BL_23","BL_24","BL_25","BL_26","BL_27","BL_28","BL_29","BL_30","BL_31"]],["BL"])
-            self.set_to_off([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_6","BL_8","BL_9","BL_10","BL_11","BL_12","BL_14","BL_16","BL_18","BL_20","BL_21","BL_22","BL_23","BL_24","BL_26","BL_28","BL_29","BL_30","BL_31"]],["BL"])
+            # self.set_to_off([["BL_0","BL_1","BL_2","BL_3","BL_4","BL_6","BL_8","BL_9","BL_10","BL_11","BL_12","BL_14","BL_16","BL_18","BL_20","BL_21","BL_22","BL_23","BL_24","BL_26","BL_28","BL_29","BL_30","BL_31"]],["BL"])
             # self.set_to_off([["SL_0","SL_1","SL_2","SL_3","SL_4","SL_5","SL_6","SL_8","SL_9","SL_10","SL_11","SL_12","SL_13","SL_14","SL_15","SL_16","SL_17","SL_18","SL_19","SL_20","SL_21","SL_22","SL_23","SL_24","SL_25","SL_26","SL_27","SL_28","SL_29","SL_30","SL_31"]],["SL"])
             # self.set_to_off([["BL_6"]],["BL"])
 
@@ -302,7 +302,7 @@ def main(args):
     # pdb.set_trace()
     csa.set_pin_voltages()
     # pdb.set_trace()
-    for i in range(1000):
+    for i in range(100000):
         csa.broadcast_waveforms_from_file()
     
     csa.read_captured_waveforms()
