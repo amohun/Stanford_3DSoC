@@ -70,7 +70,7 @@ CSA = 2e-5
 [device]
 pins = [["BL","PE_EN", "OFMAP"],
         ["SL","IFMAP", "IFMAP_EN", "EXT_WT","WEIGHT_EN","WEIGHT_SHIFT","WT_SEL_EXT","RST_N","PSUM_SLC","MUX_SEL_CONV_CLK","MUX_SEL_WT"],
-        ["WL", "ACCUM_EN","SA_CLK","SA_CLK_EXT"]
+        ["WL", "ACCUM_EN", "VREAD", "COLSEL", "SA_EN", "RMUX_EN","SA_CLK","SA_CLK_EXT","DIR_PERIPH_SEL", "DO_SA_RDY"]
         ]
 
 # VHDCI A
@@ -126,8 +126,20 @@ MUX_SEL_CONV_CLK="MUX_SEL_CONV_CLK"
 #VHDCI C
 WL = ["WL_IN_0","WL_IN_21","WL_IN_22","WL_IN_23","WL_UNSEL"]
 ACCUM_EN = "ACCUM_EN"
+SA_EN = "SA_EN"
+RMUX_EN = "RMUX_EN"
 SA_CLK = "SA_CLK"
 SA_CLK_EXT = "SA_CLK_EXT"
+DIR_PERIPH_SEL = "DIR_PERIPH_SEL"
+VREAD = "VREAD"
+DO_SA_RDY = ["DO_0","DO_1","DO_2","DO_3","DO_4","DO_5","DO_6","DO_7","SA_RDY_0","SA_RDY_1","SA_RDY_2","SA_RDY_3","SA_RDY_4","SA_RDY_5","SA_RDY_6","SA_RDY_7"]
+COLSEL = [
+    "COL_SEL_3",
+    "COL_SEL_2",
+    "COL_SEL_1",
+    "COL_SEL_0",
+]
+
 
 [voltages]
 vih = 1.8
@@ -140,3 +152,22 @@ vih = 0.7
 vil = 0.3
 voh = 0.7
 vol = 0.3
+
+[other_voltages]
+[other_voltages.RMUX_EN]
+vih = 5.0
+vil = 0.0
+voh = 5.0
+vol = 0.0
+
+[other_voltages.VREAD]
+vih = 0.3
+vil = 0.0
+voh = 0.3
+vol = 0.0
+
+[other_voltages.SARDY_DO]
+vih = 1.5
+vil = 0.0
+voh = 1.5
+vol = 0.0

@@ -193,8 +193,8 @@ def arg_parse():
     parser = argparse.ArgumentParser(description="Define a Chip")
     parser.add_argument("chip", help="Chip name for logging")
     parser.add_argument("device", help="Device name for logging")
-    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_true")
-    parser.add_argument("--polarity", help="Polarity of the device", default="NMOS")
+    parser.add_argument("--CNT",help="Include if Chip is 3D CNT + RRAM", action="store_false")
+    parser.add_argument("--polarity", help="Polarity of the device", default="PMOS")
     
     if parser.parse_args().CNT:
         parser.add_argument("--settings", help="Path to the settings file", default="settings/MPW_3D_Conv_Test.toml")

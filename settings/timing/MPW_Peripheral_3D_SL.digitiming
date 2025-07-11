@@ -3,137 +3,137 @@
   <TimingSheet>
     <TimeSets>
       <TimeSet name="CSA">
-        <Period>2E-05</Period>
+        <Period>2E-06</Period>
         <PinEdges>
           <PinEdge pin="SL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="IFMAP">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="IFMAP_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="EXT_WT">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="WEIGHT_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="WEIGHT_SHIFT">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="WT_SEL_EXT">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="MUX_SEL_CONV_CLK">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="MUX_SEL_WT">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="PSUM_SLC">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="RST_N">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="NC_0">
             <DriveNonReturn>
               <On>0</On>
-              <Data>1E-05</Data>
-              <Off>2E-05</Off>
+              <Data>2.5E-07</Data>
+              <Off>2.5E-07</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>2E-05</Strobe>
+              <Strobe>2.5E-07</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
