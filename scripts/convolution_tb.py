@@ -117,6 +117,61 @@ class Convolution:
 
 
         self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
+        # Non-traditional voltages
+        #RMUX_EN = 5V on 0V off
+        vih_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.vih", 5)
+        vil_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.vil", 0)
+        voh_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.voh", 5)
+        vol_rmuxen = self.settings_manager.get_setting("other_voltages.RMUX_EN.vol", 0)
+
+        #VREAD = 0.3V on 0V off
+        vih_vread = self.settings_manager.get_setting("other_voltages.VREAD.vih", 0.1)
+        vil_vread = self.settings_manager.get_setting("other_voltages.VREAD.vil", 0)
+        voh_vread = self.settings_manager.get_setting("other_voltages.VREAD.voh", 0.1)
+        vol_vread = self.settings_manager.get_setting("other_voltages.VREAD.vol", 0)
+
+        #WL_UNSEL = Hi on, Lo off (2 to 4V)
+        vih_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 1.8)
+        vil_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vil", 0)
+        voh_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.voh", 1.8)
+        vol_wlunsel = self.settings_manager.get_setting("other_voltages.WL_UNSEL.vol", 0)
+        # WL = Lo on, Hi off (-1 to -2V)
+        vih_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", 1.8)
+        vil_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vil", 0)
+        voh_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.voh", 1.8)
+        vol_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vol", 0)
+
+        # Outputs should be < 1.8V to trigger high
+        vih_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vih", 1)
+        vil_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vil", 0.3)
+        voh_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.voh", 1)
+        vol_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vol", 0.3)
+
+        # Outputs should be < 1.8V to trigger high
+        vih_sl = self.settings_manager.get_setting("other_voltages.SL.vih", 0)
+        vil_sl = self.settings_manager.get_setting("other_voltages.SL.vil", 0)
+        voh_sl = self.settings_manager.get_setting("other_voltages.SL.voh", 0)
+        vol_sl = self.settings_manager.get_setting("other_voltages.SL.vol", 0)
+
+        # Outputs should be < 1.8V to trigger high
+        vih_colsel = self.settings_manager.get_setting("other_voltages.COL.vih", 3)
+        vil_colsel = self.settings_manager.get_setting("other_voltages.COL.vil", 0)
+        voh_colsel = self.settings_manager.get_setting("other_voltages.COL.voh", 3)
+        vol_colsel = self.settings_manager.get_setting("other_voltages.COL.vol", 0)
+
+
+        self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
+        self.digital_patterns.digital_set_voltages([[],[],["RMUX_EN"]], vi_lo=vil_rmuxen, vi_hi=vih_rmuxen, vo_lo=vol_rmuxen, vo_hi=voh_rmuxen,sort=False)
+        self.digital_patterns.digital_set_voltages([[],[],["VREAD"]], vi_lo=vil_vread, vi_hi=vih_vread, vo_lo=vol_vread, vo_hi=voh_vread,sort=False)
+
+        self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
+        # self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
+
+        if "DO_7" in self.digital_patterns.all_pins:
+            self.digital_patterns.digital_set_voltages([[],[],["DO_7","DO_6","DO_5","DO_4","DO_3","DO_2","DO_1","DO_0","SA_RDY_7","SA_RDY_6","SA_RDY_5","SA_RDY_4","SA_RDY_3","SA_RDY_2","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)
+        else:
+            self.digital_patterns.digital_set_voltages([[],[],["DO_1","DO_0","SA_RDY_1","SA_RDY_0"]], vi_lo=vil_do, vi_hi=vih_do, vo_lo=vol_do, vo_hi=voh_do,sort=False)        
+        
         self.digital_patterns.commit_all()
 
     def set_channel_mode(self, pins=None, mode="DIGITAL"):
@@ -175,7 +230,7 @@ def main(args):
     conv.set_pin_voltages()
     # pdb.set_trace()
     
-    for i in range(1000):
+    for i in range(100000):
         conv.broadcast_waveforms_from_file()
     
     conv.read_captured_waveforms(chip=4, condition="0 -255")
