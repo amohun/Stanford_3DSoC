@@ -3,7 +3,7 @@
   <TimingSheet>
     <TimeSets>
       <TimeSet name="CSA">
-        <Period>1E-06</Period>
+        <Period>5E-07</Period>
         <PinEdges>
           <PinEdge pin="SL">
             <DriveNonReturn>
