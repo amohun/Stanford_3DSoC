@@ -142,10 +142,10 @@ class Convolution:
         vol_wlin = self.settings_manager.get_setting("other_voltages.WL_IN.vol", 0)
 
         # Outputs should be < 1.8V to trigger high
-        vih_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vih", 1)
-        vil_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vil", 0.3)
-        voh_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.voh", 1)
-        vol_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vol", 0.3)
+        vih_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vih", 1.8)
+        vil_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vil", 0)
+        voh_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.voh", 1.8)
+        vol_do = self.settings_manager.get_setting("other_voltages.SARDY_DO.vol", 0)
 
         # Outputs should be < 1.8V to trigger high
         vih_sl = self.settings_manager.get_setting("other_voltages.SL.vih", 0)

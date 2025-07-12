@@ -148,16 +148,16 @@ voh = 1.8
 vol = 0.0
 
 [other_voltages.OFMAP]
-vih = 0.7
-vil = 0.3
-voh = 0.7
-vol = 0.3
+vih = 1.8
+vil = 0
+voh = 1.8
+vol = 0
 
 [other_voltages]
 [other_voltages.RMUX_EN]
-vih = 5.0
+vih = 1.8  
 vil = 0.0
-voh = 5.0
+voh = 1.8
 vol = 0.0
 
 [other_voltages.VREAD]
@@ -167,7 +167,7 @@ voh = 0.3
 vol = 0.0
 
 [other_voltages.SARDY_DO]
-vih = 1.5
+vih = 1.8
 vil = 0.0
-voh = 1.5
+voh = 1.8
 vol = 0.0
