@@ -163,7 +163,7 @@ class Convolution:
         self.digital_patterns.digital_set_voltages(self.pins, vi_lo=vil, vi_hi=vih, vo_lo=vol, vo_hi=voh,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["RMUX_EN"]], vi_lo=vil_rmuxen, vi_hi=vih_rmuxen, vo_lo=vol_rmuxen, vo_hi=voh_rmuxen,sort=False)
         self.digital_patterns.digital_set_voltages([[],[],["VREAD"]], vi_lo=vil_vread, vi_hi=vih_vread, vo_lo=vol_vread, vo_hi=voh_vread,sort=False)
-
+ 
         self.digital_patterns.digital_set_voltages([[],[],["WL_IN_0"]],vi_lo=vil_wlin, vi_hi=vih_wlin, vo_lo=vol_wlin, vo_hi=voh_wlin,sort=False)            
         # self.digital_patterns.digital_set_voltages([[],[],["WL_UNSEL"]],vi_lo=vil_wlunsel, vi_hi=vih_wlunsel, vo_lo=vol_wlunsel, vo_hi=voh_wlunsel,sort=False)
 
@@ -228,7 +228,7 @@ def main(args):
     conv.set_channel_mode()
     # pdb.set_trace()
     conv.set_pin_voltages()
-    # pdb.set_trace()
+    pdb.set_trace()
     
     for i in range(100000):
         conv.broadcast_waveforms_from_file()
