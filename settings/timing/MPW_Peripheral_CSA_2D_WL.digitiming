@@ -8,77 +8,77 @@
           <PinEdge pin="WL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="COLSEL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="VREAD">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="SA_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="RMUX_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="DO_SA_RDY">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="DIR_PERIPH_SEL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>

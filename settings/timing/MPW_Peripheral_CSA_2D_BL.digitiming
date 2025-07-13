@@ -8,33 +8,33 @@
           <PinEdge pin="BL">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="ACCUM_EN">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
           <PinEdge pin="OFMAP">
             <DriveNonReturn>
               <On>0</On>
-              <Data>2.5E-07</Data>
-              <Off>5E-07</Off>
+              <Data>2.5E-08</Data>
+              <Off>2.5E-08</Off>
             </DriveNonReturn>
             <CompareStrobe>
-              <Strobe>5E-07</Strobe>
+              <Strobe>2.5E-08</Strobe>
             </CompareStrobe>
             <DataSource>Pattern</DataSource>
           </PinEdge>
